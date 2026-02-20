@@ -37,9 +37,9 @@ export const LANGUAGES: Record<Language, string> = {
 
 export function formatLanguage(vscodeLocale: string): Language {
 	if (!vscodeLocale) {
-		return "en"
+		return "zh-CN" // kilocode_change: default to Chinese
 	}
 
 	const formattedLocale = vscodeLocale.replace(/-(\w+)$/, (_, region) => `-${region.toUpperCase()}`)
-	return isLanguage(formattedLocale) ? formattedLocale : "en"
+	return isLanguage(formattedLocale) ? formattedLocale : "zh-CN" // kilocode_change: default to Chinese
 }

@@ -11,16 +11,10 @@ import React, {
 } from "react"
 import {
 	CheckCheck,
-	SquareMousePointer,
 	GitBranch,
-	Bell,
 	Database,
 	SquareTerminal,
-	FlaskConical,
 	AlertTriangle,
-	Globe,
-	Info,
-	Bot, // kilocode_change
 	MessageSquare,
 	Monitor,
 	LucideIcon,
@@ -764,19 +758,19 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>((props, ref)
 			{ id: "agentBehaviour", icon: Users2 }, // kilocode_change - renamed from "modes" and merged with "mcp"
 			{ id: "autoApprove", icon: CheckCheck },
 			// { id: "slashCommands", icon: SquareSlash }, // kilocode_change: needs work to be re-introduced
-			{ id: "browser", icon: SquareMousePointer },
+			//{ id: "browser", icon: SquareMousePointer },
 			{ id: "checkpoints", icon: GitBranch },
 			{ id: "display", icon: Monitor }, // kilocode_change
-			{ id: "autocomplete" as const, icon: Bot }, // kilocode_change
-			{ id: "notifications", icon: Bell },
+			//{ id: "autocomplete" as const, icon: Bot }, // kilocode_change
+			//{ id: "notifications", icon: Bell },
 			{ id: "contextManagement", icon: Database },
 			{ id: "terminal", icon: SquareTerminal },
 			{ id: "prompts", icon: MessageSquare },
 			// { id: "ui", icon: Glasses }, // kilocode_change: we have our own display section
-			{ id: "experimental", icon: FlaskConical },
-			{ id: "language", icon: Globe },
+			//{ id: "experimental", icon: FlaskConical },
+			// { id: "language", icon: Globe }, // kilocode_change: hidden
 			// { id: "mcp", icon: Server }, // kilocode_change - merged into agentBehaviour
-			{ id: "about", icon: Info },
+			//{ id: "about", icon: Info },
 		],
 		[], // kilocode_change
 	)
@@ -1305,8 +1299,12 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>((props, ref)
 						)}
 
 						{/* Language Section */}
+						{/* kilocode_change: default to Chinese */}
 						{renderTab === "language" && (
-							<LanguageSettings language={language || "en"} setCachedStateField={setCachedStateField} />
+							<LanguageSettings
+								language={language || "zh-CN"}
+								setCachedStateField={setCachedStateField}
+							/>
 						)}
 
 						{/* About Section */}

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Kilo Code is an open source AI coding agent for VS Code that generates code from natural language, automates tasks, and supports 500+ AI models.
+CMBT Agent is a secondary development project based on Kilo Code, an open source AI coding agent for VS Code that generates code from natural language, automates tasks, and supports 500+ AI models.
 
 ## Project Structure
 
@@ -143,51 +143,53 @@ Keep changesets concise and feature-oriented as they appear directly in release 
 
 ## Fork Merge Process
 
-Kilo Code is a fork of [Roo Code](https://github.com/RooVetGit/Roo-Code). We periodically merge upstream changes using scripts in `scripts/kilocode/`.
+CMBT Agent is a fork of [Kilo Code](https://github.com/kilocode/kilo-code), which itself is a fork of [Roo Code](https://github.com/RooVetGit/Roo-Code). We periodically merge upstream changes using scripts in `scripts/kilocode/`.
 
-## kilocode_change Markers
+## cmbt-agent_change Markers
 
-To minimize merge conflicts when syncing with upstream, mark Kilo Code-specific changes in shared code with `kilocode_change` comments.
+To minimize merge conflicts when syncing with upstream, mark CMBT Agent-specific changes in shared code with `cmbt-agent_change` comments.
 
 **Single line:**
 
 ```typescript
-const value = 42 // kilocode_change
+const value = 42 // cmbt-agent_change
 ```
 
 **Multi-line:**
 
 ```typescript
-// kilocode_change start
+// cmbt-agent_change start
 const foo = 1
 const bar = 2
-// kilocode_change end
+// cmbt-agent_change end
 ```
 
 **New files:**
 
 ```typescript
-// kilocode_change - new file
+// cmbt-agent_change - new file
 ```
 
 ### When markers are NOT needed
 
-Code in these directories is Kilo Code-specific and doesn't need markers:
+Code in these directories is CMBT Agent-specific and doesn't need markers:
 
 - `jetbrains/` - JetBrains plugin
 - `agent-manager/` directories
-- Any path containing `kilocode` in filename or directory name
-- `src/services/autocomplete/ - Autocomplete service
+- Any path containing `cmbt-agent` in filename or directory name
+- `src/services/autocomplete/` - Autocomplete service
 
 ### When markers ARE needed
 
-All modifications to core extension code (files that exist in upstream Roo Code) require markers:
+All modifications to core extension code (files that exist in upstream Kilo Code or Roo Code) require markers:
 
-- `src/` (except Kilo-specific subdirectories listed above)
+- `src/` (except CMBT-specific subdirectories listed above)
 - `webview-ui/`
 - `packages/` (shared packages)
 
 Keep changes to core extension code minimal to reduce merge conflicts during upstream syncs.
+
+**Note**: Existing `kilocode_change` markers from the Kilo Code fork should be preserved. New CMBT Agent-specific changes should use `cmbt-agent_change` markers.
 
 ## Code Quality Rules
 
