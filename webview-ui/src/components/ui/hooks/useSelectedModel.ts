@@ -583,6 +583,21 @@ function getSelectedModel({
 			const info = routerModels.zenmux?.[id]
 			return { id, info }
 		}
+		case "dify": {
+			// Dify doesn't need model selection - models are configured in Dify workflows
+			return {
+				id: "dify-workflow",
+				info: {
+					maxTokens: 8192,
+					contextWindow: 128000,
+					supportsImages: true,
+					supportsPromptCache: false,
+					inputPrice: 0,
+					outputPrice: 0,
+					description: "Model configured in Dify workflow",
+				},
+			}
+		}
 		// kilocode_change end
 		// case "anthropic":
 		// case "human-relay":

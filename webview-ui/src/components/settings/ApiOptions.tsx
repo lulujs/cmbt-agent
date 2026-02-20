@@ -87,6 +87,7 @@ import {
 	Chutes,
 	ClaudeCode,
 	DeepSeek,
+	Dify,
 	Doubao,
 	Gemini,
 	Glama, // kilocode_change
@@ -335,6 +336,12 @@ const ApiOptions = ({
 	const selectedProviderModels = useMemo(() => {
 		const models = MODELS_BY_PROVIDER[selectedProvider]
 
+		// Debug: Log for Dify provider
+		if (selectedProvider === "dify") {
+			console.log("[Dify Debug] selectedProvider:", selectedProvider)
+			console.log("[Dify Debug] models from MODELS_BY_PROVIDER:", models)
+		}
+
 		if (!models) return []
 
 		const filteredModels = filterModels(models, selectedProvider, organizationAllowList)
@@ -366,6 +373,12 @@ const ApiOptions = ({
 						label: modelId,
 					}))
 			: []
+
+		// Debug: Log result for Dify provider
+		if (selectedProvider === "dify") {
+			console.log("[Dify Debug] availableModels:", availableModels)
+			console.log("[Dify Debug] availableModels.length:", availableModels.length)
+		}
 
 		return availableModels
 	}, [selectedProvider, organizationAllowList, selectedModelId, apiConfiguration.moonshotBaseUrl])
@@ -405,6 +418,11 @@ const ApiOptions = ({
 				// Note: We only validate providers with static model lists.
 				const staticModels = MODELS_BY_PROVIDER[provider]
 				if (!staticModels) {
+					// For providers without static models (like Dify), always reset to default
+					// This ensures old model IDs from previous providers are cleared
+					if (modelId !== defaultValue) {
+						setApiConfigurationField(field, defaultValue, false)
+					}
 					return
 				}
 
@@ -474,6 +492,7 @@ const ApiOptions = ({
 				openai: { field: "openAiModelId" },
 				ollama: { field: "ollamaModelId" },
 				lmstudio: { field: "lmStudioModelId" },
+				dify: { field: "apiModelId", default: "dify-workflow" }, // Dify doesn't need model selection
 				// kilocode_change start
 				apertis: { field: "apertisModelId", default: apertisDefaultModelId },
 				kilocode: { field: "kilocodeModel", default: kilocodeDefaultModel },
@@ -834,6 +853,14 @@ const ApiOptions = ({
 				/>
 			)}
 
+			{selectedProvider === "dify" && (
+				<Dify
+					apiConfiguration={apiConfiguration}
+					setApiConfigurationField={setApiConfigurationField}
+					simplifySettings={fromWelcomeView}
+				/>
+			)}
+
 			{selectedProvider === "doubao" && (
 				<Doubao
 					apiConfiguration={apiConfiguration}
@@ -1007,10 +1034,11 @@ const ApiOptions = ({
 			)}
 			{/* kilocode_change end */}
 
-			{/* Skip generic model picker for claude-code/openai-codex since they have their own model pickers */}
+			{/* Skip generic model picker for claude-code/openai-codex/dify since they have their own model pickers or don't need model selection */}
 			{selectedProviderModels.length > 0 &&
 				selectedProvider !== "claude-code" &&
-				selectedProvider !== "openai-codex" && (
+				selectedProvider !== "openai-codex" &&
+				selectedProvider !== "dify" && (
 					<>
 						<div>
 							<label className="block font-medium mb-1">{t("settings:providers.model")}</label>

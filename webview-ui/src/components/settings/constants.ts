@@ -60,6 +60,7 @@ export const MODELS_BY_PROVIDER: Partial<Record<ProviderName, Record<string, Mod
 export const PROVIDERS = [
 	{ value: "openrouter", label: "OpenRouter", proxy: false },
 	{ value: "deepinfra", label: "DeepInfra", proxy: false },
+	{ value: "dify", label: "Dify", proxy: false },
 	{ value: "anthropic", label: "Anthropic", proxy: false },
 	{ value: "claude-code", label: "Claude Code", proxy: false },
 	{ value: "cerebras", label: "Cerebras", proxy: false },

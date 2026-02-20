@@ -5,6 +5,7 @@ export { Cerebras } from "./Cerebras"
 export { Chutes } from "./Chutes"
 export { ClaudeCode } from "./ClaudeCode"
 export { DeepSeek } from "./DeepSeek"
+export { Dify } from "./Dify"
 export { Doubao } from "./Doubao"
 export { Gemini } from "./Gemini"
 export { Glama } from "./Glama" // kilocode_change

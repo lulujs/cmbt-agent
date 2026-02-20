@@ -59,6 +59,7 @@ export const dynamicProviders = [
 	"synthetic",
 	"sap-ai-core",
 	"zenmux",
+	"dify",
 	// kilocode_change end
 	"deepinfra",
 	"io-intelligence",
@@ -591,6 +592,11 @@ const corethinkSchema = apiModelIdProviderModelSchema.extend({
 	corethinkApiKey: z.string().optional(),
 })
 
+const difySchema = baseProviderSettingsSchema.extend({
+	difyApiKey: z.string().optional(),
+	difyBaseUrl: z.string().optional(),
+})
+
 const defaultSchema = z.object({
 	apiProvider: z.undefined(),
 })
@@ -634,6 +640,7 @@ export const providerSettingsSchemaDiscriminated = z.discriminatedUnion("apiProv
 	groqSchema.merge(z.object({ apiProvider: z.literal("groq") })),
 	basetenSchema.merge(z.object({ apiProvider: z.literal("baseten") })),
 	corethinkSchema.merge(z.object({ apiProvider: z.literal("corethink") })),
+	difySchema.merge(z.object({ apiProvider: z.literal("dify") })),
 	huggingFaceSchema.merge(z.object({ apiProvider: z.literal("huggingface") })),
 	chutesSchema.merge(z.object({ apiProvider: z.literal("chutes") })),
 	litellmSchema.merge(z.object({ apiProvider: z.literal("litellm") })),
@@ -690,6 +697,7 @@ export const providerSettingsSchema = z.object({
 	...groqSchema.shape,
 	...basetenSchema.shape,
 	...corethinkSchema.shape,
+	...difySchema.shape,
 	...huggingFaceSchema.shape,
 	...chutesSchema.shape,
 	...litellmSchema.shape,
@@ -782,6 +790,7 @@ export const modelIdKeysByProvider: Record<TypicalProvider, ModelIdKey> = {
 	minimax: "apiModelId",
 	deepseek: "apiModelId",
 	deepinfra: "deepInfraModelId",
+	dify: "apiModelId",
 	doubao: "apiModelId",
 	"qwen-code": "apiModelId",
 	unbound: "unboundModelId",
@@ -954,6 +963,7 @@ export const MODELS_BY_PROVIDER: Record<
 	corethink: { id: "corethink", label: "Corethink", models: Object.keys(corethinkModels) },
 
 	// Dynamic providers; models pulled from remote APIs.
+	dify: { id: "dify", label: "Dify", models: [] },
 	glama: { id: "glama", label: "Glama", models: [] }, // kilocode_change
 	"nano-gpt": { id: "nano-gpt", label: "Nano-GPT", models: [] }, // kilocode_change
 	huggingface: { id: "huggingface", label: "Hugging Face", models: [] },

@@ -3840,11 +3840,15 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 					// If the model did not tool use, then we need to tell it to
 					// either use a tool or attempt_completion.
+					// However, skip this check if the model doesn't support tools
+					const modelInfo = this.api.getModel().info
+					const modelSupportsTools = modelInfo.supportsNativeTools ?? true // Default to true for backward compatibility
+
 					const didToolUse = this.assistantMessageContent.some(
 						(block) => block.type === "tool_use" || block.type === "mcp_tool_use",
 					)
 
-					if (!didToolUse) {
+					if (!didToolUse && modelSupportsTools) {
 						// Check for hallucinated tool use pattern
 						const hallucinatedTool = this.assistantMessageContent.find(
 							(block) => block.type === "text" && block.content.trim().match(/^\[Tool Use: .+\]/i),

@@ -55,6 +55,7 @@ import {
 	BasetenHandler,
 	CorethinkHandler,
 	OpenAiCompatibleResponsesHandler, // kilocode_change
+	DifyHandler,
 } from "./providers"
 // kilocode_change start
 import { KilocodeOpenrouterHandler } from "./providers/kilocode-openrouter"
@@ -277,6 +278,8 @@ export function buildApiHandler(configuration: ProviderSettings): ApiHandler {
 			return new BasetenHandler(options)
 		case "corethink":
 			return new CorethinkHandler(options)
+		case "dify":
+			return new DifyHandler(options)
 		default:
 			apiProvider satisfies undefined
 			return new AnthropicHandler(options)

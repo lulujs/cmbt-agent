@@ -15,16 +15,16 @@ type ApiMessageForDetection = Anthropic.MessageParam & {
  * Resolve the effective tool protocol.
  *
  * **Deprecation Note (XML Protocol):**
- * XML tool protocol has been deprecated. All models now use Native tool calling.
- * User/profile preferences (`providerSettings.toolProtocol`) and model defaults
- * (`modelInfo.defaultToolProtocol`) are ignored.
+ * XML tool protocol has been deprecated for most models. However, some models
+ * (like Dify) do not support native tool calling and must use XML protocol.
  *
  * Precedence:
  * 1. Locked Protocol (task-level lock for resumed tasks - highest priority)
- * 2. Native (always, for all new tasks)
+ * 2. Model's defaultToolProtocol (if model doesn't support native tools)
+ * 3. Native (default for all models that support native tools)
  *
  * @param _providerSettings - The provider settings (toolProtocol field is ignored)
- * @param _modelInfo - Unused, kept for API compatibility
+ * @param _modelInfo - Model information including supportsNativeTools and defaultToolProtocol
  * @param lockedProtocol - Optional task-locked protocol that takes absolute precedence
  * @returns The resolved tool protocol (either "xml" or "native")
  */
@@ -39,8 +39,15 @@ export function resolveToolProtocol(
 		return lockedProtocol
 	}
 
-	// 2. Always return Native protocol for new tasks
-	// All models now support native tools; XML is deprecated
+	// 2. Check if model supports native tools
+	// If model explicitly doesn't support native tools, use its defaultToolProtocol or XML
+	const modelInfo = _modelInfo as { supportsNativeTools?: boolean; defaultToolProtocol?: ToolProtocol } | undefined
+	if (modelInfo?.supportsNativeTools === false) {
+		// Model doesn't support native tools, use its default protocol or fall back to XML
+		return modelInfo.defaultToolProtocol || TOOL_PROTOCOL.XML
+	}
+
+	// 3. Always return Native protocol for models that support native tools
 	return TOOL_PROTOCOL.NATIVE
 }
 
