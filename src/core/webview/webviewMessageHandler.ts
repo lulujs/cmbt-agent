@@ -926,6 +926,7 @@ export const webviewMessageHandler = async (
 						chutes: {},
 						"nano-gpt": {}, // kilocode_change
 						zenmux: {},
+						dify: {}, // kilocode_change
 					}
 			const safeGetModels = async (options: GetModelsOptions): Promise<ModelRecord> => {
 				try {

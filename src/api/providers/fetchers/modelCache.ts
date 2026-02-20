@@ -186,6 +186,10 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 				apiKey: options.apiKey,
 			})
 			break
+		case "dify":
+			// Dify doesn't expose a models endpoint - models are configured in Dify workflows
+			models = {}
+			break
 		//kilocode_change end
 		default: {
 			// Ensures router is exhaustively checked if RouterName is a strict union.
