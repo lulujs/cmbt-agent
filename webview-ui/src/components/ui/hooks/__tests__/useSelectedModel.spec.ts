@@ -421,7 +421,7 @@ describe("useSelectedModel", () => {
 	})
 
 	describe("loading and error states", () => {
-		it("should NOT set loading when router models are loading but provider is static (anthropic)", () => {
+		it("should set loading when router models are loading for dynamic provider (dify)", () => {
 			mockUseRouterModels.mockReturnValue({
 				data: undefined,
 				isLoading: true,
@@ -437,11 +437,11 @@ describe("useSelectedModel", () => {
 			const wrapper = createWrapper()
 			const { result } = renderHook(() => useSelectedModel(), { wrapper })
 
-			// With static provider default (anthropic), useSelectedModel gates router fetches, so loading should be false
-			expect(result.current.isLoading).toBe(false)
+			// With dynamic provider default (dify), useSelectedModel needs router models, so loading should be true
+			expect(result.current.isLoading).toBe(true)
 		})
 
-		it("should NOT set loading when openrouter provider metadata is loading but provider is static (anthropic)", () => {
+		it("should NOT set loading when openrouter provider metadata is loading but provider is dynamic (dify)", () => {
 			mockUseRouterModels.mockReturnValue({
 				data: {
 					openrouter: {},
@@ -466,6 +466,7 @@ describe("useSelectedModel", () => {
 					"nano-gpt": {},
 					ollama: {},
 					lmstudio: {},
+					dify: {}, // cmbt-agent_change: add dify to router models
 				},
 				isLoading: false,
 				isError: false,
@@ -480,11 +481,11 @@ describe("useSelectedModel", () => {
 			const wrapper = createWrapper()
 			const { result } = renderHook(() => useSelectedModel(), { wrapper })
 
-			// With static provider default (anthropic), openrouter providers are irrelevant, so loading should be false
+			// With dynamic provider default (dify), openrouter providers are irrelevant, so loading should be false
 			expect(result.current.isLoading).toBe(false)
 		})
 
-		it("should NOT set error when hooks error but provider is static (anthropic)", () => {
+		it("should set error when hooks error for dynamic provider (dify)", () => {
 			mockUseRouterModels.mockReturnValue({
 				data: undefined,
 				isLoading: false,
@@ -500,31 +501,74 @@ describe("useSelectedModel", () => {
 			const wrapper = createWrapper()
 			const { result } = renderHook(() => useSelectedModel(), { wrapper })
 
-			// Error from gated routerModels should not bubble for static provider default
-			expect(result.current.isError).toBe(false)
+			// Error from routerModels should bubble for dynamic provider default (dify)
+			expect(result.current.isError).toBe(true)
 		})
 	})
 
 	describe("default behavior", () => {
-		it("should return anthropic default when no configuration is provided", () => {
+		it("should return dify default when no configuration is provided", () => {
 			mockUseRouterModels.mockReturnValue({
-				data: undefined,
+				data: {
+					openrouter: {},
+					"vercel-ai-gateway": {},
+					huggingface: {},
+					litellm: {},
+					apertis: {},
+					kilocode: {},
+					ovhcloud: {},
+					gemini: {},
+					inception: {},
+					synthetic: {},
+					"sap-ai-core": {},
+					zenmux: {},
+					deepinfra: {},
+					"io-intelligence": {},
+					requesty: {},
+					unbound: {},
+					glama: {},
+					roo: {},
+					chutes: {},
+					"nano-gpt": {},
+					ollama: {},
+					lmstudio: {},
+					dify: {
+						"dify-workflow": {
+							maxTokens: 8192,
+							contextWindow: 128000,
+							supportsImages: true,
+							supportsPromptCache: false,
+							inputPrice: 0,
+							outputPrice: 0,
+							description: "Model configured in Dify workflow",
+						},
+					}, // cmbt-agent_change: add dify router models
+				},
 				isLoading: false,
 				isError: false,
 			} as any)
 
 			mockUseOpenRouterModelProviders.mockReturnValue({
-				data: undefined,
+				data: {},
 				isLoading: false,
 				isError: false,
 			} as any)
 
 			const wrapper = createWrapper()
-			const { result } = renderHook(() => useSelectedModel(), { wrapper })
+			// cmbt-agent_change: pass empty object to trigger getSelectedModel logic
+			const { result } = renderHook(() => useSelectedModel({}), { wrapper })
 
-			expect(result.current.provider).toBe("anthropic")
-			expect(result.current.id).toBe("claude-sonnet-4-5")
-			expect(result.current.info).toBeUndefined()
+			expect(result.current.provider).toBe("dify") // cmbt-agent_change: default to dify
+			expect(result.current.id).toBe("dify-workflow") // cmbt-agent_change: dify default model
+			expect(result.current.info).toEqual({
+				maxTokens: 8192,
+				contextWindow: 128000,
+				supportsImages: true,
+				supportsPromptCache: false,
+				inputPrice: 0,
+				outputPrice: 0,
+				description: "Model configured in Dify workflow",
+			})
 		})
 	})
 
