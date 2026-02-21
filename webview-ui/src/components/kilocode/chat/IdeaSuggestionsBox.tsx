@@ -12,6 +12,7 @@ export const IdeaSuggestionsBox = () => {
 	const { taskHistoryVersion } = useExtensionState()
 
 	// Check if current workspace has any tasks
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { data } = useTaskHistory(
 		{
 			workspace: "current",
@@ -21,7 +22,8 @@ export const IdeaSuggestionsBox = () => {
 		},
 		taskHistoryVersion,
 	)
-	const hasWorkspaceTasks = (data?.historyItems?.length ?? 0) > 0
+	//const hasWorkspaceTasks = (data?.historyItems?.length ?? 0) > 0
+	const hasWorkspaceTasks = true
 
 	// Show 2 random ideas - memoized to prevent re-shuffling on re-renders
 	// Must be called before early return to satisfy React hooks rules

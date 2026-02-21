@@ -99,7 +99,7 @@
 	},
 	"enqueueMessage": "将消息加入队列（当前任务完成后发送）",
 	"scrollToBottom": "滚动到聊天底部",
-	"about": "通过 AI 辅助测试建模。",
+	"about": "Hello，我是CMBT Agent，可以辅助你测试设计建模",
 	"docs": "查看帮助文档了解更多信息。",
 	"onboarding": "<strong>此工作区中的任务列表为空。</strong> 请在下方输入任务开始。 不确定如何开始？ 在 <DocsLink>文档</DocsLink> 中阅读更多关于 CMBT Agent 可以为您做什么的信息。",
 	"rooTips": {

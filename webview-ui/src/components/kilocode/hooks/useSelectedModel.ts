@@ -85,6 +85,11 @@ export const getSelectedModelId = ({
 				? `${apiConfiguration.vsCodeLmModelSelector.vendor}/${apiConfiguration.vsCodeLmModelSelector.family}`
 				: defaultModelId
 		}
+		// cmbt-agent_change start: Add dify special handling
+		case "dify": {
+			return "测小智"
+		}
+		// cmbt-agent_change end
 		default: {
 			return (apiConfiguration?.[modelIdKey] as string) ?? defaultModelId
 		}
