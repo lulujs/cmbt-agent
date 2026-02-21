@@ -33,7 +33,11 @@ interface OnboardingViewProps {
 	onSelectBYOK: () => void
 }
 
-const OnboardingView: React.FC<OnboardingViewProps> = ({ onSelectFreeModels, onSelectPremiumModels, onSelectBYOK }) => {
+const OnboardingView: React.FC<OnboardingViewProps> = ({
+	onSelectFreeModels,
+	onSelectPremiumModels: _onSelectPremiumModels,
+	onSelectBYOK,
+}) => {
 	const { t } = useAppTranslation()
 
 	return (
@@ -50,13 +54,6 @@ const OnboardingView: React.FC<OnboardingViewProps> = ({ onSelectFreeModels, onS
 					description={t("kilocode:onboarding.freeModels.description")}
 					icon="sparkle"
 					onClick={onSelectFreeModels}
-				/>
-
-				<OnboardingOption
-					title={t("kilocode:onboarding.premiumModels.title")}
-					description={t("kilocode:onboarding.premiumModels.description")}
-					icon="star-full"
-					onClick={onSelectPremiumModels}
 				/>
 
 				<OnboardingOption

@@ -17,43 +17,16 @@ type Defaults = z.infer<typeof defaultsSchema>
 
 const cache = new Map<string, Promise<Defaults>>()
 
+// cmbt-agent_change start: Disable network request, return Dify as default
 async function fetchKilocodeDefaultModel(
 	kilocodeToken?: KilocodeToken,
 	organizationId?: OrganizationId,
 ): Promise<Defaults> {
-	try {
-		const path = organizationId ? `/organizations/${organizationId}/defaults` : `/defaults`
-		const url = getKiloUrlFromToken(`https://api.kilo.ai/api${path}`, kilocodeToken ?? "")
-
-		const headers: Record<string, string> = {
-			...DEFAULT_HEADERS,
-		}
-
-		if (kilocodeToken) {
-			headers["Authorization"] = `Bearer ${kilocodeToken}`
-		}
-
-		const controller = new AbortController()
-		const timeout = setTimeout(() => controller.abort(), 5000)
-		const response = await fetch(url, { headers, signal: controller.signal })
-		clearTimeout(timeout)
-		if (!response.ok) {
-			throw new Error(`Fetching default model from ${url} failed: ${response.status}`)
-		}
-		const defaultModel = await defaultsSchema.safeParseAsync(await response.json())
-		if (!defaultModel.data) {
-			throw new Error(
-				`Default model from ${url} was invalid: ${JSON.stringify(defaultModel.error.format(), undefined, 2)}`,
-			)
-		}
-		console.info(`Fetched default model from ${url}: ${defaultModel.data.defaultModel}`)
-		return defaultModel.data
-	} catch (err) {
-		console.error("Failed to get default model", err)
-		TelemetryService.instance.captureException(err, { context: "getKilocodeDefaultModel" })
-		return { defaultModel: openRouterDefaultModelId, defaultFreeModel: undefined }
-	}
+	// Return Dify as fixed default model without making network request
+	console.info("Using Dify as fixed default model (network request disabled)")
+	return { defaultModel: "dify-workflow", defaultFreeModel: "dify-workflow" }
 }
+// cmbt-agent_change end
 
 export async function getKilocodeDefaultModel(
 	kilocodeToken?: KilocodeToken,

@@ -45,7 +45,7 @@ describe("ProviderSettingsManager", () => {
 		// Also this override resets itself, but fortunately no test required triple initialization...
 
 		// Wait for the first manager's initialization to complete, then clear mock calls
-		// This is needed because new users get the default kilocode config stored
+		// This is needed because new users get the default dify config stored // cmbt-agent_change
 		await providerSettingsManager.initialize()
 		vi.clearAllMocks()
 
@@ -58,19 +58,22 @@ describe("ProviderSettingsManager", () => {
 
 	describe("initialize", () => {
 		// kilocode_change start: test updated to expect kilocode default profile for new users
-		it("should initialize kilocode default profile when secrets.get returns null", async () => {
+		// cmbt-agent_change start: test updated to expect dify default profile for new users
+		it("should initialize dify default profile when secrets.get returns null", async () => {
 			// Mock readConfig to return null
 			mockSecrets.get.mockResolvedValueOnce(null)
 
 			await providerSettingsManager.initialize()
 
-			// Should write to storage with default kilocode profile for new users
+			// Should write to storage with default dify profile for new users
 			expect(mockSecrets.store).toHaveBeenCalled()
 			const calls = mockSecrets.store.mock.calls
 			const storedConfig = JSON.parse(calls[calls.length - 1][1])
-			expect(storedConfig.apiConfigs.default.apiProvider).toBe("kilocode")
-			expect(storedConfig.apiConfigs.default.kilocodeModel).toBe("minimax/minimax-m2.1:free")
+			expect(storedConfig.apiConfigs.default.apiProvider).toBe("dify")
+			expect(storedConfig.apiConfigs.default.difyBaseUrl).toBe("https://api.dify.ai/v1")
+			expect(storedConfig.apiConfigs.default.difyApiKey).toBe("app-Xv2ojbwMEbD4eFtX0THNHcbU")
 		})
+		// cmbt-agent_change end
 		// kilocode_change end
 
 		it("should not initialize config if it exists and migrations are complete", async () => {

@@ -67,13 +67,15 @@ export class ProviderSettingsManager {
 	)
 
 	// kilocode_change start: Anonymous kilocode onboarding - set default provider for new users
+	// cmbt-agent_change start: Use Dify as default provider
 	private readonly defaultProviderProfiles: ProviderProfiles = {
 		currentApiConfigName: "default",
 		apiConfigs: {
 			default: {
 				id: this.defaultConfigId,
-				apiProvider: "kilocode",
-				kilocodeModel: "minimax/minimax-m2.1:free",
+				apiProvider: "dify",
+				difyBaseUrl: "https://api.dify.ai/v1",
+				difyApiKey: "app-Xv2ojbwMEbD4eFtX0THNHcbU",
 			},
 		},
 		modeApiConfigs: this.defaultModeApiConfigs,
@@ -86,6 +88,7 @@ export class ProviderSettingsManager {
 			claudeCodeLegacySettingsMigrated: true, // Mark as migrated on fresh installs
 		},
 	}
+	// cmbt-agent_change end
 	// kilocode_change end
 
 	// kilocode_change start
@@ -307,6 +310,7 @@ export class ProviderSettingsManager {
 					isDirty ||= result
 				}
 				// kilocode_change end
+
 				if (!providerProfiles.migrations.claudeCodeLegacySettingsMigrated) {
 					// These keys were used by the removed local Claude Code CLI wrapper.
 					for (const apiConfig of Object.values(providerProfiles.apiConfigs)) {

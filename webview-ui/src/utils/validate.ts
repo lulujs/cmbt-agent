@@ -201,6 +201,16 @@ function validateModelsAndKeysProvided(apiConfiguration: ProviderSettings): stri
 			// 	return i18next.t("settings:validation.apiKey")
 			// }
 			break
+		// cmbt-agent_change start: Add dify validation
+		case "dify":
+			if (!apiConfiguration.difyApiKey) {
+				return i18next.t("settings:validation.apiKey")
+			}
+			if (!apiConfiguration.difyBaseUrl) {
+				return i18next.t("settings:validation.baseUrl")
+			}
+			break
+		// cmbt-agent_change end
 	}
 
 	return undefined

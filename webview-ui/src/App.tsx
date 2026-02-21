@@ -317,6 +317,18 @@ const App = () => {
 
 	// kilocode_change start: Onboarding handlers
 	const handleSelectFreeModels = useCallback(() => {
+		// cmbt-agent_change start: Explicitly save Dify configuration
+		const difyConfig = {
+			apiProvider: "dify" as const,
+			difyBaseUrl: "https://api.dify.ai/v1",
+			difyApiKey: "app-Xv2ojbwMEbD4eFtX0THNHcbU",
+		}
+		vscode.postMessage({
+			type: "upsertApiConfiguration",
+			text: "default",
+			apiConfiguration: difyConfig,
+		})
+		// cmbt-agent_change end
 		// Mark onboarding as complete - the default profile is already set up with a free model
 		vscode.postMessage({ type: "hasCompletedOnboarding", bool: true })
 	}, [])
