@@ -1,9 +1,9 @@
 {
 	"name": "cmbt-agent",
-	"displayName": "%extension.displayName%",
-	"description": "%extension.description%",
+	"displayName": "cmbt-agent",
+	"description": "辅助测试设计建模agent",
 	"publisher": "cmbt",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"icon": "assets/icons/logo-outline-black.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -17,13 +17,13 @@
 		"workspace"
 	],
 	"author": {
-		"name": "Cmbt Agent"
+		"name": "cmbt"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Kilo-Org/kilocode"
+		"url": ""
 	},
-	"homepage": "https://kilo.ai",
+	"homepage": "",
 	"categories": [
 		"AI",
 		"Chat",

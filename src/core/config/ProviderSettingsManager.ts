@@ -74,8 +74,8 @@ export class ProviderSettingsManager {
 			default: {
 				id: this.defaultConfigId,
 				apiProvider: "dify",
-				difyBaseUrl: "https://api.dify.ai/v1",
-				difyApiKey: "app-Xv2ojbwMEbD4eFtX0THNHcbU",
+				difyBaseUrl: "http://testhub-ai-runtime-gateway.paasuat.cmbchina.cn/v1",
+				difyApiKey: "app-FWtmuFGTLQ5tGYcQRJJ061aq",
 			},
 		},
 		modeApiConfigs: this.defaultModeApiConfigs,

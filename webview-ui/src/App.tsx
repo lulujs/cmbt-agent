@@ -320,8 +320,8 @@ const App = () => {
 		// cmbt-agent_change start: Explicitly save Dify configuration
 		const difyConfig = {
 			apiProvider: "dify" as const,
-			difyBaseUrl: "https://api.dify.ai/v1",
-			difyApiKey: "app-Xv2ojbwMEbD4eFtX0THNHcbU",
+			difyBaseUrl: "http://testhub-ai-runtime-gateway.paasuat.cmbchina.cn/v1",
+			difyApiKey: "app-FWtmuFGTLQ5tGYcQRJJ061aq",
 		}
 		vscode.postMessage({
 			type: "upsertApiConfiguration",
