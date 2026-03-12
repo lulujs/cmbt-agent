@@ -1,0 +1,43 @@
+{
+	"agentSelector": {
+		"title": "ACP 智能体选择器",
+		"noAgents": "暂无可用的 ACP 智能体",
+		"refresh": "刷新",
+		"refreshAriaLabel": "刷新智能体列表",
+		"selectAgent": "选择智能体...",
+		"allAgents": "所有智能体",
+		"supportedFeatures": "支持的功能"
+	},
+	"status": {
+		"connected": "已连接",
+		"connecting": "连接中",
+		"disconnected": "未连接",
+		"error": "错误",
+		"unknown": "未知"
+	},
+	"actions": {
+		"connect": "连接",
+		"disconnect": "断开",
+		"reconnect": "重连"
+	},
+	"capabilities": {
+		"images": "图像支持",
+		"tools": "工具调用",
+		"streaming": "流式响应",
+		"computer_use": "计算机使用",
+		"prompt_caching": "提示缓存"
+	},
+	"messages": {
+		"connecting": "正在连接到智能体...",
+		"connectionError": "连接失败，请检查智能体配置",
+		"noAgentSelected": "未选择智能体",
+		"agentNotFound": "找不到指定的智能体"
+	},
+	"agentTypes": {
+		"github_copilot": "GitHub Copilot",
+		"claude_code": "Claude Code",
+		"gemini_cli": "Gemini CLI",
+		"opencode": "OpenCode",
+		"custom": "自定义"
+	}
+}

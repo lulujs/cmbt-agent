@@ -1,0 +1,43 @@
+{
+	"agentSelector": {
+		"title": "ACP 智慧體選擇器",
+		"noAgents": "暫無可用的 ACP 智慧體",
+		"refresh": "重新整理",
+		"refreshAriaLabel": "重新整理智慧體清單",
+		"selectAgent": "選擇智慧體...",
+		"allAgents": "所有智慧體",
+		"supportedFeatures": "支援的功能"
+	},
+	"status": {
+		"connected": "已連接",
+		"connecting": "連接中",
+		"disconnected": "未連接",
+		"error": "錯誤",
+		"unknown": "未知"
+	},
+	"actions": {
+		"connect": "連接",
+		"disconnect": "中斷連接",
+		"reconnect": "重新連接"
+	},
+	"capabilities": {
+		"images": "圖像支援",
+		"tools": "工具呼叫",
+		"streaming": "串流回應",
+		"computer_use": "電腦使用",
+		"prompt_caching": "提示快取"
+	},
+	"messages": {
+		"connecting": "正在連接到智慧體...",
+		"connectionError": "連接失敗，請檢查智慧體設定",
+		"noAgentSelected": "未選擇智慧體",
+		"agentNotFound": "找不到指定的智慧體"
+	},
+	"agentTypes": {
+		"github_copilot": "GitHub Copilot",
+		"claude_code": "Claude Code",
+		"gemini_cli": "Gemini CLI",
+		"opencode": "OpenCode",
+		"custom": "自訂"
+	}
+}
