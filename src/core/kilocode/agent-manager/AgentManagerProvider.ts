@@ -66,7 +66,7 @@ interface StdinAskResponseMessage {
  * Each agent runs as a CLI process using `kilocode --auto --json`.
  */
 export class AgentManagerProvider implements vscode.Disposable {
-	public static readonly viewType = "cmbt-agent.AgentManagerPanel"
+	public static readonly viewType = "test-agent.AgentManagerPanel"
 
 	private panel: vscode.WebviewPanel | undefined
 	private disposables: vscode.Disposable[] = []
@@ -1667,7 +1667,7 @@ export class AgentManagerProvider implements vscode.Disposable {
 			const { apiConfiguration } = state
 
 			// Determine the provider - default to "dify" if not set
-			const providerName = apiConfiguration.apiProvider || "dify" // cmbt-agent_change: fall back to dify
+			const providerName = apiConfiguration.apiProvider || "dify" // test-agent_change: fall back to dify
 
 			// Check if this provider supports model fetching via router
 			if (!isRouterName(providerName)) {

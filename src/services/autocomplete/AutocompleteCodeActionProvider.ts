@@ -17,7 +17,7 @@ export class AutocompleteCodeActionProvider implements vscode.CodeActionProvider
 			this.providedCodeActionKinds["quickfix"],
 		)
 		action.command = {
-			command: "cmbt-agent.autocomplete.generateSuggestions",
+			command: "test-agent.autocomplete.generateSuggestions",
 			title: "",
 			arguments: [document.uri, range],
 		}

@@ -63,7 +63,7 @@ export class DifyHandler extends BaseProvider {
 			query: query,
 			response_mode: "streaming",
 			conversation_id: this.conversationId || "",
-			user: "cmbt-agent",
+			user: "test-agent",
 			files: [],
 		}
 
@@ -264,7 +264,7 @@ export class DifyHandler extends BaseProvider {
 				inputPrice: 0,
 				outputPrice: 0,
 				description:
-					"Model configured in Dify workflow. Note: Dify manages tools within its own workflow system and does not support cmbt-agent's tool calling feature.",
+					"Model configured in Dify workflow. Note: Dify manages tools within its own workflow system and does not support test-agent's tool calling feature.",
 				// Dify does not support native tool calling through the API
 				// Tools are configured within the Dify workflow itself
 				supportsNativeTools: false,

@@ -59,7 +59,7 @@ dify: { field: "apiModelId", default: "dify-workflow" },
 ### 方法 3：手动清除配置（如果上述方法都不行）
 
 1. 打开 VS Code 设置（JSON）
-2. 搜索 `cmbt-agent` 或 `apiModelId`
+2. 搜索 `test-agent` 或 `apiModelId`
 3. 如果看到 `"apiModelId": "claude-sonnet-4-5"`，删除这一行或改为 `"apiModelId": "dify-workflow"`
 4. 保存并重新加载窗口
 
@@ -68,7 +68,7 @@ dify: { field: "apiModelId", default: "dify-workflow" },
 ### 检查源代码
 
 ```bash
-# 在 cmbt-agent 目录下执行
+# 在 test-agent 目录下执行
 grep -A 15 'case "dify"' webview-ui/src/components/ui/hooks/useSelectedModel.ts
 ```
 
@@ -86,7 +86,7 @@ ls -lh src/dist/extension.js
 在 VS Code 中：
 
 1. 打开扩展面板
-2. 找到 CMBT Agent 扩展
+2. 找到 TEST Agent 扩展
 3. 确认版本号和最后更新时间
 
 ## 预期结果

@@ -11,12 +11,12 @@ export function isPaymentRequiredError(error: any) {
 	return !!(error && error.status === 402)
 }
 
-// cmbt-agent_change start: Disable unauthorized error check
+// test-agent_change start: Disable unauthorized error check
 export function isUnauthorizedError(error: any) {
 	// Always return false to bypass login requirement
 	return false
 }
-// cmbt-agent_change end
+// test-agent_change end
 
 export function isAlphaPeriodEndedError(error: any) {
 	return !!(

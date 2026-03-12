@@ -38,11 +38,11 @@ export class CommitMessageProvider implements vscode.Disposable {
 
 		const disposables = [
 			vscode.commands.registerCommand(
-				"cmbt-agent.vsc.generateCommitMessage",
+				"test-agent.vsc.generateCommitMessage",
 				(vsRequest?: VscGenerationRequest) => this.handleVSCodeCommand(vsRequest),
 			),
 			vscode.commands.registerCommand(
-				"cmbt-agent.jetbrains.generateCommitMessage",
+				"test-agent.jetbrains.generateCommitMessage",
 				(...args: JetbrainsGenerationRequest): Promise<CommitMessageResult> => {
 					return this.handleJetBrainsCommand(...args)
 				},

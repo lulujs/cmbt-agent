@@ -62,7 +62,7 @@ export class DeviceAuthHandler {
 				})
 
 				this.callbacks.showInformationMessage(
-					`CMBT Agent successfully configured! Authenticated as ${userEmail}`,
+					`TEST Agent successfully configured! Authenticated as ${userEmail}`,
 				)
 
 				// Clean up

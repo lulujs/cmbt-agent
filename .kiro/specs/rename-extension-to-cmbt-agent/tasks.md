@@ -1,18 +1,18 @@
-# Tasks: Rename Extension from kilo-code to cmbt-agent
+# Tasks: Rename Extension from kilo-code to test-agent
 
 ## Phase 1: Package Metadata Updates
 
 - [x] 1.1 Update src/package.json
 
-    - [x] 1.1.1 Change "name" from "kilo-code" to "cmbt-agent"
-    - [x] 1.1.2 Update all viewsContainers IDs (kilo-code-ActivityBar → cmbt-agent-ActivityBar)
-    - [x] 1.1.3 Update all views IDs (kilo-code.SidebarProvider → cmbt-agent.SidebarProvider)
-    - [x] 1.1.4 Update all command IDs (kilo-code._ → cmbt-agent._)
-    - [x] 1.1.5 Update all menu references (kilo-code.contextMenu → cmbt-agent.contextMenu)
-    - [x] 1.1.6 Update all configuration property keys (kilo-code._ → cmbt-agent._)
-    - [x] 1.1.7 Update context keys in keybindings (kilocode._ → cmbtagent._)
-    - [x] 1.1.8 Update scripts section (kilo-code#bundle → cmbt-agent#bundle)
-    - [x] 1.1.9 Update vsix script (kilo-code-_.vsix → cmbt-agent-_.vsix)
+    - [x] 1.1.1 Change "name" from "kilo-code" to "test-agent"
+    - [x] 1.1.2 Update all viewsContainers IDs (kilo-code-ActivityBar → test-agent-ActivityBar)
+    - [x] 1.1.3 Update all views IDs (kilo-code.SidebarProvider → test-agent.SidebarProvider)
+    - [x] 1.1.4 Update all command IDs (kilo-code._ → test-agent._)
+    - [x] 1.1.5 Update all menu references (kilo-code.contextMenu → test-agent.contextMenu)
+    - [x] 1.1.6 Update all configuration property keys (kilo-code._ → test-agent._)
+    - [x] 1.1.7 Update context keys in keybindings (kilocode._ → testagent._)
+    - [x] 1.1.8 Update scripts section (kilo-code#bundle → test-agent#bundle)
+    - [x] 1.1.9 Update vsix script (kilo-code-_.vsix → test-agent-_.vsix)
 
 - [x] 1.2 Update root package.json
 
@@ -20,7 +20,7 @@
 
 - [x] 1.3 Update webview-ui/package.json
 
-    - [x] 1.3.1 Update pretest script (kilo-code#bundle → cmbt-agent#bundle)
+    - [x] 1.3.1 Update pretest script (kilo-code#bundle → test-agent#bundle)
 
 - [x] 1.4 Update apps/vscode-nightly/package.json
 
@@ -144,7 +144,7 @@
 
     - [x] 7.1.1 Run `cd src && pnpm bundle`
     - [x] 7.1.2 Run `cd src && pnpm vsix`
-    - [x] 7.1.3 Verify bin/cmbt-agent-\*.vsix is created
+    - [x] 7.1.3 Verify bin/test-agent-\*.vsix is created
 
 - [ ] 7.2 Run type checking
 

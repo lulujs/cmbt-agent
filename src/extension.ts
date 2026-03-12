@@ -383,11 +383,11 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	// kilocode_change start
 	if (!context.globalState.get("firstInstallCompleted")) {
-		outputChannel.appendLine("First installation detected, opening CMBT Agent sidebar!")
+		outputChannel.appendLine("First installation detected, opening TEST Agent sidebar!")
 		try {
-			await vscode.commands.executeCommand("cmbt-agent.SidebarProvider.focus")
+			await vscode.commands.executeCommand("test-agent.SidebarProvider.focus")
 
-			outputChannel.appendLine("Opening CMBT Agent walkthrough")
+			outputChannel.appendLine("Opening TEST Agent walkthrough")
 
 			// this can crash, see:
 			// https://discord.com/channels/1349288496988160052/1395865796026040470

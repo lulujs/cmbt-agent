@@ -317,7 +317,7 @@ const App = () => {
 
 	// kilocode_change start: Onboarding handlers
 	const handleSelectFreeModels = useCallback(() => {
-		// cmbt-agent_change start: Explicitly save Dify configuration
+		// test-agent_change start: Explicitly save Dify configuration
 		const difyConfig = {
 			apiProvider: "dify" as const,
 			difyBaseUrl: "http://testhub-ai-runtime-gateway.paasuat.cmbchina.cn/v1",
@@ -328,7 +328,7 @@ const App = () => {
 			text: "default",
 			apiConfiguration: difyConfig,
 		})
-		// cmbt-agent_change end
+		// test-agent_change end
 		// Mark onboarding as complete - the default profile is already set up with a free model
 		vscode.postMessage({ type: "hasCompletedOnboarding", bool: true })
 	}, [])

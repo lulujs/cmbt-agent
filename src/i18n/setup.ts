@@ -61,8 +61,8 @@ if (!isTestEnv) {
 
 // Initialize i18next with configuration
 i18next.init({
-	lng: "zh-CN", // cmbt-agent_change
-	fallbackLng: "zh-CN", // cmbt-agent_change
+	lng: "zh-CN", // test-agent_change
+	fallbackLng: "zh-CN", // test-agent_change
 	debug: false,
 	resources: translations,
 	interpolation: {

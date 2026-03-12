@@ -1,6 +1,6 @@
 # AGENTS.md
 
-CMBT Agent is a secondary development project based on Kilo Code, an open source AI coding agent for VS Code that generates code from natural language, automates tasks, and supports 500+ AI models.
+TEST Agent is a secondary development project based on Kilo Code, an open source AI coding agent for VS Code that generates code from natural language, automates tasks, and supports 500+ AI models.
 
 ## Project Structure
 
@@ -127,7 +127,7 @@ Format (in `.changeset/<random-name>.md`):
 
 ```md
 ---
-"cmbt-agent": patch
+"test-agent": patch
 ---
 
 Brief description of the change
@@ -143,53 +143,53 @@ Keep changesets concise and feature-oriented as they appear directly in release 
 
 ## Fork Merge Process
 
-CMBT Agent is a fork of [Kilo Code](https://github.com/kilocode/kilo-code), which itself is a fork of [Roo Code](https://github.com/RooVetGit/Roo-Code). We periodically merge upstream changes using scripts in `scripts/kilocode/`.
+TEST Agent is a fork of [Kilo Code](https://github.com/kilocode/kilo-code), which itself is a fork of [Roo Code](https://github.com/RooVetGit/Roo-Code). We periodically merge upstream changes using scripts in `scripts/kilocode/`.
 
-## cmbt-agent_change Markers
+## test-agent_change Markers
 
-To minimize merge conflicts when syncing with upstream, mark CMBT Agent-specific changes in shared code with `cmbt-agent_change` comments.
+To minimize merge conflicts when syncing with upstream, mark TEST Agent-specific changes in shared code with `test-agent_change` comments.
 
 **Single line:**
 
 ```typescript
-const value = 42 // cmbt-agent_change
+const value = 42 // test-agent_change
 ```
 
 **Multi-line:**
 
 ```typescript
-// cmbt-agent_change start
+// test-agent_change start
 const foo = 1
 const bar = 2
-// cmbt-agent_change end
+// test-agent_change end
 ```
 
 **New files:**
 
 ```typescript
-// cmbt-agent_change - new file
+// test-agent_change - new file
 ```
 
 ### When markers are NOT needed
 
-Code in these directories is CMBT Agent-specific and doesn't need markers:
+Code in these directories is TEST Agent-specific and doesn't need markers:
 
 - `jetbrains/` - JetBrains plugin
 - `agent-manager/` directories
-- Any path containing `cmbt-agent` in filename or directory name
+- Any path containing `test-agent` in filename or directory name
 - `src/services/autocomplete/` - Autocomplete service
 
 ### When markers ARE needed
 
 All modifications to core extension code (files that exist in upstream Kilo Code or Roo Code) require markers:
 
-- `src/` (except CMBT-specific subdirectories listed above)
+- `src/` (except TEST-specific subdirectories listed above)
 - `webview-ui/`
 - `packages/` (shared packages)
 
 Keep changes to core extension code minimal to reduce merge conflicts during upstream syncs.
 
-**Note**: Existing `kilocode_change` markers from the Kilo Code fork should be preserved. New CMBT Agent-specific changes should use `cmbt-agent_change` markers.
+**Note**: Existing `kilocode_change` markers from the Kilo Code fork should be preserved. New TEST Agent-specific changes should use `test-agent_change` markers.
 
 ## Code Quality Rules
 

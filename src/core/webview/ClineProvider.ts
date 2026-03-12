@@ -1857,7 +1857,7 @@ export class ClineProvider
 			kilocodeToken: token,
 		})
 
-		vscode.window.showInformationMessage("CMBT Agent successfully configured!")
+		vscode.window.showInformationMessage("TEST Agent successfully configured!")
 
 		if (this.getCurrentTask()) {
 			this.getCurrentTask()!.api = buildApiHandler({
@@ -2596,7 +2596,7 @@ export class ClineProvider
 		const customModes = await this.customModesManager.getCustomModes()
 
 		// Determine apiProvider with the same logic as before.
-		const apiProvider: ProviderName = stateValues.apiProvider ? stateValues.apiProvider : "dify" // cmbt-agent_change: fall back to dify
+		const apiProvider: ProviderName = stateValues.apiProvider ? stateValues.apiProvider : "dify" // test-agent_change: fall back to dify
 
 		// Build the apiConfiguration object combining state values and secrets.
 		const providerSettings = this.contextProxy.getProviderSettings()

@@ -5,7 +5,7 @@ export const DEFAULT_HEADERS = {
 	// DO NOT ADJUST HTTP-Referer, OpenRouter uses this as an identifier
 	// This needs coordination with them if adjustment is needed
 	"HTTP-Referer": "https://kilocode.ai",
-	"X-Title": "CMBT Agent",
+	"X-Title": "TEST Agent",
 	[X_KILOCODE_VERSION]: Package.version,
-	"User-Agent": `CMBT Agent/${Package.version}`,
+	"User-Agent": `TEST Agent/${Package.version}`,
 }

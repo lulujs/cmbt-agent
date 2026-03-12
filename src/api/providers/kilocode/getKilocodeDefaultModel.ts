@@ -17,7 +17,7 @@ type Defaults = z.infer<typeof defaultsSchema>
 
 const cache = new Map<string, Promise<Defaults>>()
 
-// cmbt-agent_change start: Disable network request, return Dify as default
+// test-agent_change start: Disable network request, return Dify as default
 async function fetchKilocodeDefaultModel(
 	kilocodeToken?: KilocodeToken,
 	organizationId?: OrganizationId,
@@ -26,7 +26,7 @@ async function fetchKilocodeDefaultModel(
 	console.info("Using Dify as fixed default model (network request disabled)")
 	return { defaultModel: "dify-workflow", defaultFreeModel: "dify-workflow" }
 }
-// cmbt-agent_change end
+// test-agent_change end
 
 export async function getKilocodeDefaultModel(
 	kilocodeToken?: KilocodeToken,

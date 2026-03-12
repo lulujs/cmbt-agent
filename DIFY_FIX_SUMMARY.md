@@ -18,7 +18,7 @@
 
 ### 修改 1：useSelectedModel Hook
 
-**文件**：`cmbt-agent/webview-ui/src/components/ui/hooks/useSelectedModel.ts`
+**文件**：`test-agent/webview-ui/src/components/ui/hooks/useSelectedModel.ts`
 
 **位置**：在 `getSelectedModel` 函数中添加 Dify 的 case
 
@@ -50,7 +50,7 @@ default: {
 
 ### 修改 2：Provider 切换配置
 
-**文件**：`cmbt-agent/webview-ui/src/components/settings/ApiOptions.tsx`
+**文件**：`test-agent/webview-ui/src/components/settings/ApiOptions.tsx`
 
 **位置 1**：在 `PROVIDER_MODEL_CONFIG` 中添加 Dify 配置
 
@@ -76,7 +76,7 @@ if (!staticModels) {
 
 ### 修改 3：隐藏模型选择器 ✨
 
-**文件**：`cmbt-agent/webview-ui/src/components/settings/ApiOptions.tsx`
+**文件**：`test-agent/webview-ui/src/components/settings/ApiOptions.tsx`
 
 **位置**：第 1028 行左右，模型选择器的显示条件
 
@@ -99,11 +99,11 @@ if (!staticModels) {
     selectedProvider !== "dify" && (
 ```
 
-**说明**：添加 `selectedProvider !== "dify"` 条件，确保当选择 Dify 供应商时，不显示模型选择器。因为 Dify 的模型是在 Dify 工作流中配置的，不需要在 cmbt-agent 中选择。
+**说明**：添加 `selectedProvider !== "dify"` 条件，确保当选择 Dify 供应商时，不显示模型选择器。因为 Dify 的模型是在 Dify 工作流中配置的，不需要在 test-agent 中选择。
 
 ### 修改 4：配置验证修复 ✨ NEW
 
-**文件**：`cmbt-agent/src/shared/checkExistApiConfig.ts`
+**文件**：`test-agent/src/shared/checkExistApiConfig.ts`
 
 **位置**：`checkExistKey` 函数中的数组
 
@@ -217,7 +217,7 @@ useEffect(() => {
 
 ✅ 构建成功
 ✅ 所有修改已应用
-✅ VSIX 包已生成：`bin/cmbt-agent-1.0.0.vsix`
+✅ VSIX 包已生成：`bin/test-agent-1.0.0.vsix`
 
 ## 测试建议
 

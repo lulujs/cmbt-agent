@@ -74,7 +74,7 @@
 	},
 	"messages": {
 		"waiting": "等待代理响应...",
-		"kiloSaid": "cmbt agent",
+		"kiloSaid": "test agent",
 		"youSaid": "您说",
 		"apiRequest": "API 请求",
 		"taskCompleted": "任务完成",

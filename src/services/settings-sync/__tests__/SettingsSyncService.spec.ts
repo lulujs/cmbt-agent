@@ -41,16 +41,16 @@ describe("SettingsSyncService", () => {
 			await SettingsSyncService.initialize(mockContext, mockOutputChannel)
 
 			expect(mockGlobalState.setKeysForSync).toHaveBeenCalledWith([
-				"cmbt-agent.allowedCommands",
-				"cmbt-agent.deniedCommands",
-				"cmbt-agent.autoApprovalEnabled",
-				"cmbt-agent.fuzzyMatchThreshold",
-				"cmbt-agent.diffEnabled",
-				"cmbt-agent.directoryContextAddedContext",
-				"cmbt-agent.language",
-				"cmbt-agent.customModes",
-				"cmbt-agent.firstInstallCompleted",
-				"cmbt-agent.telemetrySetting",
+				"test-agent.allowedCommands",
+				"test-agent.deniedCommands",
+				"test-agent.autoApprovalEnabled",
+				"test-agent.fuzzyMatchThreshold",
+				"test-agent.diffEnabled",
+				"test-agent.directoryContextAddedContext",
+				"test-agent.language",
+				"test-agent.customModes",
+				"test-agent.firstInstallCompleted",
+				"test-agent.telemetrySetting",
 			])
 			expect(mockOutputChannel.appendLine).toHaveBeenCalledWith(
 				expect.stringContaining("[SettingsSyncService] Registered 10 keys for synchronization"),
@@ -81,7 +81,7 @@ describe("SettingsSyncService", () => {
 
 			expect(mockConfiguration.get).toHaveBeenCalledWith("enableSettingsSync", true)
 			expect(mockGlobalState.setKeysForSync).toHaveBeenCalledWith(
-				expect.arrayContaining(["cmbt-agent.allowedCommands", "cmbt-agent.deniedCommands"]),
+				expect.arrayContaining(["test-agent.allowedCommands", "test-agent.deniedCommands"]),
 			)
 		})
 
@@ -94,7 +94,7 @@ describe("SettingsSyncService", () => {
 			await SettingsSyncService.initialize(mockContext)
 
 			expect(mockGlobalState.setKeysForSync).toHaveBeenCalledWith(
-				expect.arrayContaining(["cmbt-agent.allowedCommands"]),
+				expect.arrayContaining(["test-agent.allowedCommands"]),
 			)
 		})
 	})
@@ -120,16 +120,16 @@ describe("SettingsSyncService", () => {
 			const syncKeys = SettingsSyncService.getSyncKeys()
 
 			expect(syncKeys).toEqual([
-				"cmbt-agent.allowedCommands",
-				"cmbt-agent.deniedCommands",
-				"cmbt-agent.autoApprovalEnabled",
-				"cmbt-agent.fuzzyMatchThreshold",
-				"cmbt-agent.diffEnabled",
-				"cmbt-agent.directoryContextAddedContext",
-				"cmbt-agent.language",
-				"cmbt-agent.customModes",
-				"cmbt-agent.firstInstallCompleted",
-				"cmbt-agent.telemetrySetting",
+				"test-agent.allowedCommands",
+				"test-agent.deniedCommands",
+				"test-agent.autoApprovalEnabled",
+				"test-agent.fuzzyMatchThreshold",
+				"test-agent.diffEnabled",
+				"test-agent.directoryContextAddedContext",
+				"test-agent.language",
+				"test-agent.customModes",
+				"test-agent.firstInstallCompleted",
+				"test-agent.telemetrySetting",
 			])
 		})
 	})

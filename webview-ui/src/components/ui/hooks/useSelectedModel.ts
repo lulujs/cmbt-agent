@@ -83,7 +83,7 @@ function getValidatedModelId(
 }
 
 export const useSelectedModel = (apiConfiguration?: ProviderSettings) => {
-	const provider = apiConfiguration?.apiProvider || "dify" // cmbt-agent_change: default to dify
+	const provider = apiConfiguration?.apiProvider || "dify" // test-agent_change: default to dify
 	// kilocode_change start
 	const { kilocodeDefaultModel, virtualQuotaActiveModel } = useExtensionState()
 	const lmStudioModelId = provider === "lmstudio" ? apiConfiguration?.lmStudioModelId : undefined

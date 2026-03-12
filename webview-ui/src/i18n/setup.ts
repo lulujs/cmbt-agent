@@ -31,8 +31,8 @@ console.log("Dynamically loaded translations:", Object.keys(translations))
 // Initialize i18next for React
 // This will be initialized with the VSCode language in TranslationProvider
 i18next.use(initReactI18next).init({
-	lng: "zh-CN", // Default language (will be overridden) // cmbt-agent_change
-	fallbackLng: "zh-CN", // cmbt-agent_change
+	lng: "zh-CN", // Default language (will be overridden) // test-agent_change
+	fallbackLng: "zh-CN", // test-agent_change
 	debug: false,
 	interpolation: {
 		escapeValue: false, // React already escapes by default

@@ -67,7 +67,7 @@ export class ProviderSettingsManager {
 	)
 
 	// kilocode_change start: Anonymous kilocode onboarding - set default provider for new users
-	// cmbt-agent_change start: Use Dify as default provider
+	// test-agent_change start: Use Dify as default provider
 	private readonly defaultProviderProfiles: ProviderProfiles = {
 		currentApiConfigName: "default",
 		apiConfigs: {
@@ -88,7 +88,7 @@ export class ProviderSettingsManager {
 			claudeCodeLegacySettingsMigrated: true, // Mark as migrated on fresh installs
 		},
 	}
-	// cmbt-agent_change end
+	// test-agent_change end
 	// kilocode_change end
 
 	// kilocode_change start

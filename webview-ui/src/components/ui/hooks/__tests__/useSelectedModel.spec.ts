@@ -466,7 +466,7 @@ describe("useSelectedModel", () => {
 					"nano-gpt": {},
 					ollama: {},
 					lmstudio: {},
-					dify: {}, // cmbt-agent_change: add dify to router models
+					dify: {}, // test-agent_change: add dify to router models
 				},
 				isLoading: false,
 				isError: false,
@@ -542,7 +542,7 @@ describe("useSelectedModel", () => {
 							outputPrice: 0,
 							description: "Model configured in Dify workflow",
 						},
-					}, // cmbt-agent_change: add dify router models
+					}, // test-agent_change: add dify router models
 				},
 				isLoading: false,
 				isError: false,
@@ -555,11 +555,11 @@ describe("useSelectedModel", () => {
 			} as any)
 
 			const wrapper = createWrapper()
-			// cmbt-agent_change: pass empty object to trigger getSelectedModel logic
+			// test-agent_change: pass empty object to trigger getSelectedModel logic
 			const { result } = renderHook(() => useSelectedModel({}), { wrapper })
 
-			expect(result.current.provider).toBe("dify") // cmbt-agent_change: default to dify
-			expect(result.current.id).toBe("dify-workflow") // cmbt-agent_change: dify default model
+			expect(result.current.provider).toBe("dify") // test-agent_change: default to dify
+			expect(result.current.id).toBe("dify-workflow") // test-agent_change: dify default model
 			expect(result.current.info).toEqual({
 				maxTokens: 8192,
 				contextWindow: 128000,

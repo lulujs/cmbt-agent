@@ -1,8 +1,8 @@
-# Design: Rename Extension from kilo-code to cmbt-agent
+# Design: Rename Extension from kilo-code to test-agent
 
 ## 1. Overview
 
-This design document outlines the approach for renaming the VS Code extension from "kilo-code" to "cmbt-agent". The refactoring will be executed systematically across multiple file types to ensure all references are updated consistently.
+This design document outlines the approach for renaming the VS Code extension from "kilo-code" to "test-agent". The refactoring will be executed systematically across multiple file types to ensure all references are updated consistently.
 
 ## 2. Architecture
 
@@ -12,11 +12,11 @@ The rename follows these patterns:
 
 | Old Pattern  | New Pattern   | Example               |
 | ------------ | ------------- | --------------------- |
-| `kilo-code`  | `cmbt-agent`  | Package name          |
-| `kilo-code.` | `cmbt-agent.` | Command IDs           |
-| `kilo-code-` | `cmbt-agent-` | View container IDs    |
-| `kilocode.`  | `cmbtagent.`  | Context keys          |
-| `kilo-code#` | `cmbt-agent#` | Turbo task references |
+| `kilo-code`  | `test-agent`  | Package name          |
+| `kilo-code.` | `test-agent.` | Command IDs           |
+| `kilo-code-` | `test-agent-` | View container IDs    |
+| `kilocode.`  | `testagent.`  | Context keys          |
+| `kilo-code#` | `test-agent#` | Turbo task references |
 
 ### 2.2 File Categories
 
@@ -45,44 +45,44 @@ Files are grouped by type for systematic updates:
 
 ```json
 {
-	"name": "cmbt-agent", // was: "kilo-code"
+	"name": "test-agent", // was: "kilo-code"
 	"contributes": {
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "cmbt-agent-ActivityBar" // was: "kilo-code-ActivityBar"
+					"id": "test-agent-ActivityBar" // was: "kilo-code-ActivityBar"
 				}
 			]
 		},
 		"views": {
-			"cmbt-agent-ActivityBar": [
+			"test-agent-ActivityBar": [
 				{
 					// was: "kilo-code-ActivityBar"
-					"id": "cmbt-agent.SidebarProvider" // was: "kilo-code.SidebarProvider"
+					"id": "test-agent.SidebarProvider" // was: "kilo-code.SidebarProvider"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "cmbt-agent.plusButtonClicked" // was: "kilo-code.plusButtonClicked"
+				"command": "test-agent.plusButtonClicked" // was: "kilo-code.plusButtonClicked"
 			}
 			// ... all 30+ commands
 		],
 		"configuration": {
 			"properties": {
-				"cmbt-agent.allowedCommands": {} // was: "kilo-code.allowedCommands"
+				"test-agent.allowedCommands": {} // was: "kilo-code.allowedCommands"
 				// ... all configuration keys
 			}
 		},
 		"keybindings": [
 			{
-				"command": "cmbt-agent.focusChatInput", // was: "kilo-code.focusChatInput"
-				"when": "cmbtagent.autocomplete.hasSuggestions" // was: "kilocode.autocomplete.hasSuggestions"
+				"command": "test-agent.focusChatInput", // was: "kilo-code.focusChatInput"
+				"when": "testagent.autocomplete.hasSuggestions" // was: "kilocode.autocomplete.hasSuggestions"
 			}
 		]
 	},
 	"scripts": {
-		"pretest": "turbo run cmbt-agent#bundle --cwd .." // was: "kilo-code#bundle"
+		"pretest": "turbo run test-agent#bundle --cwd .." // was: "kilo-code#bundle"
 	}
 }
 ```
@@ -117,22 +117,22 @@ Files are grouped by type for systematic updates:
 
 ```typescript
 // Command registration
-vscode.commands.registerCommand("cmbt-agent.plusButtonClicked", ...)  // was: "kilo-code.plusButtonClicked"
+vscode.commands.registerCommand("test-agent.plusButtonClicked", ...)  // was: "kilo-code.plusButtonClicked"
 
 // Command execution
-await vscode.commands.executeCommand("cmbt-agent.SidebarProvider.focus")  // was: "kilo-code.SidebarProvider.focus"
+await vscode.commands.executeCommand("test-agent.SidebarProvider.focus")  // was: "kilo-code.SidebarProvider.focus"
 
 // View type constants
-public static readonly viewType = "cmbt-agent.AgentManagerPanel"  // was: "kilo-code.AgentManagerPanel"
+public static readonly viewType = "test-agent.AgentManagerPanel"  // was: "kilo-code.AgentManagerPanel"
 
 // Provider references
-this.webviewProviders.get("cmbt-agent.SidebarProvider")  // was: "kilo-code.SidebarProvider"
+this.webviewProviders.get("test-agent.SidebarProvider")  // was: "kilo-code.SidebarProvider"
 
 // Global state keys
-"cmbt-agent.allowedCommands"  // was: "kilo-code.allowedCommands"
+"test-agent.allowedCommands"  // was: "kilo-code.allowedCommands"
 
 // Context keys in when clauses
-"cmbtagent.autocomplete.hasSuggestions"  // was: "kilocode.autocomplete.hasSuggestions"
+"testagent.autocomplete.hasSuggestions"  // was: "kilocode.autocomplete.hasSuggestions"
 ```
 
 ### 3.3 Phase 3: Configuration Files
@@ -146,7 +146,7 @@ this.webviewProviders.get("cmbt-agent.SidebarProvider")  // was: "kilo-code.Side
 
 ```json
 {
-	"command": "code --install-extension \"$(ls -1v bin/cmbt-agent-*.vsix | tail -n1)\""
+	"command": "code --install-extension \"$(ls -1v bin/test-agent-*.vsix | tail -n1)\""
 }
 ```
 
@@ -166,7 +166,7 @@ this.webviewProviders.get("cmbt-agent.SidebarProvider")  // was: "kilo-code.Side
 
 ```json
 {
-	"settings.autoImportSettingsPath.description": "Path to cmbt-agent settings file..."
+	"settings.autoImportSettingsPath.description": "Path to test-agent settings file..."
 }
 ```
 
@@ -197,7 +197,7 @@ this.webviewProviders.get("cmbt-agent.SidebarProvider")  // was: "kilo-code.Side
 {
 	"scripts": {
 		"vsix": "mkdirp ../bin && vsce package --no-dependencies --out ../bin",
-		"vsix:unpacked": "mkdirp ../bin-unpacked && unzip -q -o ../bin/cmbt-agent-*.vsix -d ../bin-unpacked"
+		"vsix:unpacked": "mkdirp ../bin-unpacked && unzip -q -o ../bin/test-agent-*.vsix -d ../bin-unpacked"
 	}
 }
 ```
@@ -210,13 +210,13 @@ this.webviewProviders.get("cmbt-agent.SidebarProvider")  // was: "kilo-code.Side
 cd src
 pnpm bundle
 pnpm vsix
-# Verify: bin/cmbt-agent-*.vsix is created
+# Verify: bin/test-agent-*.vsix is created
 ```
 
 ### 4.2 Installation Test
 
 ```bash
-code --install-extension "$(ls -1v bin/cmbt-agent-*.vsix | tail -n1)"
+code --install-extension "$(ls -1v bin/test-agent-*.vsix | tail -n1)"
 # Verify: Extension appears in VS Code extensions list
 ```
 
@@ -224,15 +224,15 @@ code --install-extension "$(ls -1v bin/cmbt-agent-*.vsix | tail -n1)"
 
 ```typescript
 // In VS Code developer console
-vscode.commands.getCommands().then((cmds) => console.log(cmds.filter((c) => c.startsWith("cmbt-agent."))))
+vscode.commands.getCommands().then((cmds) => console.log(cmds.filter((c) => c.startsWith("test-agent."))))
 // Verify: All 30+ commands are registered
 ```
 
 ### 4.4 Functional Tests
 
-- Open sidebar: `cmbt-agent.SidebarProvider.focus`
-- Test autocomplete: `cmbt-agent.autocomplete.generateSuggestions`
-- Test settings: Verify `cmbt-agent.*` configuration keys work
+- Open sidebar: `test-agent.SidebarProvider.focus`
+- Test autocomplete: `test-agent.autocomplete.generateSuggestions`
+- Test settings: Verify `test-agent.*` configuration keys work
 - Test keybindings: Verify shortcuts still work
 
 ### 4.5 E2E Tests
@@ -262,8 +262,8 @@ Users with existing settings will need to migrate:
 
 ```json
 {
-  "cmbt-agent.allowedCommands": [...],
-  "cmbt-agent.deniedCommands": [...]
+  "test-agent.allowedCommands": [...],
+  "test-agent.deniedCommands": [...]
 }
 ```
 
@@ -291,7 +291,7 @@ Users with custom keybindings will need to update:
 ```json
 {
 	"key": "cmd+shift+a",
-	"command": "cmbt-agent.focusChatInput"
+	"command": "test-agent.focusChatInput"
 }
 ```
 
@@ -310,7 +310,7 @@ const oldKeys = [
 for (const oldKey of oldKeys) {
 	const value = context.globalState.get(oldKey)
 	if (value !== undefined) {
-		const newKey = oldKey.replace("kilo-code.", "cmbt-agent.")
+		const newKey = oldKey.replace("kilo-code.", "test-agent.")
 		await context.globalState.update(newKey, value)
 		await context.globalState.update(oldKey, undefined) // Clear old key
 	}
@@ -388,7 +388,7 @@ The refactoring is successful when:
 // Test that verifies all package.json commands are registered
 const packageCommands = getCommandsFromPackageJson()
 const registeredCommands = await vscode.commands.getCommands()
-const ourCommands = registeredCommands.filter((c) => c.startsWith("cmbt-agent."))
+const ourCommands = registeredCommands.filter((c) => c.startsWith("test-agent."))
 
 assert.equal(ourCommands.length, packageCommands.length)
 packageCommands.forEach((cmd) => {
@@ -404,7 +404,7 @@ packageCommands.forEach((cmd) => {
 
 ```typescript
 // Test that configuration keys are consistent
-const configKeys = getConfigKeysFromPackageJson() // e.g., "cmbt-agent.allowedCommands"
+const configKeys = getConfigKeysFromPackageJson() // e.g., "test-agent.allowedCommands"
 const codeReferences = findConfigReferencesInCode() // grep for configuration.get calls
 
 configKeys.forEach((key) => {
@@ -420,7 +420,7 @@ configKeys.forEach((key) => {
 
 ```typescript
 // Test that view IDs are consistent
-const viewIds = getViewIdsFromPackageJson() // e.g., "cmbt-agent.SidebarProvider"
+const viewIds = getViewIdsFromPackageJson() // e.g., "test-agent.SidebarProvider"
 const providerIds = getProviderIdsFromCode() // from provider implementations
 
 viewIds.forEach((id) => {

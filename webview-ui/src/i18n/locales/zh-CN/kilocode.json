@@ -11,8 +11,8 @@
 		}
 	},
 	"welcome": {
-		"greeting": "欢迎使用 CMBT Agent！",
-		"introText1": "CMBT Agent 是一个测试设计建模代理。",
+		"greeting": "欢迎使用 TEST Agent！",
+		"introText1": "TEST Agent 是一个测试设计建模代理。",
 		"introText2": "它使用最新的 AI 模型。",
 		"introText3": "创建免费账户，首次充值即可获得 20 美元奖励额度。",
 		"ctaButton": "开始使用",
@@ -66,10 +66,10 @@
 		},
 		"systemNotifications": {
 			"label": "启用系统通知",
-			"description": "启用后 CMBT Agent 将发送系统通知，提醒任务完成或错误等重要事件。",
+			"description": "启用后 TEST Agent 将发送系统通知，提醒任务完成或错误等重要事件。",
 			"testButton": "测试通知",
-			"testTitle": "CMBT Agent",
-			"testMessage": "这是来自 CMBT Agent 的测试通知。"
+			"testTitle": "TEST Agent",
+			"testMessage": "这是来自 TEST Agent 的测试通知。"
 		},
 		"provider": {
 			"account": "Kilo Code 账号",
@@ -343,7 +343,7 @@
 		"shareModesNewBanner": "新功能：通过创建组织来共享模式"
 	},
 	"deviceAuth": {
-		"title": "登录 CMBT",
+		"title": "登录 TEST",
 		"step1": "在浏览器中打开以下 URL",
 		"step2": "验证代码并在浏览器中授权此设备",
 		"scanQr": "或用手机扫描此二维码",

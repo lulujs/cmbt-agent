@@ -1,8 +1,8 @@
 {
-	"name": "cmbt-agent",
-	"displayName": "cmbt-agent",
+	"name": "test-agent",
+	"displayName": "test-agent",
 	"description": "辅助测试设计建模agent",
-	"publisher": "cmbt",
+	"publisher": "test",
 	"version": "1.0.1",
 	"icon": "assets/icons/logo-outline-black.png",
 	"galleryBanner": {
@@ -17,7 +17,7 @@
 		"workspace"
 	],
 	"author": {
-		"name": "cmbt"
+		"name": "test"
 	},
 	"repository": {
 		"type": "git",
@@ -33,14 +33,14 @@
 		"Testing"
 	],
 	"keywords": [
-		"cmbt",
+		"test",
 		"dev",
 		"mcp",
 		"coding",
 		"agent",
 		"ai",
-		"Cmbt Agent",
-		"cmbtagent"
+		"Test Agent",
+		"testagent"
 	],
 	"activationEvents": [
 		"onLanguage",
@@ -51,7 +51,7 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "cmbt-agent-ActivityBar",
+					"id": "test-agent-ActivityBar",
 					"title": "%views.activitybar.title%",
 					"icon": "assets/icons/kilo.png",
 					"darkIcon": "assets/icons/kilo-dark.png"
@@ -59,10 +59,10 @@
 			]
 		},
 		"views": {
-			"cmbt-agent-ActivityBar": [
+			"test-agent-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "cmbt-agent.SidebarProvider",
+					"id": "test-agent.SidebarProvider",
 					"name": "%views.sidebar.name%",
 					"icon": "assets/icons/kilo.png",
 					"darkIcon": "assets/icons/kilo-dark.png"
@@ -71,123 +71,123 @@
 		},
 		"commands": [
 			{
-				"command": "cmbt-agent.plusButtonClicked",
+				"command": "test-agent.plusButtonClicked",
 				"title": "%command.newTask.title%",
 				"icon": "$(add)"
 			},
 			{
-				"command": "cmbt-agent.importSettings",
+				"command": "test-agent.importSettings",
 				"title": "%command.importSettings.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.exportSettings",
+				"command": "test-agent.exportSettings",
 				"title": "Export Settings",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.promptsButtonClicked",
+				"command": "test-agent.promptsButtonClicked",
 				"title": "%command.prompts.title%",
 				"icon": "$(organization)"
 			},
 			{
-				"command": "cmbt-agent.historyButtonClicked",
+				"command": "test-agent.historyButtonClicked",
 				"title": "%command.history.title%",
 				"icon": "$(history)"
 			},
 			{
-				"command": "cmbt-agent.marketplaceButtonClicked",
+				"command": "test-agent.marketplaceButtonClicked",
 				"title": "%command.marketplace.title%",
 				"icon": "$(extensions)"
 			},
 			{
-				"command": "cmbt-agent.popoutButtonClicked",
+				"command": "test-agent.popoutButtonClicked",
 				"title": "%command.openInEditor.title%",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "cmbt-agent.settingsButtonClicked",
+				"command": "test-agent.settingsButtonClicked",
 				"title": "%command.settings.title%",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "cmbt-agent.helpButtonClicked",
+				"command": "test-agent.helpButtonClicked",
 				"title": "%command.documentation.title%",
 				"icon": "$(question)"
 			},
 			{
-				"command": "cmbt-agent.openInNewTab",
+				"command": "test-agent.openInNewTab",
 				"title": "%command.openInNewTab.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.explainCode",
+				"command": "test-agent.explainCode",
 				"title": "%command.explainCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.fixCode",
+				"command": "test-agent.fixCode",
 				"title": "%command.fixCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.improveCode",
+				"command": "test-agent.improveCode",
 				"title": "%command.improveCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.addToContext",
+				"command": "test-agent.addToContext",
 				"title": "%command.addToContext.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.newTask",
+				"command": "test-agent.newTask",
 				"title": "%command.newTask.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.terminalAddToContext",
+				"command": "test-agent.terminalAddToContext",
 				"title": "%command.terminal.addToContext.title%",
 				"category": "%extension.displayName%"
 			},
 			{
-				"command": "cmbt-agent.terminalFixCommand",
+				"command": "test-agent.terminalFixCommand",
 				"title": "%command.terminal.fixCommand.title%",
 				"category": "%extension.displayName%"
 			},
 			{
-				"command": "cmbt-agent.terminalExplainCommand",
+				"command": "test-agent.terminalExplainCommand",
 				"title": "%command.terminal.explainCommand.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.generateTerminalCommand",
+				"command": "test-agent.generateTerminalCommand",
 				"title": "%command.terminal.generateCommand.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.setCustomStoragePath",
+				"command": "test-agent.setCustomStoragePath",
 				"title": "%command.setCustomStoragePath.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.focusChatInput",
+				"command": "test-agent.focusChatInput",
 				"title": "%command.focusInput.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.acceptInput",
+				"command": "test-agent.acceptInput",
 				"title": "%command.acceptInput.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.profileButtonClicked",
+				"command": "test-agent.profileButtonClicked",
 				"title": "%command.profile.title%",
 				"icon": "$(account)",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.vsc.generateCommitMessage",
+				"command": "test-agent.vsc.generateCommitMessage",
 				"title": "%command.generateCommitMessage.title%",
 				"icon": {
 					"light": "assets/icons/kilo-light.svg",
@@ -196,48 +196,48 @@
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.generateSuggestions",
+				"command": "test-agent.autocomplete.generateSuggestions",
 				"title": "%autocomplete.commands.generateSuggestions%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.cancelSuggestions",
+				"command": "test-agent.autocomplete.cancelSuggestions",
 				"title": "%autocomplete.commands.cancelSuggestions%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.applyCurrentSuggestions",
+				"command": "test-agent.autocomplete.applyCurrentSuggestions",
 				"title": "%autocomplete.commands.applyCurrentSuggestion%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.applyAllSuggestions",
+				"command": "test-agent.autocomplete.applyAllSuggestions",
 				"title": "%autocomplete.commands.applyAllSuggestions%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.goToNextSuggestion",
+				"command": "test-agent.autocomplete.goToNextSuggestion",
 				"title": "%autocomplete.commands.goToNextSuggestion%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.goToPreviousSuggestion",
+				"command": "test-agent.autocomplete.goToPreviousSuggestion",
 				"title": "%autocomplete.commands.goToPreviousSuggestion%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.agentManagerOpen",
+				"command": "test-agent.agentManagerOpen",
 				"title": "Open Agent Manager",
 				"icon": "$(circuit-board)",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "cmbt-agent.popoutButtonClicked",
+				"command": "test-agent.popoutButtonClicked",
 				"title": "%command.openInEditor.title%",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "cmbt-agent.open",
+				"command": "test-agent.open",
 				"title": "%views.activitybar.title%",
 				"icon": {
 					"light": "assets/icons/kilo-light.svg",
@@ -248,126 +248,126 @@
 		"menus": {
 			"editor/context": [
 				{
-					"submenu": "cmbt-agent.contextMenu",
+					"submenu": "test-agent.contextMenu",
 					"group": "1"
 				}
 			],
-			"cmbt-agent.contextMenu": [
+			"test-agent.contextMenu": [
 				{
-					"command": "cmbt-agent.explainCode",
+					"command": "test-agent.explainCode",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "cmbt-agent.fixCode",
+					"command": "test-agent.fixCode",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "cmbt-agent.improveCode",
+					"command": "test-agent.improveCode",
 					"group": "1_actions@3"
 				},
 				{
-					"command": "cmbt-agent.addToContext",
+					"command": "test-agent.addToContext",
 					"group": "1_actions@4"
 				}
 			],
 			"terminal/context": [
 				{
-					"submenu": "cmbt-agent.terminalMenu",
+					"submenu": "test-agent.terminalMenu",
 					"group": "2"
 				}
 			],
-			"cmbt-agent.terminalMenu": [
+			"test-agent.terminalMenu": [
 				{
-					"command": "cmbt-agent.terminalAddToContext",
+					"command": "test-agent.terminalAddToContext",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "cmbt-agent.terminalFixCommand",
+					"command": "test-agent.terminalFixCommand",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "cmbt-agent.terminalExplainCommand",
+					"command": "test-agent.terminalExplainCommand",
 					"group": "1_actions@3"
 				}
 			],
 			"view/title": [
 				{
-					"command": "cmbt-agent.plusButtonClicked",
+					"command": "test-agent.plusButtonClicked",
 					"group": "navigation@0",
-					"when": "view == cmbt-agent.SidebarProvider"
+					"when": "view == test-agent.SidebarProvider"
 				},
 				{
-					"command": "cmbt-agent.agentManagerOpen",
+					"command": "test-agent.agentManagerOpen",
 					"group": "navigation@1",
-					"when": "view == cmbt-agent.SidebarProvider"
+					"when": "view == test-agent.SidebarProvider"
 				},
 				{
-					"command": "cmbt-agent.marketplaceButtonClicked",
+					"command": "test-agent.marketplaceButtonClicked",
 					"group": "navigation@3",
-					"when": "view == cmbt-agent.SidebarProvider"
+					"when": "view == test-agent.SidebarProvider"
 				},
 				{
-					"command": "cmbt-agent.historyButtonClicked",
+					"command": "test-agent.historyButtonClicked",
 					"group": "navigation@4",
-					"when": "view == cmbt-agent.SidebarProvider"
+					"when": "view == test-agent.SidebarProvider"
 				},
 				{
-					"command": "cmbt-agent.profileButtonClicked",
+					"command": "test-agent.profileButtonClicked",
 					"group": "navigation@5",
-					"when": "view == cmbt-agent.SidebarProvider"
+					"when": "view == test-agent.SidebarProvider"
 				},
 				{
-					"command": "cmbt-agent.settingsButtonClicked",
+					"command": "test-agent.settingsButtonClicked",
 					"group": "navigation@6",
-					"when": "view == cmbt-agent.SidebarProvider"
+					"when": "view == test-agent.SidebarProvider"
 				},
 				{
-					"command": "cmbt-agent.popoutButtonClicked",
+					"command": "test-agent.popoutButtonClicked",
 					"group": "navigation@7",
-					"when": "view == cmbt-agent.SidebarProvider"
+					"when": "view == test-agent.SidebarProvider"
 				},
 				{
-					"command": "cmbt-agent.helpButtonClicked",
+					"command": "test-agent.helpButtonClicked",
 					"group": "navigation@8",
-					"when": "false && view == cmbt-agent.SidebarProvider"
+					"when": "false && view == test-agent.SidebarProvider"
 				}
 			],
 			"editor/title": [
 				{
-					"command": "cmbt-agent.plusButtonClicked",
+					"command": "test-agent.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "activeWebviewPanelId == cmbt-agent.TabPanelProvider"
+					"when": "activeWebviewPanelId == test-agent.TabPanelProvider"
 				},
 				{
-					"command": "cmbt-agent.historyButtonClicked",
+					"command": "test-agent.historyButtonClicked",
 					"group": "navigation@3",
-					"when": "activeWebviewPanelId == cmbt-agent.TabPanelProvider"
+					"when": "activeWebviewPanelId == test-agent.TabPanelProvider"
 				},
 				{
-					"command": "cmbt-agent.settingsButtonClicked",
+					"command": "test-agent.settingsButtonClicked",
 					"group": "navigation@5",
-					"when": "activeWebviewPanelId == cmbt-agent.TabPanelProvider"
+					"when": "activeWebviewPanelId == test-agent.TabPanelProvider"
 				},
 				{
-					"command": "cmbt-agent.helpButtonClicked",
+					"command": "test-agent.helpButtonClicked",
 					"group": "navigation@6",
-					"when": "activeWebviewPanelId == cmbt-agent.TabPanelProvider"
+					"when": "activeWebviewPanelId == test-agent.TabPanelProvider"
 				},
 				{
-					"command": "cmbt-agent.open",
+					"command": "test-agent.open",
 					"group": "navigation",
 					"when": "true"
 				}
 			],
 			"scm/input": [
 				{
-					"command": "cmbt-agent.vsc.generateCommitMessage",
+					"command": "test-agent.vsc.generateCommitMessage",
 					"group": "navigation"
 				}
 			],
 			"scm/title": [
 				{
-					"command": "cmbt-agent.vsc.generateCommitMessage",
+					"command": "test-agent.vsc.generateCommitMessage",
 					"when": "scmProvider == git",
 					"group": "navigation"
 				}
@@ -375,35 +375,35 @@
 		},
 		"keybindings": [
 			{
-				"command": "cmbt-agent.focusChatInput",
+				"command": "test-agent.focusChatInput",
 				"key": "ctrl+shift+a",
 				"mac": "cmd+shift+a",
 				"when": "true"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.cancelSuggestions",
+				"command": "test-agent.autocomplete.cancelSuggestions",
 				"key": "escape",
-				"when": "editorTextFocus && !editorTabMovesFocus && !inSnippetMode && cmbtagent.autocomplete.hasSuggestions"
+				"when": "editorTextFocus && !editorTabMovesFocus && !inSnippetMode && testagent.autocomplete.hasSuggestions"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.generateSuggestions",
+				"command": "test-agent.autocomplete.generateSuggestions",
 				"key": "ctrl+l",
 				"mac": "cmd+l",
-				"when": "editorTextFocus && !editorTabMovesFocus && !inSnippetMode && cmbtagent.autocomplete.enableSmartInlineTaskKeybinding && !github.copilot.completions.enabled"
+				"when": "editorTextFocus && !editorTabMovesFocus && !inSnippetMode && testagent.autocomplete.enableSmartInlineTaskKeybinding && !github.copilot.completions.enabled"
 			},
 			{
-				"command": "cmbt-agent.autocomplete.showIncompatibilityExtensionPopup",
+				"command": "test-agent.autocomplete.showIncompatibilityExtensionPopup",
 				"key": "ctrl+l",
 				"mac": "cmd+l",
-				"when": "editorTextFocus && !editorTabMovesFocus && !inSnippetMode && cmbtagent.autocomplete.enableSmartInlineTaskKeybinding && github.copilot.completions.enabled"
+				"when": "editorTextFocus && !editorTabMovesFocus && !inSnippetMode && testagent.autocomplete.enableSmartInlineTaskKeybinding && github.copilot.completions.enabled"
 			},
 			{
-				"command": "cmbt-agent.generateTerminalCommand",
+				"command": "test-agent.generateTerminalCommand",
 				"key": "ctrl+shift+g",
 				"mac": "cmd+shift+g"
 			},
 			{
-				"command": "cmbt-agent.addToContext",
+				"command": "test-agent.addToContext",
 				"key": "cmd+k cmd+a",
 				"mac": "cmd+k cmd+a",
 				"win": "ctrl+k ctrl+a",
@@ -411,7 +411,7 @@
 				"when": "editorTextFocus && editorHasSelection"
 			},
 			{
-				"command": "cmbt-agent.toggleAutoApprove",
+				"command": "test-agent.toggleAutoApprove",
 				"key": "cmd+alt+a",
 				"mac": "cmd+alt+a",
 				"win": "ctrl+alt+a",
@@ -420,18 +420,18 @@
 		],
 		"submenus": [
 			{
-				"id": "cmbt-agent.contextMenu",
+				"id": "test-agent.contextMenu",
 				"label": "%views.contextMenu.label%"
 			},
 			{
-				"id": "cmbt-agent.terminalMenu",
+				"id": "test-agent.terminalMenu",
 				"label": "%views.terminalMenu.label%"
 			}
 		],
 		"configuration": {
 			"title": "%configuration.title%",
 			"properties": {
-				"cmbt-agent.allowedCommands": {
+				"test-agent.allowedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -443,7 +443,7 @@
 					],
 					"description": "%commands.allowedCommands.description%"
 				},
-				"cmbt-agent.deniedCommands": {
+				"test-agent.deniedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -451,14 +451,14 @@
 					"default": [],
 					"description": "%commands.deniedCommands.description%"
 				},
-				"cmbt-agent.commandExecutionTimeout": {
+				"test-agent.commandExecutionTimeout": {
 					"type": "number",
 					"default": 0,
 					"minimum": 0,
 					"maximum": 600,
 					"description": "%commands.commandExecutionTimeout.description%"
 				},
-				"cmbt-agent.commandTimeoutAllowlist": {
+				"test-agent.commandTimeoutAllowlist": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -466,12 +466,12 @@
 					"default": [],
 					"description": "%commands.commandTimeoutAllowlist.description%"
 				},
-				"cmbt-agent.preventCompletionWithOpenTodos": {
+				"test-agent.preventCompletionWithOpenTodos": {
 					"type": "boolean",
 					"default": false,
 					"description": "%commands.preventCompletionWithOpenTodos.description%"
 				},
-				"cmbt-agent.vsCodeLmModelSelector": {
+				"test-agent.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {
@@ -485,58 +485,58 @@
 					},
 					"description": "%settings.vsCodeLmModelSelector.description%"
 				},
-				"cmbt-agent.customStoragePath": {
+				"test-agent.customStoragePath": {
 					"type": "string",
 					"default": "",
 					"description": "%settings.customStoragePath.description%"
 				},
-				"cmbt-agent.enableCodeActions": {
+				"test-agent.enableCodeActions": {
 					"type": "boolean",
 					"default": true,
 					"description": "%settings.enableCodeActions.description%"
 				},
-				"cmbt-agent.autoImportSettingsPath": {
+				"test-agent.autoImportSettingsPath": {
 					"type": "string",
 					"default": "",
 					"description": "%settings.autoImportSettingsPath.description%"
 				},
-				"cmbt-agent.maximumIndexedFilesForFileSearch": {
+				"test-agent.maximumIndexedFilesForFileSearch": {
 					"type": "number",
 					"default": 10000,
 					"minimum": 5000,
 					"maximum": 500000,
 					"description": "%settings.maximumIndexedFilesForFileSearch.description%"
 				},
-				"cmbt-agent.useAgentRules": {
+				"test-agent.useAgentRules": {
 					"type": "boolean",
 					"default": true,
 					"description": "%settings.useAgentRules.description%"
 				},
-				"cmbt-agent.apiRequestTimeout": {
+				"test-agent.apiRequestTimeout": {
 					"type": "number",
 					"default": 600,
 					"minimum": 0,
 					"maximum": 86400,
 					"description": "%settings.apiRequestTimeout.description%"
 				},
-				"cmbt-agent.newTaskRequireTodos": {
+				"test-agent.newTaskRequireTodos": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.newTaskRequireTodos.description%"
 				},
-				"cmbt-agent.enableSettingsSync": {
+				"test-agent.enableSettingsSync": {
 					"type": "boolean",
 					"default": true,
 					"description": "%settings.enableSettingsSync.description%"
 				},
-				"cmbt-agent.codeIndex.embeddingBatchSize": {
+				"test-agent.codeIndex.embeddingBatchSize": {
 					"type": "number",
 					"default": 60,
 					"minimum": 1,
 					"maximum": 200,
 					"description": "%settings.codeIndex.embeddingBatchSize.description%"
 				},
-				"cmbt-agent.toolProtocol": {
+				"test-agent.toolProtocol": {
 					"type": "string",
 					"enum": [
 						"xml",
@@ -545,24 +545,24 @@
 					"default": "xml",
 					"description": "%settings.toolProtocol.description%"
 				},
-				"cmbt-agent.debug": {
+				"test-agent.debug": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.debug.description%"
 				},
-				"cmbt-agent.debugProxy.enabled": {
+				"test-agent.debugProxy.enabled": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.debugProxy.enabled.description%",
 					"markdownDescription": "%settings.debugProxy.enabled.description%"
 				},
-				"cmbt-agent.debugProxy.serverUrl": {
+				"test-agent.debugProxy.serverUrl": {
 					"type": "string",
 					"default": "http://127.0.0.1:8888",
 					"description": "%settings.debugProxy.serverUrl.description%",
 					"markdownDescription": "%settings.debugProxy.serverUrl.description%"
 				},
-				"cmbt-agent.debugProxy.tlsInsecure": {
+				"test-agent.debugProxy.tlsInsecure": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.debugProxy.tlsInsecure.description%",
@@ -593,14 +593,14 @@
 	"scripts": {
 		"lint": "eslint . --ext=ts --max-warnings=0",
 		"check-types": "tsc --noEmit",
-		"pretest": "turbo run cmbt-agent#bundle --cwd ..",
+		"pretest": "turbo run test-agent#bundle --cwd ..",
 		"test": "vitest run",
 		"format": "prettier --write .",
 		"bundle": "node esbuild.mjs",
 		"vscode:prepublish": "pnpm bundle --production",
 		"vsix:clean": "rimraf ../bin",
 		"vsix": "mkdirp ../bin && vsce package --no-dependencies --out ../bin",
-		"vsix:unpacked": "mkdirp ../bin-unpacked && unzip -q -o ../bin/cmbt-agent-*.vsix -d ../bin-unpacked",
+		"vsix:unpacked": "mkdirp ../bin-unpacked && unzip -q -o ../bin/test-agent-*.vsix -d ../bin-unpacked",
 		"publish:marketplace": "vsce publish --no-dependencies && ovsx publish --no-dependencies",
 		"watch:bundle": "pnpm bundle --watch",
 		"watch:tsc": "cd .. && tsc --noEmit --watch --project src/tsconfig.json",

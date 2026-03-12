@@ -7,11 +7,11 @@ import { getCodeActionCommand } from "../utils/commands"
 import { EditorUtils } from "../integrations/editor/EditorUtils"
 
 export const TITLES: Record<CodeActionName, string> = {
-	EXPLAIN: "Explain with CMBT Agent",
-	FIX: "Fix with CMBT Agent",
-	IMPROVE: "Improve with CMBT Agent",
-	ADD_TO_CONTEXT: "Add to CMBT Agent",
-	NEW_TASK: "New CMBT Agent Task",
+	EXPLAIN: "Explain with TEST Agent",
+	FIX: "Fix with TEST Agent",
+	IMPROVE: "Improve with TEST Agent",
+	ADD_TO_CONTEXT: "Add to TEST Agent",
+	NEW_TASK: "New TEST Agent Task",
 } as const
 
 export class CodeActionProvider implements vscode.CodeActionProvider {

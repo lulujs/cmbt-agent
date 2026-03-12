@@ -31,11 +31,11 @@ suite("Kilo Code Extension", function () {
 		]
 
 		const commands = new Set(
-			(await vscode.commands.getCommands(true)).filter((cmd) => cmd.startsWith("cmbt-agent")),
+			(await vscode.commands.getCommands(true)).filter((cmd) => cmd.startsWith("test-agent")),
 		)
 
 		for (const command of expectedCommands) {
-			assert.ok(commands.has(`cmbt-agent.${command}`), `Command ${command} should be registered`)
+			assert.ok(commands.has(`test-agent.${command}`), `Command ${command} should be registered`)
 		}
 	})
 })

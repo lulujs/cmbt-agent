@@ -52,10 +52,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		const sections: string[] = []
 
 		// Add header
-		sections.push("# CMBT Agent Documentation")
+		sections.push("# TEST Agent Documentation")
 		sections.push("")
 		sections.push(
-			"This file contains the complete documentation for CMBT Agent, the leading open source agentic engineering platform.",
+			"This file contains the complete documentation for TEST Agent, the leading open source agentic engineering platform.",
 		)
 		sections.push("")
 		sections.push("---")
