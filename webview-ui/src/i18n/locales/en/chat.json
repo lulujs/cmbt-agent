@@ -280,7 +280,8 @@
 		"rooSaid": "Kilo said"
 	},
 	"feedback": {
-		"youSaid": "You said"
+		"youSaid": "You said",
+		"youSaidToAgent": "You said to {{agentName}}"
 	},
 	"mcp": {
 		"wantsToUseTool": "Kilo Code wants to use a tool on the {{serverName}} MCP server",

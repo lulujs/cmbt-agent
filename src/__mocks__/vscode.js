@@ -1,9 +1,11 @@
 // Mock VSCode API for Vitest tests
-const mockEventEmitter = () => ({
-	event: () => () => {},
-	fire: () => {},
-	dispose: () => {},
-})
+function mockEventEmitter() {
+	return {
+		event: () => () => {},
+		fire: () => {},
+		dispose: () => {},
+	}
+}
 
 const mockDisposable = {
 	dispose: () => {},

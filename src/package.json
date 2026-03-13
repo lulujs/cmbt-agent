@@ -431,6 +431,54 @@
 		"configuration": {
 			"title": "%configuration.title%",
 			"properties": {
+				"cmbt-agent.acp.agents": {
+					"type": "array",
+					"default": [
+						{
+							"id": "opencode",
+							"name": "OpenCode",
+							"command": "opencode",
+							"args": [
+								"--acp"
+							],
+							"env": {}
+						}
+					],
+					"items": {
+						"type": "object",
+						"required": [
+							"id",
+							"name",
+							"command"
+						],
+						"properties": {
+							"id": {
+								"type": "string",
+								"description": "Unique identifier for the agent"
+							},
+							"name": {
+								"type": "string",
+								"description": "Display name of the agent"
+							},
+							"command": {
+								"type": "string",
+								"description": "Command to start the agent"
+							},
+							"args": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "Arguments for the agent command"
+							},
+							"env": {
+								"type": "object",
+								"description": "Environment variables for the agent"
+							}
+						}
+					},
+					"markdownDescription": "ACP (Agent Client Protocol) agent configurations. Each agent needs an `id`, `name`, and `command`."
+				},
 				"cmbt-agent.allowedCommands": {
 					"type": "array",
 					"items": {
@@ -567,6 +615,56 @@
 					"default": false,
 					"description": "%settings.debugProxy.tlsInsecure.description%",
 					"markdownDescription": "%settings.debugProxy.tlsInsecure.description%"
+				},
+				"cmbt-agent.acp.agents": {
+					"type": "array",
+					"description": "ACP (Agent Client Protocol) 智能体配置列表",
+					"default": [
+						{
+							"id": "opencode",
+							"name": "OpenCode",
+							"command": "opencode",
+							"args": [
+								"--acp"
+							],
+							"env": {}
+						}
+					],
+					"items": {
+						"type": "object",
+						"required": [
+							"id",
+							"name",
+							"command"
+						],
+						"properties": {
+							"id": {
+								"type": "string",
+								"description": "智能体唯一标识"
+							},
+							"name": {
+								"type": "string",
+								"description": "智能体显示名称"
+							},
+							"command": {
+								"type": "string",
+								"description": "启动命令"
+							},
+							"args": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"default": [],
+								"description": "启动参数"
+							},
+							"env": {
+								"type": "object",
+								"default": {},
+								"description": "环境变量"
+							}
+						}
+					}
 				}
 			}
 		},
@@ -607,6 +705,7 @@
 		"clean": "rimraf README.md CHANGELOG.md LICENSE dist logs mock .turbo"
 	},
 	"dependencies": {
+		"@agentclientprotocol/sdk": "^0.14.1",
 		"@anthropic-ai/bedrock-sdk": "^0.22.0",
 		"@anthropic-ai/sdk": "^0.51.0",
 		"@anthropic-ai/vertex-sdk": "^0.11.3",

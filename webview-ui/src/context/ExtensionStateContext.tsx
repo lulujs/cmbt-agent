@@ -34,6 +34,15 @@ import { vscode } from "@src/utils/vscode"
 import { convertTextMateToHljs } from "@src/utils/textMateToHljs"
 import { ClineRulesToggles } from "@roo/cline-rules" // kilocode_change
 
+// cmbt-agent_change start
+export interface AcpAgentInfo {
+	id: string
+	name: string
+}
+
+export type AcpAgentStatus = "starting" | "running" | "stopped" | "error"
+// cmbt-agent_change end
+
 export interface ExtensionStateContextType extends ExtensionState {
 	historyPreviewCollapsed?: boolean
 	showTaskTimeline?: boolean // kilocode_change
@@ -53,6 +62,12 @@ export interface ExtensionStateContextType extends ExtensionState {
 	dismissedNotificationIds: string[] // kilocode_change
 	yoloMode?: boolean // kilocode_change
 	setYoloMode: (value: boolean) => void // kilocode_Change
+	// cmbt-agent_change start
+	acpAgents?: AcpAgentInfo[]
+	activeAcpAgentId?: string
+	activeAcpAgentStatus?: AcpAgentStatus
+	isAcpMode?: boolean
+	// cmbt-agent_change end
 	// kilocode_change start - Auto-purge settings
 	autoPurgeEnabled?: boolean
 	setAutoPurgeEnabled: (value: boolean) => void
@@ -364,6 +379,12 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		openRouterImageGenerationSelectedModel: "",
 		includeCurrentTime: true,
 		includeCurrentCost: true,
+		// cmbt-agent_change start
+		acpAgents: [],
+		activeAcpAgentId: undefined,
+		activeAcpAgentStatus: undefined,
+		isAcpMode: false,
+		// cmbt-agent_change end
 	})
 
 	const [didHydrateState, setDidHydrateState] = useState(false)

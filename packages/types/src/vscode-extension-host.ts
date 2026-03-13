@@ -261,6 +261,7 @@ export interface ExtensionMessage {
 		| "skillsData"
 		| "askReviewScope" // kilocode_change: Review mode scope selection
 		| "openAiCodexRateLimits"
+		| "acpAgentStatus" // cmbt-agent_change: ACP agent status update
 	text?: string
 	// kilocode_change start
 	completionRequestId?: string // Correlation ID from request
@@ -447,6 +448,10 @@ export interface ExtensionMessage {
 		ownCost: number
 		childrenCost: number
 	}
+	// cmbt-agent_change start: ACP agent status fields
+	agentId?: string
+	status?: "starting" | "running" | "stopped" | "error"
+	// cmbt-agent_change end
 	historyItem?: HistoryItem
 	// kilocode_change start: Review mode
 	reviewScopeInfo?: {
@@ -662,6 +667,12 @@ export type ExtensionState = Pick<
 	debug?: boolean
 	speechToTextStatus?: { available: boolean; reason?: "openaiKeyMissing" | "ffmpegNotInstalled" } // kilocode_change: Speech-to-text availability status with failure reason
 	appendSystemPrompt?: string // kilocode_change: Custom text to append to system prompt (CLI only)
+	// cmbt-agent_change start: ACP state
+	acpAgents?: Array<{ id: string; name: string }>
+	activeAcpAgentId?: string
+	activeAcpAgentStatus?: "starting" | "running" | "stopped" | "error"
+	isAcpMode?: boolean
+	// cmbt-agent_change end
 }
 
 export interface Command {
@@ -964,6 +975,8 @@ export interface WebviewMessage {
 		| "debugSetting"
 		| "refreshSkills"
 		| "reviewScopeSelected" // kilocode_change: Review mode scope selection
+		| "selectAcpAgent" // cmbt-agent_change: Select ACP agent
+		| "sendAcpMessage" // cmbt-agent_change: Send message to ACP agent
 	text?: string
 	suggestionLength?: number // kilocode_change: Length of accepted suggestion for telemetry
 	completionRequestId?: string // kilocode_change
@@ -1002,6 +1015,9 @@ export interface WebviewMessage {
 	notificationId?: string // kilocode_change
 	commandIds?: string[] // kilocode_change: For getKeybindings
 	// kilocode_change end
+	// cmbt-agent_change start
+	agentId?: string // cmbt-agent_change: ACP agent ID for selectAcpAgent/sendAcpMessage
+	// cmbt-agent_change end
 	serverName?: string
 	toolName?: string
 	alwaysAllow?: boolean

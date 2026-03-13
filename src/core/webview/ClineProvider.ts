@@ -170,6 +170,16 @@ export class ClineProvider
 	private currentWorkspacePath: string | undefined
 	private autoPurgeScheduler?: any // kilocode_change - (Any) Prevent circular import
 	private deviceAuthHandler?: DeviceAuthHandler // kilocode_change - Device auth handler
+	// cmbt-agent_change start - ACP instance references
+	private acpInstances?: {
+		acpClient: import("../../services/acp/AcpClientImpl").AcpClientImpl
+		agentManager: import("../../services/acp/AgentManager").AgentManager
+		connectionManager: import("../../services/acp/ConnectionManager").ConnectionManager
+		sessionManager: import("../../services/acp/SessionManager").SessionManager
+		acpResourceManager: import("../../services/acp/AcpResourceManager").AcpResourceManager
+		acpLogger: import("../../services/acp/AcpLogger").AcpLogger
+	}
+	// cmbt-agent_change end
 
 	private recentTasksCache?: string[]
 	private pendingOperations: Map<string, PendingEditOperation> = new Map()
@@ -2567,6 +2577,17 @@ export class ClineProvider
 				}
 			})(),
 			debug: vscode.workspace.getConfiguration(Package.name).get<boolean>("debug", false),
+			// cmbt-agent_change start: ACP state
+			acpAgents:
+				this.acpInstances?.agentManager.getConfiguredAgents().map((a) => ({ id: a.id, name: a.name })) ||
+				vscode.workspace
+					.getConfiguration("cmbt-agent")
+					.get<Array<{ id: string; name: string }>>("acp.agents", [])
+					.map((a) => ({ id: a.id, name: a.name })),
+			activeAcpAgentId: this.acpInstances?.agentManager.getActiveAgent()?.config.id,
+			activeAcpAgentStatus: this.acpInstances?.agentManager.getActiveAgent()?.status,
+			isAcpMode: false,
+			// cmbt-agent_change end
 		}
 	}
 
@@ -3443,6 +3464,88 @@ export class ClineProvider
 		}
 	}
 	// kilocode_change end: Review mode
+
+	// cmbt-agent_change start: ACP message handlers
+	public setAcpInstances(instances: {
+		acpClient: import("../../services/acp/AcpClientImpl").AcpClientImpl
+		agentManager: import("../../services/acp/AgentManager").AgentManager
+		connectionManager: import("../../services/acp/ConnectionManager").ConnectionManager
+		sessionManager: import("../../services/acp/SessionManager").SessionManager
+		acpResourceManager: import("../../services/acp/AcpResourceManager").AcpResourceManager
+		acpLogger: import("../../services/acp/AcpLogger").AcpLogger
+	}): void {
+		this.acpInstances = instances
+		this.log("[ACP] ACP instances set on provider")
+	}
+
+	public async handleSelectAcpAgent(agentId: string): Promise<void> {
+		this.log(`ACP agent selection requested: ${agentId}`)
+
+		if (!this.acpInstances) {
+			this.log("[ACP] ACP modules not initialized")
+			return
+		}
+
+		const { agentManager, connectionManager, acpClient } = this.acpInstances
+		const agents = agentManager.getConfiguredAgents()
+		const config = agents.find((a) => a.id === agentId)
+
+		if (!config) {
+			this.log(`[ACP] Agent config not found for id: ${agentId}`)
+			return
+		}
+
+		try {
+			// Update state to starting
+			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "starting" })
+
+			const agentProcess = await agentManager.switchAgent(config)
+			const connection = await connectionManager.createConnection(agentProcess.process, agentId)
+			await connectionManager.initialize(connection)
+
+			// Register handlers on the connection
+			acpClient.createClientHandlers()
+
+			// Update state to running
+			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "running" })
+			this.log(`[ACP] Agent ${agentId} started and connected`)
+		} catch (error) {
+			this.log(
+				`[ACP] Failed to select agent ${agentId}: ${error instanceof Error ? error.message : String(error)}`,
+			)
+			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "error" })
+		}
+	}
+
+	public async handleSendAcpMessage(text: string): Promise<void> {
+		this.log(`ACP message send requested: ${text}`)
+
+		if (!this.acpInstances) {
+			this.log("[ACP] ACP modules not initialized")
+			return
+		}
+
+		const { acpClient, agentManager, sessionManager } = this.acpInstances
+		const activeAgent = agentManager.getActiveAgent()
+
+		if (!activeAgent) {
+			this.log("[ACP] No active ACP agent")
+			return
+		}
+
+		try {
+			let sessionId = acpClient.getCurrentSessionId()
+
+			if (!sessionId) {
+				sessionId = await acpClient.createSession(activeAgent.config.id)
+			}
+
+			await acpClient.sendMessage(sessionId, text)
+		} catch (error) {
+			this.log(`[ACP] Failed to send message: ${error instanceof Error ? error.message : String(error)}`)
+		}
+	}
+	// cmbt-agent_change end
 
 	// Provider Profiles
 

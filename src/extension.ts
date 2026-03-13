@@ -55,6 +55,18 @@ import { ManagedIndexer } from "./services/code-index/managed/ManagedIndexer" //
 import { flushModels, getModels, initializeModelCacheRefresh, refreshModels } from "./api/providers/fetchers/modelCache"
 import { kilo_initializeSessionManager } from "./shared/kilocode/cli-sessions/extension/session-manager-utils" // kilocode_change
 import { fetchKilocodeNotificationsOnStartup } from "./core/kilocode/webview/webviewMessageHandlerUtils" // kilocode_change
+// cmbt-agent_change start
+import { AcpLogger, AcpLogLevel } from "./services/acp/AcpLogger"
+import { AgentManager } from "./services/acp/AgentManager"
+import { ConnectionManager } from "./services/acp/ConnectionManager"
+import { SessionManager } from "./services/acp/SessionManager"
+import { AcpClientImpl } from "./services/acp/AcpClientImpl"
+import { AcpResourceManager } from "./services/acp/AcpResourceManager"
+import { FileSystemHandler } from "./handlers/acp/FileSystemHandler"
+import { TerminalHandler } from "./handlers/acp/TerminalHandler"
+import { PermissionHandler } from "./handlers/acp/PermissionHandler"
+import { SessionUpdateHandler } from "./handlers/acp/SessionUpdateHandler"
+// cmbt-agent_change end
 
 // kilocode_change start
 async function findKilocodeTokenFromAnyProfile(provider: ClineProvider): Promise<string | undefined> {
@@ -216,6 +228,89 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	// Initialize the provider *before* the Roo Code Cloud service.
 	const provider = new ClineProvider(context, outputChannel, "sidebar", contextProxy, mdmService)
+
+	// cmbt-agent_change start - Initialize ACP modules
+	try {
+		const acpLogger = new AcpLogger(AcpLogLevel.INFO)
+		const agentManager = new AgentManager(acpLogger)
+		const connectionManager = new ConnectionManager(acpLogger)
+		const sessionManager = new SessionManager(context, acpLogger)
+		const fileSystemHandler = new FileSystemHandler(acpLogger)
+		const terminalHandler = new TerminalHandler(acpLogger)
+		const permissionHandler = new PermissionHandler(acpLogger)
+		const sessionUpdateHandler = new SessionUpdateHandler(sessionManager, acpLogger)
+		const acpClient = new AcpClientImpl(
+			agentManager,
+			connectionManager,
+			sessionManager,
+			fileSystemHandler,
+			terminalHandler,
+			permissionHandler,
+			sessionUpdateHandler,
+			acpLogger,
+		)
+		const acpResourceManager = new AcpResourceManager(sessionManager, connectionManager, agentManager)
+
+		// Store ACP instances on provider
+		provider.setAcpInstances({
+			acpClient,
+			agentManager,
+			connectionManager,
+			sessionManager,
+			acpResourceManager,
+			acpLogger,
+		})
+
+		// Register resource manager for cleanup
+		context.subscriptions.push(acpResourceManager)
+
+		// Listen for acp.agents configuration changes
+		const acpConfigListener = vscode.workspace.onDidChangeConfiguration((event) => {
+			if (event.affectsConfiguration(`${Package.name}.acp.agents`)) {
+				outputChannel.appendLine("[ACP] acp.agents configuration changed, updating agent list")
+				const updatedAgents = vscode.workspace.getConfiguration(Package.name).get<
+					Array<{
+						id: string
+						name: string
+						command: string
+						args: string[]
+						env?: Record<string, string>
+					}>
+				>("acp.agents")
+				if (updatedAgents) {
+					provider.postStateToWebview()
+				}
+			}
+		})
+		context.subscriptions.push(acpConfigListener)
+
+		// Auto-connect to default ACP agent (opencode) in background
+		const defaultAgentId = "opencode"
+		const agents = agentManager.getConfiguredAgents()
+		const defaultAgent = agents.find((a) => a.id === defaultAgentId)
+		if (defaultAgent) {
+			void (async () => {
+				try {
+					outputChannel.appendLine(`[ACP] Auto-connecting to default agent: ${defaultAgent.name}`)
+					const agentProcess = await agentManager.startAgent(defaultAgent)
+					const connection = await connectionManager.createConnection(agentProcess.process, defaultAgentId)
+					await connectionManager.initialize(connection)
+					outputChannel.appendLine(`[ACP] Default agent ${defaultAgent.name} connected`)
+				} catch (error) {
+					outputChannel.appendLine(
+						`[ACP] Failed to auto-connect default agent: ${error instanceof Error ? error.message : String(error)}`,
+					)
+				}
+			})()
+		}
+
+		outputChannel.appendLine("[ACP] ACP modules initialized successfully")
+	} catch (error) {
+		outputChannel.appendLine(
+			`[ACP] Failed to initialize ACP modules: ${error instanceof Error ? error.message : String(error)}`,
+		)
+	}
+	// cmbt-agent_change end
 
 	// kilocode_change start: Initialize ManagedIndexer
 	const managedIndexer = new ManagedIndexer(contextProxy)
@@ -632,4 +727,5 @@ export async function deactivate() {
 	await McpServerManager.cleanup(extensionContext)
 	TelemetryService.instance.shutdown()
 	TerminalRegistry.cleanup()
+	// cmbt-agent_change - ACP cleanup is handled via context.subscriptions (AcpResourceManager)
 }

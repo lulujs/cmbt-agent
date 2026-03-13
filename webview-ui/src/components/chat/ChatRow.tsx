@@ -1333,7 +1333,13 @@ export const ChatRowContent = ({
 						<div className="group">
 							<div style={headerStyle}>
 								<MessageCircle className="w-4 shrink-0" aria-label="Speech bubble icon" />
-								<span style={{ fontWeight: "bold" }}>{t("chat:text.rooSaid")}</span>
+								{/* cmbt-agent_change start */}
+								<span style={{ fontWeight: "bold" }}>
+									{message.source === "acp-agent" && message.agentName
+										? `${message.agentName}`
+										: t("chat:text.rooSaid")}
+								</span>
+								{/* cmbt-agent_change end */}
 								<div style={{ flexGrow: 1 }} />
 								<OpenMarkdownPreviewButton markdown={message.text} />
 							</div>
@@ -1354,7 +1360,13 @@ export const ChatRowContent = ({
 						<div className="group">
 							<div style={headerStyle}>
 								<User className="w-4 shrink-0" aria-label="User icon" />
-								<span style={{ fontWeight: "bold" }}>{t("chat:feedback.youSaid")}</span>
+								{/* cmbt-agent_change start */}
+								<span style={{ fontWeight: "bold" }}>
+									{message.source === "acp-agent" && message.agentName
+										? t("chat:feedback.youSaidToAgent", { agentName: message.agentName })
+										: t("chat:feedback.youSaid")}
+								</span>
+								{/* cmbt-agent_change end */}
 							</div>
 							<div
 								className={cn(

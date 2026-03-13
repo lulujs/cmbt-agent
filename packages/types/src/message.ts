@@ -307,6 +307,11 @@ export const clineMessageSchema = z.object({
 		})
 		.optional(),
 	// kilocode_change end
+	// cmbt-agent_change start
+	source: z.literal("acp-agent").optional(),
+	agentId: z.string().optional(),
+	agentName: z.string().optional(),
+	// cmbt-agent_change end
 })
 
 export type ClineMessage = z.infer<typeof clineMessageSchema>

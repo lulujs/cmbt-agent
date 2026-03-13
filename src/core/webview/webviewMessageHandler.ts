@@ -4653,6 +4653,21 @@ export const webviewMessageHandler = async (
 		}
 		// kilocode_change end
 
+		// cmbt-agent_change start: ACP message handling
+		case "selectAcpAgent": {
+			if (message.agentId) {
+				await provider.handleSelectAcpAgent(message.agentId)
+			}
+			break
+		}
+		case "sendAcpMessage": {
+			if (message.text) {
+				await provider.handleSendAcpMessage(message.text)
+			}
+			break
+		}
+		// cmbt-agent_change end
+
 		default: {
 			// console.log(`Unhandled message type: ${message.type}`)
 			//

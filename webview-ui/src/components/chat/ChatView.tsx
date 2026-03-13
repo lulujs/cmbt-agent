@@ -131,6 +131,10 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		messageQueue = [],
 		sendMessageOnEnter, // kilocode_change
 		isBrowserSessionActive,
+		// cmbt-agent_change start
+		isAcpMode,
+		activeAcpAgentId,
+		// cmbt-agent_change end
 	} = useExtensionState()
 
 	const messagesRef = useRef(messages)
@@ -694,6 +698,14 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 			text = text.trim()
 
 			if (text || images.length > 0) {
+				// cmbt-agent_change start: Route to ACP agent if in ACP mode
+				if (isAcpMode && activeAcpAgentId) {
+					vscode.postMessage({ type: "sendAcpMessage", text, agentId: activeAcpAgentId })
+					handleChatReset()
+					return
+				}
+				// cmbt-agent_change end
+
 				// Queue message if:
 				// - Task is busy (sendingDisabled)
 				// - API request in progress (isStreaming)
@@ -754,7 +766,15 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				handleChatReset()
 			}
 		},
-		[handleChatReset, markFollowUpAsAnswered, sendingDisabled, isStreaming, messageQueue.length], // messagesRef and clineAskRef are stable
+		[
+			handleChatReset,
+			markFollowUpAsAnswered,
+			sendingDisabled,
+			isStreaming,
+			messageQueue.length,
+			isAcpMode,
+			activeAcpAgentId,
+		], // messagesRef and clineAskRef are stable // cmbt-agent_change
 	)
 
 	const handleSetChatBoxMessage = useCallback(
