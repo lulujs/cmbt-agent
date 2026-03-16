@@ -2586,7 +2586,7 @@ export class ClineProvider
 					.map((a) => ({ id: a.id, name: a.name })),
 			activeAcpAgentId: this.acpInstances?.agentManager.getActiveAgent()?.config.id,
 			activeAcpAgentStatus: this.acpInstances?.agentManager.getActiveAgent()?.status,
-			isAcpMode: false,
+			isAcpMode: this.acpInstances?.agentManager.getActiveAgent()?.status === "running" || false,
 			// cmbt-agent_change end
 		}
 	}
@@ -3499,20 +3499,48 @@ export class ClineProvider
 			// Update state to starting
 			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "starting" })
 
-			const agentProcess = await agentManager.switchAgent(config)
-			const connection = await connectionManager.createConnection(agentProcess.process, agentId)
-			await connectionManager.initialize(connection)
+			// End any existing session before switching agents
+			const currentSessionId = acpClient.getCurrentSessionId()
+			if (currentSessionId) {
+				try {
+					this.log(`[ACP] Ending existing session before switching agents: ${currentSessionId}`)
+					await acpClient.endSession(currentSessionId)
+				} catch (error) {
+					this.log(
+						`[ACP] Failed to end existing session: ${error instanceof Error ? error.message : String(error)}`,
+					)
+				}
+			}
 
-			// Register handlers on the connection
-			acpClient.createClientHandlers()
+			const agentProcess = await agentManager.switchAgent(config)
+			const clientHandlers = acpClient.createClientHandlers()
+			const connection = await connectionManager.createConnection(agentProcess.process, agentId, clientHandlers)
+
+			// Enable traffic logging for debugging
+			connectionManager.setTrafficLogging(true)
+
+			const initResult = await connectionManager.initialize(connection)
+
+			// cmbt-agent_change start: Parse agent capabilities via bridge
+			const { AcpProviderBridge } = await import("../../services/acp/AcpProviderBridge")
+			const bridge = new AcpProviderBridge()
+			const capabilities = bridge.parseAgentCapabilities(initResult.agentCapabilities)
+
+			if (capabilities.preferredProvider || capabilities.preferredMode) {
+				await bridge.applyAgentPreferences(capabilities, this)
+			}
+			// cmbt-agent_change end
 
 			// Update state to running
-			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "running" })
+			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "running", capabilities }) // cmbt-agent_change
 			this.log(`[ACP] Agent ${agentId} started and connected`)
 		} catch (error) {
-			this.log(
-				`[ACP] Failed to select agent ${agentId}: ${error instanceof Error ? error.message : String(error)}`,
-			)
+			const errorMessage = error instanceof Error ? error.message : JSON.stringify(error)
+			const errorStack = error instanceof Error ? error.stack : undefined
+			this.log(`[ACP] Failed to select agent ${agentId}: ${errorMessage}`)
+			if (errorStack) {
+				this.log(`[ACP] Error stack: ${errorStack}`)
+			}
 			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "error" })
 		}
 	}
@@ -3533,16 +3561,39 @@ export class ClineProvider
 			return
 		}
 
+		this.log(`[ACP] Active agent: ${activeAgent.config.id}, status: ${activeAgent.status}`)
+
 		try {
 			let sessionId = acpClient.getCurrentSessionId()
+			this.log(`[ACP] Current session ID: ${sessionId || "none"}`)
 
 			if (!sessionId) {
-				sessionId = await acpClient.createSession(activeAgent.config.id)
+				this.log("[ACP] Creating new session...")
+				// cmbt-agent_change start: Pass provider context when creating session
+				const { AcpProviderBridge } = await import("../../services/acp/AcpProviderBridge")
+				const bridge = new AcpProviderBridge()
+				const state = await this.getState()
+				const providerContext = bridge.extractProviderContext(
+					state.apiConfiguration,
+					state.mode,
+					state.customModes,
+				)
+				this.log(`[ACP] Provider context: ${JSON.stringify(providerContext)}`)
+				sessionId = await acpClient.createSession(activeAgent.config.id, providerContext)
+				this.log(`[ACP] Session created: ${sessionId}`)
+				// cmbt-agent_change end
 			}
 
+			this.log(`[ACP] Sending message to session ${sessionId}...`)
 			await acpClient.sendMessage(sessionId, text)
+			this.log(`[ACP] Message sent successfully`)
 		} catch (error) {
-			this.log(`[ACP] Failed to send message: ${error instanceof Error ? error.message : String(error)}`)
+			const errorMessage = error instanceof Error ? error.message : JSON.stringify(error)
+			const errorStack = error instanceof Error ? error.stack : undefined
+			this.log(`[ACP] Failed to send message: ${errorMessage}`)
+			if (errorStack) {
+				this.log(`[ACP] Error stack: ${errorStack}`)
+			}
 		}
 	}
 	// cmbt-agent_change end

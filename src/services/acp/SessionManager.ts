@@ -23,7 +23,7 @@ export interface AcpSession {
 }
 
 export interface ISessionManager {
-	createSession(agentId: string, agentName: string): AcpSession
+	createSession(agentId: string, agentName: string, sessionId?: string): AcpSession
 	getActiveSession(): AcpSession | undefined
 	addMessage(sessionId: string, message: AcpMessage): void
 	updateSessionState(sessionId: string, update: Partial<AcpSession>): void
@@ -42,9 +42,9 @@ export class SessionManager implements ISessionManager {
 		private logger: AcpLogger,
 	) {}
 
-	createSession(agentId: string, agentName: string): AcpSession {
+	createSession(agentId: string, agentName: string, sessionId?: string): AcpSession {
 		const session: AcpSession = {
-			id: uuidv4(),
+			id: sessionId || uuidv4(),
 			agentId,
 			agentName,
 			messages: [],

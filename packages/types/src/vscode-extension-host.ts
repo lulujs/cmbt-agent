@@ -451,6 +451,13 @@ export interface ExtensionMessage {
 	// cmbt-agent_change start: ACP agent status fields
 	agentId?: string
 	status?: "starting" | "running" | "stopped" | "error"
+	capabilities?: {
+		supportedProviders?: string[]
+		supportedModes?: string[]
+		preferredProvider?: string
+		preferredModel?: string
+		preferredMode?: string
+	}
 	// cmbt-agent_change end
 	historyItem?: HistoryItem
 	// kilocode_change start: Review mode
@@ -672,6 +679,13 @@ export type ExtensionState = Pick<
 	activeAcpAgentId?: string
 	activeAcpAgentStatus?: "starting" | "running" | "stopped" | "error"
 	isAcpMode?: boolean
+	acpAgentCapabilities?: {
+		supportedProviders?: string[]
+		supportedModes?: string[]
+		preferredProvider?: string
+		preferredModel?: string
+		preferredMode?: string
+	}
 	// cmbt-agent_change end
 }
 

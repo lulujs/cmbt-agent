@@ -72,6 +72,13 @@ export class AgentManager implements IAgentManager {
 		const spawnOptions = getSpawnOptions(config)
 		const childProcess = spawn(config.command, config.args, spawnOptions)
 
+		// Log agent stderr for debugging
+		if (childProcess.stderr) {
+			childProcess.stderr.on("data", (data) => {
+				this.logger.debug(`[Agent ${config.id} stderr]: ${data.toString()}`)
+			})
+		}
+
 		const agentProcess: AgentProcess = {
 			config,
 			process: childProcess,
@@ -157,6 +164,10 @@ export class AgentManager implements IAgentManager {
 		const config = vscode.workspace.getConfiguration("cmbt-agent")
 		const agents = config.get<AcpAgentConfig[]>("acp.agents", [])
 		return agents
+	}
+
+	getWorkspaceRoot(): string | undefined {
+		return vscode.workspace.workspaceFolders?.[0]?.uri.fsPath
 	}
 
 	async disposeAll(): Promise<void> {

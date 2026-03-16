@@ -142,7 +142,289 @@ describe("ConnectionManager", () => {
 			manager.setTrafficLogging(false)
 			// No error should be thrown
 		})
+
+		// cmbt-agent_change start - Test for connection close event logging
+		it("should log connection close events when traffic logging is enabled", async () => {
+			// Enable traffic logging
+			manager.setTrafficLogging(true)
+
+			// Spy on logger.trace to verify logging
+			const traceSpy = vi.spyOn(logger, "trace")
+
+			// Create connection with traffic logging enabled
+			const abortController = new AbortController()
+			mockConnection.signal = abortController.signal
+			await manager.createConnection(mockProcess as ChildProcess, "test-agent")
+
+			// Trigger connection close by aborting the signal
+			abortController.abort()
+
+			// Verify that the close event was logged
+			expect(traceSpy).toHaveBeenCalledWith("receive", "Connection closed")
+		})
+
+		it("should not log connection close events when traffic logging is disabled", async () => {
+			// Ensure traffic logging is disabled
+			manager.setTrafficLogging(false)
+
+			// Spy on logger.trace to verify no logging
+			const traceSpy = vi.spyOn(logger, "trace")
+
+			// Create connection without traffic logging
+			const abortController = new AbortController()
+			mockConnection.signal = abortController.signal
+			await manager.createConnection(mockProcess as ChildProcess, "test-agent")
+
+			// Trigger connection close by aborting the signal
+			abortController.abort()
+
+			// Verify that the close event was NOT logged via trace
+			expect(traceSpy).not.toHaveBeenCalledWith("receive", "Connection closed")
+		})
+		// cmbt-agent_change end
 	})
+
+	// cmbt-agent_change start - Task 9.2: P7 Property-based test for traffic logging visibility
+	/**
+	 * **Validates: Requirements 2.9**
+	 *
+	 * P7: Traffic Logging Visibility - When traffic logging is enabled, all key protocol events
+	 * (connection initialization, connection close, errors) must be logged at TRACE level.
+	 *
+	 * This property-based test verifies that for ANY connection lifecycle scenario,
+	 * when traffic logging is enabled, the appropriate events are logged.
+	 */
+	describe("P7: Traffic Logging Visibility Property", () => {
+		// Test data: various agent IDs
+		const agentIds = [
+			"test-agent",
+			"agent-with-long-id-12345678",
+			"a", // Edge case: single character
+			"agent-with-special-chars-!@#",
+			"agent_underscore_123",
+		]
+
+		// Test data: various traffic logging states
+		const trafficLoggingStates = [true, false]
+
+		describe("connection close events", () => {
+			it.each(
+				// Generate all combinations of agent IDs and traffic logging states
+				agentIds.flatMap((agentId) =>
+					trafficLoggingStates.map((loggingEnabled) => ({
+						agentId,
+						loggingEnabled,
+					})),
+				),
+			)(
+				"should log connection close when traffic logging is $loggingEnabled for agentId=$agentId",
+				async ({ agentId, loggingEnabled }) => {
+					// Set traffic logging state
+					manager.setTrafficLogging(loggingEnabled)
+
+					// Spy on logger.trace to verify logging
+					const traceSpy = vi.spyOn(logger, "trace")
+
+					// Create connection with traffic logging in the specified state
+					const abortController = new AbortController()
+					mockConnection.signal = abortController.signal
+					await manager.createConnection(mockProcess as ChildProcess, agentId)
+
+					// Clear any setup calls
+					traceSpy.mockClear()
+
+					// Trigger connection close by aborting the signal
+					abortController.abort()
+
+					if (loggingEnabled) {
+						// When traffic logging is enabled, should log the close event
+						expect(traceSpy).toHaveBeenCalledWith("receive", "Connection closed")
+					} else {
+						// When traffic logging is disabled, should NOT log the close event
+						expect(traceSpy).not.toHaveBeenCalledWith("receive", "Connection closed")
+					}
+				},
+			)
+		})
+
+		describe("connection initialization events", () => {
+			it.each(agentIds)(
+				"should log initialization events when traffic logging is enabled for agentId=%s",
+				async (agentId) => {
+					// Enable traffic logging
+					manager.setTrafficLogging(true)
+
+					// Spy on logger methods
+					const infoSpy = vi.spyOn(logger, "info")
+					const debugSpy = vi.spyOn(logger, "debug")
+
+					// Create and initialize connection
+					const connection = await manager.createConnection(mockProcess as ChildProcess, agentId)
+					await manager.initialize(connection)
+
+					// Verify initialization events were logged
+					expect(infoSpy).toHaveBeenCalledWith("ACP connection created", expect.objectContaining({ agentId }))
+					expect(infoSpy).toHaveBeenCalledWith("Initializing ACP connection")
+					expect(infoSpy).toHaveBeenCalledWith(
+						"ACP connection initialized",
+						expect.objectContaining({
+							agentName: "test-agent",
+							agentVersion: "1.0.0",
+						}),
+					)
+				},
+			)
+
+			it.each(agentIds)(
+				"should log initialization events even when traffic logging is disabled for agentId=%s",
+				async (agentId) => {
+					// Disable traffic logging (INFO level logs should still appear)
+					manager.setTrafficLogging(false)
+
+					// Spy on logger methods
+					const infoSpy = vi.spyOn(logger, "info")
+
+					// Create and initialize connection
+					const connection = await manager.createConnection(mockProcess as ChildProcess, agentId)
+					await manager.initialize(connection)
+
+					// Verify initialization events were still logged (INFO level, not TRACE)
+					expect(infoSpy).toHaveBeenCalledWith("ACP connection created", expect.objectContaining({ agentId }))
+					expect(infoSpy).toHaveBeenCalledWith("Initializing ACP connection")
+				},
+			)
+		})
+
+		describe("multiple connection lifecycle", () => {
+			it("should log events for multiple connections independently", async () => {
+				// Enable traffic logging
+				manager.setTrafficLogging(true)
+
+				const traceSpy = vi.spyOn(logger, "trace")
+				const connections: { agentId: string; controller: AbortController }[] = []
+
+				// Create multiple connections
+				for (const agentId of ["agent-1", "agent-2", "agent-3"]) {
+					const abortController = new AbortController()
+					mockConnection.signal = abortController.signal
+					await manager.createConnection(mockProcess as ChildProcess, agentId)
+					connections.push({ agentId, controller: abortController })
+				}
+
+				traceSpy.mockClear()
+
+				// Close connections one by one
+				for (const { controller } of connections) {
+					controller.abort()
+				}
+
+				// Should have logged close event for each connection
+				expect(traceSpy).toHaveBeenCalledTimes(3)
+				expect(traceSpy).toHaveBeenCalledWith("receive", "Connection closed")
+			})
+
+			it("should not log close events for multiple connections when traffic logging is disabled", async () => {
+				// Disable traffic logging
+				manager.setTrafficLogging(false)
+
+				const traceSpy = vi.spyOn(logger, "trace")
+				const connections: { agentId: string; controller: AbortController }[] = []
+
+				// Create multiple connections
+				for (const agentId of ["agent-4", "agent-5", "agent-6"]) {
+					const abortController = new AbortController()
+					mockConnection.signal = abortController.signal
+					await manager.createConnection(mockProcess as ChildProcess, agentId)
+					connections.push({ agentId, controller: abortController })
+				}
+
+				traceSpy.mockClear()
+
+				// Close connections one by one
+				for (const { controller } of connections) {
+					controller.abort()
+				}
+
+				// Should NOT have logged any close events
+				expect(traceSpy).not.toHaveBeenCalledWith("receive", "Connection closed")
+			})
+		})
+
+		describe("traffic logging state changes", () => {
+			it("should respect traffic logging state changes during connection lifecycle", async () => {
+				const traceSpy = vi.spyOn(logger, "trace")
+
+				// Start with traffic logging disabled
+				manager.setTrafficLogging(false)
+
+				const abortController1 = new AbortController()
+				mockConnection.signal = abortController1.signal
+				await manager.createConnection(mockProcess as ChildProcess, "agent-toggle-1")
+
+				traceSpy.mockClear()
+				abortController1.abort()
+
+				// Should NOT log when disabled
+				expect(traceSpy).not.toHaveBeenCalledWith("receive", "Connection closed")
+
+				// Enable traffic logging
+				manager.setTrafficLogging(true)
+
+				const abortController2 = new AbortController()
+				mockConnection.signal = abortController2.signal
+				await manager.createConnection(mockProcess as ChildProcess, "agent-toggle-2")
+
+				traceSpy.mockClear()
+				abortController2.abort()
+
+				// Should log when enabled
+				expect(traceSpy).toHaveBeenCalledWith("receive", "Connection closed")
+			})
+		})
+
+		describe("edge cases", () => {
+			it("should handle rapid connection creation and closure with traffic logging enabled", async () => {
+				manager.setTrafficLogging(true)
+
+				const traceSpy = vi.spyOn(logger, "trace")
+				const controllers: AbortController[] = []
+
+				// Rapidly create and close connections
+				for (let i = 0; i < 10; i++) {
+					const abortController = new AbortController()
+					mockConnection.signal = abortController.signal
+					await manager.createConnection(mockProcess as ChildProcess, `rapid-agent-${i}`)
+					controllers.push(abortController)
+				}
+
+				traceSpy.mockClear()
+
+				// Close all connections
+				controllers.forEach((controller) => controller.abort())
+
+				// Should have logged all close events
+				expect(traceSpy).toHaveBeenCalledTimes(10)
+			})
+
+			it("should log connection close even if connection was never initialized", async () => {
+				manager.setTrafficLogging(true)
+
+				const traceSpy = vi.spyOn(logger, "trace")
+				const abortController = new AbortController()
+				mockConnection.signal = abortController.signal
+
+				// Create connection but don't initialize
+				await manager.createConnection(mockProcess as ChildProcess, "uninitialized-agent")
+
+				traceSpy.mockClear()
+				abortController.abort()
+
+				// Should still log the close event
+				expect(traceSpy).toHaveBeenCalledWith("receive", "Connection closed")
+			})
+		})
+	})
+	// cmbt-agent_change end
 
 	describe("dispose", () => {
 		it("should clear all connections", async () => {

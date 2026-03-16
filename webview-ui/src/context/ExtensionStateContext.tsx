@@ -41,6 +41,14 @@ export interface AcpAgentInfo {
 }
 
 export type AcpAgentStatus = "starting" | "running" | "stopped" | "error"
+
+export interface AcpAgentCapabilitiesInfo {
+	supportedProviders?: string[]
+	supportedModes?: string[]
+	preferredProvider?: string
+	preferredModel?: string
+	preferredMode?: string
+}
 // cmbt-agent_change end
 
 export interface ExtensionStateContextType extends ExtensionState {
@@ -67,6 +75,7 @@ export interface ExtensionStateContextType extends ExtensionState {
 	activeAcpAgentId?: string
 	activeAcpAgentStatus?: AcpAgentStatus
 	isAcpMode?: boolean
+	acpAgentCapabilities?: AcpAgentCapabilitiesInfo
 	// cmbt-agent_change end
 	// kilocode_change start - Auto-purge settings
 	autoPurgeEnabled?: boolean
@@ -384,6 +393,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		activeAcpAgentId: undefined,
 		activeAcpAgentStatus: undefined,
 		isAcpMode: false,
+		acpAgentCapabilities: undefined,
 		// cmbt-agent_change end
 	})
 
@@ -552,6 +562,18 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 					}
 					break
 				}
+				// cmbt-agent_change start: Handle ACP agent status updates
+				case "acpAgentStatus": {
+					setState((prevState) => ({
+						...prevState,
+						activeAcpAgentId: message.agentId,
+						activeAcpAgentStatus: message.status,
+						isAcpMode: message.status === "running",
+						acpAgentCapabilities: message.capabilities,
+					}))
+					break
+				}
+				// cmbt-agent_change end
 			}
 		},
 		[setListApiConfigMeta],

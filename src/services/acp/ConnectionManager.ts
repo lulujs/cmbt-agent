@@ -1,7 +1,7 @@
 // cmbt-agent_change - new file
 import * as vscode from "vscode"
 import { ChildProcess } from "child_process"
-import { ClientSideConnection, ndJsonStream } from "@agentclientprotocol/sdk"
+import { ClientSideConnection, ndJsonStream, Agent, Client } from "@agentclientprotocol/sdk"
 import { Readable, Writable } from "stream"
 import { AcpLogger } from "./AcpLogger"
 
@@ -27,7 +27,11 @@ export const DEFAULT_RECONNECTION_CONFIG: ReconnectionConfig = {
 export type ReconnectHandler = (agentId: string) => Promise<{ process: ChildProcess; connection: ClientSideConnection }>
 
 export interface IConnectionManager {
-	createConnection(process: ChildProcess, agentId: string): Promise<ClientSideConnection>
+	createConnection(
+		process: ChildProcess,
+		agentId: string,
+		clientFactory: (agent: Agent) => Client,
+	): Promise<ClientSideConnection>
 	initialize(connection: ClientSideConnection): Promise<InitializeResult>
 	closeConnection(agentId: string): Promise<void>
 	getConnection(agentId: string): ClientSideConnection | undefined
@@ -59,7 +63,11 @@ export class ConnectionManager implements IConnectionManager {
 		this.reconnectHandler = handler
 	}
 
-	async createConnection(process: ChildProcess, agentId: string): Promise<ClientSideConnection> {
+	async createConnection(
+		process: ChildProcess,
+		agentId: string,
+		clientFactory: (agent: Agent) => Client,
+	): Promise<ClientSideConnection> {
 		if (!process.stdin || !process.stdout) {
 			throw new Error("Process stdin/stdout not available")
 		}
@@ -70,13 +78,7 @@ export class ConnectionManager implements IConnectionManager {
 		const readable = Readable.toWeb(process.stdout)
 		const stream = ndJsonStream(writable, readable)
 
-		const connection = new ClientSideConnection(
-			() => ({
-				requestPermission: async () => ({ outcome: "denied" as const }),
-				sessionUpdate: async () => {},
-			}),
-			stream,
-		)
+		const connection = new ClientSideConnection(clientFactory, stream)
 
 		this.connections.set(agentId, connection)
 		this.setupConnectionLostHandler(connection, agentId)
@@ -93,7 +95,7 @@ export class ConnectionManager implements IConnectionManager {
 		this.logger.info("Initializing ACP connection")
 
 		const response = await connection.initialize({
-			protocolVersion: "0.1.0",
+			protocolVersion: 0,
 			clientInfo: { name: "cmbt-agent", version: "1.0.0" },
 			clientCapabilities: {
 				fs: { readTextFile: true, writeTextFile: true },
@@ -131,9 +133,19 @@ export class ConnectionManager implements IConnectionManager {
 	setTrafficLogging(enabled: boolean): void {
 		this.trafficLoggingEnabled = enabled
 		this.logger.info(`Traffic logging ${enabled ? "enabled" : "disabled"}`)
+		// cmbt-agent_change - For manual testing procedures, see src/services/acp/__tests__/manual-testing/
 	}
 
 	private setupTrafficLogging(connection: ClientSideConnection): void {
+		// cmbt-agent_change start - Document application-level traffic logging approach
+		// The ACP SDK does not directly expose message interception interfaces.
+		// Traffic logging is implemented at the application level through:
+		// 1. AcpClientImpl.sendMessage() - logs prompt() requests and responses (including stopReason)
+		// 2. Client handlers (sessionUpdate, requestPermission, etc.) - log incoming notifications
+		// 3. ConnectionManager.initialize() - logs initialization handshake and agent capabilities
+		// 4. Connection lifecycle events - logged below
+		// cmbt-agent_change end
+
 		connection.signal.addEventListener("abort", () => {
 			this.logger.trace("receive", "Connection closed")
 		})

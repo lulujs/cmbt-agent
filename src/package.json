@@ -437,9 +437,10 @@
 						{
 							"id": "opencode",
 							"name": "OpenCode",
-							"command": "opencode",
+							"command": "npx",
 							"args": [
-								"--acp"
+								"opencode-ai@latest",
+								"acp"
 							],
 							"env": {}
 						}
@@ -625,7 +626,7 @@
 							"name": "OpenCode",
 							"command": "opencode",
 							"args": [
-								"--acp"
+								"acp"
 							],
 							"env": {}
 						}
@@ -693,6 +694,7 @@
 		"check-types": "tsc --noEmit",
 		"pretest": "turbo run cmbt-agent#bundle --cwd ..",
 		"test": "vitest run",
+		"test:e2e": "node ./__tests__/e2e/runTest.js",
 		"format": "prettier --write .",
 		"bundle": "node esbuild.mjs",
 		"vscode:prepublish": "pnpm bundle --production",
