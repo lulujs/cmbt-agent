@@ -1,5 +1,26 @@
 // cmbt-agent_change - new file
-import { ClientSideConnection, Client, Agent } from "@agentclientprotocol/sdk"
+import type {
+	Client,
+	Agent,
+	RequestPermissionRequest,
+	RequestPermissionResponse,
+	SessionNotification,
+	CreateTerminalRequest,
+	CreateTerminalResponse,
+	TerminalOutputRequest,
+	TerminalOutputResponse,
+	WaitForTerminalExitRequest,
+	WaitForTerminalExitResponse,
+	KillTerminalCommandRequest,
+	KillTerminalCommandResponse,
+	ReleaseTerminalRequest,
+	ReleaseTerminalResponse,
+	WriteTextFileRequest,
+	WriteTextFileResponse,
+	ReadTextFileRequest,
+	ReadTextFileResponse,
+	NewSessionRequest,
+} from "@agentclientprotocol/sdk"
 import { AgentManager } from "./AgentManager"
 import { ConnectionManager } from "./ConnectionManager"
 import { SessionManager, AcpMessage } from "./SessionManager"
@@ -97,7 +118,7 @@ export class AcpClientImpl implements IAcpClient {
 
 		// cmbt-agent_change start
 		const cwd = this.agentManager.getWorkspaceRoot() || process.cwd()
-		const sessionOptions: Record<string, unknown> = {
+		const sessionOptions: NewSessionRequest = {
 			cwd,
 			mcpServers: [],
 		}
@@ -129,53 +150,55 @@ export class AcpClientImpl implements IAcpClient {
 
 	createClientHandlers(): (agent: Agent) => Client {
 		return () => ({
-			requestPermission: async (params) => {
+			requestPermission: async (params: RequestPermissionRequest): Promise<RequestPermissionResponse> => {
 				const decision = await this.permissionHandler.handlePermissionRequest({
-					operation: params.operation,
-					resource: params.resource || "",
-					description: params.description || "",
+					operation: (params as any).operation,
+					resource: (params as any).resource || "",
+					description: (params as any).description || "",
 				})
-				return { outcome: decision.allowed ? "approved" : "denied" }
+				return { outcome: decision.allowed ? ("approved" as const) : ("denied" as const) }
 			},
-			sessionUpdate: async (params) => {
+			sessionUpdate: async (params: SessionNotification): Promise<void> => {
 				this.logger.info("Received sessionUpdate notification", {
 					sessionId: params.sessionId,
 					updateType: (params.update as any)?.sessionUpdate || "unknown",
 				})
 				this.sessionUpdateHandler.handleSessionUpdate({
 					sessionId: params.sessionId,
-					messages: params.messages as AcpMessage[] | undefined,
-					status: params.stopReason,
+					messages: (params as any).messages as AcpMessage[] | undefined,
+					status: (params as any).stopReason,
 				})
 			},
-			readTextFile: async (params) => {
+			readTextFile: async (params: ReadTextFileRequest): Promise<ReadTextFileResponse> => {
 				const result = await this.fileSystemHandler.handleReadFile({ path: params.path })
 				return { content: result.content }
 			},
-			writeTextFile: async (params) => {
+			writeTextFile: async (params: WriteTextFileRequest): Promise<WriteTextFileResponse> => {
 				await this.fileSystemHandler.handleWriteFile({ path: params.path, content: params.content })
 				return {}
 			},
-			createTerminal: async (params) => {
+			createTerminal: async (params: CreateTerminalRequest): Promise<CreateTerminalResponse> => {
 				const result = await this.terminalHandler.handleCreateTerminal({
-					name: params.name,
-					cwd: params.cwd,
+					name: (params as any).name,
+					cwd: (params as any).cwd ?? undefined,
 				})
 				return { terminalId: result.terminalId }
 			},
-			terminalOutput: async (params) => {
+			terminalOutput: async (params: TerminalOutputRequest): Promise<TerminalOutputResponse> => {
 				const result = await this.terminalHandler.handleGetOutput({ terminalId: params.terminalId })
-				return { output: result.output }
+				return { output: result.output, truncated: false }
 			},
-			waitForTerminalExit: async (params) => {
+			waitForTerminalExit: async (params: WaitForTerminalExitRequest): Promise<WaitForTerminalExitResponse> => {
 				const result = await this.terminalHandler.handleWaitForExit({ terminalId: params.terminalId })
 				return { exitCode: result.exitCode }
 			},
-			killTerminal: async (params) => {
+			killTerminal: async (params: KillTerminalCommandRequest): Promise<KillTerminalCommandResponse> => {
 				await this.terminalHandler.handleKillTerminal({ terminalId: params.terminalId })
+				return {}
 			},
-			releaseTerminal: async (params) => {
+			releaseTerminal: async (params: ReleaseTerminalRequest): Promise<ReleaseTerminalResponse> => {
 				await this.terminalHandler.handleDisposeTerminal({ terminalId: params.terminalId })
+				return {}
 			},
 		})
 	}

@@ -7,7 +7,7 @@ import { TerminalHandler } from "../../../handlers/acp/TerminalHandler"
 import { PermissionHandler } from "../../../handlers/acp/PermissionHandler"
 import { SessionUpdateHandler } from "../../../handlers/acp/SessionUpdateHandler"
 import { AcpLogger, AcpLogLevel } from "../AcpLogger"
-import { ClientSideConnection } from "@agentclientprotocol/sdk"
+import type { ClientSideConnection } from "@agentclientprotocol/sdk"
 
 describe("AcpClientImpl", () => {
 	let client: AcpClientImpl
