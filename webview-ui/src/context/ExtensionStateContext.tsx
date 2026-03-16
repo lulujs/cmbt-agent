@@ -18,6 +18,7 @@ import {
 	type Command,
 	type McpServer,
 	RouterModels,
+	type ClineMessage,
 	ORGANIZATION_ALLOW_ALL,
 	DEFAULT_CHECKPOINT_TIMEOUT_SECONDS,
 } from "@roo-code/types"
@@ -76,6 +77,11 @@ export interface ExtensionStateContextType extends ExtensionState {
 	activeAcpAgentStatus?: AcpAgentStatus
 	isAcpMode?: boolean
 	acpAgentCapabilities?: AcpAgentCapabilitiesInfo
+	acpSessionModes?: {
+		currentModeId: string
+		availableModes: Array<{ id: string; name: string; description?: string }>
+	}
+	acpSessionModels?: { currentModelId: string; availableModels: Array<{ id: string; name?: string }> }
 	// cmbt-agent_change end
 	// kilocode_change start - Auto-purge settings
 	autoPurgeEnabled?: boolean
@@ -394,6 +400,8 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		activeAcpAgentStatus: undefined,
 		isAcpMode: false,
 		acpAgentCapabilities: undefined,
+		acpSessionModes: undefined,
+		acpSessionModels: undefined,
 		// cmbt-agent_change end
 	})
 
@@ -570,7 +578,21 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 						activeAcpAgentStatus: message.status,
 						isAcpMode: message.status === "running",
 						acpAgentCapabilities: message.capabilities,
+						// cmbt-agent_change start: clear session modes/models when not running
+						acpSessionModes: message.status === "running" ? prevState.acpSessionModes : undefined,
+						acpSessionModels: message.status === "running" ? prevState.acpSessionModels : undefined,
+						// cmbt-agent_change end
 					}))
+					break
+				}
+				// cmbt-agent_change start: Handle ACP session messages - replace all ACP messages in clineMessages
+				case "acpSessionMessages": {
+					const acpMessages: ClineMessage[] = (message.values as any)?.messages ?? []
+					setState((prevState) => {
+						// Remove existing ACP messages, then append the fresh set
+						const nonAcpMessages = prevState.clineMessages.filter((m) => m.source !== "acp-agent")
+						return { ...prevState, clineMessages: [...nonAcpMessages, ...acpMessages] }
+					})
 					break
 				}
 				// cmbt-agent_change end

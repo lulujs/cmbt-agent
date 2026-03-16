@@ -4660,9 +4660,29 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
+		case "disconnectAcpAgent": {
+			if (message.agentId) {
+				await provider.handleDisconnectAcpAgent(message.agentId)
+			}
+			break
+		}
 		case "sendAcpMessage": {
 			if (message.text) {
 				await provider.handleSendAcpMessage(message.text)
+			}
+			break
+		}
+		case "setAcpModel": {
+			// cmbt-agent_change
+			if (message.modelId) {
+				await provider.handleSetAcpModel(message.modelId)
+			}
+			break
+		}
+		case "setAcpMode": {
+			// cmbt-agent_change
+			if (message.modeId) {
+				await provider.handleSetAcpMode(message.modeId)
 			}
 			break
 		}

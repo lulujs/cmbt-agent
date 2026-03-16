@@ -178,7 +178,15 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		return getLatestTodo(messages)
 	}, [messages, currentTaskTodos])
 
-	const modifiedMessages = useMemo(() => combineApiRequests(combineCommandSequences(messages.slice(1))), [messages])
+	// cmbt-agent_change start: In ACP mode, use ACP messages directly without pipeline transforms
+	const modifiedMessages = useMemo(() => {
+		const acpMessages = messages.filter((m) => m.source === "acp-agent")
+		if (acpMessages.length > 0) {
+			return acpMessages
+		}
+		return combineApiRequests(combineCommandSequences(messages.slice(1)))
+	}, [messages])
+	// cmbt-agent_change end
 
 	// Has to be after api_req_finished are all reduced into api_req_started messages.
 	// kilocode_change start
@@ -569,6 +577,14 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		// Reset user response flag for new task
 		userRespondedRef.current = false
 	}, [task?.ts])
+
+	// cmbt-agent_change start: Reset sendingDisabled when ACP mode is turned off
+	useEffect(() => {
+		if (!isAcpMode) {
+			setSendingDisabled(false)
+		}
+	}, [isAcpMode])
+	// cmbt-agent_change end
 
 	const taskTs = task?.ts
 
@@ -1917,6 +1933,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				onSend={() => handleSendMessage(inputValue, selectedImages)}
 				onSelectImages={selectImages}
 				shouldDisableImages={shouldDisableImages}
+				isAcpMode={isAcpMode} // cmbt-agent_change
 				onHeightChange={() => {
 					if (isAtBottom) {
 						scrollToBottomAuto()

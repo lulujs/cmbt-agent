@@ -73,6 +73,7 @@ interface ChatTextAreaProps {
 	onCancel?: () => void
 	sendMessageOnEnter?: boolean // kilocode_change
 	showBrowserDockToggle?: boolean
+	isAcpMode?: boolean // cmbt-agent_change
 }
 
 // kilocode_change start
@@ -123,6 +124,45 @@ function handleSessionCommand(trimmedInput: string, setInputValue: (value: strin
 }
 // kilocode_change end
 
+// cmbt-agent_change start: ACP mode selector with optimistic update
+const AcpModeSelector = ({
+	acpSessionModes,
+}: {
+	acpSessionModes: {
+		currentModeId: string
+		availableModes: Array<{ id: string; name: string; description?: string }>
+	}
+}) => {
+	const [optimisticModeId, setOptimisticModeId] = React.useState<string | null>(null)
+
+	// When backend confirms the new mode, clear the optimistic value
+	React.useEffect(() => {
+		setOptimisticModeId(null)
+	}, [acpSessionModes.currentModeId])
+
+	const currentValue = optimisticModeId ?? acpSessionModes.currentModeId
+
+	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const modeId = e.target.value
+		setOptimisticModeId(modeId)
+		vscode.postMessage({ type: "setAcpMode", modeId })
+	}
+
+	return (
+		<select
+			value={currentValue}
+			onChange={handleChange}
+			className="bg-vscode-dropdown-background text-vscode-dropdown-foreground border border-vscode-dropdown-border rounded px-2 py-1 text-xs cursor-pointer">
+			{acpSessionModes.availableModes.map((m) => (
+				<option key={m.id} value={m.id}>
+					{m.name ?? m.id}
+				</option>
+			))}
+		</select>
+	)
+}
+// cmbt-agent_change end
+
 export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 	(
 		{
@@ -143,6 +183,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			isEditMode = false,
 			onCancel,
 			sendMessageOnEnter = true,
+			isAcpMode = false, // cmbt-agent_change
 		},
 		ref,
 	) => {
@@ -164,6 +205,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			ghostServiceSettings, // kilocode_change
 			language, // User's VSCode display language
 			experiments, // kilocode_change: For speechToText experiment flag
+			acpSessionModes, // cmbt-agent_change
 		} = useExtensionState()
 
 		// kilocode_change start: Manage STT status and error state with auto-clearing
@@ -1842,7 +1884,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 				)}
 			</div>
 		)
-
+		// UI
 		return (
 			<div
 				className={cn(
@@ -1860,6 +1902,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					"ml-auto",
 					"mr-auto",
 					"box-border",
+					"min-h-[120]",
 				)}>
 				<div className="relative">
 					<div
@@ -1953,76 +1996,39 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							ref={containerRef}
 							// kilocode_change end
 							className={cn("flex", "justify-between", "items-center", "mt-auto")}>
-							<div className={cn("flex", "items-center", "gap-1", "min-w-0")}>
+							<div className={cn("flex", "items-center", "gap-1", "min-w-0", "items-center")}>
+								{/* cmbt-agent_change start: hide mode/profile selectors in ACP mode */}
 								<div className="shrink-0">
-									{/* kilocode_change start: KiloModeSelector instead of ModeSelector */}
-									<KiloModeSelector
-										value={mode}
-										onChange={setMode}
-										modeShortcutText={modeShortcutText}
-										customModes={customModes}
+									{/* cmbt-agent_change start: ACP mode selector */}
+									{isAcpMode && acpSessionModes && acpSessionModes.availableModes.length > 0 ? (
+										<AcpModeSelector acpSessionModes={acpSessionModes} />
+									) : !isAcpMode ? (
+										/* kilocode_change start: KiloModeSelector instead of ModeSelector */
+										<KiloModeSelector
+											value={mode}
+											onChange={setMode}
+											modeShortcutText={modeShortcutText}
+											customModes={customModes}
+										/>
+									) : /* kilocode_change end */
+									null}
+									{/* cmbt-agent_change end */}
+								</div>
+
+								{isAcpMode && (
+									<KiloProfileSelector
+										currentConfigId={currentConfigId}
+										currentApiConfigName={currentApiConfigName}
+										displayName={displayName}
+										listApiConfigMeta={listApiConfigMeta}
+										pinnedApiConfigs={pinnedApiConfigs}
+										togglePinnedApiConfig={togglePinnedApiConfig}
+										selectApiConfigDisabled={selectApiConfigDisabled}
 									/>
-									{/* kilocode_change end */}
-								</div>
+								)}
 
-								<KiloProfileSelector
-									currentConfigId={currentConfigId}
-									currentApiConfigName={currentApiConfigName}
-									displayName={displayName}
-									listApiConfigMeta={listApiConfigMeta}
-									pinnedApiConfigs={pinnedApiConfigs}
-									togglePinnedApiConfig={togglePinnedApiConfig}
-									selectApiConfigDisabled={selectApiConfigDisabled}
-								/>
+								{/* cmbt-agent_change end */}
 							</div>
-
-							{/* kilocode_change: hidden on small containerWidth
-								<div className={cn("flex", "items-center", "gap-0.5", "shrink-0")}>
-									{isTtsPlaying && (
-										<StandardTooltip content={t("chat:stopTts")}>
-											<button
-												aria-label={t("chat:stopTts")}
-												onClick={() => vscode.postMessage({ type: "stopTts" })}
-												className={cn(
-													"relative inline-flex items-center justify-center",
-													"bg-transparent border-none p-1.5",
-													"rounded-md min-w-[28px] min-h-[28px]",
-													"text-vscode-foreground opacity-85",
-													"transition-all duration-150",
-													"hover:opacity-100 hover:bg-[rgba(255,255,255,0.03)] hover:border-[rgba(255,255,255,0.15)]",
-													"focus:outline-none focus-visible:ring-1 focus-visible:ring-vscode-focusBorder",
-													"active:bg-[rgba(255,255,255,0.1)]",
-													"cursor-pointer",
-												)}>
-												<VolumeX className="w-4 h-4" />
-											</button>
-										</StandardTooltip>
-									)}
-									<IndexingStatusBadge />
-									<StandardTooltip content={t("chat:addImages")}>
-										<button
-											aria-label={t("chat:addImages")}
-											disabled={shouldDisableImages}
-											onClick={!shouldDisableImages ? onSelectImages : undefined}
-											className={cn(
-												"relative inline-flex items-center justify-center",
-												"bg-transparent border-none p-1.5",
-												"rounded-md min-w-[28px] min-h-[28px]",
-												"text-vscode-foreground opacity-85",
-												"transition-all duration-150",
-												"hover:opacity-100 hover:bg-[rgba(255,255,255,0.03)] hover:border-[rgba(255,255,255,0.15)]",
-												"focus:outline-none focus-visible:ring-1 focus-visible:ring-vscode-focusBorder",
-												"active:bg-[rgba(255,255,255,0.1)]",
-												!shouldDisableImages && "cursor-pointer",
-												shouldDisableImages &&
-													"opacity-40 cursor-not-allowed grayscale-[30%] hover:bg-transparent hover:border-[rgba(255,255,255,0.08)] active:bg-transparent",
-												"mr-1",
-											)}>
-											<Image className="w-4 h-4" />
-										</button>
-									</StandardTooltip>
-								</div>
-								*/}
 						</div>
 					</div>
 				</div>

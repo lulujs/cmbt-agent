@@ -12,6 +12,34 @@ export interface AcpMessage {
 	agentName: string
 }
 
+export interface AcpSessionUsage {
+	used: number
+	size: number
+}
+
+// cmbt-agent_change start: ACP session mode/model state from newSession response
+export interface AcpSessionMode {
+	id: string
+	name: string
+	description?: string
+}
+
+export interface AcpSessionModel {
+	id: string
+	name?: string
+}
+
+export interface AcpSessionModes {
+	currentModeId: string
+	availableModes: AcpSessionMode[]
+}
+
+export interface AcpSessionModels {
+	currentModelId: string
+	availableModels: AcpSessionModel[]
+}
+// cmbt-agent_change end
+
 export interface AcpSession {
 	id: string
 	agentId: string
@@ -20,10 +48,26 @@ export interface AcpSession {
 	createdAt: number
 	updatedAt: number
 	status: "active" | "ended"
+	/** Streaming assistant message being assembled from chunks, not yet committed */
+	pendingAssistantMessage?: string
+	/** Streaming thought/reasoning being assembled from chunks, not yet committed */ // cmbt-agent_change
+	pendingThoughtMessage?: string // cmbt-agent_change
+	/** Latest token usage from the agent */
+	usage?: AcpSessionUsage
+	// cmbt-agent_change start: mode/model state from newSession response
+	modes?: AcpSessionModes
+	models?: AcpSessionModels
+	// cmbt-agent_change end
 }
 
 export interface ISessionManager {
-	createSession(agentId: string, agentName: string, sessionId?: string): AcpSession
+	createSession(
+		agentId: string,
+		agentName: string,
+		sessionId?: string,
+		modes?: AcpSessionModes,
+		models?: AcpSessionModels,
+	): AcpSession // cmbt-agent_change
 	getActiveSession(): AcpSession | undefined
 	addMessage(sessionId: string, message: AcpMessage): void
 	updateSessionState(sessionId: string, update: Partial<AcpSession>): void
@@ -42,7 +86,13 @@ export class SessionManager implements ISessionManager {
 		private logger: AcpLogger,
 	) {}
 
-	createSession(agentId: string, agentName: string, sessionId?: string): AcpSession {
+	createSession(
+		agentId: string,
+		agentName: string,
+		sessionId?: string,
+		modes?: AcpSessionModes,
+		models?: AcpSessionModels,
+	): AcpSession {
 		const session: AcpSession = {
 			id: sessionId || uuidv4(),
 			agentId,
@@ -51,6 +101,8 @@ export class SessionManager implements ISessionManager {
 			createdAt: Date.now(),
 			updatedAt: Date.now(),
 			status: "active",
+			modes, // cmbt-agent_change
+			models, // cmbt-agent_change
 		}
 
 		this.activeSession = session

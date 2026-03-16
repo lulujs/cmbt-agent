@@ -264,6 +264,67 @@ export async function activate(context: vscode.ExtensionContext) {
 		// Register resource manager for cleanup
 		context.subscriptions.push(acpResourceManager)
 
+		// cmbt-agent_change start: Forward ACP session updates to webview as ClineMessages
+		const sessionUpdateDisposable = sessionManager.onSessionUpdated((session) => {
+			const visibleProvider = ClineProvider.getVisibleInstance()
+			if (!visibleProvider) {
+				return
+			}
+
+			// Build clineMessages from session: committed messages + optional streaming chunk
+			const messages: import("@roo-code/types").ClineMessage[] = []
+
+			for (const msg of session.messages) {
+				messages.push({
+					ts: msg.timestamp,
+					type: "say",
+					say: msg.role === "assistant" ? "text" : "user_feedback",
+					text: msg.content,
+					source: "acp-agent",
+					agentId: msg.agentId,
+					agentName: msg.agentName,
+				})
+			}
+
+			// Append streaming partial message if present
+			// cmbt-agent_change start: include streaming thought as reasoning message, independent of text
+			const agent = agentManager.getActiveAgent()
+			const agentName = agent?.config.name ?? session.agentName
+			// Use session.createdAt as stable base ts to avoid LRU cache churn from updatedAt changes
+			if (session.pendingThoughtMessage) {
+				messages.push({
+					ts: session.createdAt + 1,
+					type: "say",
+					say: "reasoning",
+					text: session.pendingThoughtMessage,
+					partial: true,
+					source: "acp-agent",
+					agentId: session.agentId,
+					agentName: agentName,
+				})
+			}
+			if (session.pendingAssistantMessage) {
+				messages.push({
+					ts: session.createdAt + 2,
+					type: "say",
+					say: "text",
+					text: session.pendingAssistantMessage,
+					partial: true,
+					source: "acp-agent",
+					agentId: session.agentId,
+					agentName: agentName,
+				})
+			}
+			// cmbt-agent_change end
+
+			visibleProvider.postMessageToWebview({
+				type: "acpSessionMessages",
+				values: { messages } as any,
+			})
+		})
+		context.subscriptions.push(sessionUpdateDisposable)
+		// cmbt-agent_change end
+
 		// Listen for acp.agents configuration changes
 		const acpConfigListener = vscode.workspace.onDidChangeConfiguration((event) => {
 			if (event.affectsConfiguration(`${Package.name}.acp.agents`)) {
@@ -283,26 +344,6 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 		})
 		context.subscriptions.push(acpConfigListener)
-
-		// Auto-connect to default ACP agent (opencode) in background
-		const defaultAgentId = "opencode"
-		const agents = agentManager.getConfiguredAgents()
-		const defaultAgent = agents.find((a) => a.id === defaultAgentId)
-		if (defaultAgent) {
-			void (async () => {
-				try {
-					outputChannel.appendLine(`[ACP] Auto-connecting to default agent: ${defaultAgent.name}`)
-					const agentProcess = await agentManager.startAgent(defaultAgent)
-					const connection = await connectionManager.createConnection(agentProcess.process, defaultAgentId)
-					await connectionManager.initialize(connection)
-					outputChannel.appendLine(`[ACP] Default agent ${defaultAgent.name} connected`)
-				} catch (error) {
-					outputChannel.appendLine(
-						`[ACP] Failed to auto-connect default agent: ${error instanceof Error ? error.message : String(error)}`,
-					)
-				}
-			})()
-		}
 
 		outputChannel.appendLine("[ACP] ACP modules initialized successfully")
 	} catch (error) {

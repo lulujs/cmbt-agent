@@ -13,6 +13,7 @@ export interface AgentSelectorProps {
 	activeAgentId?: string
 	activeAgentStatus?: AcpAgentStatus
 	onSelectAgent: (agentId: string) => void
+	onDisconnectAgent: (agentId: string) => void
 }
 
 const statusColors: Record<AcpAgentStatus, string> = {
@@ -29,7 +30,13 @@ const statusLabels: Record<AcpAgentStatus, string> = {
 	error: "Error",
 }
 
-export const AgentSelector = ({ agents, activeAgentId, activeAgentStatus, onSelectAgent }: AgentSelectorProps) => {
+export const AgentSelector = ({
+	agents,
+	activeAgentId,
+	activeAgentStatus,
+	onSelectAgent,
+	onDisconnectAgent,
+}: AgentSelectorProps) => {
 	if (agents.length === 0) {
 		return <span className="text-xs text-vscode-descriptionForeground opacity-70">No agents configured</span>
 	}
@@ -38,10 +45,21 @@ export const AgentSelector = ({ agents, activeAgentId, activeAgentStatus, onSele
 		<div className="flex flex-col gap-1">
 			{agents.map((agent) => {
 				const isActive = agent.id === activeAgentId
+				const isConnected = isActive && (activeAgentStatus === "running" || activeAgentStatus === "starting")
+
+				const handleClick = () => {
+					if (isConnected) {
+						onDisconnectAgent(agent.id)
+					} else {
+						onSelectAgent(agent.id)
+					}
+				}
+
 				return (
 					<button
 						key={agent.id}
-						onClick={() => onSelectAgent(agent.id)}
+						onClick={handleClick}
+						title={isConnected ? `Disconnect ${agent.name}` : `Connect ${agent.name}`}
 						className={cn(
 							"flex items-center gap-2 px-2 py-1 rounded text-xs text-left",
 							"hover:bg-vscode-list-hoverBackground",

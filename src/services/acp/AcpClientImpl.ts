@@ -32,6 +32,7 @@ import { AcpLogger } from "./AcpLogger"
 
 // cmbt-agent_change start
 import type { AcpProviderContext } from "./AcpProviderBridge"
+import type { AcpSessionModes, AcpSessionModels } from "./SessionManager"
 // cmbt-agent_change end
 
 export interface IAcpClient {
@@ -70,7 +71,7 @@ export class AcpClientImpl implements IAcpClient {
 			this.logger.error("Connection not found", undefined, { agentId: session.agentId })
 			throw new Error(`No connection found for agent ${session.agentId}`)
 		}
-
+		this.logger.info("connectiondjflajdlkajfda===", connection)
 		this.logger.debug("Sending message to ACP agent", { sessionId, agentId: session.agentId })
 
 		const userMessage: AcpMessage = {
@@ -95,6 +96,9 @@ export class AcpClientImpl implements IAcpClient {
 			sessionId,
 			stopReason: response.stopReason,
 		})
+
+		// Flush accumulated streaming chunks as a committed assistant message
+		this.sessionUpdateHandler.flushPendingMessage(sessionId, session.agentId, session.agentName)
 		// cmbt-agent_change end
 
 		this.logger.debug("Message sent successfully", { sessionId })
@@ -135,8 +139,18 @@ export class AcpClientImpl implements IAcpClient {
 		this.logger.debug("Calling connection.newSession")
 		const response = await connection.newSession(sessionOptions)
 		this.logger.debug("newSession response received", { sessionId: response.sessionId })
+		// cmbt-agent_change start: log full raw response to inspect actual field names
+		this.logger.info("newSession raw response", { response: JSON.stringify(response) })
 		// cmbt-agent_change end
-		const session = this.sessionManager.createSession(agentId, agent.config.name, response.sessionId)
+
+		// cmbt-agent_change start: parse modes and models from newSession response
+		const modes = this.parseModes((response as any).modes)
+		const models = this.parseModels((response as any).models)
+		this.logger.info("newSession modes/models parsed", { modes, models })
+		// cmbt-agent_change end
+
+		// cmbt-agent_change end
+		const session = this.sessionManager.createSession(agentId, agent.config.name, response.sessionId, modes, models) // cmbt-agent_change
 
 		this.logger.info("Session created", { sessionId: session.id, agentId })
 		return session.id
@@ -161,13 +175,10 @@ export class AcpClientImpl implements IAcpClient {
 			sessionUpdate: async (params: SessionNotification): Promise<void> => {
 				this.logger.info("Received sessionUpdate notification", {
 					sessionId: params.sessionId,
-					updateType: (params.update as any)?.sessionUpdate || "unknown",
+					updateType: params.update.sessionUpdate,
 				})
-				this.sessionUpdateHandler.handleSessionUpdate({
-					sessionId: params.sessionId,
-					messages: (params as any).messages as AcpMessage[] | undefined,
-					status: (params as any).stopReason,
-				})
+				this.logger.info("你是谁===1231", params)
+				this.sessionUpdateHandler.handleSessionUpdate(params)
 			},
 			readTextFile: async (params: ReadTextFileRequest): Promise<ReadTextFileResponse> => {
 				const result = await this.fileSystemHandler.handleReadFile({ path: params.path })
@@ -207,4 +218,34 @@ export class AcpClientImpl implements IAcpClient {
 		const session = this.sessionManager.getActiveSession()
 		return session?.id
 	}
+
+	// cmbt-agent_change start: parse modes/models from newSession response
+	private parseModes(raw: any): AcpSessionModes | undefined {
+		if (!raw || typeof raw !== "object") return undefined
+		const currentModeId = typeof raw.currentModeId === "string" ? raw.currentModeId : undefined
+		if (!currentModeId) return undefined
+		const availableModes = Array.isArray(raw.availableModes)
+			? raw.availableModes
+					.filter((m: any) => m && typeof m.id === "string")
+					.map((m: any) => ({
+						id: m.id,
+						name: typeof m.name === "string" ? m.name : m.id,
+						description: m.description,
+					}))
+			: []
+		return { currentModeId, availableModes }
+	}
+
+	private parseModels(raw: any): AcpSessionModels | undefined {
+		if (!raw || typeof raw !== "object") return undefined
+		const currentModelId = typeof raw.currentModelId === "string" ? raw.currentModelId : undefined
+		if (!currentModelId) return undefined
+		const availableModels = Array.isArray(raw.availableModels)
+			? raw.availableModels
+					.filter((m: any) => m && (typeof m.id === "string" || typeof m.modelId === "string"))
+					.map((m: any) => ({ id: m.id ?? m.modelId, name: typeof m.name === "string" ? m.name : undefined }))
+			: []
+		return { currentModelId, availableModels }
+	}
+	// cmbt-agent_change end
 }

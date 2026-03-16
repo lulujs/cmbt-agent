@@ -262,6 +262,7 @@ export interface ExtensionMessage {
 		| "askReviewScope" // kilocode_change: Review mode scope selection
 		| "openAiCodexRateLimits"
 		| "acpAgentStatus" // cmbt-agent_change: ACP agent status update
+		| "acpSessionMessages" // cmbt-agent_change: ACP session messages update
 	text?: string
 	// kilocode_change start
 	completionRequestId?: string // Correlation ID from request
@@ -686,6 +687,16 @@ export type ExtensionState = Pick<
 		preferredModel?: string
 		preferredMode?: string
 	}
+	// cmbt-agent_change start: session modes/models from newSession response
+	acpSessionModes?: {
+		currentModeId: string
+		availableModes: Array<{ id: string; name: string; description?: string }>
+	}
+	acpSessionModels?: {
+		currentModelId: string
+		availableModels: Array<{ id: string; name?: string }>
+	}
+	// cmbt-agent_change end
 	// cmbt-agent_change end
 }
 
@@ -990,7 +1001,10 @@ export interface WebviewMessage {
 		| "refreshSkills"
 		| "reviewScopeSelected" // kilocode_change: Review mode scope selection
 		| "selectAcpAgent" // cmbt-agent_change: Select ACP agent
+		| "disconnectAcpAgent" // cmbt-agent_change: Disconnect ACP agent
 		| "sendAcpMessage" // cmbt-agent_change: Send message to ACP agent
+		| "setAcpModel" // cmbt-agent_change: Set ACP session model
+		| "setAcpMode" // cmbt-agent_change: Set ACP session mode
 	text?: string
 	suggestionLength?: number // kilocode_change: Length of accepted suggestion for telemetry
 	completionRequestId?: string // kilocode_change
@@ -1031,6 +1045,8 @@ export interface WebviewMessage {
 	// kilocode_change end
 	// cmbt-agent_change start
 	agentId?: string // cmbt-agent_change: ACP agent ID for selectAcpAgent/sendAcpMessage
+	modelId?: string // cmbt-agent_change: model ID for setAcpModel
+	modeId?: string // cmbt-agent_change: mode ID for setAcpMode
 	// cmbt-agent_change end
 	serverName?: string
 	toolName?: string

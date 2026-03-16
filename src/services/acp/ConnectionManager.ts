@@ -92,6 +92,7 @@ export class ConnectionManager implements IConnectionManager {
 	}
 
 	async initialize(connection: ClientSideConnection): Promise<InitializeResult> {
+		// 创建链接
 		this.logger.info("Initializing ACP connection")
 
 		const response = await connection.initialize({
@@ -102,7 +103,7 @@ export class ConnectionManager implements IConnectionManager {
 				terminal: true,
 			},
 		})
-
+		this.logger.info("连接了啥反悔了什么===1231232131", response)
 		const agentInfo = response.agentInfo ?? { name: "unknown", version: "unknown" }
 
 		this.logger.info("ACP connection initialized", {

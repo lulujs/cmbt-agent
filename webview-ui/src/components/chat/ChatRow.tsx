@@ -1363,7 +1363,7 @@ export const ChatRowContent = ({
 								{/* cmbt-agent_change start */}
 								<span style={{ fontWeight: "bold" }}>
 									{message.source === "acp-agent" && message.agentName
-										? t("chat:feedback.youSaidToAgent", { agentName: message.agentName })
+										? t("chat:feedback.youSaid", { agentName: message.agentName })
 										: t("chat:feedback.youSaid")}
 								</span>
 								{/* cmbt-agent_change end */}

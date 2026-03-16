@@ -179,6 +179,14 @@ export class ClineProvider
 		acpResourceManager: import("../../services/acp/AcpResourceManager").AcpResourceManager
 		acpLogger: import("../../services/acp/AcpLogger").AcpLogger
 	}
+	// cmbt-agent_change start: store active agent capabilities for state
+	private acpActiveCapabilities?: {
+		supportedProviders?: string[]
+		supportedModes?: string[]
+		preferredProvider?: string
+		preferredModel?: string
+		preferredMode?: string
+	}
 	// cmbt-agent_change end
 
 	private recentTasksCache?: string[]
@@ -2587,6 +2595,11 @@ export class ClineProvider
 			activeAcpAgentId: this.acpInstances?.agentManager.getActiveAgent()?.config.id,
 			activeAcpAgentStatus: this.acpInstances?.agentManager.getActiveAgent()?.status,
 			isAcpMode: this.acpInstances?.agentManager.getActiveAgent()?.status === "running" || false,
+			acpAgentCapabilities: this.acpActiveCapabilities, // cmbt-agent_change
+			// cmbt-agent_change start: session modes/models
+			acpSessionModes: this.acpInstances?.sessionManager.getActiveSession()?.modes,
+			acpSessionModels: this.acpInstances?.sessionManager.getActiveSession()?.models,
+			// cmbt-agent_change end
 			// cmbt-agent_change end
 		}
 	}
@@ -3520,11 +3533,11 @@ export class ClineProvider
 			connectionManager.setTrafficLogging(true)
 
 			const initResult = await connectionManager.initialize(connection)
-
 			// cmbt-agent_change start: Parse agent capabilities via bridge
 			const { AcpProviderBridge } = await import("../../services/acp/AcpProviderBridge")
 			const bridge = new AcpProviderBridge()
 			const capabilities = bridge.parseAgentCapabilities(initResult.agentCapabilities)
+			console.log("连接结果===1232131", initResult, "能力是===123213")
 
 			if (capabilities.preferredProvider || capabilities.preferredMode) {
 				await bridge.applyAgentPreferences(capabilities, this)
@@ -3533,6 +3546,28 @@ export class ClineProvider
 
 			// Update state to running
 			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "running", capabilities }) // cmbt-agent_change
+			this.acpActiveCapabilities = capabilities // cmbt-agent_change: persist for state
+
+			// cmbt-agent_change start: create ACP session so modes/models are available
+			try {
+				const { AcpProviderBridge: Bridge } = await import("../../services/acp/AcpProviderBridge")
+				const providerBridge = new Bridge()
+				const state = await this.getStateToPostToWebview()
+				const providerContext = providerBridge.extractProviderContext(
+					state.apiConfiguration ?? {},
+					state.mode,
+					state.customModes,
+				)
+				await acpClient.createSession(agentId, providerContext)
+				this.log(`[ACP] Session created for agent ${agentId}`)
+				await this.postStateToWebview() // push modes/models to frontend
+			} catch (sessionError) {
+				this.log(
+					`[ACP] Failed to create session: ${sessionError instanceof Error ? sessionError.message : String(sessionError)}`,
+				)
+			}
+			// cmbt-agent_change end
+
 			this.log(`[ACP] Agent ${agentId} started and connected`)
 		} catch (error) {
 			const errorMessage = error instanceof Error ? error.message : JSON.stringify(error)
@@ -3542,6 +3577,48 @@ export class ClineProvider
 				this.log(`[ACP] Error stack: ${errorStack}`)
 			}
 			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "error" })
+		}
+	}
+
+	public async handleDisconnectAcpAgent(agentId: string): Promise<void> {
+		this.log(`ACP agent disconnect requested: ${agentId}`)
+
+		if (!this.acpInstances) {
+			this.log("[ACP] ACP modules not initialized")
+			return
+		}
+
+		const { acpClient, agentManager, connectionManager } = this.acpInstances
+
+		try {
+			// End active session first
+			const currentSessionId = acpClient.getCurrentSessionId()
+			if (currentSessionId) {
+				try {
+					await acpClient.endSession(currentSessionId)
+				} catch (error) {
+					this.log(
+						`[ACP] Failed to end session on disconnect: ${error instanceof Error ? error.message : String(error)}`,
+					)
+				}
+			}
+
+			// Close connection
+			await connectionManager.closeConnection(agentId)
+
+			// Stop the agent process
+			await agentManager.stopAgent(agentId)
+
+			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "stopped" })
+			this.acpActiveCapabilities = undefined // cmbt-agent_change: clear capabilities on disconnect
+			await this.postStateToWebview() // cmbt-agent_change: update isAcpMode after disconnect
+			this.log(`[ACP] Agent ${agentId} disconnected`)
+		} catch (error) {
+			this.log(
+				`[ACP] Failed to disconnect agent ${agentId}: ${error instanceof Error ? error.message : String(error)}`,
+			)
+			await this.postMessageToWebview({ type: "acpAgentStatus", agentId, status: "error" })
+			await this.postStateToWebview() // cmbt-agent_change: update isAcpMode after error
 		}
 	}
 
@@ -3594,6 +3671,79 @@ export class ClineProvider
 			if (errorStack) {
 				this.log(`[ACP] Error stack: ${errorStack}`)
 			}
+		}
+	}
+
+	// cmbt-agent_change start: Set ACP session model
+	public async handleSetAcpModel(modelId: string): Promise<void> {
+		this.log(`[ACP] Set model requested: ${modelId}`)
+
+		if (!this.acpInstances) {
+			this.log("[ACP] ACP modules not initialized")
+			return
+		}
+
+		const { acpClient, sessionManager } = this.acpInstances
+		const session = sessionManager.getActiveSession()
+		if (!session) {
+			this.log("[ACP] No active session to set model on")
+			return
+		}
+
+		const connection = this.acpInstances.connectionManager.getConnection(session.agentId)
+		if (!connection) {
+			this.log("[ACP] No connection found for active session")
+			return
+		}
+
+		try {
+			await (connection as any).unstable_setSessionModel({ sessionId: session.id, modelId })
+			sessionManager.updateSessionState(session.id, {
+				models: session.models ? { ...session.models, currentModelId: modelId } : undefined,
+			})
+			await this.postStateToWebview()
+			this.log(`[ACP] Model set to ${modelId}`)
+		} catch (error) {
+			this.log(`[ACP] Failed to set model: ${error instanceof Error ? error.message : String(error)}`)
+		}
+	}
+	// cmbt-agent_change end
+
+	// cmbt-agent_change start: Set ACP session mode
+	public async handleSetAcpMode(modeId: string): Promise<void> {
+		this.log(`[ACP] Set mode requested: ${modeId}`)
+
+		if (!this.acpInstances) {
+			this.log("[ACP] ACP modules not initialized")
+			return
+		}
+
+		const { sessionManager } = this.acpInstances
+		const session = sessionManager.getActiveSession()
+		if (!session) {
+			this.log("[ACP] No active session to set mode on")
+			return
+		}
+
+		const connection = this.acpInstances.connectionManager.getConnection(session.agentId)
+		if (!connection) {
+			this.log("[ACP] No connection found for active session")
+			return
+		}
+
+		try {
+			await (connection as any).unstable_setSessionMode({ sessionId: session.id, modeId })
+			// cmbt-agent_change start: preserve availableModes even if modes was previously undefined
+			sessionManager.updateSessionState(session.id, {
+				modes: session.modes
+					? { ...session.modes, currentModeId: modeId }
+					: { currentModeId: modeId, availableModes: [] },
+			})
+			// cmbt-agent_change end
+			await this.postStateToWebview()
+			this.log(`[ACP] Mode set to ${modeId}`)
+		} catch (error) {
+			this.log(`[ACP] Failed to set mode: ${error instanceof Error ? error.message : String(error)}`)
 		}
 	}
 	// cmbt-agent_change end
