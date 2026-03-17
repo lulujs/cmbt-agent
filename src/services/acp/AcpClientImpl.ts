@@ -71,7 +71,7 @@ export class AcpClientImpl implements IAcpClient {
 			this.logger.error("Connection not found", undefined, { agentId: session.agentId })
 			throw new Error(`No connection found for agent ${session.agentId}`)
 		}
-		this.logger.info("connectiondjflajdlkajfda===", connection)
+		this.logger.debug("Connection found for agent", { agentId: session.agentId })
 		this.logger.debug("Sending message to ACP agent", { sessionId, agentId: session.agentId })
 
 		const userMessage: AcpMessage = {
@@ -127,14 +127,16 @@ export class AcpClientImpl implements IAcpClient {
 			mcpServers: [],
 		}
 		if (providerContext) {
-			sessionOptions.metadata = {
+			sessionOptions._meta = {
 				providerContext: {
 					apiProvider: providerContext.apiProvider,
 					apiModelId: providerContext.apiModelId,
 					mode: providerContext.mode,
 				},
 			}
-			this.logger.debug("Session options with provider context", { sessionOptions })
+			this.logger.debug("Session options with provider context", {
+				sessionOptions: JSON.stringify(sessionOptions),
+			})
 		}
 		this.logger.debug("Calling connection.newSession")
 		const response = await connection.newSession(sessionOptions)
@@ -170,7 +172,26 @@ export class AcpClientImpl implements IAcpClient {
 					resource: (params as any).resource || "",
 					description: (params as any).description || "",
 				})
-				return { outcome: decision.allowed ? ("approved" as const) : ("denied" as const) }
+				if (!decision.allowed) {
+					// Find a reject option, or fall back to cancelled
+					const rejectOption = params.options.find(
+						(o) => o.kind === "reject_once" || o.kind === "reject_always",
+					)
+					if (rejectOption) {
+						return { outcome: { outcome: "selected", optionId: rejectOption.optionId } }
+					}
+					return { outcome: { outcome: "cancelled" } }
+				}
+				// Find an allow option
+				const allowOption = decision.remember
+					? (params.options.find((o) => o.kind === "allow_always") ??
+						params.options.find((o) => o.kind === "allow_once"))
+					: (params.options.find((o) => o.kind === "allow_once") ??
+						params.options.find((o) => o.kind === "allow_always"))
+				if (allowOption) {
+					return { outcome: { outcome: "selected", optionId: allowOption.optionId } }
+				}
+				return { outcome: { outcome: "cancelled" } }
 			},
 			sessionUpdate: async (params: SessionNotification): Promise<void> => {
 				this.logger.info("Received sessionUpdate notification", {

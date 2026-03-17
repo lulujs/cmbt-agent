@@ -104,7 +104,7 @@ describe("AgentManager", () => {
 			const promise = manager.startAgent(mockConfig)
 
 			// Find and trigger the error handler
-			const errorCall = vi.mocked(mockProcess.on!).mock.calls.find((call) => call[0] === "error")
+			const errorCall = vi.mocked(mockProcess.on!).mock.calls.find((call) => (call[0] as string) === "error")
 			expect(errorCall).toBeDefined()
 			const errorHandler = errorCall![1] as (err: Error) => void
 			errorHandler(new Error("Spawn failed"))
@@ -118,7 +118,7 @@ describe("AgentManager", () => {
 
 			const promise = manager.startAgent(mockConfig)
 
-			const exitCall = vi.mocked(mockProcess.on!).mock.calls.find((call) => call[0] === "exit")
+			const exitCall = vi.mocked(mockProcess.on!).mock.calls.find((call) => (call[0] as string) === "exit")
 			expect(exitCall).toBeDefined()
 			const exitHandler = exitCall![1] as (code: number | null) => void
 			exitHandler(1)
@@ -137,7 +137,7 @@ describe("AgentManager", () => {
 			const stopPromise = manager.stopAgent(mockConfig.id)
 			const exitHandler = vi
 				.mocked(mockProcess.once!)
-				.mock.calls.find((call) => call[0] === "exit")?.[1] as () => void
+				.mock.calls.find((call) => (call[0] as string) === "exit")?.[1] as () => void
 			exitHandler()
 
 			await stopPromise
@@ -162,7 +162,7 @@ describe("AgentManager", () => {
 
 			const exitHandler = vi
 				.mocked(mockProcess.once!)
-				.mock.calls.find((call) => call[0] === "exit")?.[1] as () => void
+				.mock.calls.find((call) => (call[0] as string) === "exit")?.[1] as () => void
 			exitHandler()
 
 			const result = await switchPromise
@@ -212,7 +212,7 @@ describe("AgentManager", () => {
 			const disposePromise = manager.disposeAll()
 			const exitHandler = vi
 				.mocked(mockProcess.once!)
-				.mock.calls.find((call) => call[0] === "exit")?.[1] as () => void
+				.mock.calls.find((call) => (call[0] as string) === "exit")?.[1] as () => void
 			exitHandler()
 
 			await disposePromise

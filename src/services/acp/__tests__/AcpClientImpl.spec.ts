@@ -455,7 +455,13 @@ describe("AcpClientImpl", () => {
 				cwd: "/test/workspace",
 				mcpServers: [],
 			})
-			expect(mockSessionManager.createSession).toHaveBeenCalledWith("agent-1", "Test Agent", "new-session") // cmbt-agent_change
+			expect(mockSessionManager.createSession).toHaveBeenCalledWith(
+				"agent-1",
+				"Test Agent",
+				"new-session",
+				undefined,
+				undefined,
+			) // cmbt-agent_change
 		})
 
 		it("should throw error if agent not active", async () => {
@@ -499,9 +505,9 @@ describe("AcpClientImpl", () => {
 
 			expect(sessionId).toBe("session-2")
 			expect(mockConnection.newSession).toHaveBeenCalledWith({
-				cwd: "/test/workspace", // cmbt-agent_change
-				mcpServers: [], // cmbt-agent_change
-				metadata: {
+				cwd: "/test/workspace",
+				mcpServers: [],
+				_meta: {
 					providerContext: {
 						apiProvider: "anthropic",
 						apiModelId: "claude-3-opus",

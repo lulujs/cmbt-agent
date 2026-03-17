@@ -39,6 +39,7 @@ export interface IConnectionManager {
 	setReconnectHandler(handler: ReconnectHandler): void
 	onConnectionLost: vscode.Event<{ agentId: string; reason: string }>
 	onReconnectFailed: vscode.Event<{ agentId: string; attempts: number }>
+	dispose(): void
 }
 
 export class ConnectionManager implements IConnectionManager {
@@ -76,7 +77,7 @@ export class ConnectionManager implements IConnectionManager {
 
 		const writable = Writable.toWeb(process.stdin)
 		const readable = Readable.toWeb(process.stdout)
-		const stream = ndJsonStream(writable, readable)
+		const stream = ndJsonStream(writable, readable as ReadableStream<Uint8Array>)
 
 		const connection = new ClientSideConnection(clientFactory, stream)
 

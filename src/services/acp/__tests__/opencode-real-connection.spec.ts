@@ -40,7 +40,7 @@ describe("OpenCode Real Connection Test", () => {
 
 		console.log("Creating connection...")
 		const connection = await connectionManager.createConnection(agentProcess.process, agentId, () => ({
-			requestPermission: async () => ({ outcome: "denied" as const }),
+			requestPermission: async () => ({ outcome: { outcome: "cancelled" as const } }),
 			sessionUpdate: async () => {},
 		}))
 		expect(connection).toBeDefined()

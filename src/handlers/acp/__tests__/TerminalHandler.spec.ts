@@ -137,7 +137,7 @@ describe("TerminalHandler", () => {
 	describe("dispose", () => {
 		it("should dispose all terminals", async () => {
 			const { terminalId: id1 } = await handler.handleCreateTerminal({})
-			const mockTerminal2 = { dispose: vi.fn(), exitStatus: undefined }
+			const mockTerminal2 = { dispose: vi.fn(), exitStatus: undefined } as unknown as vscode.Terminal
 			vi.mocked(vscode.window.createTerminal).mockReturnValue(mockTerminal2)
 			const { terminalId: id2 } = await handler.handleCreateTerminal({})
 
