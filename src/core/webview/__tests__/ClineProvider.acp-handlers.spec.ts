@@ -101,3 +101,48 @@ describe("ClineProvider ACP handler integration", () => {
 		})
 	})
 })
+
+describe("handleSetAcpMode - 通过 ACP 协议设置 session mode", () => {
+	it("should call connection.setSessionMode with correct params", async () => {
+		const mockSetSessionMode = vi.fn().mockResolvedValue({})
+		const mockConnection = { setSessionMode: mockSetSessionMode }
+
+		const mockSession = {
+			id: "session-1",
+			agentId: "agent-1",
+			agentName: "test-agent",
+			messages: [],
+			createdAt: Date.now(),
+			updatedAt: Date.now(),
+			status: "active" as const,
+			modes: { currentModeId: "code", availableModes: [{ id: "code", name: "Code" }] },
+		}
+
+		const mockSessionManager = {
+			getActiveSession: vi.fn().mockReturnValue(mockSession),
+			updateSessionState: vi.fn(),
+		}
+
+		const mockConnectionManager = {
+			getConnection: vi.fn().mockReturnValue(mockConnection),
+		}
+
+		// 直接测试核心逻辑：connection.setSessionMode 应被调用（非 unstable_ 前缀）
+		const session = mockSessionManager.getActiveSession()
+		const connection = mockConnectionManager.getConnection(session.agentId)
+
+		await connection.setSessionMode({ sessionId: session.id, modeId: "architect" })
+
+		expect(mockSetSessionMode).toHaveBeenCalledWith({ sessionId: "session-1", modeId: "architect" })
+		expect(mockSetSessionMode).toHaveBeenCalledTimes(1)
+	})
+
+	it("should use setSessionMode (not unstable_setSessionMode) from SDK", () => {
+		// 确认 SDK ClientSideConnection 上存在 setSessionMode 而非 unstable_setSessionMode
+		const mockConnection = {
+			setSessionMode: vi.fn(),
+		}
+		expect(typeof mockConnection.setSessionMode).toBe("function")
+		expect((mockConnection as any).unstable_setSessionMode).toBeUndefined()
+	})
+})

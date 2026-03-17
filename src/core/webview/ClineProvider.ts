@@ -3883,7 +3883,7 @@ export class ClineProvider
 		}
 
 		try {
-			await (connection as any).unstable_setSessionMode({ sessionId: session.id, modeId })
+			await connection.setSessionMode({ sessionId: session.id, modeId })
 			// cmbt-agent_change start: preserve availableModes even if modes was previously undefined
 			sessionManager.updateSessionState(session.id, {
 				modes: session.modes
