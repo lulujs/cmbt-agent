@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"types": ["vitest/globals"],
+		"types": ["vitest/globals", "node"],
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
@@ -21,7 +21,7 @@
 		"useUnknownInCatchVariables": false
 	},
 	"include": ["."],
-	"exclude": ["node_modules"],
+	"exclude": ["node_modules", "__tests__/e2e"],
 	"watchOptions": {
 		"watchFile": "useFsEvents",
 		"watchDirectory": "useFsEvents",

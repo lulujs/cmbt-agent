@@ -6,6 +6,7 @@ import { AcpLogger } from "./AcpLogger"
 export interface AcpMessage {
 	role: "user" | "assistant"
 	content: string
+	reasoning?: string // cmbt-agent_change: thought/reasoning content from agent
 	timestamp: number
 	source: "acp-agent"
 	agentId: string

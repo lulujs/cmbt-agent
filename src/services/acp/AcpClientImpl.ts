@@ -31,7 +31,7 @@ import { SessionUpdateHandler } from "../../handlers/acp/SessionUpdateHandler"
 import { AcpLogger } from "./AcpLogger"
 
 // cmbt-agent_change start
-import type { AcpProviderContext } from "./AcpProviderBridge"
+import type { AcpProviderContext, AcpAgentCapabilities } from "./AcpProviderBridge"
 import type { AcpSessionModes, AcpSessionModels } from "./SessionManager"
 // cmbt-agent_change end
 
@@ -41,6 +41,9 @@ export interface IAcpClient {
 	endSession(sessionId: string): Promise<void>
 	createClientHandlers(): (agent: Agent) => Client
 	getCurrentSessionId(): string | undefined
+	// cmbt-agent_change start: load existing ACP session for resumption
+	loadSession(agentId: string, acpSessionId: string, capabilities: AcpAgentCapabilities): Promise<string>
+	// cmbt-agent_change end
 }
 
 export class AcpClientImpl implements IAcpClient {
@@ -239,6 +242,57 @@ export class AcpClientImpl implements IAcpClient {
 		const session = this.sessionManager.getActiveSession()
 		return session?.id
 	}
+
+	// cmbt-agent_change start: load existing ACP session for resumption
+	async loadSession(agentId: string, acpSessionId: string, capabilities: AcpAgentCapabilities): Promise<string> {
+		if (!capabilities.loadSession) {
+			throw new Error("该 ACP Agent 不支持恢复会话（loadSession capability 未声明），无法恢复此对话。")
+		}
+
+		const agent = this.agentManager.getActiveAgent()
+		if (!agent || agent.config.id !== agentId) {
+			throw new Error(`Agent ${agentId} 未处于活跃状态，请先连接该 Agent。`)
+		}
+
+		const connection = this.connectionManager.getConnection(agentId)
+		if (!connection) {
+			throw new Error(`未找到 Agent ${agentId} 的连接，请先连接该 Agent。`)
+		}
+
+		this.logger.info("Loading existing ACP session", { agentId, acpSessionId })
+
+		// cmbt-agent_change: Register session BEFORE calling loadSession so that
+		// session/update notifications arriving during replay are handled correctly.
+		const session = this.sessionManager.createSession(
+			agentId,
+			agent.config.name,
+			acpSessionId,
+			undefined,
+			undefined,
+		)
+
+		const cwd = this.agentManager.getWorkspaceRoot() || process.cwd()
+		const response = await (connection as any).loadSession({
+			cwd,
+			mcpServers: [],
+			sessionId: acpSessionId,
+		})
+
+		const resolvedSessionId = response?.sessionId ?? acpSessionId
+		this.logger.info("loadSession response received", { sessionId: resolvedSessionId })
+
+		// If the server returned a different sessionId, update the active session id
+		if (resolvedSessionId !== acpSessionId) {
+			this.sessionManager.updateSessionState(acpSessionId, { id: resolvedSessionId } as any)
+		}
+
+		// Flush any pending streaming chunks accumulated during replay
+		this.sessionUpdateHandler.flushPendingMessage(acpSessionId, agentId, agent.config.name)
+
+		this.logger.info("ACP session loaded", { sessionId: session.id, agentId })
+		return session.id
+	}
+	// cmbt-agent_change end
 
 	// cmbt-agent_change start: parse modes/models from newSession response
 	private parseModes(raw: any): AcpSessionModes | undefined {

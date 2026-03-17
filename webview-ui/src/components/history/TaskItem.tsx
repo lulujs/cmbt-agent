@@ -80,6 +80,13 @@ const TaskItem = ({
 						{...(item.highlight ? { dangerouslySetInnerHTML: { __html: item.highlight } } : {})}>
 						{item.highlight ? undefined : item.task}
 					</div>
+					{/* cmbt-agent_change start: ACP badge */}
+					{item.source === "acp" && (
+						<span className="inline-block text-xs px-1 py-0 rounded bg-vscode-badge-background text-vscode-badge-foreground opacity-80 mb-1">
+							ACP
+						</span>
+					)}
+					{/* cmbt-agent_change end */}
 
 					<TaskItemFooter
 						item={item}

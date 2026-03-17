@@ -21,6 +21,27 @@ export class SessionUpdateHandler implements ISessionUpdateHandler {
 		this.logger.debug("Handling session update", { sessionId, updateType: update.sessionUpdate })
 
 		switch (update.sessionUpdate) {
+			// cmbt-agent_change start: handle user_message_chunk replayed during loadSession
+			case "user_message_chunk": {
+				const text = update.content?.type === "text" ? update.content.text : ""
+				if (text) {
+					const session = this.sessionManager.getActiveSession()
+					if (session && session.id === sessionId) {
+						const userMessage: AcpMessage = {
+							role: "user",
+							content: text,
+							timestamp: Date.now(),
+							source: "acp-agent",
+							agentId: session.agentId,
+							agentName: session.agentName,
+						}
+						this.sessionManager.addMessage(sessionId, userMessage)
+					}
+				}
+				break
+			}
+			// cmbt-agent_change end
+
 			case "agent_message_chunk": {
 				const text = update.content.type === "text" ? update.content.text : ""
 				if (text) {
@@ -91,12 +112,17 @@ export class SessionUpdateHandler implements ISessionUpdateHandler {
 			return
 		}
 
+		// cmbt-agent_change start: capture thought content before clearing buffers
+		const reasoning = this.pendingChunks.get(`thought:${sessionId}`) || undefined
+		// cmbt-agent_change end
+
 		this.pendingChunks.delete(sessionId)
 		this.pendingChunks.delete(`thought:${sessionId}`) // cmbt-agent_change: clear thought buffer too
 
 		const message: AcpMessage = {
 			role: "assistant",
 			content,
+			reasoning, // cmbt-agent_change: persist thought content in committed message
 			timestamp: Date.now(),
 			source: "acp-agent",
 			agentId,

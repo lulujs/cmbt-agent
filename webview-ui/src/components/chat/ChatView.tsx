@@ -148,6 +148,15 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 	// Cline.abort).
 	const task = useMemo(() => messages.at(0), [messages])
 
+	// cmbt-agent_change start: In ACP mode, synthesize a task message from the first user message
+	const acpTask = useMemo(() => {
+		const firstUserMsg = messages.find((m) => m.source === "acp-agent" && m.say === "user_feedback")
+		if (!firstUserMsg) return undefined
+		return firstUserMsg as ClineMessage
+	}, [messages])
+	const effectiveTask = acpTask ?? task
+	// cmbt-agent_change end
+
 	// kilocode_change start
 	// Initialize expanded state based on the persisted setting (default to expanded if undefined)
 	const [isExpanded, setIsExpanded] = useState(
@@ -576,7 +585,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		}
 		// Reset user response flag for new task
 		userRespondedRef.current = false
-	}, [task?.ts])
+	}, [task?.ts]) // cmbt-agent_change: keep original task?.ts for non-ACP reset trigger
 
 	// cmbt-agent_change start: Reset sendingDisabled when ACP mode is turned off
 	useEffect(() => {
@@ -586,7 +595,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 	}, [isAcpMode])
 	// cmbt-agent_change end
 
-	const taskTs = task?.ts
+	const taskTs = effectiveTask?.ts // cmbt-agent_change: use effectiveTask to support ACP mode
 
 	// Request aggregated costs when task changes and has childIds
 	useEffect(() => {
@@ -676,6 +685,18 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 
 		return false
 	}, [modifiedMessages, clineAsk, enableButtons, primaryButtonText])
+
+	// cmbt-agent_change start: In ACP mode with messages, always show "Start New Task" button
+	useEffect(() => {
+		if (isAcpMode && acpTask && !isStreaming) {
+			setEnableButtons(true)
+			setPrimaryButtonText(t("chat:startNewTask.title"))
+		} else if (isAcpMode && !acpTask) {
+			setEnableButtons(false)
+			setPrimaryButtonText(undefined)
+		}
+	}, [isAcpMode, acpTask, isStreaming, t])
+	// cmbt-agent_change end
 
 	const markFollowUpAsAnswered = useCallback(() => {
 		const lastFollowUpMessage = messagesRef.current.findLast((msg: ClineMessage) => msg.ask === "followup")
@@ -815,6 +836,14 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 	// extension.
 	const handlePrimaryButtonClick = useCallback(
 		(text?: string, images?: string[]) => {
+			// cmbt-agent_change start: ACP mode - "Start New Task" ends current session
+			// 用 acpTask 判断当前显示的是否是 ACP 任务，避免非 ACP 任务恢复后连接 ACP agent 导致误触
+			if (acpTask && activeAcpAgentId) {
+				vscode.postMessage({ type: "endAcpSession", agentId: activeAcpAgentId })
+				return
+			}
+			// cmbt-agent_change end
+
 			// Mark that user has responded
 			userRespondedRef.current = true
 
@@ -894,7 +923,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 			setPrimaryButtonText(undefined)
 			setSecondaryButtonText(undefined)
 		},
-		[clineAsk, startNewTask, currentTaskItem?.parentTaskId, lastMessage?.text], // kilocode_change: add lastMessage?.text
+		[clineAsk, startNewTask, currentTaskItem?.parentTaskId, lastMessage?.text, acpTask, activeAcpAgentId], // kilocode_change: add lastMessage?.text // cmbt-agent_change: add acpTask, activeAcpAgentId
 	)
 
 	const handleSecondaryButtonClick = useCallback(
@@ -947,7 +976,17 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		[clineAsk, startNewTask, isStreaming],
 	)
 
-	const handleTaskCloseButtonClick = useCallback(() => startNewTask(), [startNewTask]) // kilocode_change
+	// cmbt-agent_change start: ACP mode needs to end the current session instead of clearTask
+	const handleTaskCloseButtonClick = useCallback(() => {
+		// 用 acpTask 判断当前显示的是否是 ACP 任务，而非全局 isAcpMode
+		// 避免：非 ACP 任务恢复后再连接 ACP agent，导致 close 走错分支
+		if (acpTask && activeAcpAgentId) {
+			vscode.postMessage({ type: "endAcpSession", agentId: activeAcpAgentId })
+		} else {
+			startNewTask()
+		}
+	}, [acpTask, activeAcpAgentId, startNewTask]) // kilocode_change
+	// cmbt-agent_change end
 
 	const { info: model } = useSelectedModel(apiConfiguration)
 
@@ -1240,8 +1279,8 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 
 	// Show globe toggle only when in a task that has a browser session (active or inactive)
 	const showBrowserDockToggle = useMemo(
-		() => Boolean(task && (browserSessionStartIndex !== -1 || isBrowserSessionActive)),
-		[task, browserSessionStartIndex, isBrowserSessionActive],
+		() => Boolean(effectiveTask && (browserSessionStartIndex !== -1 || isBrowserSessionActive)), // cmbt-agent_change
+		[effectiveTask, browserSessionStartIndex, isBrowserSessionActive],
 	)
 
 	const isBrowserSessionMessage = useCallback((message: ClineMessage): boolean => {
@@ -1386,12 +1425,13 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 	//kilocode_change
 	// Effect to clear checkpoint warning when messages appear or task changes
 	useEffect(() => {
-		if (isHidden || !task) {
+		if (isHidden || !effectiveTask) {
+			// cmbt-agent_change
 			setCheckpointWarning(undefined)
 		}
-	}, [modifiedMessages.length, isStreaming, isHidden, task])
+	}, [modifiedMessages.length, isStreaming, isHidden, effectiveTask]) // cmbt-agent_change
 
-	const placeholderText = task ? t("chat:typeMessage") : t("chat:typeTask")
+	const placeholderText = effectiveTask ? t("chat:typeMessage") : t("chat:typeTask") // cmbt-agent_change
 
 	const switchToMode = useCallback(
 		(modeSlug: string): void => {
@@ -1631,7 +1671,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 					}}
 				/>
 			)}
-			{task ? (
+			{effectiveTask ? ( // cmbt-agent_change: use effectiveTask to support ACP mode
 				<>
 					{/* kilocode_change start */}
 					{/* <TaskHeader
@@ -1667,7 +1707,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						todos={latestTodos}
 					/> */}
 					<KiloTaskHeader
-						task={task}
+						task={effectiveTask!}
 						tokensIn={apiMetrics.totalTokensIn}
 						tokensOut={apiMetrics.totalTokensOut}
 						cacheWrites={apiMetrics.totalCacheWrites}
@@ -1784,19 +1824,20 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 			//    but becomes scrollable when the viewport is too small
 			*/}
 			{/* kilocode_change: added settings toggle for this */}
-			{!task && showAutoApproveMenu && (
-				<div className="mb-1 flex-initial min-h-0">
-					<AutoApproveMenu />
-				</div>
-			)}
+			{!effectiveTask &&
+				showAutoApproveMenu && ( // cmbt-agent_change
+					<div className="mb-1 flex-initial min-h-0">
+						<AutoApproveMenu />
+					</div>
+				)}
 
-			{task && (
+			{effectiveTask && ( // cmbt-agent_change
 				<>
 					<div className="grow flex flex-col min-h-0" ref={scrollContainerRef}>
 						<div className="flex-auto min-h-0">
 							<Virtuoso
 								ref={virtuosoRef}
-								key={task.ts}
+								key={effectiveTask.ts}
 								className="scrollable grow overflow-y-scroll mb-1"
 								increaseViewportBy={{ top: 400, bottom: 400 }} // kilocode_change: use more modest numbers to see if they reduce gray screen incidence
 								data={groupedMessages}

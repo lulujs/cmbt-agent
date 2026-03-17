@@ -1005,6 +1005,7 @@ export interface WebviewMessage {
 		| "sendAcpMessage" // cmbt-agent_change: Send message to ACP agent
 		| "setAcpModel" // cmbt-agent_change: Set ACP session model
 		| "setAcpMode" // cmbt-agent_change: Set ACP session mode
+		| "endAcpSession" // cmbt-agent_change: End current ACP session and start a new one
 	text?: string
 	suggestionLength?: number // kilocode_change: Length of accepted suggestion for telemetry
 	completionRequestId?: string // kilocode_change

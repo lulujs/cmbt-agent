@@ -4666,6 +4666,14 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
+		// cmbt-agent_change start: end current ACP session and start a new one
+		case "endAcpSession": {
+			if (message.agentId) {
+				await provider.handleEndAcpSession(message.agentId)
+			}
+			break
+		}
+		// cmbt-agent_change end
 		case "sendAcpMessage": {
 			if (message.text) {
 				await provider.handleSendAcpMessage(message.text)

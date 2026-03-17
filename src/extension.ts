@@ -271,10 +271,56 @@ export async function activate(context: vscode.ExtensionContext) {
 				return
 			}
 
+			// cmbt-agent_change start: sync ACP session into taskHistory
+			const firstUserMsg = session.messages.find((m) => m.role === "user")
+			if (firstUserMsg) {
+				const activeAgent = agentManager.getActiveAgent()
+				const historyItem: import("@roo-code/types").HistoryItem = {
+					id: session.id,
+					number: 0,
+					ts: session.updatedAt,
+					task: firstUserMsg.content,
+					tokensIn: 0,
+					tokensOut: 0,
+					totalCost: 0,
+					workspace: agentManager.getWorkspaceRoot() ?? "",
+					mode: session.modes?.currentModeId,
+					status: session.status === "ended" ? "completed" : "active",
+					source: "acp",
+					acpSessionId: session.id,
+					acpAgentId: session.agentId,
+					acpAgentConfig: activeAgent
+						? {
+								command: activeAgent.config.command,
+								args: activeAgent.config.args,
+								env: activeAgent.config.env,
+							}
+						: undefined,
+				}
+				visibleProvider.updateTaskHistory(historyItem).catch((err) => {
+					outputChannel.appendLine(`[ACP] Failed to update taskHistory: ${err}`)
+				})
+			}
+			// cmbt-agent_change end
+
 			// Build clineMessages from session: committed messages + optional streaming chunk
 			const messages: import("@roo-code/types").ClineMessage[] = []
 
 			for (const msg of session.messages) {
+				// cmbt-agent_change start: emit reasoning block before text for committed messages
+				if (msg.role === "assistant" && msg.reasoning) {
+					messages.push({
+						ts: msg.timestamp - 1,
+						type: "say",
+						say: "reasoning",
+						text: msg.reasoning,
+						partial: false,
+						source: "acp-agent",
+						agentId: msg.agentId,
+						agentName: msg.agentName,
+					})
+				}
+				// cmbt-agent_change end
 				messages.push({
 					ts: msg.timestamp,
 					type: "say",

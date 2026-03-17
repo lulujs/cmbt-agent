@@ -37,6 +37,18 @@ export const historyItemSchema = z.object({
 	awaitingChildId: z.string().optional(), // Child currently awaited (set when delegated)
 	completedByChildId: z.string().optional(), // Child that completed and resumed this parent
 	completionResultSummary: z.string().optional(), // Summary from completed child
+	// cmbt-agent_change start: ACP task integration
+	source: z.enum(["acp"]).optional(), // Marks this as an ACP-originated task
+	acpSessionId: z.string().optional(), // The ACP session ID for resumption
+	acpAgentId: z.string().optional(), // The ACP agent ID needed to restore the session
+	acpAgentConfig: z
+		.object({
+			command: z.string(),
+			args: z.array(z.string()),
+			env: z.record(z.string()).optional(),
+		})
+		.optional(), // The ACP agent launch config for auto-connect on resume
+	// cmbt-agent_change end
 })
 
 export type HistoryItem = z.infer<typeof historyItemSchema>

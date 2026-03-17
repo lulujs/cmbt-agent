@@ -186,6 +186,7 @@ export class ClineProvider
 		preferredProvider?: string
 		preferredModel?: string
 		preferredMode?: string
+		loadSession?: boolean // ACP standard loadSession capability
 	}
 	// cmbt-agent_change end
 
@@ -1919,6 +1920,18 @@ export class ClineProvider
 		const historyItem = history.find((item) => item.id === id)
 
 		if (historyItem) {
+			// cmbt-agent_change start: ACP tasks have no local files, return early with dummy paths
+			if (historyItem.source === "acp") {
+				return {
+					historyItem,
+					taskDirPath: "",
+					apiConversationHistoryFilePath: "",
+					uiMessagesFilePath: "",
+					apiConversationHistory: [],
+				}
+			}
+			// cmbt-agent_change end
+
 			const { getTaskDirectoryPath } = await import("../../utils/storage")
 			const globalStoragePath = this.contextProxy.globalStorageUri.fsPath
 			const taskDirPath = await getTaskDirectoryPath(globalStoragePath, id)
@@ -1979,11 +1992,105 @@ export class ClineProvider
 		if (id !== this.getCurrentTask()?.taskId) {
 			// Non-current task.
 			const { historyItem } = await this.getTaskWithId(id)
+
+			// cmbt-agent_change start: ACP task resumption
+			if (historyItem.source === "acp") {
+				await this.resumeAcpTask(historyItem)
+				return
+			}
+
+			// If currently in ACP mode, disconnect before switching to a non-ACP task
+			if (this.acpInstances) {
+				const activeAgent = this.acpInstances.agentManager.getActiveAgent()
+				if (activeAgent) {
+					this.log(`[ACP] Disconnecting agent ${activeAgent.config.id} before switching to non-ACP task`)
+					await this.handleDisconnectAcpAgent(activeAgent.config.id)
+				}
+			}
+			// cmbt-agent_change end
+
 			await this.createTaskWithHistoryItem(historyItem) // Clears existing task.
 		}
 
 		await this.postMessageToWebview({ type: "action", action: "chatButtonClicked" })
 	}
+
+	// cmbt-agent_change start: resume an ACP session from history
+	private async resumeAcpTask(historyItem: HistoryItem): Promise<void> {
+		if (!this.acpInstances) {
+			vscode.window.showErrorMessage("ACP 模块未初始化，请先连接 ACP Agent。")
+			return
+		}
+
+		const { acpClient, agentManager } = this.acpInstances
+		const activeAgent = agentManager.getActiveAgent()
+		const targetAgentId = historyItem.acpAgentId
+
+		if (!targetAgentId) {
+			vscode.window.showErrorMessage("该任务缺少 ACP Agent 信息，无法恢复对话。")
+			return
+		}
+
+		// 如果当前连接的不是目标 agent，需要先切换
+		const needConnect = !activeAgent || activeAgent.config.id !== targetAgentId
+
+		if (needConnect) {
+			// 尝试从 historyItem 或 vscode 配置中找到 agent config
+			const agentConfig = this.resolveAcpAgentConfig(targetAgentId, historyItem)
+			if (!agentConfig) {
+				vscode.window.showErrorMessage(
+					`找不到 Agent "${targetAgentId}" 的配置，请在设置中确认该 Agent 已配置，或手动连接后重试。`,
+				)
+				return
+			}
+
+			try {
+				await this.handleSelectAcpAgent(targetAgentId, agentConfig)
+			} catch (err) {
+				const msg = err instanceof Error ? err.message : String(err)
+				vscode.window.showErrorMessage(`自动连接 Agent "${targetAgentId}" 失败：${msg}`)
+				return
+			}
+		}
+
+		// 连接完成后执行 loadSession
+		const capabilities = this.acpActiveCapabilities ?? {}
+
+		try {
+			await acpClient.loadSession(targetAgentId, historyItem.acpSessionId!, capabilities)
+			await this.postMessageToWebview({ type: "action", action: "chatButtonClicked" })
+		} catch (err) {
+			const msg = err instanceof Error ? err.message : String(err)
+			vscode.window.showErrorMessage(`无法恢复 ACP 对话：${msg}`)
+		}
+	}
+
+	// cmbt-agent_change start: resolve agent config from history or vscode settings
+	private resolveAcpAgentConfig(
+		agentId: string,
+		historyItem: HistoryItem,
+	): import("../../services/acp/AgentManager").AcpAgentConfig | undefined {
+		// 优先从 vscode 配置里找（最新的）
+		if (this.acpInstances) {
+			const configured = this.acpInstances.agentManager.getConfiguredAgents()
+			const found = configured.find((a) => a.id === agentId)
+			if (found) return found
+		}
+
+		// 降级：用 historyItem 里存的 acpAgentConfig 重建
+		if (historyItem.acpAgentConfig) {
+			return {
+				id: agentId,
+				name: agentId,
+				command: historyItem.acpAgentConfig.command,
+				args: historyItem.acpAgentConfig.args,
+				env: historyItem.acpAgentConfig.env,
+			}
+		}
+
+		return undefined
+	}
+	// cmbt-agent_change end
 
 	async exportTaskWithId(id: string) {
 		const { historyItem, apiConversationHistory } = await this.getTaskWithId(id)
@@ -3491,7 +3598,11 @@ export class ClineProvider
 		this.log("[ACP] ACP instances set on provider")
 	}
 
-	public async handleSelectAcpAgent(agentId: string): Promise<void> {
+	public async handleSelectAcpAgent(
+		agentId: string,
+		overrideConfig?: import("../../services/acp/AgentManager").AcpAgentConfig,
+	): Promise<void> {
+		// cmbt-agent_change: added overrideConfig
 		this.log(`ACP agent selection requested: ${agentId}`)
 
 		if (!this.acpInstances) {
@@ -3501,7 +3612,7 @@ export class ClineProvider
 
 		const { agentManager, connectionManager, acpClient } = this.acpInstances
 		const agents = agentManager.getConfiguredAgents()
-		const config = agents.find((a) => a.id === agentId)
+		const config = agents.find((a) => a.id === agentId) ?? overrideConfig // cmbt-agent_change: fallback to overrideConfig
 
 		if (!config) {
 			this.log(`[ACP] Agent config not found for id: ${agentId}`)
@@ -3621,6 +3732,46 @@ export class ClineProvider
 			await this.postStateToWebview() // cmbt-agent_change: update isAcpMode after error
 		}
 	}
+
+	// cmbt-agent_change start: end current ACP session and create a new one (triggered by "开始新任务")
+	public async handleEndAcpSession(agentId: string): Promise<void> {
+		this.log(`[ACP] End session and start new requested for agent: ${agentId}`)
+
+		if (!this.acpInstances) {
+			this.log("[ACP] ACP modules not initialized")
+			return
+		}
+
+		const { acpClient } = this.acpInstances
+
+		// End current session
+		const currentSessionId = acpClient.getCurrentSessionId()
+		if (currentSessionId) {
+			try {
+				await acpClient.endSession(currentSessionId)
+			} catch (error) {
+				this.log(`[ACP] Failed to end session: ${error instanceof Error ? error.message : String(error)}`)
+			}
+		}
+
+		// Create a new session so the UI resets to empty chat
+		try {
+			const { AcpProviderBridge } = await import("../../services/acp/AcpProviderBridge")
+			const bridge = new AcpProviderBridge()
+			const state = await this.getStateToPostToWebview()
+			const providerContext = bridge.extractProviderContext(
+				state.apiConfiguration ?? {},
+				state.mode,
+				state.customModes,
+			)
+			await acpClient.createSession(agentId, providerContext)
+			this.log(`[ACP] New session created for agent ${agentId}`)
+			await this.postStateToWebview()
+		} catch (error) {
+			this.log(`[ACP] Failed to create new session: ${error instanceof Error ? error.message : String(error)}`)
+		}
+	}
+	// cmbt-agent_change end
 
 	public async handleSendAcpMessage(text: string): Promise<void> {
 		this.log(`ACP message send requested: ${text}`)

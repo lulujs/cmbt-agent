@@ -28,6 +28,7 @@ export interface AcpAgentCapabilities {
 	preferredProvider?: string
 	preferredModel?: string
 	preferredMode?: string
+	loadSession?: boolean // cmbt-agent_change: ACP standard loadSession capability
 }
 
 /**
@@ -94,6 +95,12 @@ export class AcpProviderBridge {
 			if (typeof capabilities.preferredMode === "string") {
 				result.preferredMode = capabilities.preferredMode
 			}
+
+			// cmbt-agent_change start: parse ACP standard loadSession capability
+			if (typeof capabilities.loadSession === "boolean") {
+				result.loadSession = capabilities.loadSession
+			}
+			// cmbt-agent_change end
 		} catch (error) {
 			this.logger?.warn("Failed to parse agent capabilities", {
 				error: error instanceof Error ? error.message : String(error),
