@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useEffect } from "react"
+import React, { useCallback, useRef, useEffect, useMemo } from "react"
+import { getAllModes } from "@roo/modes" // test-agent_change
 import { SlashCommand, getMatchingSlashCommands } from "@/utils/slash-commands"
 import { useExtensionState } from "@/context/ExtensionStateContext" // kilocode_change
 
@@ -9,6 +10,7 @@ interface SlashCommandMenuProps {
 	onMouseDown: () => void
 	query: string
 	customModes?: any[]
+	excludeModeCommands?: boolean // test-agent_change: hide mode-switching commands in spec mode
 }
 
 const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
@@ -18,6 +20,7 @@ const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
 	onMouseDown,
 	query,
 	customModes,
+	excludeModeCommands = false, // test-agent_change
 }) => {
 	const { localWorkflows, globalWorkflows } = useExtensionState() // kilocode_change
 	const menuRef = useRef<HTMLDivElement>(null)
@@ -47,7 +50,18 @@ const SlashCommandMenu: React.FC<SlashCommandMenuProps> = ({
 	}, [selectedIndex])
 
 	// Filter commands based on query
-	const filteredCommands = getMatchingSlashCommands(query, customModes, localWorkflows, globalWorkflows) // kilocode_change
+	// test-agent_change start: exclude mode-switching commands in spec mode
+	const allModeSlugSet = useMemo(() => {
+		if (!excludeModeCommands) return null
+		return new Set(getAllModes(customModes).map((m) => m.slug))
+	}, [excludeModeCommands, customModes])
+
+	const filteredCommands = useMemo(() => {
+		const cmds = getMatchingSlashCommands(query, customModes, localWorkflows, globalWorkflows)
+		if (!excludeModeCommands || !allModeSlugSet) return cmds
+		return cmds.filter((cmd) => !allModeSlugSet.has(cmd.name))
+	}, [query, customModes, localWorkflows, globalWorkflows, excludeModeCommands, allModeSlugSet])
+	// test-agent_change end
 
 	return (
 		<div

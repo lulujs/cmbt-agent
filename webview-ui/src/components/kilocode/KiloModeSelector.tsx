@@ -16,6 +16,7 @@ interface KiloModeSelectorProps {
 	title?: string
 	triggerClassName?: string
 	initiallyOpen?: boolean
+	allowedModes?: Mode[] // test-agent_change: restrict available modes
 }
 
 export const KiloModeSelector = ({
@@ -27,16 +28,25 @@ export const KiloModeSelector = ({
 	title,
 	triggerClassName,
 	initiallyOpen,
+	allowedModes, // test-agent_change
 }: KiloModeSelectorProps) => {
 	const { t } = useAppTranslation()
 	const allModes = React.useMemo(() => getAllModes(customModes), [customModes])
 
+	// test-agent_change start: filter modes if allowedModes is provided
+	const filteredModes = React.useMemo(() => {
+		if (!allowedModes || allowedModes.length === 0) return allModes
+		return allModes.filter((mode) => allowedModes.includes(mode.slug as Mode))
+	}, [allModes, allowedModes])
+	// test-agent_change end
+
+	// test-agent_change: use filteredModes instead of allModes
 	// Group modes by source
 	const { organizationModes, otherModes } = React.useMemo(() => {
-		const orgModes = allModes.filter((mode) => mode.source === "organization")
-		const other = allModes.filter((mode) => mode.source !== "organization")
+		const orgModes = filteredModes.filter((mode) => mode.source === "organization")
+		const other = filteredModes.filter((mode) => mode.source !== "organization")
 		return { organizationModes: orgModes, otherModes: other }
-	}, [allModes])
+	}, [filteredModes])
 
 	const handleChange = React.useCallback(
 		(selectedValue: string) => {
@@ -110,11 +120,15 @@ export const KiloModeSelector = ({
 		return opts
 	}, [organizationModes, otherModes, modeShortcutText, t])
 
+	// test-agent_change start: disable mode selector if only one mode is allowed
+	const isModeSelectorDisabled = disabled || (allowedModes && allowedModes.length === 1)
+	// test-agent_change end
+
 	return (
 		<SelectDropdown
-			value={allModes.find((m) => m.slug === value)?.slug ?? defaultModeSlug}
+			value={filteredModes.find((m) => m.slug === value)?.slug ?? defaultModeSlug}
 			title={title || t("chat:selectMode")}
-			disabled={disabled}
+			disabled={isModeSelectorDisabled} // test-agent_change
 			initiallyOpen={initiallyOpen}
 			options={options}
 			onChange={handleChange}

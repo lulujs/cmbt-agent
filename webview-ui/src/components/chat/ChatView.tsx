@@ -6,8 +6,6 @@ import removeMd from "remove-markdown"
 import { VSCodeButton as Button } from "@vscode/webview-ui-toolkit/react" // kilocode_change: do not use rounded Roo buttons
 import useSound from "use-sound"
 import { LRUCache } from "lru-cache"
-import { Trans } from "react-i18next"
-
 import { useDebounceEffect } from "@src/utils/useDebounceEffect"
 import { appendImages } from "@src/utils/imageUtils"
 
@@ -50,10 +48,10 @@ import SystemPromptWarning from "./SystemPromptWarning"
 // import ProfileViolationWarning from "./ProfileViolationWarning" kilocode_change: unused
 import { CheckpointWarning } from "./CheckpointWarning"
 import { IdeaSuggestionsBox } from "../kilocode/chat/IdeaSuggestionsBox" // kilocode_change
+import { VibeModeSelector } from "../kilocode/chat/VibeModeSelector" // test-agent_change
 import { KilocodeNotifications } from "../kilocode/KilocodeNotifications" // kilocode_change
 import { QueuedMessages } from "./QueuedMessages"
 import { ReviewScopeSelector, type ReviewScopeInfo } from "./ReviewScopeSelector" // kilocode_change: Review mode
-import { buildDocLink } from "@/utils/docLinks"
 // import DismissibleUpsell from "../common/DismissibleUpsell" // kilocode_change: unused
 // import { useCloudUpsell } from "@src/hooks/useCloudUpsell" // kilocode_change: unused
 // import { Cloud } from "lucide-react" // kilocode_change: unused
@@ -157,6 +155,11 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		vscode.postMessage({ type: "setHistoryPreviewCollapsed", bool: !newState })
 	}, [isExpanded])
 	// kilocode_change end
+
+	// test-agent_change start: track spec workflow selection
+	const [isSpecWorkflow, setIsSpecWorkflow] = useState(mode === "architect")
+	const [selectedWorkflow, setSelectedWorkflow] = useState("")
+	// test-agent_change end
 
 	const latestTodos = useMemo(() => {
 		// First check if we have initial todos from the state (for new subtasks)
@@ -1702,21 +1705,16 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						<div className="flex flex-grow flex-col justify-center gap-2">
 							<KiloLogo />
 							{/* kilocode_change end */}
-							<p className="text-vscode-editor-foreground leading-normal font-vscode-font-family text-center text-balance max-w-[380px] mx-auto my-0">
-								<Trans
-									i18nKey="chat:about"
-									components={{
-										DocsLink: (
-											<a
-												href={buildDocLink("", "welcome")}
-												target="_blank"
-												rel="noopener noreferrer">
-												the docs
-											</a>
-										),
-									}}
-								/>
-							</p>
+							{/* test-agent_change start: replace about text with VibeModeSelector */}
+							<VibeModeSelector
+								mode={mode}
+								onModeChange={switchToMode}
+								onWorkflowChange={(isSpec) => {
+									setIsSpecWorkflow(isSpec)
+									if (!isSpec) setSelectedWorkflow("")
+								}}
+							/>
+							{/* test-agent_change end */}
 							<IdeaSuggestionsBox /> {/* kilocode_change */}
 							{/*<div className="mb-2.5">
 								{cloudIsAuthenticated || taskHistory.length < 4 ? <RooTips /> : <RooCloudCTA />}
@@ -1894,7 +1892,12 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				placeholderText={placeholderText}
 				selectedImages={selectedImages}
 				setSelectedImages={setSelectedImages}
-				onSend={() => handleSendMessage(inputValue, selectedImages)}
+				onSend={() => {
+					// test-agent_change start: prepend workflow slash command in spec mode
+					const text = isSpecWorkflow && selectedWorkflow ? `/${selectedWorkflow}\n${inputValue}` : inputValue
+					handleSendMessage(text, selectedImages)
+					// test-agent_change end
+				}}
 				onSelectImages={selectImages}
 				shouldDisableImages={shouldDisableImages}
 				onHeightChange={() => {
@@ -1905,6 +1908,9 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				mode={mode}
 				setMode={setMode}
 				modeShortcutText={modeShortcutText}
+				isSpecMode={isSpecWorkflow} // test-agent_change
+				selectedWorkflow={isSpecWorkflow ? selectedWorkflow : ""} // test-agent_change
+				onWorkflowChange={setSelectedWorkflow} // test-agent_change
 				sendMessageOnEnter={sendMessageOnEnter} // kilocode_change
 				showBrowserDockToggle={showBrowserDockToggle}
 			/>

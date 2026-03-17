@@ -28,6 +28,7 @@ import Thumbnails from "../common/Thumbnails"
 import { ModeSelector } from "./ModeSelector"
 import KiloModeSelector from "../kilocode/KiloModeSelector"
 import { KiloProfileSelector } from "../kilocode/chat/KiloProfileSelector"
+import { WorkflowSelector } from "../kilocode/chat/WorkflowSelector" // test-agent_change
 import { MAX_IMAGES_PER_MESSAGE } from "./ChatView"
 import ContextMenu from "./ContextMenu"
 import { ImageWarningBanner } from "./ImageWarningBanner"
@@ -68,6 +69,9 @@ interface ChatTextAreaProps {
 	mode: Mode
 	setMode: (value: Mode) => void
 	modeShortcutText: string
+	isSpecMode?: boolean // test-agent_change: lock mode to architect when spec workflow is selected
+	selectedWorkflow?: string // test-agent_change: selected workflow for spec mode
+	onWorkflowChange?: (workflow: string) => void // test-agent_change
 	// Edit mode props
 	isEditMode?: boolean
 	onCancel?: () => void
@@ -140,6 +144,9 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			mode,
 			setMode,
 			modeShortcutText,
+			isSpecMode = false, // test-agent_change
+			selectedWorkflow = "", // test-agent_change
+			onWorkflowChange, // test-agent_change
 			isEditMode = false,
 			onCancel,
 			sendMessageOnEnter = true,
@@ -1906,6 +1913,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 									onMouseDown={handleMenuMouseDown}
 									query={slashCommandsQuery}
 									customModes={customModes}
+									excludeModeCommands={isSpecMode} // test-agent_change
 								/>
 							</div>
 						)}
@@ -1954,16 +1962,30 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							// kilocode_change end
 							className={cn("flex", "justify-between", "items-center", "mt-auto")}>
 							<div className={cn("flex", "items-center", "gap-1", "min-w-0")}>
-								<div className="shrink-0">
-									{/* kilocode_change start: KiloModeSelector instead of ModeSelector */}
-									<KiloModeSelector
-										value={mode}
-										onChange={setMode}
-										modeShortcutText={modeShortcutText}
-										customModes={customModes}
-									/>
-									{/* kilocode_change end */}
-								</div>
+								{/* test-agent_change start: hide mode selector in spec mode, show workflow selector instead */}
+								{!isSpecMode && (
+									<div className="shrink-0">
+										{/* kilocode_change start: KiloModeSelector instead of ModeSelector */}
+										<KiloModeSelector
+											value={mode}
+											onChange={setMode}
+											modeShortcutText={modeShortcutText}
+											customModes={customModes}
+										/>
+										{/* kilocode_change end */}
+									</div>
+								)}
+								{isSpecMode && (
+									<div className="shrink-0 max-w-[160px]">
+										<WorkflowSelector
+											localWorkflows={localWorkflows}
+											globalWorkflows={globalWorkflows}
+											value={selectedWorkflow}
+											onChange={onWorkflowChange ?? (() => {})}
+										/>
+									</div>
+								)}
+								{/* test-agent_change end */}
 
 								<KiloProfileSelector
 									currentConfigId={currentConfigId}
