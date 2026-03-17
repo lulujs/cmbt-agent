@@ -3662,12 +3662,18 @@ export class ClineProvider
 			// cmbt-agent_change start: create ACP session so modes/models are available
 			try {
 				const { AcpProviderBridge: Bridge } = await import("../../services/acp/AcpProviderBridge")
+				const { generateSystemPrompt } = await import("./generateSystemPrompt") // cmbt-agent_change: 导入 generateSystemPrompt
 				const providerBridge = new Bridge()
 				const state = await this.getStateToPostToWebview()
+
+				// 生成 system prompt
+				const systemPrompt = await generateSystemPrompt(this, { mode: state.mode } as any)
+
 				const providerContext = providerBridge.extractProviderContext(
 					state.apiConfiguration ?? {},
 					state.mode,
 					state.customModes,
+					systemPrompt, // cmbt-agent_change: 传递 system prompt
 				)
 				await acpClient.createSession(agentId, providerContext)
 				this.log(`[ACP] Session created for agent ${agentId}`)
@@ -3757,12 +3763,18 @@ export class ClineProvider
 		// Create a new session so the UI resets to empty chat
 		try {
 			const { AcpProviderBridge } = await import("../../services/acp/AcpProviderBridge")
+			const { generateSystemPrompt } = await import("./generateSystemPrompt") // cmbt-agent_change: 导入 generateSystemPrompt
 			const bridge = new AcpProviderBridge()
 			const state = await this.getStateToPostToWebview()
+
+			// 生成 system prompt
+			const systemPrompt = await generateSystemPrompt(this, { mode: state.mode } as any)
+
 			const providerContext = bridge.extractProviderContext(
 				state.apiConfiguration ?? {},
 				state.mode,
 				state.customModes,
+				systemPrompt, // cmbt-agent_change: 传递 system prompt
 			)
 			await acpClient.createSession(agentId, providerContext)
 			this.log(`[ACP] New session created for agent ${agentId}`)
@@ -3799,12 +3811,18 @@ export class ClineProvider
 				this.log("[ACP] Creating new session...")
 				// cmbt-agent_change start: Pass provider context when creating session
 				const { AcpProviderBridge } = await import("../../services/acp/AcpProviderBridge")
+				const { generateSystemPrompt } = await import("./generateSystemPrompt") // cmbt-agent_change: 导入 generateSystemPrompt
 				const bridge = new AcpProviderBridge()
 				const state = await this.getState()
+
+				// 生成 system prompt
+				const systemPrompt = await generateSystemPrompt(this, { mode: state.mode } as any)
+
 				const providerContext = bridge.extractProviderContext(
 					state.apiConfiguration,
 					state.mode,
 					state.customModes,
+					systemPrompt, // cmbt-agent_change: 传递 system prompt
 				)
 				this.log(`[ACP] Provider context: ${JSON.stringify(providerContext)}`)
 				sessionId = await acpClient.createSession(activeAgent.config.id, providerContext)

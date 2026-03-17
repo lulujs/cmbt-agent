@@ -11,6 +11,7 @@ export interface AcpProviderContext {
 	apiProvider?: string
 	apiModelId?: string
 	mode?: string
+	systemPrompt?: string // cmbt-agent_change: 添加 system prompt 支持
 	customModeConfig?: {
 		slug: string
 		name: string
@@ -40,11 +41,18 @@ export class AcpProviderBridge {
 	/**
 	 * Extract provider context from current extension state for passing to ACP agents.
 	 */
-	extractProviderContext(settings: ProviderSettings, mode?: string, customModes?: ModeConfig[]): AcpProviderContext {
+	extractProviderContext(
+		settings: ProviderSettings,
+		mode?: string,
+		customModes?: ModeConfig[],
+		systemPrompt?: string,
+	): AcpProviderContext {
+		// cmbt-agent_change: 添加 systemPrompt 参数
 		const context: AcpProviderContext = {
 			apiProvider: settings.apiProvider,
 			apiModelId: settings.apiModelId,
 			mode,
+			systemPrompt, // cmbt-agent_change: 传递 system prompt
 		}
 
 		if (mode) {

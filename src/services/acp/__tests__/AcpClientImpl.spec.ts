@@ -43,7 +43,9 @@ describe("AcpClientImpl", () => {
 		mockFileSystemHandler = {} as FileSystemHandler
 		mockTerminalHandler = {} as TerminalHandler
 		mockPermissionHandler = {} as PermissionHandler
-		mockSessionUpdateHandler = {} as SessionUpdateHandler
+		mockSessionUpdateHandler = {
+			flushPendingMessage: vi.fn(), // cmbt-agent_change: 添加 flushPendingMessage mock
+		} as unknown as SessionUpdateHandler
 
 		client = new AcpClientImpl(
 			mockAgentManager,
@@ -499,6 +501,7 @@ describe("AcpClientImpl", () => {
 				apiProvider: "anthropic",
 				apiModelId: "claude-3-opus",
 				mode: "code",
+				systemPrompt: "You are a helpful assistant", // cmbt-agent_change: 添加 systemPrompt 测试
 			}
 
 			const sessionId = await client.createSession("agent-1", providerContext)
@@ -512,6 +515,7 @@ describe("AcpClientImpl", () => {
 						apiProvider: "anthropic",
 						apiModelId: "claude-3-opus",
 						mode: "code",
+						systemPrompt: "You are a helpful assistant", // cmbt-agent_change: 验证 systemPrompt 传递
 					},
 				},
 			})

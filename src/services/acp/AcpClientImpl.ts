@@ -135,9 +135,10 @@ export class AcpClientImpl implements IAcpClient {
 					apiProvider: providerContext.apiProvider,
 					apiModelId: providerContext.apiModelId,
 					mode: providerContext.mode,
+					systemPrompt: providerContext.systemPrompt, // cmbt-agent_change: 传递 system prompt
 				},
 			}
-			this.logger.debug("Session options with provider context", {
+			this.logger.info("Session options with provider context", {
 				sessionOptions: JSON.stringify(sessionOptions),
 			})
 		}

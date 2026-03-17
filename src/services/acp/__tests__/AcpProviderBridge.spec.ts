@@ -24,6 +24,15 @@ describe("AcpProviderBridge", () => {
 			expect(result.mode).toBe("code")
 		})
 
+		it("should include systemPrompt when provided", () => {
+			// cmbt-agent_change: 新增 systemPrompt 测试
+			const settings = { apiProvider: "anthropic" } as ProviderSettings
+			const systemPrompt = "You are a helpful assistant"
+			const result = bridge.extractProviderContext(settings, "code", [], systemPrompt)
+
+			expect(result.systemPrompt).toBe(systemPrompt)
+		})
+
 		it("should include customModeConfig when mode matches a known mode", () => {
 			const customModes: ModeConfig[] = [
 				{
