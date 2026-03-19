@@ -55,11 +55,11 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 								"font-semibold text-sm",
 								vibeSelected ? "text-[var(--vscode-focusBorder)]" : "text-vscode-foreground",
 							)}>
-							Vibe
+							探索
 						</span>
 					</div>
 					<p className="text-xs text-vscode-descriptionForeground m-0 leading-relaxed">
-						Chat first, then build. Explore ideas and iterate as you discover needs.
+						先沟通，再构建。在探索需求的过程中探索思路、持续迭代。
 					</p>
 				</button>
 
@@ -84,11 +84,11 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 								"font-semibold text-sm",
 								specSelected ? "text-[var(--vscode-focusBorder)]" : "text-vscode-foreground",
 							)}>
-							Spec
+							规格
 						</span>
 					</div>
 					<p className="text-xs text-vscode-descriptionForeground m-0 leading-relaxed">
-						Plan first, then build. Create requirements and design before coding starts.
+						先规划，后开发；编码前，先明确需求与设计。
 					</p>
 				</button>
 			</div>
@@ -100,15 +100,15 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 					<p className="m-0 mb-1 font-medium text-vscode-foreground">Great for:</p>
 					{vibeSelected ? (
 						<ul className="m-0 pl-4 space-y-0.5 list-disc">
-							<li>Rapid exploration and testing</li>
-							<li>Building when requirements are unclear</li>
-							<li>Implementing a task</li>
+							<li>快速探索与验证</li>
+							<li>需求不明确时的开发</li>
+							<li>任务落地执行</li>
 						</ul>
 					) : (
 						<ul className="m-0 pl-4 space-y-0.5 list-disc">
-							<li>Thinking through features in-depth</li>
-							<li>Projects needing upfront planning</li>
-							<li>Building features in a structured way</li>
+							<li>对功能进行深度思考与梳理</li>
+							<li>需要前期规划的项目</li>
+							<li>以结构化方式开发功能</li>
 						</ul>
 					)}
 				</div>
