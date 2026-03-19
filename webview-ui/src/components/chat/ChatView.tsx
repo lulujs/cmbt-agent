@@ -1887,14 +1887,18 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				ref={textAreaRef}
 				inputValue={inputValue}
 				setInputValue={setInputValue}
-				sendingDisabled={sendingDisabled || isProfileDisabled}
+				sendingDisabled={sendingDisabled || isProfileDisabled || (isSpecWorkflow && !selectedWorkflow)} // test-agent_change: disable send when spec mode has no workflow selected
 				selectApiConfigDisabled={sendingDisabled && clineAsk !== "api_req_failed"}
 				placeholderText={placeholderText}
 				selectedImages={selectedImages}
 				setSelectedImages={setSelectedImages}
 				onSend={() => {
-					// test-agent_change start: prepend workflow slash command in spec mode
-					const text = isSpecWorkflow && selectedWorkflow ? `/${selectedWorkflow}\n${inputValue}` : inputValue
+					// test-agent_change start: prepend workflow slash command in spec mode (only for first message)
+					const isNewTask = messages.length === 0
+					const text =
+						isSpecWorkflow && selectedWorkflow && isNewTask
+							? `/${selectedWorkflow}\n${inputValue}`
+							: inputValue
 					handleSendMessage(text, selectedImages)
 					// test-agent_change end
 				}}
@@ -1911,6 +1915,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				isSpecMode={isSpecWorkflow} // test-agent_change
 				selectedWorkflow={isSpecWorkflow ? selectedWorkflow : ""} // test-agent_change
 				onWorkflowChange={setSelectedWorkflow} // test-agent_change
+				messagesLength={messages.length} // test-agent_change
 				sendMessageOnEnter={sendMessageOnEnter} // kilocode_change
 				showBrowserDockToggle={showBrowserDockToggle}
 			/>

@@ -1,5 +1,5 @@
 // test-agent_change - new file
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { SelectDropdown, DropdownOptionType } from "@/components/ui"
 import { getBasename } from "@/utils/kilocode/path-webview"
 import { ClineRulesToggles } from "@roo/cline-rules"
@@ -12,7 +12,7 @@ interface WorkflowSelectorProps {
 	onChange: (value: string) => void
 }
 
-const NO_WORKFLOW = "__none__"
+const NO_WORKFLOW_PLACEHOLDER = "__no_workflow__"
 
 export const WorkflowSelector = ({ localWorkflows, globalWorkflows, value, onChange }: WorkflowSelectorProps) => {
 	const options = useMemo(() => {
@@ -24,25 +24,38 @@ export const WorkflowSelector = ({ localWorkflows, globalWorkflows, value, onCha
 			.filter(([, enabled]) => enabled)
 			.map(([path]) => ({ value: getBasename(path), label: getBasename(path), type: DropdownOptionType.ITEM }))
 
-		const allWorkflows = [...enabledLocal, ...enabledGlobal]
+		const workflows = [...enabledLocal, ...enabledGlobal]
 
-		if (allWorkflows.length === 0) return []
+		// If no workflows, show placeholder
+		if (workflows.length === 0) {
+			return [
+				{
+					value: NO_WORKFLOW_PLACEHOLDER,
+					label: "无可用工作流",
+					type: DropdownOptionType.ITEM,
+				},
+			]
+		}
 
-		return [
-			{ value: NO_WORKFLOW, label: "Workflow", disabled: false, type: DropdownOptionType.ITEM },
-			{ value: "sep", label: "", type: DropdownOptionType.SEPARATOR },
-			...allWorkflows,
-		]
+		return workflows
 	}, [localWorkflows, globalWorkflows])
 
-	if (options.length === 0) return null
+	// Auto-select the first workflow when options load and nothing is selected
+	useEffect(() => {
+		if (options.length > 0 && !value && options[0].value !== NO_WORKFLOW_PLACEHOLDER) {
+			onChange(options[0].value)
+		}
+	}, [options, value, onChange])
+
+	const hasWorkflows = options.length > 0 && options[0].value !== NO_WORKFLOW_PLACEHOLDER
 
 	return (
 		<SelectDropdown
-			value={value || NO_WORKFLOW}
-			title="Select workflow"
+			value={hasWorkflows ? value || options[0]?.value || "" : NO_WORKFLOW_PLACEHOLDER}
+			title={hasWorkflows ? "选择工作流" : "请先添加工作流"}
 			options={options}
-			onChange={(v) => onChange(v === NO_WORKFLOW ? "" : v)}
+			onChange={onChange}
+			disabled={!hasWorkflows}
 			triggerClassName={cn(
 				"bg-[var(--background)] border-[var(--vscode-input-border)] hover:bg-[var(--color-vscode-list-hoverBackground)]",
 			)}

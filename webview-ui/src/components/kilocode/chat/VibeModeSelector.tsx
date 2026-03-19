@@ -12,7 +12,7 @@ interface VibeModeProps {
 	onWorkflowChange?: (isSpec: boolean) => void // test-agent_change: notify parent of workflow type
 }
 
-const VIBE_DEFAULT_MODE: Mode = "code"
+const VIBE_DEFAULT_MODE: Mode = "ask"
 const SPEC_DEFAULT_MODE: Mode = "architect"
 
 export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeModeProps) => {

@@ -72,6 +72,7 @@ interface ChatTextAreaProps {
 	isSpecMode?: boolean // test-agent_change: lock mode to architect when spec workflow is selected
 	selectedWorkflow?: string // test-agent_change: selected workflow for spec mode
 	onWorkflowChange?: (workflow: string) => void // test-agent_change
+	messagesLength?: number // test-agent_change: used to hide workflow selector after task starts
 	// Edit mode props
 	isEditMode?: boolean
 	onCancel?: () => void
@@ -147,6 +148,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			isSpecMode = false, // test-agent_change
 			selectedWorkflow = "", // test-agent_change
 			onWorkflowChange, // test-agent_change
+			messagesLength = 0, // test-agent_change
 			isEditMode = false,
 			onCancel,
 			sendMessageOnEnter = true,
@@ -828,6 +830,12 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 				if (shouldSendMessage) {
 					event.preventDefault()
 
+					// test-agent_change start: block send in spec mode when no workflow available
+					if (isSpecMode && !selectedWorkflow) {
+						return
+					}
+					// test-agent_change end
+
 					const trimmedInput = inputValue.trim()
 
 					const preventFlow = handleSessionCommand(trimmedInput, setInputValue)
@@ -899,6 +907,8 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 				slashCommandsQuery,
 				handleAutocompleteTextKeyDown, // kilocode_change: FIM autocomplete
 				// kilocode_change end
+				isSpecMode, // test-agent_change
+				selectedWorkflow, // test-agent_change
 				onSend,
 				showContextMenu,
 				searchQuery,
@@ -1808,7 +1818,11 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					)}
 					{/* kilocode_change end */}
 
-					{inputValue.trim() !== "" && (
+					{/* test-agent_change start: in spec mode, require both workflow selected and non-empty input */}
+					{isSpecMode && inputValue.trim() !== "" && !selectedWorkflow && (
+						<span className="text-xs text-vscode-errorForeground px-1 shrink-0">请添加工作流</span>
+					)}
+					{(isSpecMode ? selectedWorkflow && inputValue.trim() !== "" : inputValue.trim() !== "") && (
 						<StandardTooltip content={t("chat:sendMessage")}>
 							<button
 								aria-label={t("chat:sendMessage")}
@@ -1832,7 +1846,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							</button>
 						</StandardTooltip>
 					)}
-					{/* kilocode_change end */}
+					{/* test-agent_change end */}
 				</div>
 
 				{!inputValue && (
@@ -1975,7 +1989,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 										{/* kilocode_change end */}
 									</div>
 								)}
-								{isSpecMode && (
+								{isSpecMode && messagesLength === 0 && (
 									<div className="shrink-0 max-w-[160px]">
 										<WorkflowSelector
 											localWorkflows={localWorkflows}
