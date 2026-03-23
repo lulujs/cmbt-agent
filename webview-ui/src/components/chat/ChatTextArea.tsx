@@ -1966,7 +1966,7 @@ export const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 						<div
 							// kilocode_change start
 							style={{
-								marginTop: "-38px",
+								marginTop: isSpecMode && messagesLength > 0 ? "-13px" : "-38px",
 								zIndex: 10,
 								paddingLeft: "8px",
 								paddingRight: "8px",
