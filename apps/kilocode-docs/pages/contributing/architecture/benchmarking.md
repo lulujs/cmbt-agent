@@ -1,16 +1,16 @@
 ---
 title: "Benchmarking"
-description: "Design for benchmarking Kilo Code against models and other agents"
+description: "Design for benchmarking Test Agent against models and other agents"
 ---
 
 # Benchmarking
 
 ## Summary
 
-This document proposes a benchmarking system for Kilo Code with two primary goals:
+This document proposes a benchmarking system for Test Agent with two primary goals:
 
 1. **Compare models against one another** using the same agent -- measuring task completion, token cost, and total time
-2. **Compare agents against one another** using the same model -- e.g., Kilo Code vs Claude Code, or Kilo Code v1.0 vs v1.1
+2. **Compare agents against one another** using the same model -- e.g., Test Agent vs Claude Code, or Test Agent v1.0 vs v1.1
 
 The design leverages existing open source infrastructure rather than building a custom harness:
 
@@ -18,7 +18,7 @@ The design leverages existing open source infrastructure rather than building a 
 - **[ATIF](https://harborframework.com/docs/agents/trajectory-format)** (Agent Trajectory Interchange Format) for structured, per-step trace logging
 - **[Opik](https://www.comet.com/docs/opik)** for trace ingestion, step-level LLM judge evaluation, and root cause analysis
 
-The key engineering deliverable is a **Kilo Code Harbor adapter** that runs Kilo CLI autonomously in containerized environments and emits ATIF-compliant trajectories.
+The key engineering deliverable is a **Test Agent Harbor adapter** that runs Kilo CLI autonomously in containerized environments and emits ATIF-compliant trajectories.
 
 {% callout type="info" %}
 This is separate from [production observability](/docs/contributing/architecture/agent-observability), which monitors real user sessions via PostHog. Benchmarking is an offline evaluation system for comparing quality, cost, and performance across models and agents.
@@ -26,18 +26,18 @@ This is separate from [production observability](/docs/contributing/architecture
 
 ## Problem Statement
 
-As Kilo Code evolves, we need systematic answers to questions like:
+As Test Agent evolves, we need systematic answers to questions like:
 
 - Did our latest release make the agent better or worse?
 - Which model gives the best results for our users at a given price point?
-- How does Kilo Code compare to Claude Code, Codex, or other agents on the same tasks?
+- How does Test Agent compare to Claude Code, Codex, or other agents on the same tasks?
 - When a benchmark score drops, what specific step or decision caused the regression?
 
 Today we have no structured way to answer these questions. Manual testing is not reproducible, and our existing PostHog telemetry does not capture the turn-by-turn detail needed for easy comparative analysis.
 
 ## Goals
 
-1. Run Kilo Code against standardized benchmark datasets in a reproducible, containerized environment
+1. Run Test Agent against standardized benchmark datasets in a reproducible, containerized environment
 2. Compare model performance (same agent, different models) on task completion, token cost, and wall-clock time
 3. Compare agent performance (same model, different agents or Kilo versions) on the same metrics
 4. Capture detailed per-step traces for root cause analysis when results differ
@@ -107,7 +107,7 @@ Today we have no structured way to answer these questions. Manual testing is not
 - **Cloud scaling** via Daytona, Modal, and E2B for running trials in parallel
 - **Automatic ATIF trajectory generation** for all integrated agents
 
-Harbor is the standard evaluation framework used by many frontier labs. Rather than building our own harness, we write a Kilo Code adapter and plug into the existing ecosystem.
+Harbor is the standard evaluation framework used by many frontier labs. Rather than building our own harness, we write a Test Agent adapter and plug into the existing ecosystem.
 
 ### ATIF (Agent Trajectory Interchange Format)
 
@@ -164,13 +164,13 @@ Creating a custom Harbor task set is straightforward. Each task consists of:
 3. **A verification script** (tests that determine pass/fail)
 4. **Optionally, a reference solution**
 
-This makes it easy to create task sets that target specific Kilo Code capabilities -- for example, a set of refactoring tasks, or a set of multi-file debugging scenarios. Custom sets can be published to the Harbor registry or kept private.
+This makes it easy to create task sets that target specific Test Agent capabilities -- for example, a set of refactoring tasks, or a set of multi-file debugging scenarios. Custom sets can be published to the Harbor registry or kept private.
 
 See the [Harbor task tutorial](https://www.tbench.ai/docs/task-tutorial) for a step-by-step guide.
 
 ## Deliverables
 
-### 1. Kilo Code Harbor Adapter
+### 1. Test Agent Harbor Adapter
 
 The primary engineering deliverable. This adapter:
 
@@ -200,9 +200,9 @@ This enables the team to create targeted benchmarks for marketing, regression te
 
 ### 3. Opik Integration
 
-Configure the Opik-Harbor integration for Kilo Code benchmark runs:
+Configure the Opik-Harbor integration for Test Agent benchmark runs:
 
-- Set up `opik harbor run` with the Kilo Code adapter
+- Set up `opik harbor run` with the Test Agent adapter
 - Define standard LLM judge criteria for step-level evaluation:
     - **Tool choice correctness**: Did the agent use the right tool at each step?
     - **Reasoning quality**: Was the agent's reasoning at each step sound?
@@ -225,7 +225,7 @@ Run a small subset of benchmark tasks (10-15) on release branches to catch regre
 
 ### Comparing Models
 
-Run the same Kilo Code agent against Terminal-Bench with different models:
+Run the same Test Agent agent against Terminal-Bench with different models:
 
 ```bash
 # Run with Claude Opus
@@ -245,7 +245,7 @@ Compare results in tbench.ai for aggregate scores and in Opik for step-level ana
 Run different agents against the same dataset with the same model:
 
 ```bash
-# Run Kilo Code
+# Run Test Agent
 opik harbor run -d terminal-bench@2.0 -a kilo -m anthropic/claude-opus-4
 
 # Run Claude Code

@@ -1,5 +1,5 @@
 {
-	"greeting": "Cosa può fare Kilo Code per te?",
+	"greeting": "Cosa può fare Test Agent per te?",
 	"task": {
 		"title": "Attività",
 		"expand": "Espandi attività",
@@ -22,7 +22,7 @@
 		"sharePublicly": "Condividi pubblicamente",
 		"sharePubliclyDescription": "Chiunque con il link può accedere",
 		"connectToCloud": "Connetti al Cloud",
-		"connectToCloudDescription": "Accedi a Kilo Code Cloud per condividere attività",
+		"connectToCloudDescription": "Accedi a Test Agent Cloud per condividere attività",
 		"sharingDisabledByOrganization": "Condivisione disabilitata dall'organizzazione",
 		"shareSuccessOrganization": "Link organizzazione copiato negli appunti",
 		"shareSuccessPublic": "Link pubblico copiato negli appunti",
@@ -130,7 +130,7 @@
 		"title": "Modalità",
 		"marketplace": "Marketplace delle Modalità",
 		"settings": "Impostazioni Modalità",
-		"description": "Personalità specializzate che adattano il comportamento di Kilo Code.",
+		"description": "Personalità specializzate che adattano il comportamento di Test Agent.",
 		"searchPlaceholder": "Cerca modalità...",
 		"noResults": "Nessun risultato trovato",
 		"organizationModes": "Modalità dell'organizzazione"
@@ -142,13 +142,13 @@
 	"forNextMode": "per la prossima modalità",
 	"forPreviousMode": "per la modalità precedente",
 	"instructions": {
-		"wantsToFetch": "Kilo Code vuole recuperare istruzioni dettagliate per aiutare con l'attività corrente"
+		"wantsToFetch": "Test Agent vuole recuperare istruzioni dettagliate per aiutare con l'attività corrente"
 	},
 	"error": "Errore",
 	"diffError": {
 		"title": "Modifica non riuscita"
 	},
-	"troubleMessage": "Kilo Code sta avendo problemi...",
+	"troubleMessage": "Test Agent sta avendo problemi...",
 	"apiRequest": {
 		"title": "Richiesta API",
 		"failed": "Richiesta API fallita",
@@ -191,45 +191,45 @@
 		"current": "Corrente"
 	},
 	"fileOperations": {
-		"wantsToRead": "Kilo Code vuole leggere questo file",
-		"wantsToReadOutsideWorkspace": "Kilo Code vuole leggere questo file al di fuori dell'area di lavoro",
-		"didRead": "Kilo Code ha letto questo file",
-		"wantsToEdit": "Kilo Code vuole modificare questo file",
-		"wantsToEditOutsideWorkspace": "Kilo Code vuole modificare questo file al di fuori dell'area di lavoro",
-		"wantsToEditProtected": "Kilo Code vuole modificare un file di configurazione protetto",
-		"wantsToCreate": "Kilo Code vuole creare un nuovo file",
-		"wantsToSearchReplace": "Kilo Code vuole eseguire ricerca e sostituzione in questo file",
-		"didSearchReplace": "Kilo Code ha eseguito ricerca e sostituzione in questo file",
-		"wantsToInsert": "Kilo Code vuole inserire contenuto in questo file",
-		"wantsToInsertWithLineNumber": "Kilo Code vuole inserire contenuto in questo file alla riga {{lineNumber}}",
-		"wantsToInsertAtEnd": "Kilo Code vuole aggiungere contenuto alla fine di questo file",
-		"wantsToReadAndXMore": "Kilo Code vuole leggere questo file e altri {{count}}",
-		"wantsToReadMultiple": "Kilo Code vuole leggere più file",
-		"wantsToApplyBatchChanges": "Kilo Code vuole applicare modifiche a più file",
-		"wantsToGenerateImage": "Kilo Code vuole generare un'immagine",
-		"wantsToGenerateImageOutsideWorkspace": "Kilo Code vuole generare un'immagine fuori dall'area di lavoro",
-		"wantsToGenerateImageProtected": "Kilo Code vuole generare un'immagine in una posizione protetta",
-		"didGenerateImage": "Kilo Code ha generato un'immagine",
-		"wantsToDelete": "Kilo Code vuole eliminare questo file",
-		"wantsToDeleteDirectory": "Kilo Code vuole eliminare questa directory"
+		"wantsToRead": "Test Agent vuole leggere questo file",
+		"wantsToReadOutsideWorkspace": "Test Agent vuole leggere questo file al di fuori dell'area di lavoro",
+		"didRead": "Test Agent ha letto questo file",
+		"wantsToEdit": "Test Agent vuole modificare questo file",
+		"wantsToEditOutsideWorkspace": "Test Agent vuole modificare questo file al di fuori dell'area di lavoro",
+		"wantsToEditProtected": "Test Agent vuole modificare un file di configurazione protetto",
+		"wantsToCreate": "Test Agent vuole creare un nuovo file",
+		"wantsToSearchReplace": "Test Agent vuole eseguire ricerca e sostituzione in questo file",
+		"didSearchReplace": "Test Agent ha eseguito ricerca e sostituzione in questo file",
+		"wantsToInsert": "Test Agent vuole inserire contenuto in questo file",
+		"wantsToInsertWithLineNumber": "Test Agent vuole inserire contenuto in questo file alla riga {{lineNumber}}",
+		"wantsToInsertAtEnd": "Test Agent vuole aggiungere contenuto alla fine di questo file",
+		"wantsToReadAndXMore": "Test Agent vuole leggere questo file e altri {{count}}",
+		"wantsToReadMultiple": "Test Agent vuole leggere più file",
+		"wantsToApplyBatchChanges": "Test Agent vuole applicare modifiche a più file",
+		"wantsToGenerateImage": "Test Agent vuole generare un'immagine",
+		"wantsToGenerateImageOutsideWorkspace": "Test Agent vuole generare un'immagine fuori dall'area di lavoro",
+		"wantsToGenerateImageProtected": "Test Agent vuole generare un'immagine in una posizione protetta",
+		"didGenerateImage": "Test Agent ha generato un'immagine",
+		"wantsToDelete": "Test Agent vuole eliminare questo file",
+		"wantsToDeleteDirectory": "Test Agent vuole eliminare questa directory"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Kilo Code vuole visualizzare i file di primo livello in questa directory",
-		"didViewTopLevel": "Kilo Code ha visualizzato i file di primo livello in questa directory",
-		"wantsToViewRecursive": "Kilo Code vuole visualizzare ricorsivamente tutti i file in questa directory",
-		"didViewRecursive": "Kilo Code ha visualizzato ricorsivamente tutti i file in questa directory",
-		"wantsToViewDefinitions": "Kilo Code vuole visualizzare i nomi delle definizioni di codice sorgente utilizzate in questa directory",
-		"didViewDefinitions": "Kilo Code ha visualizzato i nomi delle definizioni di codice sorgente utilizzate in questa directory",
-		"wantsToSearch": "Kilo Code vuole cercare in questa directory <code>{{regex}}</code>",
-		"didSearch": "Kilo Code ha cercato in questa directory <code>{{regex}}</code>",
-		"wantsToSearchOutsideWorkspace": "Kilo Code vuole cercare in questa directory (fuori dall'area di lavoro) <code>{{regex}}</code>",
-		"didSearchOutsideWorkspace": "Kilo Code ha cercato in questa directory (fuori dall'area di lavoro) <code>{{regex}}</code>",
-		"wantsToViewTopLevelOutsideWorkspace": "Kilo Code vuole visualizzare i file di primo livello in questa directory (fuori dall'area di lavoro)",
-		"didViewTopLevelOutsideWorkspace": "Kilo Code ha visualizzato i file di primo livello in questa directory (fuori dall'area di lavoro)",
-		"wantsToViewRecursiveOutsideWorkspace": "Kilo Code vuole visualizzare ricorsivamente tutti i file in questa directory (fuori dall'area di lavoro)",
-		"didViewRecursiveOutsideWorkspace": "Kilo Code ha visualizzato ricorsivamente tutti i file in questa directory (fuori dall'area di lavoro)",
-		"wantsToViewDefinitionsOutsideWorkspace": "Kilo Code vuole visualizzare i nomi delle definizioni di codice sorgente utilizzate in questa directory (fuori dall'area di lavoro)",
-		"didViewDefinitionsOutsideWorkspace": "Kilo Code ha visualizzato i nomi delle definizioni di codice sorgente utilizzate in questa directory (fuori dall'area di lavoro)"
+		"wantsToViewTopLevel": "Test Agent vuole visualizzare i file di primo livello in questa directory",
+		"didViewTopLevel": "Test Agent ha visualizzato i file di primo livello in questa directory",
+		"wantsToViewRecursive": "Test Agent vuole visualizzare ricorsivamente tutti i file in questa directory",
+		"didViewRecursive": "Test Agent ha visualizzato ricorsivamente tutti i file in questa directory",
+		"wantsToViewDefinitions": "Test Agent vuole visualizzare i nomi delle definizioni di codice sorgente utilizzate in questa directory",
+		"didViewDefinitions": "Test Agent ha visualizzato i nomi delle definizioni di codice sorgente utilizzate in questa directory",
+		"wantsToSearch": "Test Agent vuole cercare in questa directory <code>{{regex}}</code>",
+		"didSearch": "Test Agent ha cercato in questa directory <code>{{regex}}</code>",
+		"wantsToSearchOutsideWorkspace": "Test Agent vuole cercare in questa directory (fuori dall'area di lavoro) <code>{{regex}}</code>",
+		"didSearchOutsideWorkspace": "Test Agent ha cercato in questa directory (fuori dall'area di lavoro) <code>{{regex}}</code>",
+		"wantsToViewTopLevelOutsideWorkspace": "Test Agent vuole visualizzare i file di primo livello in questa directory (fuori dall'area di lavoro)",
+		"didViewTopLevelOutsideWorkspace": "Test Agent ha visualizzato i file di primo livello in questa directory (fuori dall'area di lavoro)",
+		"wantsToViewRecursiveOutsideWorkspace": "Test Agent vuole visualizzare ricorsivamente tutti i file in questa directory (fuori dall'area di lavoro)",
+		"didViewRecursiveOutsideWorkspace": "Test Agent ha visualizzato ricorsivamente tutti i file in questa directory (fuori dall'area di lavoro)",
+		"wantsToViewDefinitionsOutsideWorkspace": "Test Agent vuole visualizzare i nomi delle definizioni di codice sorgente utilizzate in questa directory (fuori dall'area di lavoro)",
+		"didViewDefinitionsOutsideWorkspace": "Test Agent ha visualizzato i nomi delle definizioni di codice sorgente utilizzate in questa directory (fuori dall'area di lavoro)"
 	},
 	"commandOutput": "Output del Comando",
 	"commandExecution": {
@@ -257,18 +257,18 @@
 		"youSaid": "Hai detto"
 	},
 	"mcp": {
-		"wantsToUseTool": "Kilo Code vuole utilizzare uno strumento sul server MCP {{serverName}}",
-		"wantsToAccessResource": "Kilo Code vuole accedere a una risorsa sul server MCP {{serverName}}"
+		"wantsToUseTool": "Test Agent vuole utilizzare uno strumento sul server MCP {{serverName}}",
+		"wantsToAccessResource": "Test Agent vuole accedere a una risorsa sul server MCP {{serverName}}"
 	},
 	"modes": {
-		"wantsToSwitch": "Kilo Code vuole passare alla modalità <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Kilo Code vuole passare alla modalità <code>{{mode}}</code> perché: {{reason}}",
-		"didSwitch": "Kilo Code è passato alla modalità <code>{{mode}}</code>",
-		"didSwitchWithReason": "Kilo Code è passato alla modalità <code>{{mode}}</code> perché: {{reason}}"
+		"wantsToSwitch": "Test Agent vuole passare alla modalità <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Test Agent vuole passare alla modalità <code>{{mode}}</code> perché: {{reason}}",
+		"didSwitch": "Test Agent è passato alla modalità <code>{{mode}}</code>",
+		"didSwitchWithReason": "Test Agent è passato alla modalità <code>{{mode}}</code> perché: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code vuole creare una nuova sottoattività in modalità <code>{{mode}}</code>",
-		"wantsToFinish": "Kilo Code vuole completare questa sottoattività",
+		"wantsToCreate": "Test Agent vuole creare una nuova sottoattività in modalità <code>{{mode}}</code>",
+		"wantsToFinish": "Test Agent vuole completare questa sottoattività",
 		"newTaskContent": "Istruzioni sottoattività",
 		"completionContent": "Sottoattività completata",
 		"resultContent": "Risultati sottoattività",
@@ -371,7 +371,7 @@
 	"browser": {
 		"session": "Sessione del browser",
 		"active": "Attivo",
-		"rooWantsToUse": "Kilo Code vuole utilizzare il browser",
+		"rooWantsToUse": "Test Agent vuole utilizzare il browser",
 		"consoleLogs": "Log della console",
 		"noNewLogs": "(Nessun nuovo log)",
 		"screenshot": "Screenshot del browser",
@@ -419,24 +419,24 @@
 	"profileViolationWarning": "Il profilo corrente non è compatibile con le impostazioni della tua organizzazione",
 	"shellIntegration": {
 		"title": "Avviso di esecuzione comando",
-		"description": "Il tuo comando viene eseguito senza l'integrazione shell del terminale VSCode. Per sopprimere questo avviso puoi disattivare l'integrazione shell nella sezione <strong>Terminal</strong> delle <settingsLink>impostazioni di Kilo Code</settingsLink> o risolvere i problemi di integrazione del terminale VSCode utilizzando il link qui sotto.",
+		"description": "Il tuo comando viene eseguito senza l'integrazione shell del terminale VSCode. Per sopprimere questo avviso puoi disattivare l'integrazione shell nella sezione <strong>Terminal</strong> delle <settingsLink>impostazioni di Test Agent</settingsLink> o risolvere i problemi di integrazione del terminale VSCode utilizzando il link qui sotto.",
 		"troubleshooting": "Clicca qui per la documentazione sull'integrazione shell."
 	},
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Limite di Richieste Auto-approvate Raggiunto",
-			"description": "Kilo Code ha raggiunto il limite auto-approvato di {{count}} richiesta/e API. Vuoi reimpostare il contatore e procedere con l'attività?",
+			"description": "Test Agent ha raggiunto il limite auto-approvato di {{count}} richiesta/e API. Vuoi reimpostare il contatore e procedere con l'attività?",
 			"button": "Reimposta e Continua"
 		},
 		"autoApprovedCostLimitReached": {
 			"title": "Limite di costo auto-approvato raggiunto",
 			"button": "Reimposta e Continua",
-			"description": "Kilo Code ha raggiunto il limite di costo approvato automaticamente di ${{count}}. Vuoi reimpostare il costo e procedere con l'attività?"
+			"description": "Test Agent ha raggiunto il limite di costo approvato automaticamente di ${{count}}. Vuoi reimpostare il costo e procedere con l'attività?"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Kilo Code vuole cercare nella base di codice <code>{{query}}</code>",
-		"wantsToSearchWithPath": "Kilo Code vuole cercare nella base di codice <code>{{query}}</code> in <code>{{path}}</code>",
+		"wantsToSearch": "Test Agent vuole cercare nella base di codice <code>{{query}}</code>",
+		"wantsToSearchWithPath": "Test Agent vuole cercare nella base di codice <code>{{query}}</code> in <code>{{path}}</code>",
 		"didSearch_one": "Trovato 1 risultato",
 		"didSearch_other": "Trovati {{count}} risultati",
 		"resultTooltip": "Punteggio di somiglianza: {{score}} (clicca per aprire il file)"
@@ -501,8 +501,8 @@
 		"clickToEdit": "Clicca per modificare il messaggio"
 	},
 	"slashCommand": {
-		"wantsToRun": "Kilo Code vuole eseguire un comando slash",
-		"didRun": "Kilo Code ha eseguito un comando slash"
+		"wantsToRun": "Test Agent vuole eseguire un comando slash",
+		"didRun": "Test Agent ha eseguito un comando slash"
 	},
 	"todo": {
 		"partial": "{{completed}} di {{total}} cose da fare completate",

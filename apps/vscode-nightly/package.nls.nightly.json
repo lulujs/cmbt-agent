@@ -1,7 +1,7 @@
 {
-	"extension.displayName": "Kilo Code Nightly",
-	"views.contextMenu.label": "Kilo Code Nightly",
-	"views.terminalMenu.label": "Kilo Code Nightly",
-	"views.activitybar.title": "Kilo Code Nightly",
-	"configuration.title": "Kilo Code Nightly"
+	"extension.displayName": "Test Agent Nightly",
+	"views.contextMenu.label": "Test Agent Nightly",
+	"views.terminalMenu.label": "Test Agent Nightly",
+	"views.activitybar.title": "Test Agent Nightly",
+	"configuration.title": "Test Agent Nightly"
 }

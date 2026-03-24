@@ -22,7 +22,7 @@ async function showMacOSNotification(options: NotificationOptions): Promise<void
 		}
 		args.push("-sound", "Tink")
 
-		// Add Kilo Code logo
+		// Add Test Agent logo
 		const extensionUri = vscode.extensions.getExtension(`kilocode.kilo-code`)!.extensionUri
 		const iconPath = vscode.Uri.joinPath(extensionUri, "assets", "icons", "kilo.png").fsPath
 		args.push("-appIcon", iconPath)

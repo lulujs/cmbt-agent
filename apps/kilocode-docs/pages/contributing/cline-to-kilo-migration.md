@@ -1,11 +1,11 @@
 ---
 title: "Cline to Kilo: Contributor Migration Guide"
-description: "A guide for Cline contributors who want to start contributing to Kilo Code"
+description: "A guide for Cline contributors who want to start contributing to Test Agent"
 ---
 
 # Cline to Kilo: Contributor Migration Guide
 
-If you've been contributing to Cline and you're ready to bring those skills over to Kilo Code, you're in the right place. This guide will walk you through what's different, what's the same, and how to get up and running as a Kilo contributor.
+If you've been contributing to Cline and you're ready to bring those skills over to Test Agent, you're in the right place. This guide will walk you through what's different, what's the same, and how to get up and running as a Kilo contributor.
 
 The good news: if you've been contributing to Cline, you already have most of the skills you need. The workflows are similar, but there are some differences worth knowing about before you dive in.
 

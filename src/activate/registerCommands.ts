@@ -26,7 +26,7 @@ import { AgentManagerProvider } from "../core/kilocode/agent-manager/AgentManage
 export function getVisibleProviderOrLog(outputChannel: vscode.OutputChannel): ClineProvider | undefined {
 	const visibleProvider = ClineProvider.getVisibleInstance()
 	if (!visibleProvider) {
-		outputChannel.appendLine("Cannot find any visible Kilo Code instances.")
+		outputChannel.appendLine("Cannot find any visible Test Agent instances.")
 		return undefined
 	}
 	return visibleProvider

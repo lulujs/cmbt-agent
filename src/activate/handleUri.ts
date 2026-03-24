@@ -12,7 +12,7 @@ export const handleUri = async (uri: vscode.Uri) => {
 	// kilocode_change start: Handle /kilocode/chat path specially - it needs to open the extension first
 	// before we can get a provider instance
 	if (path === "/kilocode/chat") {
-		// Focus the sidebar first to open the Kilo Code extension
+		// Focus the sidebar first to open the Test Agent extension
 		await vscode.commands.executeCommand(`${Package.name}.SidebarProvider.focus`)
 		// Use getInstance() which waits for the provider to become visible after focusing
 		const provider = await ClineProvider.getInstance()

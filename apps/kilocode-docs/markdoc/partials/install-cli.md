@@ -1,4 +1,4 @@
-Use Kilo Code directly from your terminal for maximum flexibility.
+Use Test Agent directly from your terminal for maximum flexibility.
 
 ### Install via npm
 

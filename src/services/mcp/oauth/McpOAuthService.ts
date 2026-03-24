@@ -454,7 +454,7 @@ export class McpOAuthService {
 
 		// Client metadata according to RFC 7591
 		const clientMetadata = {
-			client_name: "Kilo Code",
+			client_name: "Test Agent",
 			client_uri: "https://kilocode.ai",
 			logo_uri: "https://kilocode.ai/logo.png",
 			redirect_uris: redirectUris,

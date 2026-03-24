@@ -6,7 +6,7 @@ export default function Custom404() {
 	return (
 		<>
 			<Head>
-				<title>404 - Page Not Found | Kilo Code Documentation</title>
+				<title>404 - Page Not Found | Test Agent Documentation</title>
 				<meta name="description" content="The requested page could not be found." />
 			</Head>
 			<div className="not-found-page">

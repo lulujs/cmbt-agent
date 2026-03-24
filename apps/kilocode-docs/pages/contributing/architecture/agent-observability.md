@@ -3,11 +3,11 @@ title: "Agent Observability"
 description: "Observability and monitoring for agentic coding systems"
 ---
 
-# Kilo Code - Agent Observability
+# Test Agent - Agent Observability
 
 ## Problem Statement
 
-Agentic coding systems like Kilo Code operate with significant autonomy, executing multi-step tasks that involve LLM inference, tool execution, file manipulation, and external API calls. These systems mix traditional systems observability (i.e. request/response) with agentic behavior (i.e. planning, reasoning, and tool use).
+Agentic coding systems like Test Agent operate with significant autonomy, executing multi-step tasks that involve LLM inference, tool execution, file manipulation, and external API calls. These systems mix traditional systems observability (i.e. request/response) with agentic behavior (i.e. planning, reasoning, and tool use).
 
 At the lower level, we can observe the system as a traditional API, but at the higher level, we need to observe the agent's behavior and the quality of its outputs.
 

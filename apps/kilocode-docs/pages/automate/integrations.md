@@ -1,15 +1,15 @@
 ---
 title: "Integrations"
-description: "Overview of Kilo Code integrations"
+description: "Overview of Test Agent integrations"
 ---
 
-# Kilo Code Integrations
+# Test Agent Integrations
 
-Kilo Integrations lets you connect your GitHub account (and soon, GitLab and Bitbucket) to enable advanced features inside Kilo Code. Once connected, Kilo can access your repositories securely through the **KiloConnect** GitHub App, enabling features like **Cloud Agents** and **Kilo Deploy**.
+Kilo Integrations lets you connect your GitHub account (and soon, GitLab and Bitbucket) to enable advanced features inside Test Agent. Once connected, Kilo can access your repositories securely through the **KiloConnect** GitHub App, enabling features like **Cloud Agents** and **Kilo Deploy**.
 
 ## What You Can Do With Integrations
 
-- **Connect GitHub to Kilo Code** in a few clicks
+- **Connect GitHub to Test Agent** in a few clicks
 - **Authorize the KiloConnect App** for repo access
 - **Enable advanced features** like Cloud Agents and Kilo Deploy
 
@@ -56,7 +56,7 @@ Once GitHub is connected, the following features will be enabled in Kilo:
 
 ### Cloud Agents
 
-- Run Kilo Code in the cloud from any device
+- Run Test Agent in the cloud from any device
 - Auto-create branches and push work continuously
 - Work from anywhere while keeping your repo in sync
 

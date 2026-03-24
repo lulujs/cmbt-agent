@@ -2,7 +2,7 @@
 sidebar_label: OVHcloud AI Endpoints
 ---
 
-# Using OVHcloud AI Endpoints with Kilo Code
+# Using OVHcloud AI Endpoints with Test Agent
 
 OVHcloud is a French leading Cloud provider in Europe with data sovereignty and privacy.
 
@@ -22,9 +22,9 @@ You can report any bugs or feedbacks by chatting with us in our [Discord server]
 2.  **Navigate to Public Cloud:** Go to the Public Cloud section, and create a new project. Navigate to AI Endpoints in the _AI & Machine Learning_ section.
 3.  **Create a Key:** Click to _API keys_ and create a new key.
 
-## Configuration in Kilo Code
+## Configuration in Test Agent
 
-1.  **Open Kilo Code Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Kilo Code panel.
+1.  **Open Test Agent Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Test Agent panel.
 2.  **Select Provider:** Choose "OVHcloud AI Endpoints" from the "API Provider" dropdown.
 3.  **Enter API Key:** Paste your AI Endpoints API key into the "OVHcloud AI Endpoints API Key" field.
 4.  **Select Model:** Choose your desired model from the "Model" dropdown.

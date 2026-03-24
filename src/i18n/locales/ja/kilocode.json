@@ -52,7 +52,7 @@
 		}
 	},
 	"commitMessage": {
-		"activated": "Kilo Code コミットメッセージジェネレーターがアクティブになりました",
+		"activated": "Test Agent コミットメッセージジェネレーターがアクティブになりました",
 		"gitNotFound": "⚠️ Git リポジトリが見つからないか、git が利用できません",
 		"gitInitError": "⚠️ Git 初期化エラー: {{error}}",
 		"generating": "Kilo: コミットメッセージを生成中...",
@@ -103,8 +103,8 @@
 			"snoozed": "一時停止中",
 			"warning": "$(warning) Autocomplete",
 			"tooltip": {
-				"basic": "Kilo Code Autocomplete",
-				"disabled": "Kilo Code Autocomplete（無効）",
+				"basic": "Test Agent Autocomplete",
+				"disabled": "Test Agent Autocomplete（無効）",
 				"noCredits": "**アカウントにクレジットがありません**\n\nKilo Code アカウントにクレジットがありません。オートコンプリートを使用するには、アカウントにクレジットを追加してください。\n\n[設定を開く](command:kilo-code.settingsButtonClicked)",
 				"noUsableProvider": "**オートコンプリートモデルが設定されていません**\n\nオートコンプリートを有効にするには、これらのサポートされているプロバイダーのいずれかでプロファイルを追加してください: {{providers}}。\n\n[設定を開く](command:kilo-code.settingsButtonClicked)",
 				"sessionTotal": "セッション合計コスト:",
@@ -120,36 +120,36 @@
 				"lessThanCent": "<$0.01"
 			}
 		},
-		"toggleMessage": "Kilo Code Autocomplete {{status}}",
+		"toggleMessage": "Test Agent Autocomplete {{status}}",
 		"progress": {
-			"title": "Kilo Code",
+			"title": "Test Agent",
 			"analyzing": "コードを分析中...",
 			"generating": "編集提案を生成中...",
 			"processing": "編集提案を処理中...",
 			"showing": "編集提案を表示中..."
 		},
 		"input": {
-			"title": "Kilo Code: クイックタスク",
+			"title": "Test Agent: クイックタスク",
 			"placeholder": "例：「この関数をより効率的にリファクタリングして」"
 		},
 		"commands": {
-			"generateSuggestions": "Kilo Code: 編集提案を生成",
+			"generateSuggestions": "Test Agent: 編集提案を生成",
 			"displaySuggestions": "編集提案を表示",
 			"cancelSuggestions": "編集提案をキャンセル",
 			"applyCurrentSuggestion": "現在の編集提案を適用",
 			"applyAllSuggestions": "すべての編集提案を適用",
-			"category": "Kilo Code"
+			"category": "Test Agent"
 		},
 		"codeAction": {
-			"title": "Kilo Code: 編集提案"
+			"title": "Test Agent: 編集提案"
 		},
 		"chatParticipant": {
-			"fullName": "Kilo Code Agent",
+			"fullName": "Test Agent Agent",
 			"name": "Agent",
 			"description": "クイックタスクと編集提案でお手伝いできます。"
 		},
 		"incompatibilityExtensionPopup": {
-			"message": "Kilo Code AutocompleteがGitHub Copilotとの競合によってブロックされています。これを修正するには、Copilotのインライン提案を無効にする必要があります。",
+			"message": "Test Agent AutocompleteがGitHub Copilotとの競合によってブロックされています。これを修正するには、Copilotのインライン提案を無効にする必要があります。",
 			"disableCopilot": "Copilotを無効にする",
 			"disableInlineAssist": "Autocompleteを無効にする"
 		}

@@ -1,11 +1,11 @@
 ---
 title: "Custom Instructions"
-description: "Provide custom instructions to guide Kilo Code"
+description: "Provide custom instructions to guide Test Agent"
 ---
 
 # Custom Instructions
 
-Custom Instructions allow you to personalize how Kilo Code behaves, providing specific guidance that shapes responses, coding style, and decision-making processes.
+Custom Instructions allow you to personalize how Test Agent behaves, providing specific guidance that shapes responses, coding style, and decision-making processes.
 
 ## What Are Custom Instructions?
 
@@ -19,9 +19,9 @@ Custom Instructions are IDE-wide and are applied across all workspaces and maint
 
 **How to set them:**
 
-{% image src="/docs/img/custom-instructions/custom-instructions.png" alt="Kilo Code Modes tab showing global custom instructions interface" width="600" caption="Kilo Code Modes tab showing global custom instructions interface" /%}
+{% image src="/docs/img/custom-instructions/custom-instructions.png" alt="Test Agent Modes tab showing global custom instructions interface" width="600" caption="Test Agent Modes tab showing global custom instructions interface" /%}
 
-1.  **Open Modes Tab:** Click the <Codicon name="organization" /> icon in the Kilo Code top menu bar
+1.  **Open Modes Tab:** Click the <Codicon name="organization" /> icon in the Test Agent top menu bar
 2.  **Find Section:** Find the "Custom Instructions for All Modes" section
 3.  **Enter Instructions:** Enter your instructions in the text area
 4.  **Save Changes:** Click "Done" to save your changes
@@ -30,8 +30,8 @@ Custom Instructions are IDE-wide and are applied across all workspaces and maint
 
 Mode-specific instructions can be set using the Modes Tab
 
-    {% image src="/docs/img/custom-instructions/custom-instructions-3.png" alt="Kilo Code Modes tab showing mode-specific custom instructions interface" width="600" caption="Kilo Code Modes tab showing mode-specific custom instructions interface" /%}
-    * **Open Tab:** Click the <Codicon name="organization" /> icon in the Kilo Code top menu bar
+    {% image src="/docs/img/custom-instructions/custom-instructions-3.png" alt="Test Agent Modes tab showing mode-specific custom instructions interface" width="600" caption="Test Agent Modes tab showing mode-specific custom instructions interface" /%}
+    * **Open Tab:** Click the <Codicon name="organization" /> icon in the Test Agent top menu bar
     * **Select Mode:** Under the Modes heading, click the button for the mode you want to customize
     * **Enter Instructions:** Enter your instructions in the text area under "Mode-specific Custom Instructions (optional)"
     * **Save Changes:** Click "Done" to save your changes

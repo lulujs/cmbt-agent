@@ -4,7 +4,7 @@ title: ZenMux
 
 import Codicon from "@site/src/components/Codicon";
 
-# Using ZenMux With Kilo Code
+# Using ZenMux With Test Agent
 
 [ZenMux](https://zenmux.ai) provides a unified API gateway to access multiple AI models from different providers through a single endpoint. It supports OpenAI, Anthropic, Google, and other major AI providers, automatically handling routing, fallbacks, and cost optimization.
 
@@ -12,11 +12,11 @@ import Codicon from "@site/src/components/Codicon";
 
 1. **Sign up for ZenMux:** Visit [zenmux.ai](https://zenmux.ai) to create an account.
 2. **Get your API key:** After signing up, navigate to your dashboard to generate an API key.
-3. **Configure in Kilo Code:** Add your API key to Kilo Code settings.
+3. **Configure in Test Agent:** Add your API key to Test Agent settings.
 
-## Configuration in Kilo Code
+## Configuration in Test Agent
 
-1. **Open Kilo Code Settings:** Click the gear icon (<Codicon name="gear" />) in the Kilo Code panel.
+1. **Open Test Agent Settings:** Click the gear icon (<Codicon name="gear" />) in the Test Agent panel.
 2. **Select Provider:** Choose "ZenMux" from the "API Provider" dropdown.
 3. **Enter API Key:** Paste your ZenMux API key into the "ZenMux API Key" field.
 4. **Select Model:** Choose your desired model from the "Model" dropdown.
@@ -194,4 +194,4 @@ For additional support:
 
 - Visit the [ZenMux documentation](https://zenmux.ai/docs)
 - Contact ZenMux support through their dashboard
-- Check the [Kilo Code GitHub repository](https://github.com/kilocode/kilocode) for integration-specific issues
+- Check the [Test Agent GitHub repository](https://github.com/kilocode/kilocode) for integration-specific issues

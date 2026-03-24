@@ -1,4 +1,4 @@
-Bring Kilo Code directly into your team's Slack workspace.
+Bring Test Agent directly into your team's Slack workspace.
 
 ### Install the Slack App
 

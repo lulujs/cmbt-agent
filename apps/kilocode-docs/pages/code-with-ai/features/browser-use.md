@@ -1,20 +1,19 @@
 ---
 title: "Browser Use"
-description: "Using Kilo Code to interact with web browsers"
+description: "Using Test Agent to interact with web browsers"
 ---
 
 # Browser Use
 
-Kilo Code provides browser automation capabilities that let you interact with websites directly from your coding workflow. This feature supports testing web applications, automating browser tasks, and capturing screenshots without leaving your editor.
+Test Agent provides browser automation capabilities that let you interact with websites directly from your coding workflow. This feature supports testing web applications, automating browser tasks, and capturing screenshots without leaving your editor.
 
 {% callout type="info" title="Model Support Required" %}
 Browser Use requires an advanced agentic model. It is typically most reliable with recent high-capability models (for example Claude Sonnet 4 class models).
 {% /callout %}
 
-
 ## How Browser Use Works
 
-By default, Kilo Code uses a built-in browser that:
+By default, Test Agent uses a built-in browser that:
 
 - Launches automatically when you ask Kilo to visit a website
 - Captures screenshots of web pages
@@ -75,7 +74,7 @@ Key characteristics:
 
 To change Browser / Computer Use settings in Kilo:
 
-1. Click the gear icon {% codicon name="gear" /%} in Kilo Code
+1. Click the gear icon {% codicon name="gear" /%} in Test Agent
 2. Open `Browser / Computer Use`
 
 ### Enable/Disable Browser Use
@@ -88,7 +87,7 @@ To change this setting:
 
 ### Viewport Size
 
-**Purpose**: Determines the resolution of the browser session Kilo Code uses.
+**Purpose**: Determines the resolution of the browser session Test Agent uses.
 
 **Tradeoff**: Higher values provide a larger viewport but increase token usage.
 

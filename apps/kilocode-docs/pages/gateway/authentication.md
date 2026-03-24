@@ -91,7 +91,7 @@ BYOK lets you use your own provider API keys with the Kilo AI Gateway. When a BY
 
 ### How BYOK works
 
-1. Add your provider API key in the Kilo dashboard or through your Kilo Code extension settings
+1. Add your provider API key in the Kilo dashboard or through your Test Agent extension settings
 2. Keys are encrypted at rest using AES encryption
 3. When you make a request for a model from that provider, the gateway automatically uses your key
 4. Usage is tracked but not billed to your Kilo balance (cost is set to $0)

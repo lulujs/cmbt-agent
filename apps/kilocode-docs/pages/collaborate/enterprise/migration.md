@@ -1,6 +1,6 @@
 ---
 title: "Migration"
-description: "Migrate your team to Kilo Code Enterprise"
+description: "Migrate your team to Test Agent Enterprise"
 ---
 
 # Migration
@@ -65,9 +65,9 @@ Switch to **Kilo Teams** or **Kilo Enterprise** from other AI coding tools and e
 **Step 3: Team Migration**
 
 1. **Invite team members** to Kilo
-2. **Install Kilo Code extension** alongside Cursor initially
+2. **Install Test Agent extension** alongside Cursor initially
 3. **Migrate projects gradually** starting with non-critical work
-4. **Train team** on Kilo Code features and workflows
+4. **Train team** on Test Agent features and workflows
 
 **Step 4: Full Transition**
 
@@ -111,13 +111,13 @@ Switch to **Kilo Teams** or **Kilo Enterprise** from other AI coding tools and e
 **Phase 1: Parallel Usage (Week 1-2)**
 
 1. **Keep GitHub Copilot** active during transition
-2. **Install Kilo Code** extension for team members
-3. **Start with simple tasks** in Kilo Code
+2. **Install Test Agent** extension for team members
+3. **Start with simple tasks** in Test Agent
 4. **Compare results** and team satisfaction
 
 **Phase 2: Gradual Transition (Week 3-4)**
 
-1. **Use Kilo Code** for new projects
+1. **Use Test Agent** for new projects
 2. **Migrate existing projects** one at a time
 3. **Train team** on advanced features
 4. **Optimize usage patterns** based on analytics
@@ -176,7 +176,7 @@ Switch to **Kilo Teams** or **Kilo Enterprise** from other AI coding tools and e
 - [ ] Set up Kilo Organization
 - [ ] Configure team settings and policies
 - [ ] Invite team members and assign roles
-- [ ] Install Kilo Code extension across team
+- [ ] Install Test Agent extension across team
 - [ ] Start with pilot projects or non-critical work
 
 **Post-Migration Optimization**
@@ -189,16 +189,16 @@ Switch to **Kilo Teams** or **Kilo Enterprise** from other AI coding tools and e
 
 ## Technical Migration: Rules and Configurations
 
-Kilo Code uses a compatible rules system that supports Cursor and Windsurf patterns. Migrating your custom rules and configurations is straightforward and typically takes 5-10 minutes per project.
+Test Agent uses a compatible rules system that supports Cursor and Windsurf patterns. Migrating your custom rules and configurations is straightforward and typically takes 5-10 minutes per project.
 
 **Quick Overview:**
 
 - **Project rules**: `.cursor/rules/*.mdc` → `.kilocode/rules/*.md` (remove YAML frontmatter, keep Markdown content)
 - **Legacy rules**: `.cursorrules` → `.kilocode/rules/legacy-rules.md`
-- **AGENTS.md**: Works identically in Kilo Code (no conversion needed)
+- **AGENTS.md**: Works identically in Test Agent (no conversion needed)
 - **Global rules**: Recreate in `~/.kilocode/rules/*.md` directory
 
-Kilo Code also supports mode-specific rules (`.kilocode/rules-{mode}/`), which Cursor and Windsurf don't have. This allows different rules for different workflows (e.g., Code mode vs Debug mode).
+Test Agent also supports mode-specific rules (`.kilocode/rules-{mode}/`), which Cursor and Windsurf don't have. This allows different rules for different workflows (e.g., Code mode vs Debug mode).
 
 **👉 For detailed step-by-step instructions, format conversion examples, troubleshooting, and advanced migration scenarios, see our [Technical Migration Guide](/docs/getting-started/migrating).**
 
@@ -242,7 +242,7 @@ Kilo Code also supports mode-specific rules (`.kilocode/rules-{mode}/`), which C
 
 **Week 1: Basics**
 
-- Kilo Code extension installation and setup
+- Test Agent extension installation and setup
 - Basic chat interface and mode usage
 - Understanding transparent pricing model
 - Team dashboard overview

@@ -21,7 +21,7 @@ This will allow us to track which projects are used for every LLM call in the `m
 {
 	// Example configuration for project settings
 	"project": {
-		// Kilo Code project ID
+		// Test Agent project ID
 		"id": "my-project",
 	},
 }

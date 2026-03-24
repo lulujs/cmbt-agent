@@ -7,7 +7,7 @@ description: "Guide to choosing the right AI model for your tasks"
 
 Here's the honest truth about AI model recommendations: by the time I write them down, they're probably already outdated. New models drop every few weeks, existing ones get updated, prices shift, and yesterday's champion becomes today's budget option.
 
-Instead of maintaining a static list that's perpetually behind, we built something better — a real-time leaderboard showing which models Kilo Code users are actually having success with right now.
+Instead of maintaining a static list that's perpetually behind, we built something better — a real-time leaderboard showing which models Test Agent users are actually having success with right now.
 
 ## Check the Live Models List
 

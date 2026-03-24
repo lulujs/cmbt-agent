@@ -1,12 +1,12 @@
 ---
 title: "Known Issues"
-description: "Known issues and limitations of Kilo Code"
+description: "Known issues and limitations of Test Agent"
 tocDepth: 2
 ---
 
 # Known Issues
 
-This section contains known issues and limitations of Kilo Code.
+This section contains known issues and limitations of Test Agent.
 
 ## VSCode
 

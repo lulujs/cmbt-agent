@@ -1,5 +1,5 @@
 {
-	"greeting": "Selamat datang di Kilo Code",
+	"greeting": "Selamat datang di Test Agent",
 	"task": {
 		"title": "Tugas",
 		"expand": "Perluas tugas",
@@ -22,7 +22,7 @@
 		"sharePublicly": "Bagikan secara publik",
 		"sharePubliclyDescription": "Siapa pun dengan tautan dapat mengakses",
 		"connectToCloud": "Hubungkan ke Cloud",
-		"connectToCloudDescription": "Masuk ke Kilo Code Cloud untuk berbagi tugas",
+		"connectToCloudDescription": "Masuk ke Test Agent Cloud untuk berbagi tugas",
 		"sharingDisabledByOrganization": "Berbagi dinonaktifkan oleh organisasi",
 		"shareSuccessOrganization": "Tautan organisasi disalin ke clipboard",
 		"shareSuccessPublic": "Tautan publik disalin ke clipboard",
@@ -129,7 +129,7 @@
 		"title": "Mode",
 		"marketplace": "Marketplace Mode",
 		"settings": "Pengaturan Mode",
-		"description": "Persona khusus yang menyesuaikan perilaku Kilo Code.",
+		"description": "Persona khusus yang menyesuaikan perilaku Test Agent.",
 		"searchPlaceholder": "Cari mode...",
 		"noResults": "Tidak ada hasil yang ditemukan",
 		"organizationModes": "Mode Organisasi"
@@ -206,52 +206,52 @@
 		}
 	},
 	"instructions": {
-		"wantsToFetch": "Kilo Code ingin mengambil instruksi detail untuk membantu tugas saat ini"
+		"wantsToFetch": "Test Agent ingin mengambil instruksi detail untuk membantu tugas saat ini"
 	},
 	"fileOperations": {
-		"wantsToRead": "Kilo Code ingin membaca file ini",
-		"wantsToReadMultiple": "Kilo Code ingin membaca beberapa file",
-		"wantsToReadAndXMore": "Kilo Code ingin membaca file ini dan {{count}} lainnya",
-		"wantsToReadOutsideWorkspace": "Kilo Code ingin membaca file ini di luar workspace",
-		"didRead": "Kilo Code membaca file ini",
-		"wantsToEdit": "Kilo Code ingin mengedit file ini",
-		"wantsToEditOutsideWorkspace": "Kilo Code ingin mengedit file ini di luar workspace",
-		"wantsToEditProtected": "Kilo Code ingin mengedit file konfigurasi yang dilindungi",
-		"wantsToApplyBatchChanges": "Kilo Code ingin menerapkan perubahan ke beberapa file",
-		"wantsToGenerateImage": "Kilo Code ingin menghasilkan gambar",
-		"wantsToGenerateImageOutsideWorkspace": "Kilo Code ingin menghasilkan gambar di luar workspace",
-		"wantsToGenerateImageProtected": "Kilo Code ingin menghasilkan gambar di lokasi yang dilindungi",
-		"didGenerateImage": "Kilo Code telah menghasilkan gambar",
-		"wantsToCreate": "Kilo Code ingin membuat file baru",
-		"wantsToSearchReplace": "Kilo Code ingin mencari dan mengganti di file ini",
-		"didSearchReplace": "Kilo Code melakukan pencarian dan penggantian pada file ini",
-		"wantsToInsert": "Kilo Code ingin menyisipkan konten ke file ini",
-		"wantsToInsertWithLineNumber": "Kilo Code ingin menyisipkan konten ke file ini di baris {{lineNumber}}",
-		"wantsToInsertAtEnd": "Kilo Code ingin menambahkan konten ke akhir file ini",
-		"wantsToDelete": "Kilo Code ingin menghapus file ini",
-		"wantsToDeleteDirectory": "Kilo Code ingin menghapus direktori ini"
+		"wantsToRead": "Test Agent ingin membaca file ini",
+		"wantsToReadMultiple": "Test Agent ingin membaca beberapa file",
+		"wantsToReadAndXMore": "Test Agent ingin membaca file ini dan {{count}} lainnya",
+		"wantsToReadOutsideWorkspace": "Test Agent ingin membaca file ini di luar workspace",
+		"didRead": "Test Agent membaca file ini",
+		"wantsToEdit": "Test Agent ingin mengedit file ini",
+		"wantsToEditOutsideWorkspace": "Test Agent ingin mengedit file ini di luar workspace",
+		"wantsToEditProtected": "Test Agent ingin mengedit file konfigurasi yang dilindungi",
+		"wantsToApplyBatchChanges": "Test Agent ingin menerapkan perubahan ke beberapa file",
+		"wantsToGenerateImage": "Test Agent ingin menghasilkan gambar",
+		"wantsToGenerateImageOutsideWorkspace": "Test Agent ingin menghasilkan gambar di luar workspace",
+		"wantsToGenerateImageProtected": "Test Agent ingin menghasilkan gambar di lokasi yang dilindungi",
+		"didGenerateImage": "Test Agent telah menghasilkan gambar",
+		"wantsToCreate": "Test Agent ingin membuat file baru",
+		"wantsToSearchReplace": "Test Agent ingin mencari dan mengganti di file ini",
+		"didSearchReplace": "Test Agent melakukan pencarian dan penggantian pada file ini",
+		"wantsToInsert": "Test Agent ingin menyisipkan konten ke file ini",
+		"wantsToInsertWithLineNumber": "Test Agent ingin menyisipkan konten ke file ini di baris {{lineNumber}}",
+		"wantsToInsertAtEnd": "Test Agent ingin menambahkan konten ke akhir file ini",
+		"wantsToDelete": "Test Agent ingin menghapus file ini",
+		"wantsToDeleteDirectory": "Test Agent ingin menghapus direktori ini"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Kilo Code ingin melihat file tingkat atas di direktori ini",
-		"didViewTopLevel": "Kilo Code melihat file tingkat atas di direktori ini",
-		"wantsToViewRecursive": "Kilo Code ingin melihat semua file secara rekursif di direktori ini",
-		"didViewRecursive": "Kilo Code melihat semua file secara rekursif di direktori ini",
-		"wantsToViewDefinitions": "Kilo Code ingin melihat nama definisi source code yang digunakan di direktori ini",
-		"didViewDefinitions": "Kilo Code melihat nama definisi source code yang digunakan di direktori ini",
-		"wantsToSearch": "Kilo Code ingin mencari direktori ini untuk <code>{{regex}}</code>",
-		"didSearch": "Kilo Code mencari direktori ini untuk <code>{{regex}}</code>",
-		"wantsToSearchOutsideWorkspace": "Kilo Code ingin mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>",
-		"didSearchOutsideWorkspace": "Kilo Code mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>",
-		"wantsToViewTopLevelOutsideWorkspace": "Kilo Code ingin melihat file tingkat atas di direktori ini (di luar workspace)",
-		"didViewTopLevelOutsideWorkspace": "Kilo Code melihat file tingkat atas di direktori ini (di luar workspace)",
-		"wantsToViewRecursiveOutsideWorkspace": "Kilo Code ingin melihat semua file secara rekursif di direktori ini (di luar workspace)",
-		"didViewRecursiveOutsideWorkspace": "Kilo Code melihat semua file secara rekursif di direktori ini (di luar workspace)",
-		"wantsToViewDefinitionsOutsideWorkspace": "Kilo Code ingin melihat nama definisi source code yang digunakan di direktori ini (di luar workspace)",
-		"didViewDefinitionsOutsideWorkspace": "Kilo Code melihat nama definisi source code yang digunakan di direktori ini (di luar workspace)"
+		"wantsToViewTopLevel": "Test Agent ingin melihat file tingkat atas di direktori ini",
+		"didViewTopLevel": "Test Agent melihat file tingkat atas di direktori ini",
+		"wantsToViewRecursive": "Test Agent ingin melihat semua file secara rekursif di direktori ini",
+		"didViewRecursive": "Test Agent melihat semua file secara rekursif di direktori ini",
+		"wantsToViewDefinitions": "Test Agent ingin melihat nama definisi source code yang digunakan di direktori ini",
+		"didViewDefinitions": "Test Agent melihat nama definisi source code yang digunakan di direktori ini",
+		"wantsToSearch": "Test Agent ingin mencari direktori ini untuk <code>{{regex}}</code>",
+		"didSearch": "Test Agent mencari direktori ini untuk <code>{{regex}}</code>",
+		"wantsToSearchOutsideWorkspace": "Test Agent ingin mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>",
+		"didSearchOutsideWorkspace": "Test Agent mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>",
+		"wantsToViewTopLevelOutsideWorkspace": "Test Agent ingin melihat file tingkat atas di direktori ini (di luar workspace)",
+		"didViewTopLevelOutsideWorkspace": "Test Agent melihat file tingkat atas di direktori ini (di luar workspace)",
+		"wantsToViewRecursiveOutsideWorkspace": "Test Agent ingin melihat semua file secara rekursif di direktori ini (di luar workspace)",
+		"didViewRecursiveOutsideWorkspace": "Test Agent melihat semua file secara rekursif di direktori ini (di luar workspace)",
+		"wantsToViewDefinitionsOutsideWorkspace": "Test Agent ingin melihat nama definisi source code yang digunakan di direktori ini (di luar workspace)",
+		"didViewDefinitionsOutsideWorkspace": "Test Agent melihat nama definisi source code yang digunakan di direktori ini (di luar workspace)"
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Kilo Code ingin mencari codebase untuk <code>{{query}}</code>",
-		"wantsToSearchWithPath": "Kilo Code ingin mencari codebase untuk <code>{{query}}</code> di <code>{{path}}</code>",
+		"wantsToSearch": "Test Agent ingin mencari codebase untuk <code>{{query}}</code>",
+		"wantsToSearchWithPath": "Test Agent ingin mencari codebase untuk <code>{{query}}</code> di <code>{{path}}</code>",
 		"didSearch_one": "Ditemukan 1 hasil",
 		"didSearch_other": "Ditemukan {{count}} hasil",
 		"resultTooltip": "Skor kemiripan: {{score}} (klik untuk membuka file)"
@@ -282,18 +282,18 @@
 		"youSaid": "Anda bilang"
 	},
 	"mcp": {
-		"wantsToUseTool": "Kilo Code ingin menggunakan tool di server MCP {{serverName}}",
-		"wantsToAccessResource": "Kilo Code ingin mengakses resource di server MCP {{serverName}}"
+		"wantsToUseTool": "Test Agent ingin menggunakan tool di server MCP {{serverName}}",
+		"wantsToAccessResource": "Test Agent ingin mengakses resource di server MCP {{serverName}}"
 	},
 	"modes": {
-		"wantsToSwitch": "Kilo Code ingin beralih ke mode {{mode}}",
-		"wantsToSwitchWithReason": "Kilo Code ingin beralih ke mode {{mode}} karena: {{reason}}",
-		"didSwitch": "Kilo Code beralih ke mode {{mode}}",
-		"didSwitchWithReason": "Kilo Code beralih ke mode {{mode}} karena: {{reason}}"
+		"wantsToSwitch": "Test Agent ingin beralih ke mode {{mode}}",
+		"wantsToSwitchWithReason": "Test Agent ingin beralih ke mode {{mode}} karena: {{reason}}",
+		"didSwitch": "Test Agent beralih ke mode {{mode}}",
+		"didSwitchWithReason": "Test Agent beralih ke mode {{mode}} karena: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Kilo Code ingin membuat subtugas baru dalam mode {{mode}}",
-		"wantsToFinish": "Kilo Code ingin menyelesaikan subtugas ini",
+		"wantsToCreate": "Test Agent ingin membuat subtugas baru dalam mode {{mode}}",
+		"wantsToFinish": "Test Agent ingin menyelesaikan subtugas ini",
 		"newTaskContent": "Instruksi Subtugas",
 		"completionContent": "Subtugas Selesai",
 		"resultContent": "Hasil Subtugas",
@@ -301,7 +301,7 @@
 		"completionInstructions": "Subtugas selesai! Kamu bisa meninjau hasilnya dan menyarankan koreksi atau langkah selanjutnya. Jika semuanya terlihat baik, konfirmasi untuk mengembalikan hasil ke tugas induk."
 	},
 	"questions": {
-		"hasQuestion": "Kilo Code punya pertanyaan"
+		"hasQuestion": "Test Agent punya pertanyaan"
 	},
 	"taskCompleted": "Tugas Selesai",
 	"error": "Error",
@@ -315,7 +315,7 @@
 	"diffError": {
 		"title": "Edit Tidak Berhasil"
 	},
-	"troubleMessage": "Kilo Code mengalami masalah...",
+	"troubleMessage": "Test Agent mengalami masalah...",
 	"errorDetails": {
 		"link": "Detail",
 		"title": "Detail Kesalahan",
@@ -386,7 +386,7 @@
 	"browser": {
 		"session": "Sesi Browser",
 		"active": "Aktif",
-		"rooWantsToUse": "Kilo Code ingin menggunakan browser",
+		"rooWantsToUse": "Test Agent ingin menggunakan browser",
 		"consoleLogs": "Log Konsol",
 		"noNewLogs": "(Tidak ada log baru)",
 		"screenshot": "Screenshot browser",
@@ -434,18 +434,18 @@
 	"profileViolationWarning": "Profil saat ini tidak kompatibel dengan pengaturan organisasi kamu",
 	"shellIntegration": {
 		"title": "Peringatan Eksekusi Perintah",
-		"description": "Perintah kamu dijalankan tanpa integrasi shell terminal VSCode. Untuk menekan peringatan ini kamu bisa menonaktifkan integrasi shell di bagian <strong>Terminal</strong> dari <settingsLink>pengaturan Kilo Code</settingsLink> atau troubleshoot integrasi terminal VSCode menggunakan link di bawah.",
+		"description": "Perintah kamu dijalankan tanpa integrasi shell terminal VSCode. Untuk menekan peringatan ini kamu bisa menonaktifkan integrasi shell di bagian <strong>Terminal</strong> dari <settingsLink>pengaturan Test Agent</settingsLink> atau troubleshoot integrasi terminal VSCode menggunakan link di bawah.",
 		"troubleshooting": "Klik di sini untuk dokumentasi integrasi shell."
 	},
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Batas Permintaan yang Disetujui Otomatis Tercapai",
-			"description": "Kilo Code telah mencapai batas {{count}} permintaan API yang disetujui otomatis. Apakah Anda ingin mengatur ulang hitungan dan melanjutkan tugas?",
+			"description": "Test Agent telah mencapai batas {{count}} permintaan API yang disetujui otomatis. Apakah Anda ingin mengatur ulang hitungan dan melanjutkan tugas?",
 			"button": "Setel Ulang dan Lanjutkan"
 		},
 		"autoApprovedCostLimitReached": {
 			"title": "Batas Biaya yang Disetujui Otomatis Tercapai",
-			"description": "Kilo Code telah mencapai batas biaya yang disetujui otomatis sebesar ${{count}}. Apakah Anda ingin mengatur ulang biaya dan melanjutkan tugas?",
+			"description": "Test Agent telah mencapai batas biaya yang disetujui otomatis sebesar ${{count}}. Apakah Anda ingin mengatur ulang biaya dan melanjutkan tugas?",
 			"button": "Setel Ulang dan Lanjutkan"
 		}
 	},
@@ -501,8 +501,8 @@
 		"clickToEdit": "Klik untuk mengedit pesan"
 	},
 	"slashCommand": {
-		"wantsToRun": "Kilo Code ingin menjalankan perintah slash",
-		"didRun": "Kilo Code telah menjalankan perintah slash"
+		"wantsToRun": "Test Agent ingin menjalankan perintah slash",
+		"didRun": "Test Agent telah menjalankan perintah slash"
 	},
 	"todo": {
 		"partial": "{{completed}} dari {{total}} to-do selesai",

@@ -2,13 +2,13 @@
 sidebar_label: ChatGPT Plus/Pro
 ---
 
-# Using ChatGPT Subscriptions With Kilo Code
+# Using ChatGPT Subscriptions With Test Agent
 
-1. Open Kilo Code settings (click the gear icon {% codicon name="gear" /%} in the Kilo Code panel).
+1. Open Test Agent settings (click the gear icon {% codicon name="gear" /%} in the Test Agent panel).
 2. In **API Provider**, select **OpenAI – ChatGPT Plus/Pro**.
 3. Click **Sign in to OpenAI Codex**.
 4. Finish the sign-in flow in your browser.
-5. Back in Kilo Code settings, pick a model from the dropdown.
+5. Back in Test Agent settings, pick a model from the dropdown.
 6. Save.
 
 ## Tips and Notes
@@ -20,5 +20,5 @@ sidebar_label: ChatGPT Plus/Pro
 
 ## Limitations
 
-- **You can't use arbitrary OpenAI API models.** This provider only exposes the models listed in Kilo Code's Codex model catalog.
-- **You can't export/migrate your sign-in state with settings export.** OAuth tokens are stored in VS Code SecretStorage, which isn't included in Kilo Code's settings export.
+- **You can't use arbitrary OpenAI API models.** This provider only exposes the models listed in Test Agent's Codex model catalog.
+- **You can't export/migrate your sign-in state with settings export.** OAuth tokens are stored in VS Code SecretStorage, which isn't included in Test Agent's settings export.

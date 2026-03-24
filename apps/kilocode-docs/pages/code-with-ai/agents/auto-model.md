@@ -5,7 +5,7 @@ description: "Smart model routing that automatically selects the optimal AI mode
 
 # Auto Model
 
-Auto Model (`kilo/auto`) is a smart model routing system that automatically selects the optimal AI model based on the Kilo Code mode you're using. It balances cost and capability so you get the best results without manual model switching.
+Auto Model (`kilo/auto`) is a smart model routing system that automatically selects the optimal AI model based on the Test Agent mode you're using. It balances cost and capability so you get the best results without manual model switching.
 
 ## How It Works
 
@@ -61,10 +61,10 @@ Auto Model requires **VS Code/JetBrains extension v5.2.3+** or **CLI v1.0.15+** 
 ## Getting Started
 
 {% callout type="tip" title="Quick Setup" %}
-Select `kilo/auto` from the model dropdown in the Kilo Code chat interface. That's all you need to do.
+Select `kilo/auto` from the model dropdown in the Test Agent chat interface. That's all you need to do.
 {% /callout %}
 
-1. Open Kilo Code in VS Code or JetBrains
+1. Open Test Agent in VS Code or JetBrains
 2. Click the model selector dropdown
 3. Choose `kilo/auto`
 4. Start chatting - the right model is selected automatically based on your current mode
@@ -76,7 +76,7 @@ Auto Model is ideal for:
 - **Developers who frequently switch between planning and coding** - No need to remember which model works best for each task
 - **Teams wanting consistent model selection** - Everyone gets optimal routing without individual configuration
 - **Cost-conscious developers** - Automatically balances cost and capability
-- **New Kilo Code users** - Great defaults without needing to understand model differences
+- **New Test Agent users** - Great defaults without needing to understand model differences
 
 ## When to Use a Specific Model
 
@@ -96,5 +96,5 @@ Auto Model is a new feature and we're actively improving it. We'd love to hear h
 ## Related
 
 - [Model Selection Guide](/docs/code-with-ai/agents/model-selection) - General guidance on choosing models
-- [Using Modes](/docs/code-with-ai/agents/using-modes) - Learn about different Kilo Code modes
+- [Using Modes](/docs/code-with-ai/agents/using-modes) - Learn about different Test Agent modes
 - [Free & Budget Models](/docs/code-with-ai/agents/free-and-budget-models) - Cost-effective alternatives

@@ -1,11 +1,11 @@
 ---
 title: Free and Budget Models
-description: Learn how to use Kilo Code effectively while minimizing or eliminating costs through free models, budget-friendly alternatives, and smart usage strategies.
+description: Learn how to use Test Agent effectively while minimizing or eliminating costs through free models, budget-friendly alternatives, and smart usage strategies.
 ---
 
 # Free and Budget Models
 
-**Why this matters:** AI model costs can add up quickly during development. This guide shows you how to use Kilo Code effectively while minimizing or eliminating costs through free models, budget-friendly alternatives, and smart usage strategies.
+**Why this matters:** AI model costs can add up quickly during development. This guide shows you how to use Test Agent effectively while minimizing or eliminating costs through free models, budget-friendly alternatives, and smart usage strategies.
 
 ## Completely Free Options
 
@@ -27,7 +27,7 @@ OpenRouter offers several models with generous free tiers. **Note:** You'll need
 
 1. Create a free [OpenRouter account](https://openrouter.ai)
 2. Get your API key from the dashboard
-3. Configure Kilo Code with the OpenRouter provider
+3. Configure Test Agent with the OpenRouter provider
 
 **Available free models:**
 
@@ -248,7 +248,7 @@ When you need more capability than free models provide, these options deliver ex
 ### Quick Setup Guide
 
 1. **Create OpenRouter account** for free models
-2. **Configure multiple providers** in Kilo Code
+2. **Configure multiple providers** in Test Agent
 3. **Set up API Configuration Profiles** for easy switching
 4. **Escalate to budget models** when needed
 5. **Reserve premium models** for complex work

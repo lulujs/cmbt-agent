@@ -1,6 +1,6 @@
 ---
 title: "Kilo CLI"
-description: "Using Kilo Code from the command line"
+description: "Using Test Agent from the command line"
 ---
 
 {% callout type="warning" title="Version Notice" %}
@@ -11,7 +11,7 @@ This documentation applies only to Kilo version 1.0 and later. Users running ver
 
 Orchestrate agents from your terminal. Plan, debug, and code fast with keyboard-first navigation on the command line.
 
-The Kilo Code CLI uses the same underlying technology that powers the IDE extensions, so you can expect the same workflow to handle agentic coding tasks from start to finish.
+The Test Agent CLI uses the same underlying technology that powers the IDE extensions, so you can expect the same workflow to handle agentic coding tasks from start to finish.
 
 **Source code & issues (Kilo CLI 1.0):** [Kilo-Org/kilo](https://github.com/Kilo-Org/kilo) · [Report an issue](https://github.com/Kilo-Org/kilo/issues)
 
@@ -48,7 +48,7 @@ Or use npm:
 
 `npm update -g @kilocode/cli`
 
-## What you can do with Kilo Code CLI
+## What you can do with Test Agent CLI
 
 - **Plan and execute code changes without leaving your terminal.** Use your command line to make edits to your project without opening your IDE.
 - **Switch between hundreds of LLMs without constraints.** Other CLI tools only work with one model or curate opinionated lists. With Kilo, you can switch models without booting up another tool.
@@ -169,7 +169,7 @@ Configuration is managed through:
 - `/connect` command for provider setup (interactive)
 - Config files in **`~/.config/kilo/`**: the CLI (Kilo CLI 1.0 from [Kilo-Org/kilo](https://github.com/Kilo-Org/kilo)) merges `config.json`, `opencode.json`, and `opencode.jsonc`. Use **`opencode.json`** (or `opencode.jsonc`) for provider, model, permission, and **MCP** settings. Restart the CLI after editing. See [Using MCP in the CLI](/automate/mcp/using-in-cli) for MCP config format.
 - `kilo auth` for credential management
- 
+
 ## Slash Commands
 
 The CLI's interactive mode supports slash commands for common operations. The main commands are documented above in the [Interactive Slash Commands](#interactive-slash-commands) section.
@@ -180,7 +180,7 @@ The CLI's interactive mode supports slash commands for common operations. The ma
 
 ## Permissions
 
-Kilo Code uses the permission config to decide whether a given action should run automatically, prompt you, or be blocked.
+Test Agent uses the permission config to decide whether a given action should run automatically, prompt you, or be blocked.
 
 ### Actions
 
@@ -294,10 +294,10 @@ The Kilo CLI is a fork of [OpenCode](https://opencode.ai) and supports the same 
 
 ### Config File Location (Kilo CLI 1.0)
 
-| Scope      | Path                                                                 |
-| ---------- | -------------------------------------------------------------------- |
-| **Global** | `~/.config/kilo/opencode.json` or `opencode.jsonc` (Windows: config dir may vary; same filenames) |
-| **Project**| `./opencode.json` or `./.opencode/` in project root                  |
+| Scope       | Path                                                                                              |
+| ----------- | ------------------------------------------------------------------------------------------------- |
+| **Global**  | `~/.config/kilo/opencode.json` or `opencode.jsonc` (Windows: config dir may vary; same filenames) |
+| **Project** | `./opencode.json` or `./.opencode/` in project root                                               |
 
 Project-level configuration takes precedence over global settings.
 
@@ -305,15 +305,15 @@ Project-level configuration takes precedence over global settings.
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
-  "model": "anthropic/claude-sonnet-4-20250514",
-  "provider": {
-    "anthropic": {
-      "options": {
-        "apiKey": "{env:ANTHROPIC_API_KEY}"
-      }
-    }
-  }
+	"$schema": "https://opencode.ai/config.json",
+	"model": "anthropic/claude-sonnet-4-20250514",
+	"provider": {
+		"anthropic": {
+			"options": {
+				"apiKey": "{env:ANTHROPIC_API_KEY}"
+			}
+		}
+	}
 }
 ```
 
@@ -333,13 +333,13 @@ Use `{env:VARIABLE_NAME}` syntax in config files to reference environment variab
 
 ```json
 {
-  "provider": {
-    "openai": {
-      "options": {
-        "apiKey": "{env:OPENAI_API_KEY}"
-      }
-    }
-  }
+	"provider": {
+		"openai": {
+			"options": {
+				"apiKey": "{env:OPENAI_API_KEY}"
+			}
+		}
+	}
 }
 ```
 
@@ -361,9 +361,9 @@ You can also use the `/config` slash command during an interactive session, whic
 
 ## Interactive Mode
 
-Interactive mode is the default mode when running Kilo Code without the `--auto` flag, designed to work interactively with a user through the console.
+Interactive mode is the default mode when running Test Agent without the `--auto` flag, designed to work interactively with a user through the console.
 
-In interactive mode Kilo Code will request approval for operations which have not been auto-approved, allowing the user to review and approve operations before they are executed, and optionally add them to the auto-approval list.
+In interactive mode Test Agent will request approval for operations which have not been auto-approved, allowing the user to review and approve operations before they are executed, and optionally add them to the auto-approval list.
 
 ### Interactive Command Approval
 
@@ -388,7 +388,7 @@ This allows you to progressively build your auto-approval rules without manually
 
 ## Autonomous Mode (Non-Interactive)
 
-Autonomous mode allows Kilo Code to run in automated environments like CI/CD pipelines without requiring user interaction.
+Autonomous mode allows Test Agent to run in automated environments like CI/CD pipelines without requiring user interaction.
 
 ```bash
 # Run in autonomous mode with a message
@@ -426,7 +426,7 @@ This instructs the AI to proceed without user input.
 
 ```yaml
 # GitHub Actions example
-- name: Run Kilo Code
+- name: Run Test Agent
   run: |
       kilo run "Implement the new feature" --auto
 ```

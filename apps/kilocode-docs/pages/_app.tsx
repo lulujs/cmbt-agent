@@ -25,7 +25,7 @@ import "../public/globals.css"
 import type { AppProps } from "next/app"
 import type { MarkdocNextJsPageProps } from "@markdoc/next.js"
 
-const TITLE = "Kilo Code Documentation"
+const TITLE = "Test Agent Documentation"
 const DESCRIPTION = "Build, ship, and iterate faster with the most popular open source coding agent."
 
 function collectHeadings(node, sections = []) {

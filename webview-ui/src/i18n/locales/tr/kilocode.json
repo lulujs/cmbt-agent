@@ -15,8 +15,8 @@
 		}
 	},
 	"welcome": {
-		"greeting": "Kilo Code'a hoş geldiniz!",
-		"introText1": "Kilo Code ücretsiz, açık kaynaklı bir AI kodlama ajanıdır.",
+		"greeting": "Test Agent'a hoş geldiniz!",
+		"introText1": "Test Agent ücretsiz, açık kaynaklı bir AI kodlama ajanıdır.",
 		"introText2": "Claude Opus 4.5, Gemini 3 Pro, GPT-5.2 ve 450+ diğer en yeni AI modelleri ile çalışır.",
 		"introText3": "Ücretsiz hesap oluşturun ve ilk yüklemenizde $20 bonus kredi alın.",
 		"ctaButton": "Başla",
@@ -26,7 +26,7 @@
 	},
 	"lowCreditWarning": {
 		"addCredit": "Kredi Ekle",
-		"lowBalance": "Kilo Code bakiyen düşük",
+		"lowBalance": "Test Agent bakiyen düşük",
 		"switchToFreeModel": "Ücretsiz modele geç"
 	},
 	"pagination": {
@@ -58,7 +58,7 @@
 		"contextManagement": {
 			"allowVeryLargeReads": {
 				"label": "Çok büyük dosya okumalarına izin ver",
-				"description": "Etkinleştirildiğinde, Kilo Code bağlam penceresini taşma olasılığı yüksek olsa bile çok büyük dosya veya MCP çıktı okumalarını gerçekleştirir (içerik boyutu bağlam penceresinin %80'inden fazla)."
+				"description": "Etkinleştirildiğinde, Test Agent bağlam penceresini taşma olasılığı yüksek olsa bile çok büyük dosya veya MCP çıktı okumalarını gerçekleştirir (içerik boyutu bağlam penceresinin %80'inden fazla)."
 			}
 		},
 		"codeIndex": {
@@ -68,16 +68,16 @@
 			"scannerMaxBatchRetriesDescription": "Dizin taraması sırasında başarısız bir toplu işlemi yeniden deneme sayısının üst sınırı. Daha yüksek değerler geçici hatalara karşı dayanıklılığı artırır ancak hatalar devam ederse indekslemeyi yavaşlatabilir. Daha düşük değerler daha hızlı başarısız olur ancak geçici sorunlarda içeriği atlayabilir."
 		},
 		"provider": {
-			"account": "Kilo Code Hesabı",
-			"apiKey": "Kilo Code API Anahtarı",
-			"login": "Kilo Code'a giriş yap",
-			"logout": "Kilo Code'dan çıkış yap",
+			"account": "Test Agent Hesabı",
+			"apiKey": "Test Agent API Anahtarı",
+			"login": "Test Agent'a giriş yap",
+			"logout": "Test Agent'dan çıkış yap",
 			"loginForPremiumModels": "Premium modellere ve özelliklere erişmek için giriş yap",
 			"providerRouting": {
 				"title": "Sağlayıcı Yönlendirme",
 				"managedByOrganization": "Organizasyon düzeyinde Sağlayıcı Yönlendirmeyi yönet",
 				"createOrganization": "Sağlayıcı Yönlendirmeyi yönetmek için Organizasyon oluştur",
-				"description": "Kilo Code, modeliniz için en iyi kullanılabilir sağlayıcılara istekleri yönlendirir. Varsayılan olarak, çalışma süresini en üst düzeye çıkarmak için istekler en iyi sağlayıcılar arasında yük dengelenir. Ancak, bu model için kullanılacak belirli bir sağlayıcı seçebilirsiniz.",
+				"description": "Test Agent, modeliniz için en iyi kullanılabilir sağlayıcılara istekleri yönlendirir. Varsayılan olarak, çalışma süresini en üst düzeye çıkarmak için istekler en iyi sağlayıcılar arasında yük dengelenir. Ancak, bu model için kullanılacak belirli bir sağlayıcı seçebilirsiniz.",
 				"sorting": {
 					"default": "Varsayılan sağlayıcı sıralaması",
 					"price": "Düşük fiyatlı sağlayıcıları tercih et",
@@ -96,7 +96,7 @@
 		"modelInfo": {
 			"contextWindow": "Bağlam penceresi",
 			"providerBreakdown": "Sağlayıcı Fiyat ve Yetenek Dökümü",
-			"averageKiloCodeCost": "Bu, Kilo Code'un bu modeli kullanarak geçtiğimiz hafta boyunca yaptığı ortalama gerçek harcamadır. Prompt önbellek kullanımı nedeniyle listelenen fiyattan daha düşük olabilir.",
+			"averageKiloCodeCost": "Bu, Test Agent'un bu modeli kullanarak geçtiğimiz hafta boyunca yaptığı ortalama gerçek harcamadır. Prompt önbellek kullanımı nedeniyle listelenen fiyattan daha düşük olabilir.",
 			"table": {
 				"provider": "Sağlayıcı",
 				"context": "Uç nokta bu sayıda token işleyebilir (giriş + çıkış).",
@@ -108,10 +108,10 @@
 		},
 		"systemNotifications": {
 			"label": "Sistem bildirimlerini etkinleştir",
-			"description": "Etkinleştirildiğinde, Kilo Code görev tamamlama veya hatalar gibi önemli olaylar için sistem bildirimleri gönderecektir.",
+			"description": "Etkinleştirildiğinde, Test Agent görev tamamlama veya hatalar gibi önemli olaylar için sistem bildirimleri gönderecektir.",
 			"testButton": "Bildirimi test et",
-			"testTitle": "Kilo Code",
-			"testMessage": "Bu Kilo Code'dan bir test bildirimidir."
+			"testTitle": "Test Agent",
+			"testMessage": "Bu Test Agent'dan bir test bildirimidir."
 		},
 		"terminal": {
 			"commandGenerator": {
@@ -133,7 +133,7 @@
 	},
 	"chat": {
 		"condense": {
-			"wantsToCondense": "Kilo Code konuşmanı özetlemek istiyor",
+			"wantsToCondense": "Test Agent konuşmanı özetlemek istiyor",
 			"condenseConversation": "Konuşmayı Özetle"
 		},
 		"seeNewChanges": "Yeni Değişiklikleri Göster",
@@ -172,14 +172,14 @@
 			"modes": "Modlar",
 			"skills": "Beceriler"
 		},
-		"ariaLabel": "Kilo Code Kuralları",
+		"ariaLabel": "Test Agent Kuralları",
 		"tabs": {
 			"rules": "Kurallar",
 			"workflows": "İş Akışları"
 		},
 		"description": {
-			"rules": "Kurallar, Kilo Code'a tüm modlarda ve tüm promptlarda uyması gereken talimatlar sağlamanıza olanak tanır. Bunlar, çalışma alanınızda veya global olarak tüm konuşmalar için bağlam ve tercihleri dahil etmenin kalıcı bir yoludur.",
-			"workflows": "İş akışları, bir konuşma için hazırlanmış bir şablondur. İş akışları, sık kullandığınız promptları tanımlamanıza olanak tanır ve bir hizmeti dağıtmak veya PR göndermek gibi tekrarlayan görevler boyunca Kilo Code'u yönlendirmek için bir dizi adım içerebilir. Bir iş akışını çağırmak için şunu yazın",
+			"rules": "Kurallar, Test Agent'a tüm modlarda ve tüm promptlarda uyması gereken talimatlar sağlamanıza olanak tanır. Bunlar, çalışma alanınızda veya global olarak tüm konuşmalar için bağlam ve tercihleri dahil etmenin kalıcı bir yoludur.",
+			"workflows": "İş akışları, bir konuşma için hazırlanmış bir şablondur. İş akışları, sık kullandığınız promptları tanımlamanıza olanak tanır ve bir hizmeti dağıtmak veya PR göndermek gibi tekrarlayan görevler boyunca Test Agent'u yönlendirmek için bir dizi adım içerebilir. Bir iş akışını çağırmak için şunu yazın",
 			"workflowsInChat": "sohbette."
 		},
 		"sections": {
@@ -288,7 +288,7 @@
 			},
 			"noCredits": {
 				"title": "Hesabında kredi yok",
-				"description": "Kilo Code hesabında kredi bulunmuyor. Otomatik tamamlamayı kullanmak için lütfen hesabına kredi ekle.",
+				"description": "Test Agent hesabında kredi bulunmuyor. Otomatik tamamlamayı kullanmak için lütfen hesabına kredi ekle.",
 				"buyCredits": "Kredi satın al →"
 			},
 			"configureAutocompleteProfile": "Profillere giderek ve Otomatik Tamamlama Profil Türünde bir Profil yapılandırarak herhangi bir model kullan."
@@ -346,7 +346,7 @@
 		"shareModesNewBanner": "Yeni: Bir organizasyon oluşturarak modları paylaşın"
 	},
 	"deviceAuth": {
-		"title": "Kilo Code'a giriş yap",
+		"title": "Test Agent'a giriş yap",
 		"step1": "Tarayıcında aşağıdaki URL'yi aç",
 		"step2": "Kodu doğrula ve bu cihazı tarayıcında yetkilendir",
 		"scanQr": "Veya bu QR kodunu telefonunla tara",

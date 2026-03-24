@@ -98,7 +98,7 @@
 | Auto-launch Configuration      | `features/auto-launch-configuration`  |
 | **MCP** (subheader)            |                                       |
 | MCP Overview                   | `features/mcp/overview`               |
-| Using MCP in Kilo Code         | `features/mcp/using-mcp-in-kilo-code` |
+| Using MCP in Test Agent        | `features/mcp/using-mcp-in-kilo-code` |
 | Using MCP in CLI               | `features/mcp/using-mcp-in-cli`       |
 | What is MCP                    | `features/mcp/what-is-mcp`            |
 | Server Transports              | `features/mcp/server-transports`      |

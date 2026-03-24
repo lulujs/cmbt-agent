@@ -2,9 +2,9 @@
 sidebar_label: Google Gemini
 ---
 
-# Using Google Gemini With Kilo Code
+# Using Google Gemini With Test Agent
 
-Kilo Code supports Google's Gemini family of models through the Google AI Gemini API.
+Test Agent supports Google's Gemini family of models through the Google AI Gemini API.
 
 **Website:** [https://ai.google.dev/](https://ai.google.dev/)
 
@@ -15,9 +15,9 @@ Kilo Code supports Google's Gemini family of models through the Google AI Gemini
 3.  **Create API Key:** Click on "Create API key" in the left-hand menu.
 4.  **Copy API Key:** Copy the generated API key.
 
-## Configuration in Kilo Code
+## Configuration in Test Agent
 
-1.  **Open Kilo Code Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Kilo Code panel.
+1.  **Open Test Agent Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Test Agent panel.
 2.  **Select Provider:** Choose "Google Gemini" from the "API Provider" dropdown.
 3.  **Enter API Key:** Paste your Gemini API key into the "Gemini API Key" field.
 4.  **Select Model:** Choose your desired Gemini model from the "Model" dropdown.

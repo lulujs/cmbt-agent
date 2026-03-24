@@ -1,15 +1,15 @@
 ---
 title: "Custom Modes"
-description: "Create and configure custom modes in Kilo Code"
+description: "Create and configure custom modes in Test Agent"
 ---
 
 # Custom Modes
 
-Kilo Code allows you to create **custom modes** to tailor Kilo's behavior to specific tasks or workflows. Custom modes can be either **global** (available across all projects) or **project-specific** (defined within a single project).
+Test Agent allows you to create **custom modes** to tailor Kilo's behavior to specific tasks or workflows. Custom modes can be either **global** (available across all projects) or **project-specific** (defined within a single project).
 
 ## Sticky Models for Efficient Workflow
 
-Each mode—including custom ones—features **Sticky Models**. This means Kilo Code automatically remembers and selects the last model you used with a particular mode. This lets you assign different preferred models to different tasks without constant reconfiguration, as Kilo switches between models when you change modes.
+Each mode—including custom ones—features **Sticky Models**. This means Test Agent automatically remembers and selects the last model you used with a particular mode. This lets you assign different preferred models to different tasks without constant reconfiguration, as Kilo switches between models when you change modes.
 
 ## Why Use Custom Modes?
 
@@ -22,7 +22,7 @@ Each mode—including custom ones—features **Sticky Models**. This means Kilo 
 **Keep custom modes on track:** Limit the types of files that they're allowed to edit using the `fileRegex` option in the `groups` configuration. This prevents modes from accidentally modifying files outside their intended scope.
 {% /callout %}
 
-{% image src="/docs/img/custom-modes/custom-modes-2.png" alt="Custom mode creation interface in Kilo Code" width="600" caption="Custom mode creation interface in Kilo Code" /%}
+{% image src="/docs/img/custom-modes/custom-modes-2.png" alt="Custom mode creation interface in Test Agent" width="600" caption="Custom mode creation interface in Test Agent" /%}
 
 _Kilo Code's interface for creating and managing custom modes._
 
@@ -32,8 +32,8 @@ Custom modes are defined by several key properties. Understanding these concepts
 
 | UI Field / YAML Property                       | Conceptual Description                                                                                                                                                               |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Slug** (`slug`)                              | A unique internal identifier for the mode. Used by Kilo Code to reference the mode, especially for associating mode-specific instruction files.                                      |
-| **Name** (`name`)                              | The display name for the mode as it appears in the Kilo Code user interface. Should be human-readable and descriptive.                                                               |
+| **Slug** (`slug`)                              | A unique internal identifier for the mode. Used by Test Agent to reference the mode, especially for associating mode-specific instruction files.                                     |
+| **Name** (`name`)                              | The display name for the mode as it appears in the Test Agent user interface. Should be human-readable and descriptive.                                                              |
 | **Description** (`description`)                | A short, user-friendly summary of the mode's purpose displayed in the mode selector UI. Keep this concise and focused on what the mode does for the user.                            |
 | **Role Definition** (`roleDefinition`)         | Defines the core identity and expertise of the mode. This text is placed at the beginning of the system prompt and defines Kilo's personality and behavior when this mode is active. |
 | **Available Tools** (`groups`)                 | Defines the allowed toolsets and file access permissions for the mode. Corresponds to selecting which general categories of tools the mode can use.                                  |
@@ -62,7 +62,7 @@ Easily share, back up, and template your custom modes. This feature lets you exp
 
 **Exporting a Mode:**
 
-Modes are managed from the Modes area in Kilo Code. Depending on your UI layout, you can open this from the mode selector in the chat panel or from the notebook icon.
+Modes are managed from the Modes area in Test Agent. Depending on your UI layout, you can open this from the mode selector in the chat panel or from the notebook icon.
 
 1. Open the Modes area from the mode selector in the chat panel (or via the <Codicon name="notebook" /> icon if shown)
 2. Select the mode you wish to export
@@ -93,13 +93,13 @@ You can create and configure custom modes in several ways:
 
 ### 1. Ask Kilo! (Recommended)
 
-You can quickly create a basic custom mode by asking Kilo Code to do it for you. For example:
+You can quickly create a basic custom mode by asking Test Agent to do it for you. For example:
 
 ```
 Create a new mode called "Documentation Writer". It should only be able to read files and write Markdown files.
 ```
 
-Kilo Code will guide you through the process, prompting for necessary information and creating the mode using the preferred YAML format.
+Test Agent will guide you through the process, prompting for necessary information and creating the mode using the preferred YAML format.
 
 {% callout type="tip" %}
 **Create modes from job postings:** If there's a real world job posting for something you want a custom mode to do, try asking Code mode to `Create a custom mode based on the job posting at @[url]`. This can help you quickly create specialized modes with realistic role definitions.
@@ -115,11 +115,11 @@ Kilo Code will guide you through the process, prompting for necessary informatio
 
 _The custom mode creation interface showing fields for name, slug, description, save location, role definition, available tools, custom instructions._
 
-The interface provides fields for Name, Slug, Description, Save Location, Role Definition, When to Use (optional), Available Tools, and Custom Instructions. After filling these, click the "Create Mode" button. Kilo Code will save the new mode in YAML format.
+The interface provides fields for Name, Slug, Description, Save Location, Role Definition, When to Use (optional), Available Tools, and Custom Instructions. After filling these, click the "Create Mode" button. Test Agent will save the new mode in YAML format.
 
 ### 3. Manual Configuration (YAML & JSON)
 
-You can directly edit the configuration files to create or modify custom modes. This method offers the most control over all properties. Kilo Code now supports both YAML (preferred) and JSON formats.
+You can directly edit the configuration files to create or modify custom modes. This method offers the most control over all properties. Test Agent now supports both YAML (preferred) and JSON formats.
 
 - **Global Modes:** Edit the `custom_modes.yaml` (preferred) or `custom_modes.json` file. Open the Modes area, click <Codicon name="gear" /> next to Global Modes, then choose "Edit Global Modes"
 - **Project Modes:** Edit the `.testcodemodes` file (which can be YAML or JSON) in your project root. Open the Modes area, click <Codicon name="gear" /> next to Project Modes, then choose "Edit Project Modes"
@@ -187,7 +187,7 @@ customModes:
 
 ### `name`
 
-- **Purpose:** The display name shown in the Kilo Code UI
+- **Purpose:** The display name shown in the Test Agent UI
 - **Format:** Can include spaces and proper capitalization
 
 **YAML Example:** `name: 📝 Documentation Writer`
@@ -297,7 +297,7 @@ While JSON is still fully supported, new modes created via the UI or by asking K
 
 Automatic migration from `custom_modes.json` to `custom_modes.yaml` happens when:
 
-- Kilo Code starts up
+- Test Agent starts up
 - A `custom_modes.json` file exists
 - No `custom_modes.yaml` file exists yet
 
@@ -306,7 +306,7 @@ The migration process preserves the original JSON file for rollback purposes.
 ### Project Modes (`.testcodemodes`)
 
 - No automatic startup migration occurs for project-specific files
-- Kilo Code can read `.testcodemodes` files in either YAML or JSON format
+- Test Agent can read `.testcodemodes` files in either YAML or JSON format
 - When editing through the UI, JSON files will be converted to YAML format
 - For manual conversion, you can ask Kilo to help reformat configurations
 
@@ -352,7 +352,7 @@ Mode configurations are applied in this order:
 
 ## Overriding Default Modes
 
-You can override Kilo Code's built-in modes (like 💻 Code, 🪲 Debug, ❓ Ask, 🏗️ Architect, 🪃 Orchestrator) by creating a custom mode with the same slug.
+You can override Test Agent's built-in modes (like 💻 Code, 🪲 Debug, ❓ Ask, 🏗️ Architect, 🪃 Orchestrator) by creating a custom mode with the same slug.
 
 ### Global Override Example
 

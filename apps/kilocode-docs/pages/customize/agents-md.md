@@ -8,7 +8,7 @@ description: "Project-level configuration with agents.md files"
 AGENTS.md files provide a standardized way to configure AI agent behavior across different AI coding tools. They allow you to define project-specific instructions, coding standards, and guidelines that AI agents should follow when working with your codebase.
 
 {% callout type="note" title="Memory Bank Deprecation" %}
-The Kilo Code **memory bank** feature has been deprecated in favor of AGENTS.md.
+The Test Agent **memory bank** feature has been deprecated in favor of AGENTS.md.
 
 **Existing memory bank rules will continue to work.**
 
@@ -22,7 +22,7 @@ If you'd like to migrate your memory bank content to AGENTS.md:
 
 ## What is AGENTS.md?
 
-AGENTS.md is an open standard for configuring AI agent behavior in software projects. It's a simple Markdown file placed at the root of your project that contains instructions for AI coding assistants. The standard is supported by multiple AI coding tools, including Kilo Code, Cursor, and Windsurf.
+AGENTS.md is an open standard for configuring AI agent behavior in software projects. It's a simple Markdown file placed at the root of your project that contains instructions for AI coding assistants. The standard is supported by multiple AI coding tools, including Test Agent, Cursor, and Windsurf.
 
 Think of AGENTS.md as a "README for AI agents" - it tells the AI how to work with your specific project, what conventions to follow, and what constraints to respect.
 
@@ -71,11 +71,11 @@ my-project/
     └── AGENTS.md                # Documentation-specific instructions
 ```
 
-When working in a subdirectory, Kilo Code will load both the root AGENTS.md and any subdirectory AGENTS.md files, with subdirectory files taking precedence for conflicting instructions.
+When working in a subdirectory, Test Agent will load both the root AGENTS.md and any subdirectory AGENTS.md files, with subdirectory files taking precedence for conflicting instructions.
 
 ## File Protection
 
-Both `AGENTS.md` and `AGENT.md` are **write-protected files** in Kilo Code. This means:
+Both `AGENTS.md` and `AGENT.md` are **write-protected files** in Test Agent. This means:
 
 - The AI agent cannot modify these files without explicit user approval
 - You'll be prompted to confirm any changes to these files
@@ -125,32 +125,32 @@ Brief description of the project and its purpose.
 - **Keep it concise** - Use bullet points and direct language; avoid long paragraphs
 - **Update regularly** - Review and revise as your project's conventions evolve
 
-## How AGENTS.md Works in Kilo Code
+## How AGENTS.md Works in Test Agent
 
 ### Loading Behavior
 
-When you start a task in Kilo Code:
+When you start a task in Test Agent:
 
-1. Kilo Code checks for `AGENTS.md` or `AGENT.md` at the project root
+1. Test Agent checks for `AGENTS.md` or `AGENT.md` at the project root
 2. If found, the content is loaded and included in the AI's context
 3. The AI follows these instructions throughout the conversation
 4. Changes to AGENTS.md take effect in new tasks (reload may be required)
 
 ### Interaction with Other Rules
 
-AGENTS.md works alongside Kilo Code's other configuration systems:
+AGENTS.md works alongside Test Agent's other configuration systems:
 
 | Feature                                                        | Scope   | Location                  | Purpose                                   | Priority    |
 | -------------------------------------------------------------- | ------- | ------------------------- | ----------------------------------------- | ----------- |
 | **[Mode-specific Custom Rules](/docs/customize/custom-rules)** | Project | `.kilocode/rules-{mode}/` | Mode-specific rules and constraints       | 1 (Highest) |
-| **[Custom Rules](/docs/customize/custom-rules)**               | Project | `.kilocode/rules/`        | Kilo Code-specific rules and constraints  | 2           |
+| **[Custom Rules](/docs/customize/custom-rules)**               | Project | `.kilocode/rules/`        | Test Agent-specific rules and constraints | 2           |
 | **[AGENTS.md](/docs/customize/agents-md)**                     | Project | `AGENTS.md`               | Universal standard for any AI coding tool | 3           |
-| **[Global Custom Rules](/docs/customize/custom-rules)**        | Global  | `~/.kilocode/rules/`      | Global Kilo Code rules                    | 4           |
+| **[Global Custom Rules](/docs/customize/custom-rules)**        | Global  | `~/.kilocode/rules/`      | Global Test Agent rules                   | 4           |
 | **[Custom Instructions](/docs/customize/custom-instructions)** | Global  | IDE settings              | Personal preferences across all projects  | 5 (Lowest)  |
 
 ### Enabling/Disabling AGENTS.md
 
-AGENTS.md support is **enabled by default** in Kilo Code. To disable it, edit `settings.json`:
+AGENTS.md support is **enabled by default** in Test Agent. To disable it, edit `settings.json`:
 
 ```json
 {
@@ -160,7 +160,7 @@ AGENTS.md support is **enabled by default** in Kilo Code. To disable it, edit `s
 
 ## Related Features
 
-- **[Custom Rules](/docs/customize/custom-rules)** - Kilo Code-specific rules with more control
+- **[Custom Rules](/docs/customize/custom-rules)** - Test Agent-specific rules with more control
 - **[Custom Modes](/docs/customize/custom-modes)** - Specialized workflows with specific permissions
 - **[Custom Instructions](/docs/customize/custom-instructions)** - Personal preferences across all projects
 - **[Migrating from Cursor or Windsurf](/docs/getting-started/migrating)** - Migration guide for other tools

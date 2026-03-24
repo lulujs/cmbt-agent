@@ -13,7 +13,7 @@
 		"cancel": "Zrušiť"
 	},
 	"ui": {
-		"initializing": "Kilo Code sa inicializuje...",
+		"initializing": "Test Agent sa inicializuje...",
 		"systemInformation": "Informácie o systéme"
 	}
 }

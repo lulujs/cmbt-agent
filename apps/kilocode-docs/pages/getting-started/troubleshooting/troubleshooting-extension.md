@@ -1,6 +1,6 @@
 ---
 title: "Troubleshooting IDE Extensions"
-description: "How to capture console logs and report issues with Kilo Code"
+description: "How to capture console logs and report issues with Test Agent"
 ---
 
 # Capturing Console Logs
@@ -29,10 +29,10 @@ Providing console logs helps us pinpoint exactly what's going wrong with your in
 
 ### Connect Chrome DevTools
 
-1. Make sure the **Kilo Code panel is open** in your IDE (the debug target won't appear unless the webview is active)
+1. Make sure the **Test Agent panel is open** in your IDE (the debug target won't appear unless the webview is active)
 2. Open Chrome (or any Chromium-based browser like Edge or Arc)
 3. Navigate to `http://localhost:9222/json` to see the list of inspectable targets
-4. Find the entry with `"title": "Kilo Code"` and open the `devtoolsFrontendUrl` link
+4. Find the entry with `"title": "Test Agent"` and open the `devtoolsFrontendUrl` link
 5. Chrome DevTools will open connected to the Kilo webview—click the **Console** tab
 
 {% /tab %}
@@ -54,4 +54,4 @@ If you're unable to resolve the issue, please inspect the console logs, remove a
 - The error messages from the console
 - Steps to reproduce the issue
 - Screenshots or screen recordings of the issue
-- Your IDE and Kilo Code version
+- Your IDE and Test Agent version

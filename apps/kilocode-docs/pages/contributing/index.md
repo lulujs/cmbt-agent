@@ -1,6 +1,6 @@
 ---
 title: "Contributing"
-description: "Contribute to Kilo Code"
+description: "Contribute to Test Agent"
 ---
 
 # Contributing Overview
@@ -9,11 +9,11 @@ description: "Contribute to Kilo Code"
 **New versions of the VS Code extension and CLI are being developed in [Kilo-Org/Kilo](https://github.com/Kilo-Org/Kilo)** (extension at `packages/kilo-vscode`, CLI at `packages/opencode`). If you're looking to contribute to the extension or CLI, please head over to that repository.
 {% /callout %}
 
-Kilo Code is an open-source project that welcomes contributions from developers of all skill levels. This guide will help you get started with contributing to Kilo Code, whether you're fixing bugs, adding features, improving documentation, or sharing custom modes.
+Test Agent is an open-source project that welcomes contributions from developers of all skill levels. This guide will help you get started with contributing to Test Agent, whether you're fixing bugs, adding features, improving documentation, or sharing custom modes.
 
 ## Ways to Contribute
 
-There are many ways to contribute to Kilo Code:
+There are many ways to contribute to Test Agent:
 
 1. **Code Contributions**: Implement new features or fix bugs
 2. **Documentation**: Improve existing docs or create new guides
@@ -28,7 +28,7 @@ Setting Up the Development Environment is described in details on the [Developme
 
 ## Understanding the Architecture
 
-Before diving into the code, we recommend reviewing the [Architecture Overview](/docs/contributing/architecture) to understand how the different components of Kilo Code fit together.
+Before diving into the code, we recommend reviewing the [Architecture Overview](/docs/contributing/architecture) to understand how the different components of Test Agent fit together.
 
 ## Development Workflow
 
@@ -74,7 +74,7 @@ git checkout -b docs/your-change-description
     git push origin your-branch-name
     ```
 
-2. Go to the [Kilo Code repository](https://github.com/Kilo-Org/kilocode)
+2. Go to the [Test Agent repository](https://github.com/Kilo-Org/kilocode)
 
 3. Click "New Pull Request" and select "compare across forks"
 
@@ -88,7 +88,7 @@ git checkout -b docs/your-change-description
 
 ## Contributing to the Kilo Marketplace
 
-The [Kilo Marketplace](https://github.com/Kilo-Org/kilo-marketplace) is a community-driven repository of agent tooling that extends Kilo Code's capabilities. You can contribute:
+The [Kilo Marketplace](https://github.com/Kilo-Org/kilo-marketplace) is a community-driven repository of agent tooling that extends Test Agent's capabilities. You can contribute:
 
 - **Skills**: Modular workflows and domain expertise that teach agents how to perform specific tasks
 - **MCP Servers**: Standardized integrations that connect agents to external tools and services
@@ -129,7 +129,7 @@ Documentation improvements are highly valued contributions:
 
 ## Community Guidelines
 
-When participating in the Kilo Code community:
+When participating in the Test Agent community:
 
 - Be respectful and inclusive
 - Provide constructive feedback
@@ -146,10 +146,10 @@ If you need help with your contribution:
 
 ## Recognition
 
-All contributors are valued members of the Kilo Code community. Contributors are recognized in:
+All contributors are valued members of the Test Agent community. Contributors are recognized in:
 
 - Release notes
 - The project's README
 - The contributors list on GitHub
 
-Thank you for contributing to Kilo Code and helping make AI-powered coding assistance better for everyone!
+Thank you for contributing to Test Agent and helping make AI-powered coding assistance better for everyone!

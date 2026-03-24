@@ -1,4 +1,4 @@
-# Kilo Code Community Code of Conduct
+# Test Agent Community Code of Conduct
 
 ## Our Pledge
 

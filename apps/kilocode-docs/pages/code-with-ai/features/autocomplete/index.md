@@ -1,11 +1,11 @@
 ---
 title: "Autocomplete"
-description: "AI-powered code autocompletion in Kilo Code"
+description: "AI-powered code autocompletion in Test Agent"
 ---
 
 # Autocomplete
 
-Kilo Code's autocomplete feature provides intelligent code suggestions and completions while you're typing, helping you write code faster and more efficiently. It offers both automatic and manual triggering options.
+Test Agent's autocomplete feature provides intelligent code suggestions and completions while you're typing, helping you write code faster and more efficiently. It offers both automatic and manual triggering options.
 
 ## How Autocomplete Works
 
@@ -22,7 +22,7 @@ Autocomplete analyzes your code context and provides:
 
 #### Auto-trigger suggestions
 
-When enabled, Kilo Code automatically shows inline suggestions when you pause typing. This provides a seamless coding experience where suggestions appear naturally as you work.
+When enabled, Test Agent automatically shows inline suggestions when you pause typing. This provides a seamless coding experience where suggestions appear naturally as you work.
 
 - **Auto Trigger Delay**: Configure the delay (in seconds) before suggestions appear after you stop typing
 - Default is 3 seconds, but this can be adjusted up or down
@@ -34,7 +34,7 @@ For more control over when suggestions appear:
 
 1. Position your cursor where you need assistance
 2. Press `Cmd+L` (Mac) or `Ctrl+L` (Windows/Linux)
-3. Kilo Code analyzes the surrounding context
+3. Test Agent analyzes the surrounding context
 4. Receive immediate improvements or completions
 
 This is ideal for:
@@ -50,7 +50,7 @@ You can customize this keyboard shortcut as well in your VS Code settings.
 
 #### Enable Chat Autocomplete
 
-When enabled, Kilo Code will suggest completions as you type in the chat input. Press Tab to accept suggestions.
+When enabled, Test Agent will suggest completions as you type in the chat input. Press Tab to accept suggestions.
 
 ## Provider and Model Selection
 
@@ -58,10 +58,10 @@ Autocomplete currently uses **Codestral** (by Mistral AI) as the underlying mode
 
 ### How the Provider is Chosen
 
-Kilo Code automatically selects a provider for autocomplete in the following priority order:
+Test Agent automatically selects a provider for autocomplete in the following priority order:
 
 - **Mistral** (using `codestral-latest`)
-- **Kilo Code** (using `mistralai/codestral-2508`)
+- **Test Agent** (using `mistralai/codestral-2508`)
 - **OpenRouter** (using `mistralai/codestral-2508`)
 - **Requesty** (using `mistral/codestral-latest`)
 - **Bedrock** (using `mistral.codestral-2508-v1:0`)
@@ -76,7 +76,7 @@ Kilo Code automatically selects a provider for autocomplete in the following pri
 
 ## Disable Rival Autocomplete
 
-We recommend disabling rival autocompletes to optimize your experience with Kilo Code. To disable GitHub Copilot autocomplete in VSCode, go to **Settings** and navigate to **GitHub** > **Copilot: Advanced** (or search for 'copilot').
+We recommend disabling rival autocompletes to optimize your experience with Test Agent. To disable GitHub Copilot autocomplete in VSCode, go to **Settings** and navigate to **GitHub** > **Copilot: Advanced** (or search for 'copilot').
 
 Then, toggle to 'disabled':
 

@@ -1,5 +1,5 @@
 {
-	"name": "Kilo Code Development",
+	"name": "Test Agent Development",
 	"dockerFile": "Dockerfile",
 	"context": "..",
 
@@ -49,12 +49,12 @@
 	},
 
 	"postCreateCommand": "bash .devcontainer/setup.sh",
-	"postStartCommand": "echo '🚀 Kilo Code devcontainer is ready!'",
+	"postStartCommand": "echo '🚀 Test Agent devcontainer is ready!'",
 
 	"remoteUser": "root",
 	"containerUser": "root",
 
-	// Mounts for persisting Kilo Code state across container rebuilds
+	// Mounts for persisting Test Agent state across container rebuilds
 	// These mounts preserve threads, settings, and caches
 	"mounts": [
 		"source=${localWorkspaceFolder}/.git,target=/workspace/.git,type=bind,consistency=cached",

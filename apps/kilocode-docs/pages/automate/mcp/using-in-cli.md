@@ -5,7 +5,7 @@ description: "How to use MCP servers in the CLI"
 
 # Using MCP in the CLI
 
-The Kilo Code CLI supports MCP servers, but uses a **different configuration path** than the VS Code extension.
+The Test Agent CLI supports MCP servers, but uses a **different configuration path** than the VS Code extension.
 
 ## Configuration Location
 

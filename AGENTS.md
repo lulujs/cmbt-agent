@@ -1,6 +1,6 @@
 # AGENTS.md
 
-TEST Agent is a secondary development project based on Kilo Code, an open source AI coding agent for VS Code that generates code from natural language, automates tasks, and supports 500+ AI models.
+TEST Agent is a secondary development project based on Test Agent, an open source AI coding agent for VS Code that generates code from natural language, automates tasks, and supports 500+ AI models.
 
 ## Project Structure
 
@@ -21,7 +21,7 @@ Key source directories:
 
 ## Agent Runtime Architecture
 
-The `@kilocode/agent-runtime` package enables running Kilo Code agents as isolated Node.js processes without VS Code.
+The `@kilocode/agent-runtime` package enables running Test Agent agents as isolated Node.js processes without VS Code.
 
 ### How It Works
 
@@ -32,7 +32,7 @@ The `@kilocode/agent-runtime` package enables running Kilo Code agents as isolat
 └─────────────────────┘                 └─────────────────────┘
 ```
 
-1. **ExtensionHost**: Hosts the Kilo Code extension with a complete VS Code API mock
+1. **ExtensionHost**: Hosts the Test Agent extension with a complete VS Code API mock
 2. **MessageBridge**: Bidirectional IPC communication (request/response with timeout)
 3. **ExtensionService**: Orchestrates host and bridge lifecycle
 
@@ -143,7 +143,7 @@ Keep changesets concise and feature-oriented as they appear directly in release 
 
 ## Fork Merge Process
 
-TEST Agent is a fork of [Kilo Code](https://github.com/kilocode/kilo-code), which itself is a fork of [Roo Code](https://github.com/RooVetGit/Roo-Code). We periodically merge upstream changes using scripts in `scripts/kilocode/`.
+TEST Agent is a fork of [Test Agent](https://github.com/kilocode/kilo-code), which itself is a fork of [Roo Code](https://github.com/RooVetGit/Roo-Code). We periodically merge upstream changes using scripts in `scripts/kilocode/`.
 
 ## test-agent_change Markers
 
@@ -181,7 +181,7 @@ Code in these directories is TEST Agent-specific and doesn't need markers:
 
 ### When markers ARE needed
 
-All modifications to core extension code (files that exist in upstream Kilo Code or Roo Code) require markers:
+All modifications to core extension code (files that exist in upstream Test Agent or Roo Code) require markers:
 
 - `src/` (except TEST-specific subdirectories listed above)
 - `webview-ui/`
@@ -189,7 +189,7 @@ All modifications to core extension code (files that exist in upstream Kilo Code
 
 Keep changes to core extension code minimal to reduce merge conflicts during upstream syncs.
 
-**Note**: Existing `kilocode_change` markers from the Kilo Code fork should be preserved. New TEST Agent-specific changes should use `test-agent_change` markers.
+**Note**: Existing `kilocode_change` markers from the Test Agent fork should be preserved. New TEST Agent-specific changes should use `test-agent_change` markers.
 
 ## Code Quality Rules
 

@@ -1,11 +1,11 @@
 ---
 title: "Using Kilo for Free"
-description: "Learn how to use Kilo Code without spending money by configuring free models for agentic tasks, autocomplete, and CLI background tasks"
+description: "Learn how to use Test Agent without spending money by configuring free models for agentic tasks, autocomplete, and CLI background tasks"
 ---
 
 # Using Kilo for Free
 
-Kilo Code can be used completely free of charge, but you need to understand where Kilo uses AI models and configure each one appropriately.
+Test Agent can be used completely free of charge, but you need to understand where Kilo uses AI models and configure each one appropriately.
 
 ## When Kilo Uses Model Inference
 
@@ -19,7 +19,7 @@ Each of these can consume credits by default. **For a completely free Kilo exper
 
 ## Free Agentic Usage
 
-Kilo Code provides access to [free models](/docs/code-with-ai/agents/free-and-budget-models) for your coding tasks through the Kilo Gateway and partner providers.
+Test Agent provides access to [free models](/docs/code-with-ai/agents/free-and-budget-models) for your coding tasks through the Kilo Gateway and partner providers.
 
 ### Finding Free Models
 
@@ -52,11 +52,11 @@ The available free models change over time as Kilo partners with different AI in
 
 ## Free Autocomplete
 
-Kilo Code's autocomplete feature provides AI-powered code completions as you type in the IDE extensions.
+Test Agent's autocomplete feature provides AI-powered code completions as you type in the IDE extensions.
 
 ### Default Behavior
 
-By default, autocomplete is routed through the Kilo Code provider and uses credits from your account.
+By default, autocomplete is routed through the Test Agent provider and uses credits from your account.
 
 ### If You Don't Have Credits
 
@@ -64,7 +64,7 @@ If you run out of credits and haven't configured a free alternative, autocomplet
 
 ### How to Get It Free
 
-Configure Mistral directly as your autocomplete provider. Mistral offers free access to their Codestral model, which is optimized for code completions. When you configure Mistral directly, it takes precedence over the default Kilo Code routing.
+Configure Mistral directly as your autocomplete provider. Mistral offers free access to their Codestral model, which is optimized for code completions. When you configure Mistral directly, it takes precedence over the default Test Agent routing.
 
 For step-by-step instructions with screenshots, see our [Mistral Setup Guide](/docs/code-with-ai/features/autocomplete/mistral-setup).
 

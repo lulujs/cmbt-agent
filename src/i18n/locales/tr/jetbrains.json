@@ -13,7 +13,7 @@
 		"cancel": "İptal"
 	},
 	"ui": {
-		"initializing": "Kilo Code başlatılıyor...",
+		"initializing": "Test Agent başlatılıyor...",
 		"systemInformation": "Sistem Bilgileri"
 	}
 }

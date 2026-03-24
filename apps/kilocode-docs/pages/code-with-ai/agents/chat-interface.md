@@ -1,12 +1,12 @@
 ---
 title: "The Chat Interface"
-description: "Learn how to use the Kilo Code chat interface effectively"
+description: "Learn how to use the Test Agent chat interface effectively"
 ---
 
-# Chatting with Kilo Code
+# Chatting with Test Agent
 
 {% callout type="tip" %}
-**Bottom line:** Kilo Code is an AI coding assistant that lives in VS Code. You chat with it in plain English, and it writes, edits, and explains code for you.
+**Bottom line:** Test Agent is an AI coding assistant that lives in VS Code. You chat with it in plain English, and it writes, edits, and explains code for you.
 {% /callout %}
 
 {% callout type="note" title="Prefer quick completions?" %}
@@ -15,15 +15,15 @@ If you're typing code in the editor and want AI to finish your line or block, ch
 
 ## Quick Setup
 
-Find the Kilo Code icon ({% kilo-code-icon /%}) in VS Code's Primary Side Bar. Click it to open the chat panel.
+Find the Test Agent icon ({% kilo-code-icon /%}) in VS Code's Primary Side Bar. Click it to open the chat panel.
 
-**Lost the panel?** Go to View > Open View... and search for "Kilo Code"
+**Lost the panel?** Go to View > Open View... and search for "Test Agent"
 
-## How to Talk to Kilo Code
+## How to Talk to Test Agent
 
 **The key insight:** Just type what you want in normal English. No special commands needed.
 
-{% image src="/docs/img/typing-your-requests/typing-your-requests.png" alt="Example of typing a request in Kilo Code" width="800" caption="Example of typing a request in Kilo Code" /%}
+{% image src="/docs/img/typing-your-requests/typing-your-requests.png" alt="Example of typing a request in Test Agent" width="800" caption="Example of typing a request in Test Agent" /%}
 
 **Good requests:**
 
@@ -81,17 +81,17 @@ Find the Kilo Code icon ({% kilo-code-icon /%}) in VS Code's Primary Side Bar. C
 | Technical jargon overload         | Clear, straightforward language works best                                |
 | Using chat for tiny code changes. | Use [autocomplete](/docs/basic-usage/autocomplete) for inline completions |
 
-**Why it matters:** Kilo Code works best when you communicate like you're talking to a smart teammate who needs clear direction.
+**Why it matters:** Test Agent works best when you communicate like you're talking to a smart teammate who needs clear direction.
 
 ## Suggested Responses
 
-When Kilo Code needs more information to complete a task, it uses the [`ask_followup_question`](/docs/features/tools/ask-followup-question) tool. To make responding easier and faster, Kilo Code often provides suggested answers alongside the question.
+When Test Agent needs more information to complete a task, it uses the [`ask_followup_question`](/docs/features/tools/ask-followup-question) tool. To make responding easier and faster, Test Agent often provides suggested answers alongside the question.
 
-{% image src="/docs/img/suggested-responses/suggested-responses.png" alt="Example of Kilo Code asking a question with suggested response buttons below it" width="800" caption="Suggested responses appear as clickable buttons below questions" /%}
+{% image src="/docs/img/suggested-responses/suggested-responses.png" alt="Example of Test Agent asking a question with suggested response buttons below it" width="800" caption="Suggested responses appear as clickable buttons below questions" /%}
 
 **How it works:**
 
-1. **Question Appears** - Kilo Code asks a question using the `ask_followup_question` tool
+1. **Question Appears** - Test Agent asks a question using the `ask_followup_question` tool
 2. **Suggestions Displayed** - If suggestions are provided, they appear as buttons below the question
 3. **Interaction** - You can interact with these suggestions in two ways
 
@@ -102,7 +102,7 @@ You have two options for using suggested responses:
 1. **Direct Selection**:
 
     - **Action**: Simply click the button containing the answer you want to provide
-    - **Result**: The selected answer is immediately sent back to Kilo Code as your response. This is the quickest way to reply if one of the suggestions perfectly matches your intent.
+    - **Result**: The selected answer is immediately sent back to Test Agent as your response. This is the quickest way to reply if one of the suggestions perfectly matches your intent.
 
 2. **Edit Before Sending**:
     - **Action**:
@@ -113,21 +113,21 @@ You have two options for using suggested responses:
 **Benefits:**
 
 - **Speed** - Quickly respond without typing full answers
-- **Clarity** - Suggestions often clarify the type of information Kilo Code needs
+- **Clarity** - Suggestions often clarify the type of information Test Agent needs
 - **Flexibility** - Edit suggestions to provide precise, customized answers when needed
 
-This feature streamlines the interaction when Kilo Code requires clarification, allowing you to guide the task effectively with minimal effort.
+This feature streamlines the interaction when Test Agent requires clarification, allowing you to guide the task effectively with minimal effort.
 
 ## Tips for Better Workflow
 
 {% callout type="tip" %}
-**Move Kilo Code to the Secondary Side Bar** for a better layout. Right-click on the Kilo Code icon in the Activity Bar and select **Move To → Secondary Side Bar**. This lets you see the Explorer, Search, Source Control, etc. alongside Kilo Code.
+**Move Test Agent to the Secondary Side Bar** for a better layout. Right-click on the Test Agent icon in the Activity Bar and select **Move To → Secondary Side Bar**. This lets you see the Explorer, Search, Source Control, etc. alongside Test Agent.
 
-{% image src="/docs/img/move-to-secondary.png" alt="Move to Secondary Side Bar" width="600" caption="Move Kilo Code to the Secondary Side Bar for better workspace organization" /%}
+{% image src="/docs/img/move-to-secondary.png" alt="Move to Secondary Side Bar" width="600" caption="Move Test Agent to the Secondary Side Bar for better workspace organization" /%}
 {% /callout %}
 
 {% callout type="tip" %}
-**Drag files directly into chat.** Once you have Kilo Code in a separate sidebar from the file explorer, you can drag files from the explorer into the chat window (even multiple at once). Just hold down the Shift key after you start dragging the files.
+**Drag files directly into chat.** Once you have Test Agent in a separate sidebar from the file explorer, you can drag files from the explorer into the chat window (even multiple at once). Just hold down the Shift key after you start dragging the files.
 {% /callout %}
 
 Ready to start coding? Open the chat panel and describe what you want to build!

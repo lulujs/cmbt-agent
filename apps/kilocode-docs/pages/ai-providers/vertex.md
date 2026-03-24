@@ -2,9 +2,9 @@
 sidebar_label: GCP Vertex AI
 ---
 
-# Using GCP Vertex AI With Kilo Code
+# Using GCP Vertex AI With Test Agent
 
-Kilo Code supports accessing models through Google Cloud Platform's Vertex AI, a managed machine learning platform that provides access to various foundation models, including Anthropic's Claude family.
+Test Agent supports accessing models through Google Cloud Platform's Vertex AI, a managed machine learning platform that provides access to various foundation models, including Anthropic's Claude family.
 
 **Website:** [https://cloud.google.com/vertex-ai](https://cloud.google.com/vertex-ai)
 
@@ -13,14 +13,14 @@ Kilo Code supports accessing models through Google Cloud Platform's Vertex AI, a
 - **Google Cloud Account:** You need an active Google Cloud Platform (GCP) account.
 - **Project:** You need a GCP project with the Vertex AI API enabled.
 - **Model Access:** You must request and be granted access to the specific Claude models on Vertex AI you want to use. See the [Google Cloud documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude#before_you_begin) for instructions.
-- **Application Default Credentials (ADC):** Kilo Code uses Application Default Credentials to authenticate with Vertex AI. The easiest way to set this up is to:
+- **Application Default Credentials (ADC):** Test Agent uses Application Default Credentials to authenticate with Vertex AI. The easiest way to set this up is to:
     1.  Install the Google Cloud CLI: [https://cloud.google.com/sdk/docs/install](https://cloud.google.com/sdk/docs/install)
     2.  Authenticate using: `gcloud auth application-default login`
 - **Service Account Key (Alternative):** Alternatively, you can authenticate using a Google Cloud Service Account key file. You'll need to generate this key in your GCP project. See the [Google Cloud documentation on creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
 
-## Configuration in Kilo Code
+## Configuration in Test Agent
 
-1.  **Open Kilo Code Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Kilo Code panel.
+1.  **Open Test Agent Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Test Agent panel.
 2.  **Select Provider:** Choose "GCP Vertex AI" from the "API Provider" dropdown.
 3.  **Configure Authentication:**
     - **If using Application Default Credentials (ADC):** No further action is needed here. ADC will be used automatically if configured correctly (see Prerequisites).

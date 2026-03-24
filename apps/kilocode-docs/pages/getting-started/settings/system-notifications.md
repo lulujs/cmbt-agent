@@ -1,6 +1,6 @@
 ---
 title: "System Notifications"
-description: "Configure native OS notifications for Kilo Code"
+description: "Configure native OS notifications for Test Agent"
 ---
 
 # System Notifications
@@ -12,7 +12,7 @@ System notifications are native operating system notifications that appear in yo
 - Your screen is locked (depending on OS settings)
 - You're away from your computer
 
-Kilo Code uses system notifications to inform you about:
+Test Agent uses system notifications to inform you about:
 
 - Task completion status
 - Important errors or warnings
@@ -21,7 +21,7 @@ Kilo Code uses system notifications to inform you about:
 
 ## Supported Operating Systems
 
-Kilo Code's system notifications work on all major operating systems with different underlying technologies:
+Test Agent's system notifications work on all major operating systems with different underlying technologies:
 
 | Operating System | Technology                      | Requirements                                 |
 | ---------------- | ------------------------------- | -------------------------------------------- |
@@ -37,7 +37,7 @@ macOS has the best built-in support for system notifications with two available 
 
 #### Method 1: Built-in AppleScript (Fallback)
 
-No additional setup required. Kilo Code uses macOS's built-in command to display notifications.
+No additional setup required. Test Agent uses macOS's built-in command to display notifications.
 
 #### Method 2: Enhanced with terminal-notifier (Recommended)
 
@@ -51,7 +51,7 @@ brew install terminal-notifier
 npm install -g terminal-notifier
 ```
 
-**How it works:** Kilo Code first attempts to use `terminal-notifier` and automatically falls back to AppleScript if it's not installed.
+**How it works:** Test Agent first attempts to use `terminal-notifier` and automatically falls back to AppleScript if it's not installed.
 
 ### Windows Setup
 

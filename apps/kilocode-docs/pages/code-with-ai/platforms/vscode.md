@@ -1,6 +1,6 @@
 ---
 title: "VS Code Extension"
-description: "Using Kilo Code in Visual Studio Code"
+description: "Using Test Agent in Visual Studio Code"
 ---
 
 # VS Code Extension

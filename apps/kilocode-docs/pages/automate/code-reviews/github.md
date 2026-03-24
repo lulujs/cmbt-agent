@@ -9,9 +9,9 @@ Kilo's Code Reviews integrate with GitHub via a **GitHub App** to automatically 
 
 ## Prerequisites
 
-- A Kilo Code account at [app.kilo.ai](https://app.kilo.ai)
+- A Test Agent account at [app.kilo.ai](https://app.kilo.ai)
 - A GitHub account with access to the repositories you want to review
-- Kilo Code credits for AI model usage
+- Test Agent credits for AI model usage
 
 ## Setup
 
@@ -100,7 +100,7 @@ The repository list is synced from GitHub and can be refreshed from the configur
 ### Reviews are failing
 
 - Check the Code Reviews page for error details on specific reviews
-- Ensure you have sufficient Kilo Code credits
+- Ensure you have sufficient Test Agent credits
 - Very large PRs may time out — try increasing the max review time
 
 ### The GitHub App is missing permissions

@@ -427,7 +427,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		)
 	}
 
-	// kilocode_change start: Fetch Kilo Code notifications on startup
+	// kilocode_change start: Fetch Test Agent notifications on startup
 	try {
 		void fetchKilocodeNotificationsOnStartup(contextProxy, outputChannel.appendLine.bind(outputChannel))
 	} catch (error) {
@@ -508,7 +508,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		}),
 	)
 
-	// kilocode_change start - Kilo Code specific registrations
+	// kilocode_change start - Test Agent specific registrations
 	const { kiloCodeWrapped, kiloCodeWrapperCode } = getKiloCodeWrapperProperties()
 	if (kiloCodeWrapped) {
 		// Only foward logs in Jetbrains
@@ -519,12 +519,12 @@ export async function activate(context: vscode.ExtensionContext) {
 		registerAutocompleteProvider(context, provider)
 	}
 	registerCommitMessageProvider(context, outputChannel) // kilocode_change
-	// kilocode_change end - Kilo Code specific registrations
+	// kilocode_change end - Test Agent specific registrations
 
 	registerCodeActions(context)
 	registerTerminalActions(context)
 
-	// Allows other extensions to activate once Kilo Code is ready.
+	// Allows other extensions to activate once Test Agent is ready.
 	vscode.commands.executeCommand(`${Package.name}.activationCompleted`)
 
 	// Implements the `RooCodeAPI` interface.

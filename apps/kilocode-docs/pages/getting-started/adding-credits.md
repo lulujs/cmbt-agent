@@ -1,6 +1,6 @@
 ---
 title: "Adding Credits"
-description: "How to add credits to your Kilo Code account"
+description: "How to add credits to your Test Agent account"
 ---
 
 # Adding More Kilo Credits
@@ -17,7 +17,7 @@ You can also use subscriptions or credits you may have purchased directly with a
 
 ## Transparent Pricing
 
-At Kilo Code, we believe in complete pricing transparency:
+At Test Agent, we believe in complete pricing transparency:
 
 - Our pricing matches the model provider's API rates exactly
 - We don't take any commission or markup.
@@ -27,7 +27,7 @@ At Kilo Code, we believe in complete pricing transparency:
 
 ## Future Plans
 
-We're continuously working to improve Kilo Code and expand our offerings:
+We're continuously working to improve Test Agent and expand our offerings:
 
 - Additional LLM providers will be added in the future
 - More payment options and other plans are under development

@@ -1,8 +1,8 @@
 /**
  * @kilocode/agent-runtime
  *
- * Core agent runtime for Kilo Code - enables running agents without CLI.
- * This package provides the essential components for running the Kilo Code extension
+ * Core agent runtime for Test Agent - enables running agents without CLI.
+ * This package provides the essential components for running the Test Agent extension
  * in a Node.js environment without VS Code.
  */
 

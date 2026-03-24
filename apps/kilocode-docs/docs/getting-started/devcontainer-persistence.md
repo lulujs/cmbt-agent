@@ -1,23 +1,23 @@
 ---
 title: Dev Container Persistence
-description: How to preserve Kilo Code threads and settings in dev containers
+description: How to preserve Test Agent threads and settings in dev containers
 ---
 
 # Dev Container Persistence
 
-When using Kilo Code in development containers (VS Code Dev Containers, GitHub Codespaces, etc.), your threads and settings can persist across container rebuilds by properly configuring volume mounts.
+When using Test Agent in development containers (VS Code Dev Containers, GitHub Codespaces, etc.), your threads and settings can persist across container rebuilds by properly configuring volume mounts.
 
 ## Why Persistence Matters
 
-Dev containers are ephemeral by default - when you rebuild the container, all data is lost unless explicitly persisted. Kilo Code stores important data including:
+Dev containers are ephemeral by default - when you rebuild the container, all data is lost unless explicitly persisted. Test Agent stores important data including:
 
-- **Conversation threads**: Your ongoing discussions with Kilo Code
+- **Conversation threads**: Your ongoing discussions with Test Agent
 - **Settings**: API configurations, custom modes, and preferences
 - **Cache**: Vector store for code indexing and browser tool data
 
 ## Required Configuration
 
-The Kilo Code dev container is pre-configured with named volumes to preserve your data. If you're setting up your own dev container, add these mounts to your `devcontainer.json`:
+The Test Agent dev container is pre-configured with named volumes to preserve your data. If you're setting up your own dev container, add these mounts to your `devcontainer.json`:
 
 ```json
 {
@@ -60,7 +60,7 @@ The Kilo Code dev container is pre-configured with named volumes to preserve you
 If named volumes are accidentally deleted:
 
 1. Threads cannot be automatically recovered
-2. Start new conversations with Kilo Code
+2. Start new conversations with Test Agent
 3. Consider implementing a backup strategy for important threads
 
 ### Manual Backup
@@ -90,7 +90,7 @@ For advanced configurations, you can specify a custom storage path:
 
 2. Set the custom storage path in VS Code settings:
     - Open Settings (`Ctrl+,` or `Cmd+,`)
-    - Search for "Kilo Code: Custom Storage Path"
+    - Search for "Test Agent: Custom Storage Path"
     - Enter: `/home/vscode/kilocode-data`
 
 ## Best Practices
@@ -102,6 +102,6 @@ For advanced configurations, you can specify a custom storage path:
 
 ## GitHub Codespaces
 
-GitHub Codespaces automatically persists your VS Code settings and extensions. For Kilo Code threads, the pre-configured dev container includes the necessary volume mounts.
+GitHub Codespaces automatically persists your VS Code settings and extensions. For Test Agent threads, the pre-configured dev container includes the necessary volume mounts.
 
 If using a custom Codespace configuration, ensure the mounts from the Required Configuration section are included.

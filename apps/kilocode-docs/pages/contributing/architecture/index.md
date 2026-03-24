@@ -1,15 +1,15 @@
 ---
 title: "Architecture Overview"
-description: "Overview of Kilo Code architecture"
+description: "Overview of Test Agent architecture"
 ---
 
 # Architecture Overview
 
-This document provides a high-level overview of Kilo Code's architecture to help contributors understand how the different components fit together.
+This document provides a high-level overview of Test Agent's architecture to help contributors understand how the different components fit together.
 
 ## System Architecture
 
-Kilo Code is a VS Code extension built with TypeScript that connects to various AI providers to deliver intelligent coding assistance. The architecture follows a layered approach:
+Test Agent is a VS Code extension built with TypeScript that connects to various AI providers to deliver intelligent coding assistance. The architecture follows a layered approach:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -50,7 +50,7 @@ For detailed documentation on current and planned features, see the [Architectur
 
 ### Modes
 
-Modes are configurable presets that customize Kilo Code's behavior:
+Modes are configurable presets that customize Test Agent's behavior:
 
 - Define which tools are available
 - Set custom system prompts
@@ -59,7 +59,7 @@ Modes are configurable presets that customize Kilo Code's behavior:
 
 ### Model Context Protocol (MCP)
 
-MCP enables extending Kilo Code with external tools:
+MCP enables extending Test Agent with external tools:
 
 - Servers provide additional capabilities
 - Standardized protocol for tool communication

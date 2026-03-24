@@ -1,25 +1,25 @@
 ---
 title: "Code with AI"
-description: "Learn how to code with AI using Kilo Code across different platforms and interfaces"
+description: "Learn how to code with AI using Test Agent across different platforms and interfaces"
 ---
 
 # {% $markdoc.frontmatter.title %}
 
 {% callout type="generic" %}
-Kilo Code is your AI pair programmer that works in your IDE, terminal, or browser. Generate code, refactor, debug, and ship faster with AI that understands your codebase and context.
+Test Agent is your AI pair programmer that works in your IDE, terminal, or browser. Generate code, refactor, debug, and ship faster with AI that understands your codebase and context.
 {% /callout %}
 
 ## Getting Started
 
-New to Kilo Code? Start here to understand the core concepts:
+New to Test Agent? Start here to understand the core concepts:
 
-- [**Install Kilo Code**](/docs/getting-started/installing) — Get started in VS Code, JetBrains, CLI, or mobile
+- [**Install Test Agent**](/docs/getting-started/installing) — Get started in VS Code, JetBrains, CLI, or mobile
 - [**Connect an AI Provider**](/docs/ai-providers) — Set up your preferred model
 - [**Quick Start Guide**](/docs/getting-started/quickstart) — Run your first task in minutes
 
 ## Platforms
 
-Use Kilo Code wherever you work:
+Use Test Agent wherever you work:
 
 - [**VS Code**](/docs/code-with-ai/platforms/vscode) — The most popular IDE integration
 - [**JetBrains**](/docs/code-with-ai/platforms/jetbrains) — IntelliJ, PyCharm, WebStorm, and more

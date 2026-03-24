@@ -15,8 +15,8 @@
 		}
 	},
 	"welcome": {
-		"greeting": "Selamat datang di Kilo Code!",
-		"introText1": "Kilo Code adalah agen coding AI gratis dan open source.",
+		"greeting": "Selamat datang di Test Agent!",
+		"introText1": "Test Agent adalah agen coding AI gratis dan open source.",
 		"introText2": "Bekerja dengan model AI terbaru seperti Claude Opus 4.5, Gemini 3 Pro, GPT-5.2, dan lebih dari 450 model lainnya.",
 		"introText3": "Buat akun gratis dan dapatkan $20 kredit bonus saat top-up pertama kali.",
 		"ctaButton": "Mulai",
@@ -26,7 +26,7 @@
 	},
 	"lowCreditWarning": {
 		"addCredit": "Tambah Kredit",
-		"lowBalance": "Saldo Kilo Code kamu rendah",
+		"lowBalance": "Saldo Test Agent kamu rendah",
 		"switchToFreeModel": "Beralih ke Model Gratis"
 	},
 	"pagination": {
@@ -56,16 +56,16 @@
 			"skills": "Skill"
 		},
 		"provider": {
-			"account": "Akun Kilo Code",
-			"apiKey": "API Key Kilo Code",
-			"login": "Masuk ke Kilo Code",
-			"logout": "Keluar dari Kilo Code",
+			"account": "Akun Test Agent",
+			"apiKey": "API Key Test Agent",
+			"login": "Masuk ke Test Agent",
+			"logout": "Keluar dari Test Agent",
 			"loginForPremiumModels": "Masuk untuk mengakses model dan fitur premium",
 			"providerRouting": {
 				"title": "Perutean Penyedia",
 				"managedByOrganization": "Kelola Perutean Penyedia Tingkat Organisasi",
 				"createOrganization": "Buat Organisasi untuk Mengelola Perutean Penyedia",
-				"description": "Kilo Code merutekan permintaan ke penyedia terbaik yang tersedia untuk model Anda. Secara default, permintaan diseimbangkan bebannya di seluruh penyedia teratas untuk memaksimalkan waktu aktif. Namun, Anda dapat memilih penyedia tertentu untuk digunakan untuk model ini.",
+				"description": "Test Agent merutekan permintaan ke penyedia terbaik yang tersedia untuk model Anda. Secara default, permintaan diseimbangkan bebannya di seluruh penyedia teratas untuk memaksimalkan waktu aktif. Namun, Anda dapat memilih penyedia tertentu untuk digunakan untuk model ini.",
 				"sorting": {
 					"default": "Pengurutan penyedia default",
 					"price": "Utamakan penyedia dengan harga lebih rendah",
@@ -84,7 +84,7 @@
 		"modelInfo": {
 			"contextWindow": "Jendela konteks",
 			"providerBreakdown": "Rincian Harga dan Kemampuan Penyedia",
-			"averageKiloCodeCost": "Ini adalah rata-rata biaya aktual yang dihabiskan Kilo Code menggunakan model ini selama seminggu terakhir. Biaya ini mungkin lebih rendah dari harga yang tercantum karena pemanfaatan cache prompt.",
+			"averageKiloCodeCost": "Ini adalah rata-rata biaya aktual yang dihabiskan Test Agent menggunakan model ini selama seminggu terakhir. Biaya ini mungkin lebih rendah dari harga yang tercantum karena pemanfaatan cache prompt.",
 			"table": {
 				"provider": "Penyedia",
 				"context": "Endpoint dapat memproses jumlah token ini (input + output).",
@@ -97,15 +97,15 @@
 		"contextManagement": {
 			"allowVeryLargeReads": {
 				"label": "Izinkan pembacaan file yang sangat besar",
-				"description": "Saat diaktifkan, Kilo Code akan melakukan pembacaan file atau output MCP yang sangat besar meskipun ada kemungkinan tinggi meluapnya jendela konteks (ukuran konten >80% dari jendela konteks)."
+				"description": "Saat diaktifkan, Test Agent akan melakukan pembacaan file atau output MCP yang sangat besar meskipun ada kemungkinan tinggi meluapnya jendela konteks (ukuran konten >80% dari jendela konteks)."
 			}
 		},
 		"systemNotifications": {
 			"label": "Aktifkan Notifikasi Sistem",
-			"description": "Saat diaktifkan, Kilo Code akan mengirim notifikasi sistem untuk kejadian penting seperti penyelesaian tugas atau kesalahan.",
+			"description": "Saat diaktifkan, Test Agent akan mengirim notifikasi sistem untuk kejadian penting seperti penyelesaian tugas atau kesalahan.",
 			"testButton": "Uji Notifikasi",
-			"testTitle": "Kilo Code",
-			"testMessage": "Ini adalah notifikasi uji dari Kilo Code."
+			"testTitle": "Test Agent",
+			"testMessage": "Ini adalah notifikasi uji dari Test Agent."
 		},
 		"terminal": {
 			"commandGenerator": {
@@ -126,7 +126,7 @@
 	},
 	"chat": {
 		"condense": {
-			"wantsToCondense": "Kilo Code ingin mengondensasi percakapan kamu",
+			"wantsToCondense": "Test Agent ingin mengondensasi percakapan kamu",
 			"condenseConversation": "Kondensasi Percakapan"
 		},
 		"seeNewChanges": "Tampilkan Perubahan Baru",
@@ -165,14 +165,14 @@
 			"modes": "Mode",
 			"skills": "Skill"
 		},
-		"ariaLabel": "Aturan Kilo Code",
+		"ariaLabel": "Aturan Test Agent",
 		"tabs": {
 			"rules": "Aturan",
 			"workflows": "Alur Kerja"
 		},
 		"description": {
-			"rules": "Aturan memungkinkan kamu memberikan instruksi kepada Kilo Code yang harus diikuti di semua mode dan untuk semua prompt. Mereka adalah cara persisten untuk menyertakan konteks dan preferensi untuk semua percakapan di workspace kamu atau secara global.",
-			"workflows": "Alur kerja adalah template yang disiapkan untuk percakapan. Alur kerja memungkinkan kamu menentukan prompt yang sering kamu gunakan, dan dapat mencakup serangkaian langkah untuk memandu Kilo Code melalui tugas-tugas berulang, seperti menerapkan layanan atau mengirim PR. Untuk memanggil alur kerja, ketik",
+			"rules": "Aturan memungkinkan kamu memberikan instruksi kepada Test Agent yang harus diikuti di semua mode dan untuk semua prompt. Mereka adalah cara persisten untuk menyertakan konteks dan preferensi untuk semua percakapan di workspace kamu atau secara global.",
+			"workflows": "Alur kerja adalah template yang disiapkan untuk percakapan. Alur kerja memungkinkan kamu menentukan prompt yang sering kamu gunakan, dan dapat mencakup serangkaian langkah untuk memandu Test Agent melalui tugas-tugas berulang, seperti menerapkan layanan atau mengirim PR. Untuk memanggil alur kerja, ketik",
 			"workflowsInChat": "di chat."
 		},
 		"sections": {
@@ -281,7 +281,7 @@
 			},
 			"noCredits": {
 				"title": "Tidak ada kredit di akun kamu",
-				"description": "Akun Kilo Code kamu tidak memiliki kredit. Untuk menggunakan autocomplete, silakan tambahkan kredit ke akun kamu.",
+				"description": "Akun Test Agent kamu tidak memiliki kredit. Untuk menggunakan autocomplete, silakan tambahkan kredit ke akun kamu.",
 				"buyCredits": "Beli kredit →"
 			},
 			"configureAutocompleteProfile": "Gunakan model apa pun dengan pergi ke profil dan mengonfigurasi Profil dengan Tipe Profil Autocomplete."
@@ -346,7 +346,7 @@
 		"shareModesNewBanner": "Baru: Bagikan mode dengan membuat organisasi"
 	},
 	"deviceAuth": {
-		"title": "Masuk ke Kilo Code",
+		"title": "Masuk ke Test Agent",
 		"step1": "Buka URL berikut di browser kamu",
 		"step2": "Verifikasi kode dan otorisasi perangkat ini di browser kamu",
 		"scanQr": "Atau pindai kode QR ini dengan ponsel kamu",

@@ -15,8 +15,8 @@
 		}
 	},
 	"welcome": {
-		"greeting": "Witaj w Kilo Code!",
-		"introText1": "Kilo Code to darmowy, otwartoźródłowy agent kodowania AI.",
+		"greeting": "Witaj w Test Agent!",
+		"introText1": "Test Agent to darmowy, otwartoźródłowy agent kodowania AI.",
 		"introText2": "Współpracuje z najnowszymi modelami AI, takimi jak Claude Opus 4.5, Gemini 3 Pro, GPT-5.2 i ponad 450 innymi.",
 		"introText3": "Stwórz darmowe konto i otrzymaj $20 bonusowych kredytów przy pierwszym doładowaniu.",
 		"ctaButton": "Rozpocznij",
@@ -26,7 +26,7 @@
 	},
 	"lowCreditWarning": {
 		"addCredit": "Dodaj kredyt",
-		"lowBalance": "Twój stan konta Kilo Code jest niski",
+		"lowBalance": "Twój stan konta Test Agent jest niski",
 		"switchToFreeModel": "Przełącz na darmowy model"
 	},
 	"pagination": {
@@ -56,16 +56,16 @@
 			"skills": "Umiejętności"
 		},
 		"provider": {
-			"account": "Konto Kilo Code",
-			"apiKey": "Klucz API Kilo Code",
-			"login": "Zaloguj się do Kilo Code",
-			"logout": "Wyloguj się z Kilo Code",
+			"account": "Konto Test Agent",
+			"apiKey": "Klucz API Test Agent",
+			"login": "Zaloguj się do Test Agent",
+			"logout": "Wyloguj się z Test Agent",
 			"loginForPremiumModels": "Zaloguj się, aby uzyskać dostęp do modeli i funkcji premium",
 			"providerRouting": {
 				"title": "Routing dostawców",
 				"managedByOrganization": "Zarządzaj routingiem dostawców na poziomie organizacji",
 				"createOrganization": "Utwórz organizację, aby zarządzać routingiem dostawców",
-				"description": "Kilo Code kieruje żądania do najlepszych dostępnych dostawców dla Twojego modelu. Domyślnie żądania są równoważone obciążeniem między najlepszymi dostawcami, aby zmaksymalizować czas działania. Możesz jednak wybrać konkretnego dostawcę do użycia dla tego modelu.",
+				"description": "Test Agent kieruje żądania do najlepszych dostępnych dostawców dla Twojego modelu. Domyślnie żądania są równoważone obciążeniem między najlepszymi dostawcami, aby zmaksymalizować czas działania. Możesz jednak wybrać konkretnego dostawcę do użycia dla tego modelu.",
 				"sorting": {
 					"default": "Domyślne sortowanie dostawców",
 					"price": "Preferuj dostawców z niższą ceną",
@@ -84,7 +84,7 @@
 		"modelInfo": {
 			"contextWindow": "Okno kontekstu",
 			"providerBreakdown": "Zestawienie Cen i Możliwości Dostawcy",
-			"averageKiloCodeCost": "To jest średni rzeczywisty koszt za korzystanie z Kilo Code z tym modelem w ciągu ostatniego tygodnia. Może być niższy niż podana cena ze względu na wykorzystanie pamięci podręcznej promptów.",
+			"averageKiloCodeCost": "To jest średni rzeczywisty koszt za korzystanie z Test Agent z tym modelem w ciągu ostatniego tygodnia. Może być niższy niż podana cena ze względu na wykorzystanie pamięci podręcznej promptów.",
 			"table": {
 				"provider": "Dostawca",
 				"context": "Punkt końcowy może przetworzyć tę liczbę tokenów (wejście + wyjście).",
@@ -97,15 +97,15 @@
 		"contextManagement": {
 			"allowVeryLargeReads": {
 				"label": "Zezwól na odczyt bardzo dużych plików",
-				"description": "Gdy włączone, Kilo Code będzie wykonywać odczyty bardzo dużych plików lub wyjść MCP, nawet jeśli istnieje duże prawdopodobieństwo przepełnienia okna kontekstu (rozmiar zawartości >80% okna kontekstu)."
+				"description": "Gdy włączone, Test Agent będzie wykonywać odczyty bardzo dużych plików lub wyjść MCP, nawet jeśli istnieje duże prawdopodobieństwo przepełnienia okna kontekstu (rozmiar zawartości >80% okna kontekstu)."
 			}
 		},
 		"systemNotifications": {
 			"label": "Włącz powiadomienia systemowe",
-			"description": "Gdy włączone, Kilo Code będzie wysyłać powiadomienia systemowe o ważnych wydarzeniach, takich jak zakończenie zadania lub błędy.",
+			"description": "Gdy włączone, Test Agent będzie wysyłać powiadomienia systemowe o ważnych wydarzeniach, takich jak zakończenie zadania lub błędy.",
 			"testButton": "Testuj powiadomienie",
-			"testTitle": "Kilo Code",
-			"testMessage": "To jest testowe powiadomienie z Kilo Code."
+			"testTitle": "Test Agent",
+			"testMessage": "To jest testowe powiadomienie z Test Agent."
 		},
 		"terminal": {
 			"commandGenerator": {
@@ -133,7 +133,7 @@
 	},
 	"chat": {
 		"condense": {
-			"wantsToCondense": "Kilo Code chce skondensować Twoją rozmowę",
+			"wantsToCondense": "Test Agent chce skondensować Twoją rozmowę",
 			"condenseConversation": "Skondensuj Rozmowę"
 		},
 		"seeNewChanges": "Pokaż nowe zmiany",
@@ -172,14 +172,14 @@
 			"modes": "Tryby",
 			"skills": "Umiejętności"
 		},
-		"ariaLabel": "Reguły Kilo Code",
+		"ariaLabel": "Reguły Test Agent",
 		"tabs": {
 			"rules": "Reguły",
 			"workflows": "Przepływy Pracy"
 		},
 		"description": {
-			"rules": "Reguły pozwalają dostarczyć Kilo Code instrukcje, których powinien przestrzegać we wszystkich trybach i dla wszystkich promptów. To trwały sposób dołączania kontekstu i preferencji dla wszystkich rozmów w twoim obszarze roboczym lub globalnie.",
-			"workflows": "Przepływy pracy to przygotowany szablon dla rozmowy. Przepływy pracy pozwalają zdefiniować prompty, których często używasz, i mogą zawierać serię kroków, aby poprowadzić Kilo Code przez powtarzalne zadania, takie jak wdrażanie usługi lub przesyłanie PR. Aby wywołać przepływ pracy, wpisz",
+			"rules": "Reguły pozwalają dostarczyć Test Agent instrukcje, których powinien przestrzegać we wszystkich trybach i dla wszystkich promptów. To trwały sposób dołączania kontekstu i preferencji dla wszystkich rozmów w twoim obszarze roboczym lub globalnie.",
+			"workflows": "Przepływy pracy to przygotowany szablon dla rozmowy. Przepływy pracy pozwalają zdefiniować prompty, których często używasz, i mogą zawierać serię kroków, aby poprowadzić Test Agent przez powtarzalne zadania, takie jak wdrażanie usługi lub przesyłanie PR. Aby wywołać przepływ pracy, wpisz",
 			"workflowsInChat": "w czacie."
 		},
 		"sections": {
@@ -251,11 +251,11 @@
 			"keybindingDescription": "Funkcje Autocomplete mogą być wyzwalane przez polecenia. Możesz skonfigurować <DocsLink>Skróty Klawiszowe tutaj</DocsLink>.",
 			"enableAutoTrigger": {
 				"label": "Włącz Autocomplete",
-				"description": "Gdy włączone, Kilo Code automatycznie wyzwoli Autocomplete, gdy przestaniesz pisać. Może to być przydatne do szybkich poprawek i sugestii."
+				"description": "Gdy włączone, Test Agent automatycznie wyzwoli Autocomplete, gdy przestaniesz pisać. Może to być przydatne do szybkich poprawek i sugestii."
 			},
 			"autoTriggerDelay": {
 				"label": "Opóźnienie Automatycznego Wyzwalania",
-				"description": "Opóźnienie w sekundach przed tym, jak Kilo Code wyzwoli Autocomplete po tym, jak przestaniesz pisać. Krótsze opóźnienie oznacza szybsze sugestie, ale może być bardziej zasobożerne."
+				"description": "Opóźnienie w sekundach przed tym, jak Test Agent wyzwoli Autocomplete po tym, jak przestaniesz pisać. Krótsze opóźnienie oznacza szybsze sugestie, ale może być bardziej zasobożerne."
 			},
 			"enableSmartInlineTaskKeybinding": {
 				"label": "Ręczne uzupełnianie ({{keybinding}})",
@@ -267,7 +267,7 @@
 			"provider": "Dostawca",
 			"enableChatAutocomplete": {
 				"label": "Automatyczne uzupełnianie wpisów czatu",
-				"description": "Po włączeniu, Kilo Code będzie sugerować uzupełnienia podczas pisania w oknie czatu. Naciśnij Tab, aby zaakceptować sugestie."
+				"description": "Po włączeniu, Test Agent będzie sugerować uzupełnienia podczas pisania w oknie czatu. Naciśnij Tab, aby zaakceptować sugestie."
 			},
 			"snooze": {
 				"label": "Wstrzymaj Autocomplete",
@@ -290,7 +290,7 @@
 			},
 			"noCredits": {
 				"title": "Brak kredytów na koncie",
-				"description": "Twoje konto Kilo Code nie ma kredytów. Aby korzystać z autouzupełniania, dodaj kredyty do swojego konta.",
+				"description": "Twoje konto Test Agent nie ma kredytów. Aby korzystać z autouzupełniania, dodaj kredyty do swojego konta.",
 				"buyCredits": "Kup kredyty →"
 			}
 		}
@@ -347,7 +347,7 @@
 		"shareModesNewBanner": "Nowość: Udostępniaj tryby tworząc organizację"
 	},
 	"deviceAuth": {
-		"title": "Zaloguj się do Kilo Code",
+		"title": "Zaloguj się do Test Agent",
 		"step1": "Otwórz następujący adres URL w przeglądarce",
 		"step2": "Zweryfikuj kod i autoryzuj to urządzenie w przeglądarce",
 		"scanQr": "Lub zeskanuj ten kod QR telefonem",

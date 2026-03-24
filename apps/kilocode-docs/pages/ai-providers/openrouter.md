@@ -2,7 +2,7 @@
 sidebar_label: OpenRouter
 ---
 
-# Using OpenRouter With Kilo Code
+# Using OpenRouter With Test Agent
 
 OpenRouter is an AI platform that provides access to a wide variety of language models from different providers, all through a single API. This can simplify setup and allow you to easily experiment with different models.
 
@@ -14,9 +14,9 @@ OpenRouter is an AI platform that provides access to a wide variety of language 
 2.  **Get an API Key:** Go to the [keys page](https://openrouter.ai/keys). You should see an API key listed. If not, create a new key.
 3.  **Copy the Key:** Copy the API key.
 
-## Configuration in Kilo Code
+## Configuration in Test Agent
 
-1.  **Open Kilo Code Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Kilo Code panel.
+1.  **Open Test Agent Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Test Agent panel.
 2.  **Select Provider:** Choose "OpenRouter" from the "API Provider" dropdown.
 3.  **Enter API Key:** Paste your OpenRouter API key into the "OpenRouter API Key" field.
 4.  **Select Model:** Choose your desired model from the "Model" dropdown.

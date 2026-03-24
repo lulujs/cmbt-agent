@@ -108,7 +108,7 @@ Select Orchestrator mode → autonomously define subtasks → intelligently dist
 ### VS Code / Cursor
 
 1. Open Extensions (`Cmd/Ctrl + Shift + X`)
-2. Search "Kilo Code"
+2. Search "Test Agent"
 3. Click Install
 4. Find the Kilo icon in your sidebar
 
@@ -124,7 +124,7 @@ Supports IntelliJ, PyCharm, WebStorm, and all JetBrains IDEs.
 **Install:**
 
 1. Settings → Plugins → Marketplace
-2. Search "Kilo Code"
+2. Search "Test Agent"
 3. Install and restart
 4. Find Kilo icon in right sidebar
 
@@ -150,7 +150,7 @@ Visit [app.kilo.ai](https://app.kilo.ai/) and sign in. This gives you access to:
 
 ### Create account
 
-1. Click "Try Kilo Code for Free" in the Kilo panel
+1. Click "Try Test Agent for Free" in the Kilo panel
 2. Sign in with OAuth at kilo.ai
 3. You'll be redirected back to your IDE
 

@@ -1,11 +1,11 @@
 ---
 title: "Custom Rules"
-description: "Define custom rules for Kilo Code behavior"
+description: "Define custom rules for Test Agent behavior"
 ---
 
 # Custom Rules
 
-Custom rules provide a powerful way to define project-specific and global behaviors and constraints for the Kilo Code AI agent. With custom rules, you can ensure consistent formatting, restrict access to sensitive files, enforce coding standards, and customize the AI's behavior for your specific project needs or across all projects.
+Custom rules provide a powerful way to define project-specific and global behaviors and constraints for the Test Agent AI agent. With custom rules, you can ensure consistent formatting, restrict access to sensitive files, enforce coding standards, and customize the AI's behavior for your specific project needs or across all projects.
 
 ## Overview
 
@@ -21,7 +21,7 @@ Custom rules can be written in plain text, but Markdown format is recommended fo
 
 ## Rule Types
 
-Kilo Code supports two types of custom rules:
+Test Agent supports two types of custom rules:
 
 - **Project Rules**: Apply only to the current project workspace
 - **Global Rules**: Apply across all projects and workspaces
@@ -61,7 +61,7 @@ Global rules are stored in your home directory and apply to all projects:
 
 ## Managing Rules Through the UI
 
-Kilo Code provides a built-in interface for managing your custom rules without manually editing files in the `.kilocode/rules/` directories. To access the UI, click on the <Codicon name="law" /> icon in the **bottom right corner** of the Kilo Code window.
+Test Agent provides a built-in interface for managing your custom rules without manually editing files in the `.kilocode/rules/` directories. To access the UI, click on the <Codicon name="law" /> icon in the **bottom right corner** of the Test Agent window.
 
 You can access the rules management UI to:
 
@@ -103,11 +103,11 @@ When both generic rules and mode-specific rules exist, the mode-specific rules a
 
 ### Using the UI Interface
 
-{% image src="/docs/img/custom-rules/rules-ui.png" alt="Rules tab in Kilo Code" width="400" /%}
+{% image src="/docs/img/custom-rules/rules-ui.png" alt="Rules tab in Test Agent" width="400" /%}
 
 The easiest way to create and manage rules is through the built-in UI:
 
-1. Access the rules management interface from the Kilo Code panel
+1. Access the rules management interface from the Test Agent panel
 2. Choose between creating project-specific or global rules
 3. Use the interface to create, edit, or toggle rules
 4. Rules are automatically saved and applied immediately
@@ -130,7 +130,7 @@ To create rules manually:
 3. Write your rule using Markdown formatting
 4. Save the file
 
-Rules will be automatically applied to all future Kilo Code interactions. Any new changes will be applied immediately.
+Rules will be automatically applied to all future Test Agent interactions. Any new changes will be applied immediately.
 
 ## Example Rules
 
@@ -158,7 +158,7 @@ Files in the list contain sensitive data, they MUST NOT be read
 
 This rule prevents the AI from reading or accessing sensitive files, even if explicitly requested to do so.
 
-{% image src="/docs/img/custom-rules/custom-rules.png" alt="Kilo Code ignores request to read sensitive file" width="600" /%}
+{% image src="/docs/img/custom-rules/custom-rules.png" alt="Test Agent ignores request to read sensitive file" width="600" /%}
 
 ## Use Cases
 

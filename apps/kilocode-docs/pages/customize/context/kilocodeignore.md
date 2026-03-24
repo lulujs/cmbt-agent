@@ -1,21 +1,21 @@
 ---
 title: ".testcodeignore"
-description: "Control which files Kilo Code can access"
+description: "Control which files Test Agent can access"
 ---
 
 # .testcodeignore
 
 ## Overview
 
-`.testcodeignore` is a root-level file that tells Kilo Code which files and folders it should not access. It uses standard `.gitignore` pattern syntax, but it only affects Kilo Code's file access, not Git.
+`.testcodeignore` is a root-level file that tells Test Agent which files and folders it should not access. It uses standard `.gitignore` pattern syntax, but it only affects Test Agent's file access, not Git.
 
-If no `.testcodeignore` file exists, Kilo Code can access all files in the workspace.
+If no `.testcodeignore` file exists, Test Agent can access all files in the workspace.
 
 ## Quick Start
 
 1. Create a `.testcodeignore` file at the root of your project.
-2. Add patterns for files or folders you want Kilo Code to avoid.
-3. Save the file. Kilo Code will pick up the changes automatically.
+2. Add patterns for files or folders you want Test Agent to avoid.
+3. Save the file. Test Agent will pick up the changes automatically.
 
 Example:
 
@@ -47,7 +47,7 @@ Patterns are evaluated relative to the workspace root.
 
 ## What It Affects
 
-Kilo Code checks `.testcodeignore` before accessing files in tools like:
+Test Agent checks `.testcodeignore` before accessing files in tools like:
 
 - [`read_file`](/docs/automate/tools/read-file)
 - [`write_to_file`](/docs/automate/tools/write-to-file)
@@ -56,7 +56,7 @@ Kilo Code checks `.testcodeignore` before accessing files in tools like:
 - [`execute_command`](/docs/automate/tools/execute-command)
 - [`list_files`](/docs/automate/tools/list-files)
 
-If a file is blocked, Kilo Code will return an "access denied" message and suggest updating your `.testcodeignore` rules.
+If a file is blocked, Test Agent will return an "access denied" message and suggest updating your `.testcodeignore` rules.
 
 ## Visibility in Lists
 

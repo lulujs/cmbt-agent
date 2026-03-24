@@ -1,6 +1,6 @@
 # search_files
 
-The `search_files` tool performs regex searches across multiple files in your project. It helps Kilo Code locate specific code patterns, text, or other content throughout your codebase with contextual results.
+The `search_files` tool performs regex searches across multiple files in your project. It helps Test Agent locate specific code patterns, text, or other content throughout your codebase with contextual results.
 
 ## Parameters
 
@@ -16,10 +16,10 @@ This tool searches across files in a specified directory using regular expressio
 
 ## When is it used?
 
-- When Kilo Code needs to find where specific functions or variables are used
-- When Kilo Code helps with refactoring and needs to understand usage patterns
-- When Kilo Code needs to locate all instances of a particular code pattern
-- When Kilo Code searches for text across multiple files with filtering capabilities
+- When Test Agent needs to find where specific functions or variables are used
+- When Test Agent helps with refactoring and needs to understand usage patterns
+- When Test Agent needs to locate all instances of a particular code pattern
+- When Test Agent searches for text across multiple files with filtering capabilities
 
 ## Key Features
 
@@ -94,10 +94,10 @@ When matches occur close to each other, they're merged into a single block rathe
 
 ## Examples When Used
 
-- When asked to refactor a function, Kilo Code first searches for all places the function is used to ensure comprehensive changes.
-- When investigating bugs, Kilo Code searches for similar patterns to identify related issues across the codebase.
-- When addressing technical debt, Kilo Code locates all TODO comments across the project.
-- When analyzing dependencies, Kilo Code finds all imports of a particular module.
+- When asked to refactor a function, Test Agent first searches for all places the function is used to ensure comprehensive changes.
+- When investigating bugs, Test Agent searches for similar patterns to identify related issues across the codebase.
+- When addressing technical debt, Test Agent locates all TODO comments across the project.
+- When analyzing dependencies, Test Agent finds all imports of a particular module.
 
 ## Usage Examples
 

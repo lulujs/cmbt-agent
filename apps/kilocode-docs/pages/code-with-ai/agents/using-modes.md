@@ -1,11 +1,11 @@
 ---
 title: "Using Modes"
-description: "Understanding and using different modes in Kilo Code"
+description: "Understanding and using different modes in Test Agent"
 ---
 
 # Using Modes
 
-Modes in Kilo Code are specialized personas that tailor the assistant's behavior to your current task. Each mode offers different capabilities, expertise, and access levels to help you accomplish specific goals.
+Modes in Test Agent are specialized personas that tailor the assistant's behavior to your current task. Each mode offers different capabilities, expertise, and access levels to help you accomplish specific goals.
 
 ## Why Use Different Modes?
 
@@ -14,7 +14,7 @@ Modes in Kilo Code are specialized personas that tailor the assistant's behavior
 - **Focused interactions:** Receive responses optimized for your current activity
 - **Workflow optimization:** Seamlessly transition between planning, implementing, debugging, and learning
 
-{% youtube url="https://youtu.be/cS4vQfX528w" caption="Explaining the different modes in Kilo Code" /%}
+{% youtube url="https://youtu.be/cS4vQfX528w" caption="Explaining the different modes in Test Agent" /%}
 
 ## Switching Between Modes
 
@@ -45,9 +45,9 @@ Users often confuse `/newtask` and `/smol`. Here's the key difference:
     | Windows          | Ctrl + . |
     | Linux            | Ctrl + . |
 
-4. **Accept suggestions:** Click on mode switch suggestions that Kilo Code offers when appropriate
+4. **Accept suggestions:** Click on mode switch suggestions that Test Agent offers when appropriate
 
-    {% image src="/docs/img/modes/modes-2.png" alt="Accepting a mode switch suggestion from Kilo Code" width="400" /%}
+    {% image src="/docs/img/modes/modes-2.png" alt="Accepting a mode switch suggestion from Test Agent" width="400" /%}
 
 ## Built-in Modes
 

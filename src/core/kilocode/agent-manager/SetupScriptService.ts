@@ -16,7 +16,7 @@ const KILOCODE_DIR = ".testcode" // test-agent_change (was .kilocode)
  * Default template for the setup script with helpful comments
  */
 const DEFAULT_SCRIPT_TEMPLATE = `#!/bin/bash
-# Kilo Code Worktree Setup Script
+# Test Agent Worktree Setup Script
 # This script runs before the agent starts in a worktree (new sessions only).
 #
 # Available environment variables:

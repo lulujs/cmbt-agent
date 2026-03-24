@@ -1,10 +1,10 @@
-# Kilo Code File Locations
+# Test Agent File Locations
 
-Kilo Code stores configuration, data, and cache files in several locations depending on context (VS Code extension vs CLI) and operating system.
+Test Agent stores configuration, data, and cache files in several locations depending on context (VS Code extension vs CLI) and operating system.
 
 ## VS Code Extension
 
-When running as a VS Code extension, Kilo Code uses VS Code's built-in `globalStorageUri` for data storage. The exact path depends on your OS and VS Code variant:
+When running as a VS Code extension, Test Agent uses VS Code's built-in `globalStorageUri` for data storage. The exact path depends on your OS and VS Code variant:
 
 | OS      | Base path                                                                   |
 | ------- | --------------------------------------------------------------------------- |
@@ -65,7 +65,7 @@ Global rules and workflows can also be placed in your home directory:
 
 ## VS Code User Configuration
 
-Kilo Code reads VS Code's `settings.json` for extension settings. The location follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) on Linux:
+Test Agent reads VS Code's `settings.json` for extension settings. The location follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) on Linux:
 
 | OS      | Path                                                                                      |
 | ------- | ----------------------------------------------------------------------------------------- |

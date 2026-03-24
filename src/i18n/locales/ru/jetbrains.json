@@ -13,7 +13,7 @@
 		"cancel": "Отмена"
 	},
 	"ui": {
-		"initializing": "Kilo Code инициализируется...",
+		"initializing": "Test Agent инициализируется...",
 		"systemInformation": "Информация о системе"
 	}
 }

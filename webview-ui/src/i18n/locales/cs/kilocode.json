@@ -15,8 +15,8 @@
 		}
 	},
 	"welcome": {
-		"greeting": "Vítej v Kilo Code!",
-		"introText1": "Kilo Code je bezplatný open source AI coding agent.",
+		"greeting": "Vítej v Test Agent!",
+		"introText1": "Test Agent je bezplatný open source AI coding agent.",
 		"introText2": "Funguje s nejnovějšími AI modely jako Claude Opus 4.5, Gemini 3 Pro, GPT-5.2 a více než 450 dalšími.",
 		"introText3": "Vytvoř si bezplatný účet a získej $20 bonusových kreditů při prvním dobití.",
 		"ctaButton": "Začít",
@@ -26,7 +26,7 @@
 	},
 	"lowCreditWarning": {
 		"addCredit": "Přidat kredit",
-		"lowBalance": "Tvůj Kilo Code zůstatek je nízký",
+		"lowBalance": "Tvůj Test Agent zůstatek je nízký",
 		"switchToFreeModel": "Přepnout na bezplatný model"
 	},
 	"pagination": {
@@ -63,16 +63,16 @@
 			"skills": "Dovednosti"
 		},
 		"provider": {
-			"account": "Účet Kilo Code",
-			"apiKey": "Kilo Code API Key",
-			"login": "Přihlásit se do Kilo Code",
-			"logout": "Odhlásit se z Kilo Code",
+			"account": "Účet Test Agent",
+			"apiKey": "Test Agent API Key",
+			"login": "Přihlásit se do Test Agent",
+			"logout": "Odhlásit se z Test Agent",
 			"loginForPremiumModels": "Přihlas se pro přístup k prémiovým modelům a funkcím",
 			"providerRouting": {
 				"title": "Směrování poskytovatelů",
 				"managedByOrganization": "Spravovat směrování poskytovatelů na úrovni organizace",
 				"createOrganization": "Vytvořit organizaci pro správu směrování poskytovatelů",
-				"description": "Kilo Code směruje požadavky na nejlepší dostupné poskytovatele pro váš model. Ve výchozím nastavení jsou požadavky rozloženy mezi nejlepší poskytovatele, aby se maximalizovala doba provozu. Můžete si však vybrat konkrétního poskytovatele, kterého chcete pro tento model použít.",
+				"description": "Test Agent směruje požadavky na nejlepší dostupné poskytovatele pro váš model. Ve výchozím nastavení jsou požadavky rozloženy mezi nejlepší poskytovatele, aby se maximalizovala doba provozu. Můžete si však vybrat konkrétního poskytovatele, kterého chcete pro tento model použít.",
 				"sorting": {
 					"default": "Výchozí řazení poskytovatelů",
 					"price": "Upřednostnit poskytovatele s nižší cenou",
@@ -91,7 +91,7 @@
 		"modelInfo": {
 			"contextWindow": "Kontextové okno",
 			"providerBreakdown": "Rozpis cen a schopností poskytovatelů",
-			"averageKiloCodeCost": "Toto jsou průměrné skutečné náklady za použití tohoto modelu v Kilo Code za poslední týden. Může být nižší než uvedená cena díky využití cache pro prompty.",
+			"averageKiloCodeCost": "Toto jsou průměrné skutečné náklady za použití tohoto modelu v Test Agent za poslední týden. Může být nižší než uvedená cena díky využití cache pro prompty.",
 			"table": {
 				"provider": "Poskytovatel",
 				"context": "Endpoint může zpracovat tento počet tokenů (vstup + výstup).",
@@ -104,15 +104,15 @@
 		"contextManagement": {
 			"allowVeryLargeReads": {
 				"label": "Povolit čtení velmi velkých souborů",
-				"description": "Když je povoleno, Kilo Code provede čtení velmi velkých souborů nebo výstupů MCP i když existuje vysoká pravděpodobnost přetečení kontextového okna (velikost obsahu >80% kontextového okna)."
+				"description": "Když je povoleno, Test Agent provede čtení velmi velkých souborů nebo výstupů MCP i když existuje vysoká pravděpodobnost přetečení kontextového okna (velikost obsahu >80% kontextového okna)."
 			}
 		},
 		"systemNotifications": {
 			"label": "Povolit systémová oznámení",
-			"description": "Když je povoleno, Kilo Code bude odesílat systémová oznámení pro důležité události jako dokončení úkolu nebo chyby.",
+			"description": "Když je povoleno, Test Agent bude odesílat systémová oznámení pro důležité události jako dokončení úkolu nebo chyby.",
 			"testButton": "Otestovat oznámení",
-			"testTitle": "Kilo Code",
-			"testMessage": "Toto je testovací oznámení z Kilo Code."
+			"testTitle": "Test Agent",
+			"testMessage": "Toto je testovací oznámení z Test Agent."
 		},
 		"terminal": {
 			"commandGenerator": {
@@ -133,7 +133,7 @@
 	},
 	"chat": {
 		"condense": {
-			"wantsToCondense": "Kilo Code chce zkrátit tvou konverzaci",
+			"wantsToCondense": "Test Agent chce zkrátit tvou konverzaci",
 			"condenseConversation": "Zkrátit konverzaci"
 		},
 		"seeNewChanges": "Zobrazit nové změny",
@@ -172,14 +172,14 @@
 			"modes": "Režimy",
 			"skills": "Dovednosti"
 		},
-		"ariaLabel": "Kilo Code Rules",
+		"ariaLabel": "Test Agent Rules",
 		"tabs": {
 			"rules": "Pravidla",
 			"workflows": "Pracovní postupy"
 		},
 		"description": {
-			"rules": "Pravidla ti umožňují poskytnout Kilo Code pokyny, které by měl dodržovat ve všech režimech a pro všechny prompty. Je to trvalý způsob, jak zahrnout kontext a preference pro všechny konverzace ve tvém pracovním prostoru nebo globálně.",
-			"workflows": "Pracovní postupy jsou připravená šablona pro konverzaci. Pracovní postupy ti mohou umožnit definovat prompty, které často používáš, a mohou zahrnovat řadu kroků k vedení Kilo Code přes opakující se úkoly, jako je nasazení služby nebo odeslání PR. Pro vyvolání pracovního postupu napiš",
+			"rules": "Pravidla ti umožňují poskytnout Test Agent pokyny, které by měl dodržovat ve všech režimech a pro všechny prompty. Je to trvalý způsob, jak zahrnout kontext a preference pro všechny konverzace ve tvém pracovním prostoru nebo globálně.",
+			"workflows": "Pracovní postupy jsou připravená šablona pro konverzaci. Pracovní postupy ti mohou umožnit definovat prompty, které často používáš, a mohou zahrnovat řadu kroků k vedení Test Agent přes opakující se úkoly, jako je nasazení služby nebo odeslání PR. Pro vyvolání pracovního postupu napiš",
 			"workflowsInChat": "v chatu."
 		},
 		"sections": {
@@ -294,7 +294,7 @@
 			},
 			"noCredits": {
 				"title": "Na vašem účtu nejsou žádné kredity",
-				"description": "Váš účet Kilo Code nemá žádné kredity. Pro použití automatického dokončování prosím přidejte kredity na svůj účet.",
+				"description": "Váš účet Test Agent nemá žádné kredity. Pro použití automatického dokončování prosím přidejte kredity na svůj účet.",
 				"buyCredits": "Koupit kredity →"
 			},
 			"codeEditorSuggestions": "Návrhy v editoru kódu",
@@ -346,7 +346,7 @@
 		"shareModesNewBanner": "Novinka: Sdílejte režimy vytvořením organizace"
 	},
 	"deviceAuth": {
-		"title": "Přihlásit se do Kilo Code",
+		"title": "Přihlásit se do Test Agent",
 		"step1": "Otevři následující URL ve svém prohlížeči",
 		"step2": "Ověř kód a autorizuj toto zařízení ve svém prohlížeči",
 		"scanQr": "Nebo naskenuj tento QR kód svým telefonem",

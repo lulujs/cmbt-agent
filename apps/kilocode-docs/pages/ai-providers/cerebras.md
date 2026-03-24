@@ -2,7 +2,7 @@
 sidebar_label: Cerebras
 ---
 
-# Using Cerebras With Kilo Code
+# Using Cerebras With Test Agent
 
 Cerebras is known for their ultra-fast AI inference powered by the Cerebras CS-3 chip, the world's largest and fastest AI accelerator. Their platform delivers exceptional inference speeds for large language models, making them ideal for interactive development workflows.
 
@@ -12,12 +12,12 @@ Cerebras is known for their ultra-fast AI inference powered by the Cerebras CS-3
 
 1. **Sign Up/Sign In:** Go to the [Cerebras Cloud Platform](https://cloud.cerebras.ai/). Create an account or sign in.
 2. **Navigate to API Keys:** Access the API Keys section in your account dashboard.
-3. **Create a Key:** Click to generate a new API key. Give it a descriptive name (e.g., "Kilo Code").
+3. **Create a Key:** Click to generate a new API key. Give it a descriptive name (e.g., "Test Agent").
 4. **Copy the Key:** **Important:** Copy the API key _immediately_. Store it securely.
 
-## Configuration in Kilo Code
+## Configuration in Test Agent
 
-1. **Open Kilo Code Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Kilo Code panel.
+1. **Open Test Agent Settings:** Click the gear icon ({% codicon name="gear" /%}) in the Test Agent panel.
 2. **Select Provider:** Choose "Cerebras" from the "API Provider" dropdown.
 3. **Enter API Key:** Paste your Cerebras API key into the "Cerebras API Key" field.
 4. **Select Model:** Choose your desired model from the "Model" dropdown.

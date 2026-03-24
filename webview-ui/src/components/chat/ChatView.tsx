@@ -82,7 +82,7 @@ const KiloLogo = () => {
 		<div className="flex items-center justify-center" style={{ width: "56px", height: "56px", margin: "0 auto" }}>
 			<img
 				src={`${iconsBaseUri}/${iconFile}`}
-				alt="Kilo Code"
+				alt="Test Agent"
 				className="w-full h-full object-contain"
 				style={{ opacity: 0.85 }}
 			/>

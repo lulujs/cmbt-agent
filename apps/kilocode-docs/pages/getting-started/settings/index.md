@@ -1,19 +1,19 @@
 ---
 title: "Settings"
-description: "Configure Kilo Code settings and preferences"
+description: "Configure Test Agent settings and preferences"
 ---
 
 # Settings
 
-Kilo Code allows you to manage your configuration settings effectively through export, import, and reset options. These features are useful for backing up your setup, sharing configurations with others, or restoring default settings if needed.
+Test Agent allows you to manage your configuration settings effectively through export, import, and reset options. These features are useful for backing up your setup, sharing configurations with others, or restoring default settings if needed.
 
-You can find these options at the bottom of the Kilo Code settings page, accessible via the gear icon ({% codicon name="gear" /%}) in the Kilo Code chat view.
+You can find these options at the bottom of the Test Agent settings page, accessible via the gear icon ({% codicon name="gear" /%}) in the Test Agent chat view.
 
-{% image src="/docs/img/settings-management/settings-management.png" alt="Export, Import, and Reset buttons in Kilo Code settings" width="800" caption="Export, Import, and Reset buttons" /%}
+{% image src="/docs/img/settings-management/settings-management.png" alt="Export, Import, and Reset buttons in Test Agent settings" width="800" caption="Export, Import, and Reset buttons" /%}
 
 ## Export Settings
 
-Clicking the **Export** button saves your current Kilo Code settings to a JSON file.
+Clicking the **Export** button saves your current Test Agent settings to a JSON file.
 
 - **What's Exported:** The file includes your configured API Provider Profiles and Global Settings (UI preferences, mode configurations, context settings, etc.).
 - **Security Warning:** The exported JSON file contains **all** your configured API Provider Profiles and Global Settings. Crucially, this includes **API keys in plaintext**. Treat this file as highly sensitive. Do not share it publicly or with untrusted individuals, as it grants access to your API accounts.
@@ -31,13 +31,13 @@ Clicking the **Import** button allows you to load settings from a previously exp
 - **Process:**
     1.  Click **Import**.
     2.  A file open dialog appears. Select the `kilo-code-settings.json` file (or similarly named file) you want to import.
-    3.  Kilo Code reads the file, validates its contents against the expected schema, and applies the settings.
+    3.  Test Agent reads the file, validates its contents against the expected schema, and applies the settings.
 - **Merging:** Importing settings **merges** the configurations. It adds new API profiles and updates existing ones and global settings based on the file content. It does **not** delete configurations present in your current setup but missing from the imported file.
 - **Validation:** Only valid settings matching the internal schema can be imported, preventing configuration errors. A success notification appears upon completion.
 
 ## Reset Settings
 
-Clicking the **Reset** button completely clears all Kilo Code configuration data and returns the extension to its default state. This is a destructive action intended for troubleshooting or starting fresh.
+Clicking the **Reset** button completely clears all Test Agent configuration data and returns the extension to its default state. This is a destructive action intended for troubleshooting or starting fresh.
 
 - **Warning:** This action is **irreversible**. It permanently deletes all API configurations (including keys stored in secret storage), custom modes, global settings, and task history.
 
@@ -52,22 +52,22 @@ Clicking the **Reset** button completely clears all Kilo Code configuration data
     - **API Provider Profiles:** All configurations are deleted from settings and secret storage.
     - **Global Settings:** All preferences (UI, modes, approvals, browser, etc.) are reset to defaults.
     - **Custom Modes:** All user-defined modes are deleted.
-    - **Secret Storage:** All API keys and other secrets managed by Kilo Code are cleared.
+    - **Secret Storage:** All API keys and other secrets managed by Test Agent are cleared.
     - **Task History:** The current task stack is cleared.
 
-- **Result:** Kilo Code returns to its initial state, as if freshly installed, with default settings and no user configurations.
+- **Result:** Test Agent returns to its initial state, as if freshly installed, with default settings and no user configurations.
 
-Use this option only if you are certain you want to remove all Kilo Code data or if instructed during troubleshooting. Consider exporting your settings first if you might want to restore them later.
+Use this option only if you are certain you want to remove all Test Agent data or if instructed during troubleshooting. Consider exporting your settings first if you might want to restore them later.
 
 ## Experimental Features
 
 {% callout type="info" %}
-These features are experimental and may change in future releases. They provide advanced control over Kilo Code's behavior for specific use cases.
+These features are experimental and may change in future releases. They provide advanced control over Test Agent's behavior for specific use cases.
 {% /callout %}
 
 ### Concurrent File Edits
 
-When enabled, Kilo Code can edit multiple files in a single request. When disabled, Kilo Code must edit one file at a time.
+When enabled, Test Agent can edit multiple files in a single request. When disabled, Test Agent must edit one file at a time.
 
 **When to disable:**
 
@@ -79,7 +79,7 @@ When enabled, Kilo Code can edit multiple files in a single request. When disabl
 
 ### Power Steering
 
-When enabled, Kilo Code will remind the model about the details of its current mode definition more frequently. This leads to stronger adherence to role definitions and custom instructions, but will use more tokens per message.
+When enabled, Test Agent will remind the model about the details of its current mode definition more frequently. This leads to stronger adherence to role definitions and custom instructions, but will use more tokens per message.
 
 **When to enable:**
 
@@ -107,4 +107,4 @@ This setting controls the number of lines read from a file in one batch. To mana
 
 **Default:** Set in Advanced Settings
 
-You can find this setting in the Kilo Code settings under 'Advanced Settings'.
+You can find this setting in the Test Agent settings under 'Advanced Settings'.

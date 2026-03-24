@@ -23,7 +23,7 @@ import type { ModelRecord, RouterModels, ModelInfo } from "./model.js"
 import type { CommitRange } from "./kilocode/kilocode.js"
 import type { OpenAiCodexRateLimitInfo } from "./providers/openai-codex-rate-limits.js"
 
-// kilocode_change start: Type definitions for Kilo Code-specific features
+// kilocode_change start: Type definitions for Test Agent-specific features
 // SAP AI Core deployment types
 export type DeploymentRecord = Record<
 	string,

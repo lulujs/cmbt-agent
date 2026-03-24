@@ -7,9 +7,9 @@ description: "OAuth 2.1-based authorization flow for MCP servers"
 
 ### Overview
 
-Many MCP servers require authentication to access protected resources. Currently, Kilo Code only supports static credential configuration (API keys, tokens) which must be manually entered and stored. This creates friction for users and security concerns for enterprises.
+Many MCP servers require authentication to access protected resources. Currently, Test Agent only supports static credential configuration (API keys, tokens) which must be manually entered and stored. This creates friction for users and security concerns for enterprises.
 
-The MCP specification defines an OAuth 2.1-based authorization flow that enables secure, user-friendly authentication without requiring users to manually manage credentials. This document specifies how Kilo Code will implement the MCP Authorization specification to support OAuth-enabled MCP servers.
+The MCP specification defines an OAuth 2.1-based authorization flow that enables secure, user-friendly authentication without requiring users to manually manage credentials. This document specifies how Test Agent will implement the MCP Authorization specification to support OAuth-enabled MCP servers.
 
 ### Goals
 
@@ -31,7 +31,7 @@ The MCP Authorization spec (Protocol Revision 2025-11-25) defines an OAuth 2.1-b
 ### Roles
 
 - **MCP Server** - Acts as OAuth 2.1 Resource Server, accepts access tokens
-- **MCP Client** (Kilo Code) - Acts as OAuth 2.1 Client, obtains tokens on behalf of users
+- **MCP Client** (Test Agent) - Acts as OAuth 2.1 Client, obtains tokens on behalf of users
 - **Authorization Server** - Issues access tokens (may be hosted with MCP server or separate)
 
 ### Discovery Flow
@@ -70,7 +70,7 @@ The spec supports three approaches (in priority order):
 │                                                                                  │
 │  ┌──────────────┐    1. MCP Request     ┌──────────────────┐                    │
 │  │              │ ───────────────────►  │                  │                    │
-│  │  Kilo Code   │                       │   MCP Server     │                    │
+│  │  Test Agent   │                       │   MCP Server     │                    │
 │  │  Extension   │  ◄─────────────────── │  (Resource       │                    │
 │  │              │    2. 401 + metadata  │   Server)        │                    │
 │  └──────┬───────┘                       └──────────────────┘                    │
@@ -216,7 +216,7 @@ interface McpOAuthTokenStorage {
 
 #### 4. Client ID Metadata Document Hosting
 
-For Client ID Metadata Documents, Kilo Code needs to host a metadata document. We will use static hosting on kilocode.ai:
+For Client ID Metadata Documents, Test Agent needs to host a metadata document. We will use static hosting on kilocode.ai:
 
 - Host at `https://kilocode.ai/.well-known/oauth-client/vscode-extension.json`
 - Simple, reliable, no runtime dependencies
@@ -228,7 +228,7 @@ Metadata document:
 ```json
 {
 	"client_id": "https://kilocode.ai/.well-known/oauth-client/vscode-extension.json",
-	"client_name": "Kilo Code",
+	"client_name": "Test Agent",
 	"client_uri": "https://kilocode.ai",
 	"logo_uri": "https://kilocode.ai/logo.png",
 	"redirect_uris": ["http://127.0.0.1:0/callback", "vscode://kilocode.kilo-code/oauth/callback"],
@@ -522,7 +522,7 @@ authUrl.searchParams.set("resource", mcpServerUrl)
 
 ### Phase 3: Client ID Metadata Document
 
-- [ ] Host Kilo Code client metadata at kilocode.ai
+- [ ] Host Test Agent client metadata at kilocode.ai
 - [ ] Implement client_id URL generation
 - [ ] Add fallback to pre-registration for unsupported servers
 

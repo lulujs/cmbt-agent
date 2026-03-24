@@ -11,9 +11,9 @@ Both **GitLab.com** and **self-hosted GitLab instances** are supported.
 
 ## Prerequisites
 
-- A Kilo Code account at [app.kilo.ai](https://app.kilo.ai)
+- A Test Agent account at [app.kilo.ai](https://app.kilo.ai)
 - A GitLab account with **Maintainer** role (or higher) on the projects you want to review
-- Kilo Code credits for AI model usage
+- Test Agent credits for AI model usage
 
 > **Why Maintainer role?** Kilo creates a bot account (Project Access Token) on each project so that review comments appear from a bot, not your personal account. This requires Maintainer access.
 
@@ -40,7 +40,7 @@ For self-hosted GitLab instances using OAuth, you need to register an OAuth appl
 
 1. In your GitLab instance, go to **Admin Area → Applications** (or **User Settings → Applications**)
 2. Create a new application:
-    - **Name**: `Kilo Code`
+    - **Name**: `Test Agent`
     - **Redirect URI**: `https://app.kilo.ai/api/integrations/gitlab/callback`
     - **Scopes**: `api`, `read_user`, `read_repository`, `write_repository`
     - **Confidential**: Yes
@@ -113,7 +113,7 @@ When a review triggers:
 
 ## How the Bot Identity Works
 
-Review comments are posted by a **Kilo Code Review Bot** — not by your personal GitLab account. This bot is created automatically as a Project Access Token on each project.
+Review comments are posted by a **Test Agent Review Bot** — not by your personal GitLab account. This bot is created automatically as a Project Access Token on each project.
 
 - Created automatically the first time a project is reviewed
 - Valid for 365 days and rotated automatically before expiry
@@ -158,7 +158,7 @@ You need **Maintainer role** on the GitLab project. Both webhook creation and bo
 ### Reviews are failing
 
 - Check the Code Reviews page for error details
-- Ensure you have sufficient Kilo Code credits
+- Ensure you have sufficient Test Agent credits
 - Large MRs may time out — increase the max review time setting
 
 ### No projects listed after connecting

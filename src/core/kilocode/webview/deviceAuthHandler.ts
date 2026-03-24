@@ -12,7 +12,7 @@ export interface DeviceAuthHandlerCallbacks {
 }
 
 /**
- * Handles device authorization flow for Kilo Code authentication
+ * Handles device authorization flow for Test Agent authentication
  * This class encapsulates all device auth logic to keep ClineProvider clean
  */
 export class DeviceAuthHandler {

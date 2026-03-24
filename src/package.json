@@ -572,7 +572,7 @@
 		},
 		"icons": {
 			"kilo-logo": {
-				"description": "Kilo Code logo",
+				"description": "Test Agent logo",
 				"default": {
 					"fontPath": "assets/icons/kilo-icon-font.woff2",
 					"fontCharacter": "\\F101"

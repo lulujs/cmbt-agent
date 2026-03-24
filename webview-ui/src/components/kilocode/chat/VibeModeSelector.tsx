@@ -88,7 +88,7 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 						</span>
 					</div>
 					<p className="text-xs text-vscode-descriptionForeground m-0 leading-relaxed">
-						先规划，后开发；编码前，先明确需求与设计。
+						定义一系列步骤，引导Test Agent完成重复性任务。
 					</p>
 				</button>
 			</div>

@@ -1,8 +1,8 @@
-# Kilo Code Development Guide
+# Test Agent Development Guide
 
 > **Note**: New versions of the VS Code extension and CLI are being developed in [Kilo-Org/Kilo](https://github.com/Kilo-Org/Kilo) (extension at `packages/kilo-vscode`, CLI at `packages/opencode`). If you're looking to develop or contribute to the extension or CLI, please refer to the development guide in that repository instead.
 
-Welcome to the Kilo Code development guide! This document will help you set up your development environment and understand how to work with the codebase. Whether you're fixing bugs, adding features, or just exploring the code, this guide will get you started.
+Welcome to the Test Agent development guide! This document will help you set up your development environment and understand how to work with the codebase. Whether you're fixing bugs, adding features, or just exploring the code, this guide will get you started.
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ Before you begin, choose one of the following development environment options:
 1. **Fork and Clone the Repository**:
 
     - **Fork the Repository**:
-        - Visit the [Kilo Code GitHub repository](https://github.com/Kilo-Org/kilocode)
+        - Visit the [Test Agent GitHub repository](https://github.com/Kilo-Org/kilocode)
         - Click the "Fork" button in the top-right corner to create your own copy.
     - **Clone Your Fork**:
         ```bash
@@ -149,7 +149,7 @@ The project is organized into several key directories:
 - **`scripts/`** - Utility scripts
 - **`assets/`** - Static assets like images and icons
 
-For details on where Kilo Code stores configuration, data, and cache files at runtime, see [File Locations](docs/file-locations.md).
+For details on where Test Agent stores configuration, data, and cache files at runtime, see [File Locations](docs/file-locations.md).
 
 ## Development Workflow
 
@@ -158,7 +158,7 @@ For details on where Kilo Code stores configuration, data, and cache files at ru
 To run the extension in development mode:
 
 1. Press `F5` (or select **Run** → **Start Debugging**) in VSCode
-2. This will open a new VSCode window with Kilo Code loaded
+2. This will open a new VSCode window with Test Agent loaded
 
 ### Hot Reloading
 
@@ -202,7 +202,7 @@ Replace `[version]` with the current version number.
 
 ## Testing
 
-Kilo Code uses several types of tests to ensure quality:
+Test Agent uses several types of tests to ensure quality:
 
 ### Unit Tests
 
@@ -262,12 +262,12 @@ These hooks help maintain code quality and consistency. If you encounter issues 
 ### Debugging Tips
 
 - Use `console.log()` statements in your code for debugging
-- Check the Output panel in VSCode (View > Output) and select "Kilo Code" from the dropdown
+- Check the Output panel in VSCode (View > Output) and select "Test Agent" from the dropdown
 - For webview issues, use the browser developer tools in the webview (right-click > "Inspect Element")
 
 ### Testing with Local Backend
 
-To test the extension against a local Kilo Code backend:
+To test the extension against a local Test Agent backend:
 
 1. **Set up your local backend** at `http://localhost:3000`
 2. **Use the "Run Extension [Local Backend]" launch configuration**:
@@ -279,7 +279,7 @@ This automatically sets the `KILOCODE_BACKEND_BASE_URL` environment variable, ma
 
 ## Contributing
 
-We welcome contributions to Kilo Code! Here's how you can help:
+We welcome contributions to Test Agent! Here's how you can help:
 
 1. **Report an issue** using [GitHub Issues](https://github.com/Kilo-Org/kilocode/issues)
 2. **Find an issue** and submit a Pull Request with your fix

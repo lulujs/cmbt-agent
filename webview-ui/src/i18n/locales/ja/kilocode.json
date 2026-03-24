@@ -63,8 +63,8 @@
 			"skills": "スキル"
 		},
 		"provider": {
-			"account": "Kilo Code アカウント",
-			"apiKey": "Kilo Code APIキー",
+			"account": "Test Agent アカウント",
+			"apiKey": "Test Agent APIキー",
 			"login": "Kilo Codeにログイン",
 			"logout": "Kilo Codeからログアウト",
 			"loginForPremiumModels": "ログインしてプレミアムモデルと機能にアクセス",
@@ -117,7 +117,7 @@
 			"label": "システム通知を有効にする",
 			"description": "有効にすると、Kilo Codeはタスクの完了やエラーなどの重要なイベントについてシステム通知を送信します。",
 			"testButton": "通知をテスト",
-			"testTitle": "Kilo Code",
+			"testTitle": "Test Agent",
 			"testMessage": "これはKilo Codeからのテスト通知です。"
 		},
 		"terminal": {
@@ -347,7 +347,7 @@
 		"shareModesNewBanner": "新機能: 組織を作成してモードを共有"
 	},
 	"deviceAuth": {
-		"title": "Kilo Code にサインイン",
+		"title": "Test Agent にサインイン",
 		"step1": "ブラウザで次のURLを開いてください",
 		"step2": "コードを確認し、ブラウザでこのデバイスを承認してください",
 		"scanQr": "またはスマートフォンでこのQRコードをスキャンしてください",

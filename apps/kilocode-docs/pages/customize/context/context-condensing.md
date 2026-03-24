@@ -7,7 +7,7 @@ description: "Manage conversation context to optimize token usage and maintain l
 
 ## Overview
 
-When working on complex tasks, conversations with Kilo Code can grow long and consume a significant portion of the AI model's context window. **Context Condensing** is a feature that intelligently summarizes your conversation history, reducing token usage while preserving the essential information needed to continue your work effectively.
+When working on complex tasks, conversations with Test Agent can grow long and consume a significant portion of the AI model's context window. **Context Condensing** is a feature that intelligently summarizes your conversation history, reducing token usage while preserving the essential information needed to continue your work effectively.
 
 ## The Problem: Context Window Limits
 
@@ -32,7 +32,7 @@ This summary replaces the detailed conversation history, freeing up context wind
 
 ### Automatic Triggering
 
-Kilo Code monitors your context usage and may suggest condensing when you approach the context window limit. You'll see a notification indicating that condensing is recommended.
+Test Agent monitors your context usage and may suggest condensing when you approach the context window limit. You'll see a notification indicating that condensing is recommended.
 
 ### Manual Condensing
 
@@ -45,7 +45,7 @@ You can also trigger context condensing manually at any time using:
 
 When condensing is triggered:
 
-1. **Analysis**: Kilo Code analyzes the entire conversation history
+1. **Analysis**: Test Agent analyzes the entire conversation history
 2. **Summarization**: A summary is generated using the configured API, capturing essential context
 3. **Replacement**: The detailed history is replaced with the condensed summary
 4. **Continuation**: You can continue working with the freed-up context space
@@ -69,7 +69,7 @@ You can configure context condensing thresholds and behavior on a per-profile ba
 
 - **Long sessions**: If you've been working for an extended period on a complex task
 - **Before major transitions**: When switching to a different aspect of your project
-- **When prompted**: When Kilo Code suggests condensing due to context limits
+- **When prompted**: When Test Agent suggests condensing due to context limits
 
 ### Maintaining Context Quality
 
@@ -93,7 +93,7 @@ If the condensed summary doesn't capture important details:
 
 - Consider condensing earlier, before the conversation becomes too long
 - Use clear, specific language when describing your tasks
-- Important context can be reinforced after condensing by reminding Kilo Code of key details
+- Important context can be reinforced after condensing by reminding Test Agent of key details
 
 ## Related Features
 

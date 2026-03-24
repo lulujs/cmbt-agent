@@ -1,11 +1,11 @@
 ---
 title: "Slack"
-description: "Using Kilo Code in Slack"
+description: "Using Test Agent in Slack"
 ---
 
 # Kilo for Slack
 
-Kilo for Slack brings the power of Kilo Code directly into your Slack workspace. Ask questions about your repositories, request code implementations, or get help with issues—all without leaving Slack.
+Kilo for Slack brings the power of Test Agent directly into your Slack workspace. Ask questions about your repositories, request code implementations, or get help with issues—all without leaving Slack.
 
 ---
 
@@ -22,7 +22,7 @@ Kilo for Slack brings the power of Kilo Code directly into your Slack workspace.
 
 Before using Kilo for Slack:
 
-- You must have a **Kilo Code account** with available credits
+- You must have a **Test Agent account** with available credits
 - Your **GitHub Integration must be configured** via the [Integrations tab](https://app.kilo.ai/integrations) so Kilo can access your repositories
 
 To install Kilo for Slack, simply go to the integrations menu in the sidebar on https://app.kilo.ai and set up the Slack integration.
@@ -106,15 +106,15 @@ Can you help me understand what's causing it?
 
 1. **Message Kilo** — Either through DMs or by mentioning it in a channel
 2. **Kilo processes your request** — Kilo uses your connected GitHub repositories to understand context
-3. **AI generates a response** — Kilo Code's AI analyzes your request and provides helpful responses
+3. **AI generates a response** — Test Agent's AI analyzes your request and provides helpful responses
 4. **Code changes (if requested)** — For implementation requests, Kilo can create pull requests
 
 ---
 
 ## Cost
 
-- **Kilo Code credits are used** when Kilo performs work (model usage, operations, etc.)
-- Credit usage is similar to using Kilo Code through other interfaces
+- **Test Agent credits are used** when Kilo performs work (model usage, operations, etc.)
+- Credit usage is similar to using Test Agent through other interfaces
 
 ---
 

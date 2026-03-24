@@ -38,7 +38,7 @@ export const AutomateNav: NavSection[] = [
 					{ href: "/automate/mcp/overview", children: "MCP Overview" },
 					{
 						href: "/automate/mcp/using-in-kilo-code",
-						children: "Using MCP in Kilo Code",
+						children: "Using MCP in Test Agent",
 					},
 					{ href: "/automate/mcp/using-in-cli", children: "Using MCP in CLI" },
 					{ href: "/automate/mcp/what-is-mcp", children: "What is MCP" },
