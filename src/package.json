@@ -314,7 +314,7 @@
 				{
 					"command": "test-agent.profileButtonClicked",
 					"group": "navigation@5",
-					"when": "view == test-agent.SidebarProvider"
+					"when": "false"
 				},
 				{
 					"command": "test-agent.settingsButtonClicked",

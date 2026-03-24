@@ -53,9 +53,9 @@ These files live in your project/workspace root:
 | `.kilocode/workflows/`    | Project-specific workflow definitions                    |
 | `.kilocode/mcp.json`      | Project-specific MCP server configuration                |
 | `.kilocode/skills/`       | Project-specific skill definitions                       |
-| `.kilocodemodes`          | Project-specific custom mode definitions (YAML)          |
-| `.kilocodeignore`         | Files/directories the agent should not access            |
-| `.kilocoderules`          | Legacy rule file (prefer `.kilocode/rules/` directory)   |
+| `.testcodemodes`          | Project-specific custom mode definitions (YAML)          |
+| `.testcodeignore`         | Files/directories the agent should not access            |
+| `.testcoderules`          | Legacy rule file (prefer `.kilocode/rules/` directory)   |
 
 Global rules and workflows can also be placed in your home directory:
 

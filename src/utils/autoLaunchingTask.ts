@@ -17,7 +17,7 @@ export async function checkAndRunAutoLaunchingTask(context: vscode.ExtensionCont
 	}
 
 	const workspaceFolderUri = vscode.workspace.workspaceFolders[0].uri
-	const configPath = vscode.Uri.joinPath(workspaceFolderUri, ".kilocode", "launchConfig.json")
+	const configPath = vscode.Uri.joinPath(workspaceFolderUri, ".testcode", "launchConfig.json") // test-agent_change (was .kilocode)
 
 	try {
 		const configContent = await vscode.workspace.fs.readFile(configPath)

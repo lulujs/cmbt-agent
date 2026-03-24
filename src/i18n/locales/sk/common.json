@@ -222,8 +222,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "Neplatný YAML v súbore .kilocodemodes na riadku {{line}}. Skontroluj prosím:\n• Správne odsadenie (použi medzery, nie tabulátory)\n• Zodpovedajúce úvodzovky a zátvorky\n• Platnú YAML syntax",
-			"schemaValidationError": "Neplatný formát vlastných režimov v .kilocodemodes:\n{{issues}}",
+			"yamlParseError": "Neplatný YAML v súbore .testcodemodes na riadku {{line}}. Skontroluj prosím:\n• Správne odsadenie (použi medzery, nie tabulátory)\n• Zodpovedajúce úvodzovky a zátvorky\n• Platnú YAML syntax",
+			"schemaValidationError": "Neplatný formát vlastných režimov v .testcodemodes:\n{{issues}}",
 			"invalidFormat": "Neplatný formát vlastných režimov. Uisti sa prosím, že tvoje nastavenia dodržujú správny YAML formát.",
 			"updateFailed": "Nepodarilo sa aktualizovať vlastný režim: {{error}}",
 			"deleteFailed": "Nepodarilo sa zmazať vlastný režim: {{error}}",

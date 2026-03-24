@@ -164,14 +164,14 @@ The checkpoint system respects `.gitignore` patterns in your workspace:
 - Excluded files won't appear in checkpoint diffs
 - Standard Git ignore rules apply when staging file changes
 
-#### .kilocodeignore Behavior
+#### .testcodeignore Behavior
 
-The `.kilocodeignore` file (which controls AI access to files) is separate from checkpoint tracking:
+The `.testcodeignore` file (which controls AI access to files) is separate from checkpoint tracking:
 
-- Files excluded by `.kilocodeignore` but not by `.gitignore` will still be checkpointed
+- Files excluded by `.testcodeignore` but not by `.gitignore` will still be checkpointed
 - Changes to AI-inaccessible files can still be restored through checkpoints
 
-This separation is intentional, as `.kilocodeignore` limits which files the AI can access, not which files should be tracked for version history.
+This separation is intentional, as `.testcodeignore` limits which files the AI can access, not which files should be tracked for version history.
 
 #### Nested Git Repositories
 

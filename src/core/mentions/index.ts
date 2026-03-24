@@ -292,7 +292,7 @@ async function getFileOrFolderContent(
 				return `(Binary file ${mentionPath} omitted)`
 			}
 			if (rooIgnoreController && !rooIgnoreController.validateAccess(unescapedPath)) {
-				return `(File ${mentionPath} is ignored by .kilocodeignore)`
+				return `(File ${mentionPath} is ignored by .testcodeignore)`
 			}
 			// kilocode_change start
 			if (isSupportedImageFormat(path.extname(absPath))) {

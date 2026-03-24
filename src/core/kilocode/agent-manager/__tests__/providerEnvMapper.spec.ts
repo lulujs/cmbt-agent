@@ -25,7 +25,7 @@ describe("providerEnvMapper", () => {
 	})
 
 	it("injects kilocode auth by switching to an existing CLI kilocode provider entry", () => {
-		const configPath = path.join(tempHome, ".kilocode", "cli", "config.json")
+		const configPath = path.join(tempHome, ".testcode", "cli", "config.json")
 		fs.mkdirSync(path.dirname(configPath), { recursive: true })
 		fs.writeFileSync(
 			configPath,
@@ -79,7 +79,7 @@ describe("providerEnvMapper", () => {
 	})
 
 	it("falls back to env-config mode when CLI config has no kilocode provider (overrides HOME)", () => {
-		const configPath = path.join(tempHome, ".kilocode", "cli", "config.json")
+		const configPath = path.join(tempHome, ".testcode", "cli", "config.json")
 		fs.mkdirSync(path.dirname(configPath), { recursive: true })
 		fs.writeFileSync(
 			configPath,

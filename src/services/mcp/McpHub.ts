@@ -808,7 +808,7 @@ export class McpHub {
 		}
 
 		const workspaceFolder = this.providerRef.deref()?.cwd ?? getWorkspacePath()
-		const projectMcpPattern = new vscode.RelativePattern(workspaceFolder, ".kilocode/mcp.json")
+		const projectMcpPattern = new vscode.RelativePattern(workspaceFolder, ".testcode/mcp.json") // test-agent_change (was .kilocode)
 
 		// Create a file system watcher for the project MCP file pattern
 		this.projectMcpWatcher = vscode.workspace.createFileSystemWatcher(projectMcpPattern)
@@ -1046,7 +1046,7 @@ export class McpHub {
 	// Get project-level MCP configuration path
 	private async getProjectMcpPath(): Promise<string | null> {
 		const workspacePath = this.providerRef.deref()?.cwd ?? getWorkspacePath()
-		const projectMcpDir = path.join(workspacePath, ".kilocode")
+		const projectMcpDir = path.join(workspacePath, ".testcode") // test-agent_change (was .kilocode)
 		const projectMcpPath = path.join(projectMcpDir, "mcp.json")
 
 		try {
@@ -1056,7 +1056,7 @@ export class McpHub {
 			// kilocode_change
 			return this.checkAlternativeMcpPaths(workspacePath)
 
-			// If not found in .kilocode/, fall back to .mcp.json in root directory
+			// If not found in .testcode/, fall back to .mcp.json in root directory
 			const rootMcpPath = path.join(workspacePath, ".mcp.json")
 			try {
 				await fs.access(rootMcpPath)

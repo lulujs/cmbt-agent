@@ -7,7 +7,7 @@
 		"importMode": "استيراد نمط",
 		"editModesConfig": "تعديل إعدادات الأنماط",
 		"editGlobalModes": "تعديل الأنماط العامة",
-		"editProjectModes": "تعديل أنماط المشروع (.kilocodemodes)",
+		"editProjectModes": "تعديل أنماط المشروع (.testcodemodes)",
 		"createModeHelpText": "الأنماط تعرّف شخصيات مخصصة تضبط سلوك Kilo Code. <0>تعرف على طريقة استخدام الأنماط</0> أو <1>تخصيصها حسب شغلك</1>.",
 		"selectMode": "بحث في الأنماط",
 		"noMatchFound": "لم يتم العثور على أنماط"
@@ -55,7 +55,7 @@
 		"title": "تعليمات مخصصة لهذا النمط (اختياري)",
 		"resetToDefault": "رجّع للوضع الافتراضي",
 		"description": "اكتب تعليمات خاصة لسلوك نمط {{modeName}}.",
-		"loadFromFile": "تقدر تحمل التعليمات من المجلد <span>.kilocode/rules/</span> داخل المشروع (.kilocoderules-{{slug}} بيتوقف قريب)."
+		"loadFromFile": "تقدر تحمل التعليمات من المجلد <span>.kilocode/rules/</span> داخل المشروع (.testcoderules-{{slug}} بيتوقف قريب)."
 	},
 	"exportMode": {
 		"title": "تصدير النمط",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "تعليمات عامة لكل الأنماط",
 		"description": "هذي التعليمات تنطبق على كل الأنماط، وتعتبر قاعدة ينضاف لها تعليمات مخصصة بالنمط. <0>اعرف أكثر</0>",
-		"loadFromFile": "تقدر تحمل التعليمات من المجلد <span>.kilocode/rules/</span> داخل المشروع (.kilocoderules بيتوقف قريب)."
+		"loadFromFile": "تقدر تحمل التعليمات من المجلد <span>.kilocode/rules/</span> داخل المشروع (.testcoderules بيتوقف قريب)."
 	},
 	"systemPrompt": {
 		"preview": "عرض تمهيدي للنظام",
@@ -181,7 +181,7 @@
 				"description": "متوفر بكل المشاريع"
 			},
 			"project": {
-				"label": "خاص بالمشروع (.kilocodemodes)",
+				"label": "خاص بالمشروع (.testcodemodes)",
 				"description": "متوفر فقط بهالمشروع وله أولوية"
 			}
 		},

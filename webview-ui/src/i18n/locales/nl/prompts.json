@@ -8,7 +8,7 @@
 		"noMatchFound": "Geen modi gevonden",
 		"editModesConfig": "Modusconfiguratie bewerken",
 		"editGlobalModes": "Globale modi bewerken",
-		"editProjectModes": "Projectmodi bewerken (.kilocodemodes)",
+		"editProjectModes": "Projectmodi bewerken (.testcodemodes)",
 		"createModeHelpText": "Modi zijn gespecialiseerde persona's die het gedrag van Kilo Code aanpassen. <0>Meer informatie over het gebruik van modi</0> of <1>het aanpassen van modi.</1>",
 		"selectMode": "Modus zoeken"
 	},
@@ -55,7 +55,7 @@
 		"title": "Modusspecifieke instructies (optioneel)",
 		"resetToDefault": "Terugzetten naar standaard",
 		"description": "Voeg gedragsrichtlijnen toe die specifiek zijn voor de modus {{modeName}}.",
-		"loadFromFile": "Aangepaste instructies specifiek voor de {{mode}} modus kunnen ook worden geladen vanuit de map <span>.kilocode/rules-{{slug}}/</span> in je werkruimte of vanuit de globale <0>.kilocode/rules-{{slug}}/</0> (.kilocoderules-{{slug}} en .clinerules-{{slug}} zijn verouderd en zullen binnenkort niet meer werken)."
+		"loadFromFile": "Aangepaste instructies specifiek voor de {{mode}} modus kunnen ook worden geladen vanuit de map <span>.kilocode/rules-{{slug}}/</span> in je werkruimte of vanuit de globale <0>.kilocode/rules-{{slug}}/</0> (.testcoderules-{{slug}} en .clinerules-{{slug}} zijn verouderd en zullen binnenkort niet meer werken)."
 	},
 	"exportMode": {
 		"title": "Modus exporteren",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Aangepaste instructies voor alle modi",
 		"description": "Deze instructies gelden voor alle modi. Ze bieden een basisset aan gedragingen die kunnen worden uitgebreid met modusspecifieke instructies hieronder. <0>Meer informatie</0>",
-		"loadFromFile": "Instructies kunnen ook worden geladen vanuit de map <span>.kilocode/rules/</span> in je werkruimte of vanuit de globale <0>.kilocode/rules/</0> (.kilocoderules en .clinerules zijn verouderd en zullen binnenkort niet meer werken)."
+		"loadFromFile": "Instructies kunnen ook worden geladen vanuit de map <span>.kilocode/rules/</span> in je werkruimte of vanuit de globale <0>.kilocode/rules/</0> (.testcoderules en .clinerules zijn verouderd en zullen binnenkort niet meer werken)."
 	},
 	"systemPrompt": {
 		"preview": "Systeemprompt bekijken",
@@ -181,7 +181,7 @@
 				"description": "Beschikbaar in alle werkruimtes"
 			},
 			"project": {
-				"label": "Projectspecifiek (.kilocodemodes)",
+				"label": "Projectspecifiek (.testcodemodes)",
 				"description": "Alleen beschikbaar in deze werkruimte, heeft voorrang op globaal"
 			}
 		},

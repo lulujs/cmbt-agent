@@ -243,7 +243,7 @@
 			},
 			"protected": {
 				"label": "Zahrnúť chránené súbory",
-				"description": "Povoliť Kilo Code vytvárať a upravovať chránené súbory (ako .kilocodeignore a konfiguračné súbory .kilocode/) bez nutnosti schválenia."
+				"description": "Povoliť Kilo Code vytvárať a upravovať chránené súbory (ako .testcodeignore a konfiguračné súbory .kilocode/) bez nutnosti schválenia."
 			}
 		},
 		"browser": {
@@ -885,8 +885,8 @@
 			"description": "Maximálny počet súborových záznamov, ktoré sa zahrnú do kontextu Git stavu. Nastavte na 0 pre vypnutie. Informácie o vetve sa vždy zobrazia, keď je > 0."
 		},
 		"rooignore": {
-			"label": "Zobraziť súbory ignorované .kilocodeignore v zoznamoch a vyhľadávaniach",
-			"description": "Ak je povolené, súbory zodpovedajúce vzorom v .kilocodeignore sa zobrazia v zoznamoch so symbolom zámku. Ak je zakázané, tieto súbory budú úplne skryté zo zoznamov súborov a vyhľadávania."
+			"label": "Zobraziť súbory ignorované .testcodeignore v zoznamoch a vyhľadávaniach",
+			"description": "Ak je povolené, súbory zodpovedajúce vzorom v .testcodeignore sa zobrazia v zoznamoch so symbolom zámku. Ak je zakázané, tieto súbory budú úplne skryté zo zoznamov súborov a vyhľadávania."
 		},
 		"enableSubfolderRules": {
 			"label": "Povoliť pravidlá podadresárov",

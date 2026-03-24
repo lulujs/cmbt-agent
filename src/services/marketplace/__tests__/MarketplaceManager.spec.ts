@@ -75,11 +75,11 @@ vi.mock("fs/promises", () => ({
 
 // kilocode_change start - Mocks necessary for skills
 vi.mock("../../roo-config", () => ({
-	getGlobalRooDirectory: () => "/home/user/.kilocode",
+	getGlobalRooDirectory: () => "/home/user/.testcode",
 }))
 
 vi.mock("../../../utils/globalContext", () => ({
-	ensureSettingsDirectoryExists: vi.fn().mockResolvedValue("/home/user/.kilocode"),
+	ensureSettingsDirectoryExists: vi.fn().mockResolvedValue("/home/user/.testcode"),
 }))
 // kilocode_change end
 

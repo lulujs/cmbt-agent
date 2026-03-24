@@ -7,7 +7,7 @@
 		"importMode": "Importovat režim",
 		"editModesConfig": "Upravit konfiguraci režimů",
 		"editGlobalModes": "Upravit Global Modes",
-		"editProjectModes": "Upravit Project Modes (.kilocodemodes)",
+		"editProjectModes": "Upravit Project Modes (.testcodemodes)",
 		"createModeHelpText": "Režimy jsou specializované persony, které přizpůsobují chování Kilo Code. <0>Zjisti více o Používání režimů</0> nebo <1>Přizpůsobení režimů.</1>",
 		"selectMode": "Hledat režimy",
 		"noMatchFound": "Žádné režimy nenalezeny"
@@ -55,7 +55,7 @@
 		"title": "Vlastní instrukce pro režim (volitelné)",
 		"resetToDefault": "Obnovit výchozí",
 		"description": "Přidej pokyny pro chování specifické pro režim {{modeName}}.",
-		"loadFromFile": "Vlastní instrukce specifické pro režim {{mode}} lze také načíst ze složky <span>.kilocode/rules/</span> ve tvém pracovním prostoru (.kilocoderules-{{slug}} je zastaralé a brzy přestane fungovat)."
+		"loadFromFile": "Vlastní instrukce specifické pro režim {{mode}} lze také načíst ze složky <span>.kilocode/rules/</span> ve tvém pracovním prostoru (.testcoderules-{{slug}} je zastaralé a brzy přestane fungovat)."
 	},
 	"exportMode": {
 		"title": "Exportovat režim",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Vlastní instrukce pro všechny režimy",
 		"description": "Tyto instrukce platí pro všechny režimy. Poskytují základní sadu chování, která může být rozšířena instrukcemi specifickými pro režim níže. <0>Zjistit více</0>",
-		"loadFromFile": "Instrukce lze také načíst ze složky <span>.kilocode/rules/</span> ve tvém pracovním prostoru (.kilocoderules je zastaralé a brzy přestane fungovat)."
+		"loadFromFile": "Instrukce lze také načíst ze složky <span>.kilocode/rules/</span> ve tvém pracovním prostoru (.testcoderules je zastaralé a brzy přestane fungovat)."
 	},
 	"systemPrompt": {
 		"preview": "Náhled System Prompt",
@@ -181,7 +181,7 @@
 				"description": "Dostupné ve všech pracovních prostorech"
 			},
 			"project": {
-				"label": "Specifické pro projekt (.kilocodemodes)",
+				"label": "Specifické pro projekt (.testcodemodes)",
 				"description": "Dostupné pouze v tomto pracovním prostoru, má přednost před globálním"
 			}
 		},

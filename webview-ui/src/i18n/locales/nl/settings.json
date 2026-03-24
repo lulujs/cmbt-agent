@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "Inclusief beschermde bestanden",
-				"description": "Sta Kilo Code toe om beschermde bestanden (zoals .kilocodeignore en .kilocode/ configuratiebestanden) aan te maken en te bewerken zonder goedkeuring."
+				"description": "Sta Kilo Code toe om beschermde bestanden (zoals .testcodeignore en .kilocode/ configuratiebestanden) aan te maken en te bewerken zonder goedkeuring."
 			}
 		},
 		"delete": {
@@ -781,8 +781,8 @@
 			"description": "Maximaal aantal bestanden dat wordt opgenomen in details van de huidige werkmap. Hogere waarden geven meer context maar verhogen het tokengebruik."
 		},
 		"rooignore": {
-			"label": ".kilocodeignore-bestanden tonen in lijsten en zoekopdrachten",
-			"description": "Indien ingeschakeld, worden bestanden die overeenkomen met patronen in .kilocodeignore getoond in lijsten met een slotje. Indien uitgeschakeld, worden deze bestanden volledig verborgen in lijsten en zoekopdrachten."
+			"label": ".testcodeignore-bestanden tonen in lijsten en zoekopdrachten",
+			"description": "Indien ingeschakeld, worden bestanden die overeenkomen met patronen in .testcodeignore getoond in lijsten met een slotje. Indien uitgeschakeld, worden deze bestanden volledig verborgen in lijsten en zoekopdrachten."
 		},
 		"maxReadFile": {
 			"label": "Automatisch afkappen bij bestandslezen",

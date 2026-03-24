@@ -662,7 +662,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 												e.preventDefault() // Prevent blur
 												vscode.postMessage({
 													type: "openFile",
-													text: "./.kilocodemodes",
+													text: "./.testcodemodes",
 													values: {
 														create: true,
 														content: JSON.stringify({ customModes: [] }, null, 2),

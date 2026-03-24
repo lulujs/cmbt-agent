@@ -811,12 +811,12 @@ describe("webviewMessageHandler - deleteCustomMode", () => {
 		vi.clearAllMocks()
 		vi.mocked(getWorkspacePath).mockReturnValue("/mock/workspace")
 		vi.mocked(vscode.window.showErrorMessage).mockResolvedValue(undefined)
-		vi.mocked(ensureSettingsDirectoryExists).mockResolvedValue("/mock/global/storage/.kilocode")
+		vi.mocked(ensureSettingsDirectoryExists).mockResolvedValue("/mock/global/storage/.testcode")
 	})
 
 	it("should delete a project mode and its rules folder", async () => {
 		const slug = "test-project-mode"
-		const rulesFolderPath = path.join("/mock/workspace", ".kilocode", `rules-${slug}`)
+		const rulesFolderPath = path.join("/mock/workspace", ".testcode", `rules-${slug}`)
 
 		vi.mocked(mockClineProvider.customModesManager.getCustomModes).mockResolvedValue([
 			{
@@ -841,7 +841,7 @@ describe("webviewMessageHandler - deleteCustomMode", () => {
 	it("should delete a global mode and its rules folder", async () => {
 		const slug = "test-global-mode"
 		const homeDir = os.homedir()
-		const rulesFolderPath = path.join(homeDir, ".kilocode", `rules-${slug}`)
+		const rulesFolderPath = path.join(homeDir, ".testcode", `rules-${slug}`)
 
 		vi.mocked(mockClineProvider.customModesManager.getCustomModes).mockResolvedValue([
 			{
@@ -887,7 +887,7 @@ describe("webviewMessageHandler - deleteCustomMode", () => {
 
 	it("should handle errors when deleting rules folder", async () => {
 		const slug = "test-mode-error"
-		const rulesFolderPath = path.join("/mock/workspace", ".kilocode", `rules-${slug}`)
+		const rulesFolderPath = path.join("/mock/workspace", ".testcode", `rules-${slug}`)
 		const error = new Error("Permission denied")
 
 		vi.mocked(mockClineProvider.customModesManager.getCustomModes).mockResolvedValue([

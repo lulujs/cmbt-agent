@@ -224,8 +224,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "YAML invalide dans le fichier .kilocodemodes à la ligne {{line}}. Vérifier :\n• L'indentation correcte (utilise des espaces, pas de tabulations)\n• Les guillemets et crochets correspondants\n• La syntaxe YAML valide",
-			"schemaValidationError": "Format invalide des modes personnalisés dans .kilocodemodes :\n{{issues}}",
+			"yamlParseError": "YAML invalide dans le fichier .testcodemodes à la ligne {{line}}. Vérifier :\n• L'indentation correcte (utilise des espaces, pas de tabulations)\n• Les guillemets et crochets correspondants\n• La syntaxe YAML valide",
+			"schemaValidationError": "Format invalide des modes personnalisés dans .testcodemodes :\n{{issues}}",
 			"invalidFormat": "Format invalide des modes personnalisés. Assurez-vous que vos paramètres suivent le format YAML correct.",
 			"updateFailed": "Échec de la mise à jour du mode personnalisé : {{error}}",
 			"deleteFailed": "Échec de la suppression du mode personnalisé : {{error}}",

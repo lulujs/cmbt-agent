@@ -729,7 +729,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	private getCliGlobalStoragePath(): string {
 		// Try to use home directory based path for CLI mode
 		const homeDir = process.env.HOME || process.env.USERPROFILE || "/tmp"
-		const cliStoragePath = path.join(homeDir, ".kilocode", "cli", "global")
+		const cliStoragePath = path.join(homeDir, ".testcode", "cli", "global") // test-agent_change (was .kilocode)
 
 		// Ensure directory exists
 		try {

@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "Geschützte Dateien einbeziehen",
-				"description": "Kilo Code erlauben, geschützte Dateien (wie .kilocodeignore und .kilocode/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
+				"description": "Kilo Code erlauben, geschützte Dateien (wie .testcodeignore und .kilocode/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
 			}
 		},
 		"browser": {
@@ -781,8 +781,8 @@
 			"description": "Maximale Anzahl von Dateien, die in den Details des aktuellen Arbeitsverzeichnisses enthalten sein sollen. Höhere Werte bieten mehr Kontext, erhöhen aber den Token-Verbrauch."
 		},
 		"rooignore": {
-			"label": ".kilocodeignore-Dateien in Listen und Suchen anzeigen",
-			"description": "Wenn aktiviert, werden Dateien, die mit Mustern in .kilocodeignore übereinstimmen, in Listen mit einem Schlosssymbol angezeigt. Wenn deaktiviert, werden diese Dateien vollständig aus Dateilisten und Suchen ausgeblendet."
+			"label": ".testcodeignore-Dateien in Listen und Suchen anzeigen",
+			"description": "Wenn aktiviert, werden Dateien, die mit Mustern in .testcodeignore übereinstimmen, in Listen mit einem Schlosssymbol angezeigt. Wenn deaktiviert, werden diese Dateien vollständig aus Dateilisten und Suchen ausgeblendet."
 		},
 		"maxConcurrentFileReads": {
 			"label": "Gleichzeitige Dateilesungen Limit",

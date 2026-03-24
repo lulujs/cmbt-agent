@@ -8,7 +8,7 @@
 		"noMatchFound": "Tidak ada mode yang ditemukan",
 		"editModesConfig": "Edit konfigurasi mode",
 		"editGlobalModes": "Edit Mode Global",
-		"editProjectModes": "Edit Mode Proyek (.kilocodemodes)",
+		"editProjectModes": "Edit Mode Proyek (.testcodemodes)",
 		"createModeHelpText": "Mode adalah persona khusus yang menyesuaikan perilaku Kilo Code. <0>Pelajari tentang Menggunakan Mode</0> atau <1>Menyesuaikan Mode.</1>",
 		"selectMode": "Cari mode"
 	},
@@ -55,7 +55,7 @@
 		"title": "Instruksi Kustom Khusus Mode (opsional)",
 		"resetToDefault": "Reset ke default",
 		"description": "Tambahkan panduan perilaku khusus untuk mode {{modeName}}.",
-		"loadFromFile": "Instruksi khusus untuk mode {{mode}} juga dapat dimuat dari folder <span>.kilocode/rules-{{slug}}/</span> di ruang kerja Anda atau dari global <0>.kilocode/rules-{{slug}}/</0> (.kilocoderules-{{slug}} dan .clinerules-{{slug}} sudah usang dan akan segera berhenti berfungsi)."
+		"loadFromFile": "Instruksi khusus untuk mode {{mode}} juga dapat dimuat dari folder <span>.kilocode/rules-{{slug}}/</span> di ruang kerja Anda atau dari global <0>.kilocode/rules-{{slug}}/</0> (.testcoderules-{{slug}} dan .clinerules-{{slug}} sudah usang dan akan segera berhenti berfungsi)."
 	},
 	"exportMode": {
 		"title": "Ekspor Mode",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Instruksi Kustom untuk Semua Mode",
 		"description": "Instruksi ini berlaku untuk semua mode. Mereka menyediakan set dasar perilaku yang dapat ditingkatkan oleh instruksi khusus mode di bawah. <0>Pelajari lebih lanjut</0>",
-		"loadFromFile": "Instruksi juga dapat dimuat dari folder <span>.kilocode/rules/</span> di ruang kerja Anda atau dari global <0>.kilocode/rules/</0> (.kilocoderules dan .clinerules sudah usang dan akan segera berhenti berfungsi)."
+		"loadFromFile": "Instruksi juga dapat dimuat dari folder <span>.kilocode/rules/</span> di ruang kerja Anda atau dari global <0>.kilocode/rules/</0> (.testcoderules dan .clinerules sudah usang dan akan segera berhenti berfungsi)."
 	},
 	"systemPrompt": {
 		"preview": "Pratinjau System Prompt",
@@ -181,7 +181,7 @@
 				"description": "Tersedia di semua workspace"
 			},
 			"project": {
-				"label": "Khusus proyek (.kilocodemodes)",
+				"label": "Khusus proyek (.testcodemodes)",
 				"description": "Hanya tersedia di workspace ini, lebih diutamakan daripada global"
 			}
 		},

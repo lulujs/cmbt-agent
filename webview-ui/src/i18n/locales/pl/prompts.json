@@ -8,7 +8,7 @@
 		"noMatchFound": "Nie znaleziono trybów",
 		"editModesConfig": "Edytuj konfigurację trybów",
 		"editGlobalModes": "Edytuj tryby globalne",
-		"editProjectModes": "Edytuj tryby projektu (.kilocodemodes)",
+		"editProjectModes": "Edytuj tryby projektu (.testcodemodes)",
 		"createModeHelpText": "Tryby to wyspecjalizowane persony, które dostosowują zachowanie Kilo Code. <0>Dowiedz się o używaniu trybów</0> lub <1>dostosowywaniu trybów.</1>",
 		"selectMode": "Szukaj trybów"
 	},
@@ -55,7 +55,7 @@
 		"title": "Niestandardowe instrukcje dla trybu (opcjonalne)",
 		"resetToDefault": "Przywróć domyślne",
 		"description": "Dodaj wytyczne dotyczące zachowania specyficzne dla trybu {{modeName}}.",
-		"loadFromFile": "Niestandardowe instrukcje specyficzne dla trybu {{mode}} można również załadować z folderu <span>.kilocode/rules-{{slug}}/</span> w twoim obszarze roboczym lub z globalnego <0>.kilocode/rules-{{slug}}/</0> (.kilocoderules-{{slug}} i .clinerules-{{slug}} są przestarzałe i wkrótce przestaną działać)."
+		"loadFromFile": "Niestandardowe instrukcje specyficzne dla trybu {{mode}} można również załadować z folderu <span>.kilocode/rules-{{slug}}/</span> w twoim obszarze roboczym lub z globalnego <0>.kilocode/rules-{{slug}}/</0> (.testcoderules-{{slug}} i .clinerules-{{slug}} są przestarzałe i wkrótce przestaną działać)."
 	},
 	"exportMode": {
 		"title": "Eksportuj tryb",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Niestandardowe instrukcje dla wszystkich trybów",
 		"description": "Te instrukcje dotyczą wszystkich trybów. Zapewniają podstawowy zestaw zachowań, które mogą być rozszerzone przez instrukcje specyficzne dla trybów poniżej. <0>Dowiedz się więcej</0>",
-		"loadFromFile": "Instrukcje można również załadować z folderu <span>.kilocode/rules/</span> w twoim obszarze roboczym lub z globalnego <0>.kilocode/rules/</0> (.kilocoderules i .clinerules są przestarzałe i wkrótce przestaną działać)."
+		"loadFromFile": "Instrukcje można również załadować z folderu <span>.kilocode/rules/</span> w twoim obszarze roboczym lub z globalnego <0>.kilocode/rules/</0> (.testcoderules i .clinerules są przestarzałe i wkrótce przestaną działać)."
 	},
 	"systemPrompt": {
 		"preview": "Podgląd podpowiedzi systemowej",
@@ -181,7 +181,7 @@
 				"description": "Dostępny we wszystkich obszarach roboczych"
 			},
 			"project": {
-				"label": "Specyficzny dla projektu (.kilocodemodes)",
+				"label": "Specyficzny dla projektu (.testcodemodes)",
 				"description": "Dostępny tylko w tym obszarze roboczym, ma pierwszeństwo przed globalnym"
 			}
 		},

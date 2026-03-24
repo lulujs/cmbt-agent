@@ -163,7 +163,7 @@ describe("deleteFileTool", () => {
 			expect(mockedFsUnlink).toHaveBeenCalled()
 		})
 
-		it("should reject files in .kilocodeignore", async () => {
+		it("should reject files in .testcodeignore", async () => {
 			await executeDeleteFileTool({}, { accessAllowed: false })
 
 			// Normalize path for cross-platform compatibility

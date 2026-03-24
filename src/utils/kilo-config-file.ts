@@ -90,7 +90,7 @@ export async function getKilocodeConfig(
  * @returns The project configuration or undefined if not found or invalid
  */
 export async function getKilocodeConfigFile(workspaceRoot: string): Promise<KilocodeConfig | null> {
-	const configPath = path.join(workspaceRoot, ".kilocode", "config.json")
+	const configPath = path.join(workspaceRoot, ".testcode", "config.json") // test-agent_change (was .kilocode)
 	try {
 		const content = await fs.readFile(configPath, "utf8")
 		const config = KilocodeConfig.parse(JSON.parse(content))

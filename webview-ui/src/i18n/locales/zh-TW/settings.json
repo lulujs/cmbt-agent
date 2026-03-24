@@ -227,7 +227,7 @@
 			},
 			"protected": {
 				"label": "包含受保護的檔案",
-				"description": "允許 Kilo Code 建立和編輯受保護的檔案（如 .kilocodeignore 和 .kilocode/ 設定檔），無需核准。"
+				"description": "允許 Kilo Code 建立和編輯受保護的檔案（如 .testcodeignore 和 .kilocode/ 設定檔），無需核准。"
 			}
 		},
 		"browser": {
@@ -791,8 +791,8 @@
 			"description": "目前工作目錄中最多包含多少個檔案。數值越高提供的上下文越多，但 Token 用量也會增加。"
 		},
 		"rooignore": {
-			"label": "在清單和搜尋中顯示被 .kilocodeignore 排除的檔案",
-			"description": "啟用後，符合 .kilocodeignore 規則的檔案會在清單中顯示並標示鎖定圖示。停用後，這些檔案將完全從檔案清單和搜尋結果中隱藏。"
+			"label": "在清單和搜尋中顯示被 .testcodeignore 排除的檔案",
+			"description": "啟用後，符合 .testcodeignore 規則的檔案會在清單中顯示並標示鎖定圖示。停用後，這些檔案將完全從檔案清單和搜尋結果中隱藏。"
 		},
 		"maxConcurrentFileReads": {
 			"label": "並行檔案讀取限制",

@@ -10,7 +10,7 @@ import * as fs from "node:fs"
 import * as path from "node:path"
 
 const SETUP_SCRIPT_FILENAME = "setup-script"
-const KILOCODE_DIR = ".kilocode"
+const KILOCODE_DIR = ".testcode" // test-agent_change (was .kilocode)
 
 /**
  * Default template for the setup script with helpful comments

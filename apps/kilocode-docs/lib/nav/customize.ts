@@ -39,7 +39,7 @@ export const CustomizeNav: NavSection[] = [
 			},
 			{
 				href: "/customize/context/kilocodeignore",
-				children: ".kilocodeignore",
+				children: ".testcodeignore",
 			},
 			{ href: "/customize/context/memory-bank", children: "Memory Bank" },
 			{

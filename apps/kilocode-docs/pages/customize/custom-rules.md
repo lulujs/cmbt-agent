@@ -81,7 +81,7 @@ Rules are loaded in the following priority order:
 3. **Legacy fallback files** (for backward compatibility):
     - `.roorules`
     - `.clinerules`
-    - `.kilocoderules` (deprecated)
+    - `.testcoderules` (deprecated)
 
 When both global and project rules exist, they are combined with project rules taking precedence over global rules for conflicting directives.
 
@@ -94,7 +94,7 @@ We strongly recommend keeping your rules in the `.kilocode/rules/` folder as it 
 Additionally, the system supports mode-specific rules, which are loaded separately and have their own priority order:
 
 1. First, it checks for `.kilocode/rules-${mode}/` directory
-2. If that doesn't exist or is empty, it falls back to `.kilocoderules-${mode}` file (deprecated)
+2. If that doesn't exist or is empty, it falls back to `.testcoderules-${mode}` file (deprecated)
 
 Currently, mode-specific rules are only supported at the project level.
 When both generic rules and mode-specific rules exist, the mode-specific rules are given priority in the final output.
@@ -212,7 +212,7 @@ If your custom rules aren't being properly followed:
 1. **Check rule locations**: Ensure that your rules are located in supported locations:
     - Global rules: `~/.kilocode/rules/` directory
     - Project rules: `.kilocode/rules/` directory
-    - Legacy files: `.kilocoderules`, `.roorules`, or `.clinerules`
+    - Legacy files: `.testcoderules`, `.roorules`, or `.clinerules`
 1. **Rule specificity**: Verify that the rules are specific and unambiguous
 1. **Restart VS Code**: Restart VS Code to ensure the rules are properly loaded
 

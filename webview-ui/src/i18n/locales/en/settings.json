@@ -227,7 +227,7 @@
 			},
 			"protected": {
 				"label": "Include protected files",
-				"description": "Allow Kilo Code to create and edit protected files (like .kilocodeignore and .kilocode/ configuration files) without requiring approval."
+				"description": "Allow Kilo Code to create and edit protected files (like .testcodeignore and .kilocode/ configuration files) without requiring approval."
 			}
 		},
 		"delete": {
@@ -826,8 +826,8 @@
 			"description": "Maximum number of files to include in current working directory details. Higher values provide more context but increase token usage."
 		},
 		"rooignore": {
-			"label": "Show .kilocodeignore'd files in lists and searches",
-			"description": "When enabled, files matching patterns in .kilocodeignore will be shown in lists with a lock symbol. When disabled, these files will be completely hidden from file lists and searches."
+			"label": "Show .testcodeignore'd files in lists and searches",
+			"description": "When enabled, files matching patterns in .testcodeignore will be shown in lists with a lock symbol. When disabled, these files will be completely hidden from file lists and searches."
 		},
 		"maxConcurrentFileReads": {
 			"label": "Concurrent file reads limit",

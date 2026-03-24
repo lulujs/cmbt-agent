@@ -94,7 +94,7 @@ alwaysApply: false
 # Copy all files
 for file in .cursor/rules/*.mdc; do
   basename="${file##*/}"
-  cp "$file" ".kilocode/rules/${basename%.mdc}.md"
+  cp "$file" ".testcode/rules/${basename%.mdc}.md"
 done
 
 # Then manually edit each file to remove YAML frontmatter (the --- section at the top)
@@ -135,7 +135,7 @@ mkdir -p .kilocode/rules-code
 **Kilo Code approach (Option 2 - Custom mode):**
 
 ```yaml
-# .kilocodemodes (at project root)
+# .testcodemodes (at project root)
 - slug: typescript
   name: TypeScript
   roleDefinition: You work on TypeScript files
@@ -232,7 +232,7 @@ Windsurf configures activation through the GUI. In Kilo Code, file organization 
 If you had a rule in Windsurf with Glob mode set to `*.test.ts`, create a custom test mode:
 
 ```yaml
-# .kilocodemodes (at project root)
+# .testcodemodes (at project root)
 - slug: test
   name: Testing
   roleDefinition: You write and maintain tests
@@ -407,7 +407,7 @@ There's no "right" workflow—use whatever helps you code faster
 For complex workflows, define custom modes with their own rules and permissions:
 
 ```yaml
-# .kilocodemodes (at project root)
+# .testcodemodes (at project root)
 - slug: review
   name: Code Review
   roleDefinition: You review code and suggest improvements
@@ -432,7 +432,7 @@ mkdir -p .kilocode/rules-review
 mkdir -p .kilocode/rules-docs
 ```
 
-**Note:** `.kilocodemodes` can be in YAML (preferred) or JSON format. For global modes, edit the `custom_modes.yaml` file via Settings > Edit Global Modes.
+**Note:** `.testcodemodes` can be in YAML (preferred) or JSON format. For global modes, edit the `custom_modes.yaml` file via Settings > Edit Global Modes.
 
 ## Next Steps
 

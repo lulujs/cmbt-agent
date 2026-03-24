@@ -8,7 +8,7 @@
 		"noMatchFound": "モードが見つかりません",
 		"editModesConfig": "モード設定を編集",
 		"editGlobalModes": "グローバルモードを編集",
-		"editProjectModes": "プロジェクトモードを編集 (.kilocodemodes)",
+		"editProjectModes": "プロジェクトモードを編集 (.testcodemodes)",
 		"createModeHelpText": "モードはKilo Codeの振る舞いを調整する専門的なペルソナです。<0>モードの使用について学ぶ</0>か、<1>モードのカスタマイズについて学ぶ</1>。",
 		"selectMode": "モードを検索"
 	},
@@ -55,7 +55,7 @@
 		"title": "モード固有のカスタム指示（オプション）",
 		"resetToDefault": "デフォルトにリセット",
 		"description": "{{modeName}}モードに特化した行動ガイドラインを追加します。",
-		"loadFromFile": "{{mode}}モード固有のカスタム指示は、ワークスペースの<span>.kilocode/rules-{{slug}}/</span>フォルダまたはグローバル<0>.kilocode/rules-{{slug}}/</0>からも読み込むことができます（.kilocoderules-{{slug}}と.clinerules-{{slug}}は非推奨で、まもなく動作しなくなります）。"
+		"loadFromFile": "{{mode}}モード固有のカスタム指示は、ワークスペースの<span>.kilocode/rules-{{slug}}/</span>フォルダまたはグローバル<0>.kilocode/rules-{{slug}}/</0>からも読み込むことができます（.testcoderules-{{slug}}と.clinerules-{{slug}}は非推奨で、まもなく動作しなくなります）。"
 	},
 	"exportMode": {
 		"title": "モードをエクスポート",
@@ -181,7 +181,7 @@
 				"description": "すべてのワークスペースで利用可能"
 			},
 			"project": {
-				"label": "プロジェクト固有 (.kilocodemodes)",
+				"label": "プロジェクト固有 (.testcodemodes)",
 				"description": "このワークスペースでのみ使用可能、グローバルよりも優先"
 			}
 		},

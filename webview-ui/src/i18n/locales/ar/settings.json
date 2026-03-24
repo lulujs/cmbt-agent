@@ -889,7 +889,7 @@
 			"description": "اكتشاف وتحميل ملفات .roo/rules و AGENTS.md من المجلدات الفرعية بشكل تكراري. مفيد للمشاريع الضخمة ذات القواعد الخاصة بكل حزمة."
 		},
 		"rooignore": {
-			"label": "إظهار ملفات .kilocodeignore",
+			"label": "إظهار ملفات .testcodeignore",
 			"description": "عند التفعيل تُعرض مع رمز قفل؛ عند التعطيل تُخفى."
 		},
 		"maxConcurrentFileReads": {

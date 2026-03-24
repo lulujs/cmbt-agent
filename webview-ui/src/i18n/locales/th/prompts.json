@@ -7,7 +7,7 @@
 		"importMode": "นำเข้าโหมด",
 		"editModesConfig": "แก้ไขการตั้งค่าโหมด",
 		"editGlobalModes": "แก้ไข Global Modes",
-		"editProjectModes": "แก้ไข Project Modes (.kilocodemodes)",
+		"editProjectModes": "แก้ไข Project Modes (.testcodemodes)",
 		"createModeHelpText": "โหมดคือบุคลิกเฉพาะที่ปรับแต่งพฤติกรรมของ Kilo Code <0>เรียนรู้เกี่ยวกับการใช้โหมด</0> หรือ <1>การปรับแต่งโหมด</1>",
 		"selectMode": "ค้นหาโหมด",
 		"noMatchFound": "ไม่พบโหมดที่ตรงกัน"
@@ -55,7 +55,7 @@
 		"title": "คำแนะนำเฉพาะโหมด (ไม่บังคับ)",
 		"resetToDefault": "รีเซ็ตเป็นค่าเริ่มต้น",
 		"description": "เพิ่มแนวทางพฤติกรรมเฉพาะสำหรับโหมด {{modeName}}",
-		"loadFromFile": "คำแนะนำเฉพาะสำหรับโหมด {{mode}} สามารถโหลดจากโฟลเดอร์ <span>.kilocode/rules/</span> ใน workspace ของคุณ (.kilocoderules-{{slug}} เลิกใช้แล้วและจะหยุดทำงานเร็วๆ นี้)"
+		"loadFromFile": "คำแนะนำเฉพาะสำหรับโหมด {{mode}} สามารถโหลดจากโฟลเดอร์ <span>.kilocode/rules/</span> ใน workspace ของคุณ (.testcoderules-{{slug}} เลิกใช้แล้วและจะหยุดทำงานเร็วๆ นี้)"
 	},
 	"exportMode": {
 		"title": "ส่งออกโหมด",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "คำแนะนำสำหรับทุกโหมด",
 		"description": "คำแนะนำเหล่านี้ใช้กับทุกโหมด ให้ชุดพฤติกรรมพื้นฐานที่สามารถเสริมด้วยคำแนะนำเฉพาะโหมดด้านล่าง <0>เรียนรู้เพิ่มเติม</0>",
-		"loadFromFile": "คำแนะนำสามารถโหลดจากโฟลเดอร์ <span>.kilocode/rules/</span> ใน workspace ของคุณ (.kilocoderules เลิกใช้แล้วและจะหยุดทำงานเร็วๆ นี้)"
+		"loadFromFile": "คำแนะนำสามารถโหลดจากโฟลเดอร์ <span>.kilocode/rules/</span> ใน workspace ของคุณ (.testcoderules เลิกใช้แล้วและจะหยุดทำงานเร็วๆ นี้)"
 	},
 	"systemPrompt": {
 		"preview": "ดูตัวอย่าง System Prompt",
@@ -181,7 +181,7 @@
 				"description": "ใช้ได้ในทุก workspace"
 			},
 			"project": {
-				"label": "เฉพาะโปรเจ็กต์ (.kilocodemodes)",
+				"label": "เฉพาะโปรเจ็กต์ (.testcodemodes)",
 				"description": "ใช้ได้เฉพาะใน workspace นี้ มีความสำคัญกว่า global"
 			}
 		},

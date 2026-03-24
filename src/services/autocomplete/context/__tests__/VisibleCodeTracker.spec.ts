@@ -197,8 +197,8 @@ describe("VisibleCodeTracker", () => {
 		})
 	})
 
-	describe(".kilocodeignore integration", () => {
-		it("should filter files matching .kilocodeignore patterns", async () => {
+	describe(".testcodeignore integration", () => {
+		it("should filter files matching .testcodeignore patterns", async () => {
 			const mockIgnoredDocument = {
 				uri: {
 					fsPath: "/workspace/sensitive/data.json",

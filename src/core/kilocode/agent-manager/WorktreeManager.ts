@@ -57,7 +57,7 @@ export function generateBranchName(prompt: string): string {
 	return `${sanitized || "kilo"}-${timestamp}`
 }
 
-const KILOCODE_DIR = ".kilocode"
+const KILOCODE_DIR = ".testcode" // test-agent_change (was .kilocode)
 const SESSION_ID_FILE = "session-id"
 
 export class WorktreeManager {
@@ -404,7 +404,7 @@ export class WorktreeManager {
 	 * This avoids modifying the user's .gitignore file which would require a commit.
 	 */
 	async ensureGitExclude(): Promise<void> {
-		const entry = ".kilocode/worktrees/"
+		const entry = ".testcode/worktrees/"
 
 		const gitDir = await this.resolveGitDir()
 		const excludePath = path.join(gitDir, "info", "exclude")

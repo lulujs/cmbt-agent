@@ -7,7 +7,7 @@
 		"importMode": "Importovať režim",
 		"editModesConfig": "Upraviť konfiguráciu režimov",
 		"editGlobalModes": "Upraviť Global Modes",
-		"editProjectModes": "Upraviť Project Modes (.kilocodemodes)",
+		"editProjectModes": "Upraviť Project Modes (.testcodemodes)",
 		"createModeHelpText": "Režimy sú špecializované persony, ktoré prispôsobujú správanie Kilo Code. <0>Zisti viac o Používaní režimov</0> alebo <1>Prispôsobení režimov.</1>",
 		"selectMode": "Hľadať režimy",
 		"noMatchFound": "Žiadne režimy nenájdené"
@@ -55,7 +55,7 @@
 		"title": "Vlastné inštrukcie pre režim (voliteľné)",
 		"resetToDefault": "Obnoviť predvolené",
 		"description": "Pridaj pokyny pre správanie špecifické pre režim {{modeName}}.",
-		"loadFromFile": "Vlastné inštrukcie špecifické pre režim {{mode}} je možné tiež načítať zo zložky <span>.kilocode/rules/</span> v tvojom pracovnom priestore (.kilocoderules-{{slug}} je zastarané a čoskoro prestane fungovať)."
+		"loadFromFile": "Vlastné inštrukcie špecifické pre režim {{mode}} je možné tiež načítať zo zložky <span>.kilocode/rules/</span> v tvojom pracovnom priestore (.testcoderules-{{slug}} je zastarané a čoskoro prestane fungovať)."
 	},
 	"exportMode": {
 		"title": "Exportovať režim",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Vlastné inštrukcie pre všetky režimy",
 		"description": "Tieto inštrukcie platia pre všetky režimy. Poskytujú základnú sadu správania, ktorá môže byť rozšírená inštrukciami špecifickými pre režim nižšie. <0>Zistiť viac</0>",
-		"loadFromFile": "Inštrukcie je možné tiež načítať zo zložky <span>.kilocode/rules/</span> v tvojom pracovnom priestore (.kilocoderules je zastarané a čoskoro prestane fungovať)."
+		"loadFromFile": "Inštrukcie je možné tiež načítať zo zložky <span>.kilocode/rules/</span> v tvojom pracovnom priestore (.testcoderules je zastarané a čoskoro prestane fungovať)."
 	},
 	"systemPrompt": {
 		"preview": "Náhľad System Prompt",
@@ -181,7 +181,7 @@
 				"description": "Dostupné vo všetkých pracovných priestoroch"
 			},
 			"project": {
-				"label": "Špecifické pre projekt (.kilocodemodes)",
+				"label": "Špecifické pre projekt (.testcodemodes)",
 				"description": "Dostupné iba v tomto pracovnom priestore, má prednosť pred globálnym"
 			}
 		},

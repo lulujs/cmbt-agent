@@ -223,7 +223,7 @@
 			},
 			"protected": {
 				"label": "Incluir arquivos protegidos",
-				"description": "Permitir que o Kilo Code crie e edite arquivos protegidos (como .kilocodeignore e arquivos de configuração .kilocode/) sem exigir aprovação."
+				"description": "Permitir que o Kilo Code crie e edite arquivos protegidos (como .testcodeignore e arquivos de configuração .kilocode/) sem exigir aprovação."
 			}
 		},
 		"browser": {
@@ -781,8 +781,8 @@
 			"description": "Número máximo de arquivos a incluir nos detalhes do diretório de trabalho atual. Valores mais altos fornecem mais contexto, mas aumentam o uso de token."
 		},
 		"rooignore": {
-			"label": "Mostrar arquivos .kilocodeignore em listas e pesquisas",
-			"description": "Quando ativado, os arquivos que correspondem aos padrões em .kilocodeignore serão mostrados em listas com um símbolo de cadeado. Quando desativado, esses arquivos serão completamente ocultos das listas de arquivos e pesquisas."
+			"label": "Mostrar arquivos .testcodeignore em listas e pesquisas",
+			"description": "Quando ativado, os arquivos que correspondem aos padrões em .testcodeignore serão mostrados em listas com um símbolo de cadeado. Quando desativado, esses arquivos serão completamente ocultos das listas de arquivos e pesquisas."
 		},
 		"maxReadFile": {
 			"label": "Limite de auto-truncamento de leitura de arquivo",

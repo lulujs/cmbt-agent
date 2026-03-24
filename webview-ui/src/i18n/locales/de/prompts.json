@@ -8,7 +8,7 @@
 		"noMatchFound": "Keine Modi gefunden",
 		"editModesConfig": "Moduskonfiguration bearbeiten",
 		"editGlobalModes": "Globale Modi bearbeiten",
-		"editProjectModes": "Projektmodi bearbeiten (.kilocodemodes)",
+		"editProjectModes": "Projektmodi bearbeiten (.testcodemodes)",
 		"createModeHelpText": "Modi sind spezialisierte Personas, die Kilo Codes Verhalten anpassen. <0>Erfahre mehr über die Verwendung von Modi</0> oder <1>die Anpassung von Modi.</1>",
 		"selectMode": "Modi suchen"
 	},
@@ -55,7 +55,7 @@
 		"title": "Modusspezifische benutzerdefinierte Anweisungen (optional)",
 		"resetToDefault": "Auf Standardwerte zurücksetzen",
 		"description": "Fügen Sie verhaltensspezifische Richtlinien für den Modus {{modeName}} hinzu.",
-		"loadFromFile": "Benutzerdefinierte Anweisungen für den Modus {{mode}} können auch aus dem Ordner <span>.kilocode/rules-{{slug}}/</span> in deinem Arbeitsbereich oder aus dem globalen <0>.kilocode/rules-{{slug}}/</0> geladen werden (.kilocoderules-{{slug}} und .clinerules-{{slug}} sind veraltet und werden bald nicht mehr funktionieren)."
+		"loadFromFile": "Benutzerdefinierte Anweisungen für den Modus {{mode}} können auch aus dem Ordner <span>.kilocode/rules-{{slug}}/</span> in deinem Arbeitsbereich oder aus dem globalen <0>.kilocode/rules-{{slug}}/</0> geladen werden (.testcoderules-{{slug}} und .clinerules-{{slug}} sind veraltet und werden bald nicht mehr funktionieren)."
 	},
 	"exportMode": {
 		"title": "Modus exportieren",
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Benutzerdefinierte Anweisungen für alle Modi",
 		"description": "Diese Anweisungen gelten für alle Modi. Sie bieten einen grundlegenden Satz von Verhaltensweisen, die durch modusspezifische Anweisungen unten erweitert werden können. <0>Mehr erfahren</0>",
-		"loadFromFile": "Anweisungen können auch aus dem Ordner <span>.kilocode/rules/</span> in deinem Arbeitsbereich oder aus dem globalen <0>.kilocode/rules/</0> geladen werden (.kilocoderules und .clinerules sind veraltet und werden bald nicht mehr funktionieren)."
+		"loadFromFile": "Anweisungen können auch aus dem Ordner <span>.kilocode/rules/</span> in deinem Arbeitsbereich oder aus dem globalen <0>.kilocode/rules/</0> geladen werden (.testcoderules und .clinerules sind veraltet und werden bald nicht mehr funktionieren)."
 	},
 	"systemPrompt": {
 		"preview": "System-Prompt Vorschau",
@@ -181,7 +181,7 @@
 				"description": "Verfügbar in allen Arbeitsbereichen"
 			},
 			"project": {
-				"label": "Projektspezifisch (.kilocodemodes)",
+				"label": "Projektspezifisch (.testcodemodes)",
 				"description": "Nur in diesem Arbeitsbereich verfügbar, hat Vorrang vor global"
 			}
 		},

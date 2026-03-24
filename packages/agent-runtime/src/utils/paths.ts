@@ -8,7 +8,7 @@ import { logs } from "./logger.js"
  * All configuration and logs are stored in ~/.kilocode/
  */
 export class KiloCodePaths {
-	private static readonly BASE_DIR_NAME = ".kilocode"
+	private static readonly BASE_DIR_NAME = ".testcode"
 	private static readonly CLI_SUBDIR = "cli"
 	private static readonly WORKSPACE_MAP_FILE = "workspace-map.json"
 

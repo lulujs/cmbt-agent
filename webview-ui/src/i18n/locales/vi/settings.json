@@ -223,7 +223,7 @@
 			},
 			"protected": {
 				"label": "Bao gồm các tệp được bảo vệ",
-				"description": "Cho phép Kilo Code tạo và chỉnh sửa các tệp được bảo vệ (như .kilocodeignore và các tệp cấu hình .kilocode/) mà không yêu cầu phê duyệt."
+				"description": "Cho phép Kilo Code tạo và chỉnh sửa các tệp được bảo vệ (như .testcodeignore và các tệp cấu hình .kilocode/) mà không yêu cầu phê duyệt."
 			}
 		},
 		"browser": {
@@ -781,8 +781,8 @@
 			"description": "Số lượng tệp tối đa để đưa vào chi tiết thư mục làm việc hiện tại. Giá trị cao hơn cung cấp nhiều ngữ cảnh hơn nhưng tăng sử dụng token."
 		},
 		"rooignore": {
-			"label": "Hiển thị tệp .kilocodeignore trong danh sách và tìm kiếm",
-			"description": "Khi được bật, các tệp khớp với mẫu trong .kilocodeignore sẽ được hiển thị trong danh sách với biểu tượng khóa. Khi bị tắt, các tệp này sẽ hoàn toàn bị ẩn khỏi danh sách tệp và tìm kiếm."
+			"label": "Hiển thị tệp .testcodeignore trong danh sách và tìm kiếm",
+			"description": "Khi được bật, các tệp khớp với mẫu trong .testcodeignore sẽ được hiển thị trong danh sách với biểu tượng khóa. Khi bị tắt, các tệp này sẽ hoàn toàn bị ẩn khỏi danh sách tệp và tìm kiếm."
 		},
 		"maxReadFile": {
 			"label": "Ngưỡng tự động cắt ngắn khi đọc tệp",

@@ -93,7 +93,7 @@ describe("loadRuleFiles", () => {
 		readFileMock.mockResolvedValue("  content with spaces  ")
 		const result = await loadRuleFiles("/fake/path")
 		expect(readFileMock).toHaveBeenCalled()
-		expect(result).toBe("\n# Rules from .kilocoderules:\ncontent with spaces\n")
+		expect(result).toBe("\n# Rules from .testcoderules:\ncontent with spaces\n")
 	})
 
 	it("should handle ENOENT error", async () => {
@@ -128,7 +128,7 @@ describe("loadRuleFiles", () => {
 		// Simulate no .kilocode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".testcoderules")) {
 				return Promise.resolve("roo rules content")
 			}
 			if (filePath.toString().endsWith(".clinerules")) {
@@ -138,7 +138,7 @@ describe("loadRuleFiles", () => {
 		})
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nroo rules content\n")
+		expect(result).toBe("\n# Rules from .testcoderules:\nroo rules content\n")
 	})
 
 	it("should handle when no rule files exist", async () => {
@@ -154,7 +154,7 @@ describe("loadRuleFiles", () => {
 		// Simulate no .kilocode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".testcoderules")) {
 				return Promise.reject({ code: "EISDIR" })
 			}
 			if (filePath.toString().endsWith(".clinerules")) {
@@ -449,7 +449,7 @@ describe("loadRuleFiles", () => {
 		}
 	})
 
-	it("should fall back to .kilocoderules when .kilocode/rules/ is empty", async () => {
+	it("should fall back to .testcoderules when .kilocode/rules/ is empty", async () => {
 		// Simulate .kilocode/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: vi.fn().mockReturnValue(true),
@@ -458,16 +458,16 @@ describe("loadRuleFiles", () => {
 		// Simulate empty directory
 		readdirMock.mockResolvedValueOnce([])
 
-		// Simulate .kilocoderules exists
+		// Simulate .testcoderules exists
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".testcoderules")) {
 				return Promise.resolve("roo rules content")
 			}
 			return Promise.reject({ code: "ENOENT" })
 		})
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nroo rules content\n")
+		expect(result).toBe("\n# Rules from .testcoderules:\nroo rules content\n")
 	})
 
 	it("should handle errors when reading directory", async () => {
@@ -479,16 +479,16 @@ describe("loadRuleFiles", () => {
 		// Simulate error reading directory
 		readdirMock.mockRejectedValueOnce(new Error("Failed to read directory"))
 
-		// Simulate .kilocoderules exists
+		// Simulate .testcoderules exists
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().endsWith(".kilocoderules")) {
+			if (filePath.toString().endsWith(".testcoderules")) {
 				return Promise.resolve("roo rules content")
 			}
 			return Promise.reject({ code: "ENOENT" })
 		})
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nroo rules content\n")
+		expect(result).toBe("\n# Rules from .testcoderules:\nroo rules content\n")
 	})
 
 	it("should read files from nested subdirectories in .kilocode/rules/", async () => {
@@ -632,7 +632,7 @@ describe("addCustomInstructions", () => {
 		expect(result).toContain("(es)") // Check for language code in parentheses
 		expect(result).toContain("Global Instructions:\nglobal instructions")
 		expect(result).toContain("Mode-specific Instructions:\nmode instructions")
-		expect(result).toContain("Rules from .kilocoderules-test-mode:\nmode specific rules")
+		expect(result).toContain("Rules from .testcoderules-test-mode:\nmode specific rules")
 	})
 
 	it("should load AGENTS.md when settings.useAgentRules is true", async () => {
@@ -1217,13 +1217,13 @@ describe("addCustomInstructions", () => {
 		expect(readFileMock).toHaveBeenCalledWith(expectedAbsRule2Path, "utf-8")
 	})
 
-	it("should fall back to .kilocoderules-test-mode when .kilocode/rules-test-mode/ does not exist", async () => {
+	it("should fall back to .testcoderules-test-mode when .kilocode/rules-test-mode/ does not exist", async () => {
 		// Simulate .kilocode/rules-test-mode directory does not exist
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
-		// Simulate .kilocoderules-test-mode exists
+		// Simulate .testcoderules-test-mode exists
 		readFileMock.mockImplementation((filePath: PathLike) => {
-			if (filePath.toString().includes(".kilocoderules-test-mode")) {
+			if (filePath.toString().includes(".testcoderules-test-mode")) {
 				return Promise.resolve("mode specific rules from file")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -1236,7 +1236,7 @@ describe("addCustomInstructions", () => {
 			"test-mode",
 		)
 
-		expect(result).toContain("Rules from .kilocoderules-test-mode:\nmode specific rules from file")
+		expect(result).toContain("Rules from .testcoderules-test-mode:\nmode specific rules from file")
 	})
 
 	it("should correctly format content from directories when using .kilocode/rules-test-mode/", async () => {
@@ -1341,7 +1341,7 @@ describe("Directory existence checks", () => {
 		const result = await loadRuleFiles("/fake/path")
 
 		// Verify it fell back to reading rule files directly
-		expect(result).toBe("\n# Rules from .kilocoderules:\nfallback content\n")
+		expect(result).toBe("\n# Rules from .testcoderules:\nfallback content\n")
 	})
 })
 
@@ -1708,6 +1708,6 @@ describe("Rules directory reading", () => {
 		readFileMock.mockResolvedValueOnce("fallback content")
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .kilocoderules:\nfallback content\n")
+		expect(result).toBe("\n# Rules from .testcoderules:\nfallback content\n")
 	})
 })

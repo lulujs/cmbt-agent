@@ -86,25 +86,25 @@ describe("SimpleInstaller - Skill Installation", () => {
 		it("should install skill to project directory by calling extractTarball", async () => {
 			const result = await installer.installItem(mockSkillItem, { target: "project" })
 
-			expect(result.filePath).toBe(path.join("/test/workspace", ".kilocode", "skills", "test-skill", "SKILL.md"))
+			expect(result.filePath).toBe(path.join("/test/workspace", ".testcode", "skills", "test-skill", "SKILL.md"))
 			expect(result.line).toBe(1)
 
 			// Verify extractTarball was called with correct arguments
 			expect(mockExtractTarball).toHaveBeenCalledWith(
 				"https://example.com/skills/test-skill.tar.gz",
-				path.join("/test/workspace", ".kilocode", "skills", "test-skill"),
+				path.join("/test/workspace", ".testcode", "skills", "test-skill"),
 			)
 		})
 
 		it("should install skill to global directory by calling extractTarball", async () => {
 			const result = await installer.installItem(mockSkillItem, { target: "global" })
 
-			expect(result.filePath).toBe(path.join("/home/user", ".kilocode", "skills", "test-skill", "SKILL.md"))
+			expect(result.filePath).toBe(path.join("/home/user", ".testcode", "skills", "test-skill", "SKILL.md"))
 
 			// Verify extractTarball was called with global path
 			expect(mockExtractTarball).toHaveBeenCalledWith(
 				"https://example.com/skills/test-skill.tar.gz",
-				path.join("/home/user", ".kilocode", "skills", "test-skill"),
+				path.join("/home/user", ".testcode", "skills", "test-skill"),
 			)
 		})
 
@@ -170,7 +170,7 @@ describe("SimpleInstaller - Skill Installation", () => {
 
 			await installer.removeItem(mockSkillItem, { target: "project" })
 
-			expect(mockFs.rm).toHaveBeenCalledWith(path.join("/test/workspace", ".kilocode", "skills", "test-skill"), {
+			expect(mockFs.rm).toHaveBeenCalledWith(path.join("/test/workspace", ".testcode", "skills", "test-skill"), {
 				recursive: true,
 			})
 		})
@@ -181,7 +181,7 @@ describe("SimpleInstaller - Skill Installation", () => {
 
 			await installer.removeItem(mockSkillItem, { target: "global" })
 
-			expect(mockFs.rm).toHaveBeenCalledWith(path.join("/home/user", ".kilocode", "skills", "test-skill"), {
+			expect(mockFs.rm).toHaveBeenCalledWith(path.join("/home/user", ".testcode", "skills", "test-skill"), {
 				recursive: true,
 			})
 		})
