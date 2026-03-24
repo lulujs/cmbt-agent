@@ -729,7 +729,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	private getCliGlobalStoragePath(): string {
 		// Try to use home directory based path for CLI mode
 		const homeDir = process.env.HOME || process.env.USERPROFILE || "/tmp"
-		const cliStoragePath = path.join(homeDir, ".testcode", "cli", "global") // test-agent_change (was .kilocode)
+		const cliStoragePath = path.join(homeDir, ".testagent", "cli", "global") // test-agent_change (was .kilocode)
 
 		// Ensure directory exists
 		try {
@@ -2781,7 +2781,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			if (needsRulesFileCheck) {
 				await this.say(
 					"error",
-					"Issue with processing the /newrule command. Double check that, if '.testcode/rules' already exists, it's a directory and not a file. Otherwise there was an issue referencing this file/directory",
+					"Issue with processing the /newrule command. Double check that, if '.testagent/rules' already exists, it's a directory and not a file. Otherwise there was an issue referencing this file/directory",
 				)
 			}
 			// kilocode_change end

@@ -15,7 +15,7 @@ This tool safely deletes files and directories with user confirmation. For direc
 - Only deletes files/directories within the workspace
 - Requires user confirmation before deletion
 - Prevents deletion of write-protected files
-- Validates all files against `.testcodeignore` rules
+- Validates all files against `.testagentignore` rules
 - For directories: scans recursively and shows statistics (file count, directory count, total size) before deletion
 - Blocks directory deletion if any contained file is protected or ignored
 
@@ -50,6 +50,6 @@ The tool provides clear error messages for:
 
 - File or directory does not exist
 - File is write-protected
-- File is blocked by `.testcodeignore` rules
+- File is blocked by `.testagentignore` rules
 - Directory contains protected or ignored files
 - Path is outside the workspace

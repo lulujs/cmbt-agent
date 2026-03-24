@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "Inclusief beschermde bestanden",
-				"description": "Sta Test Agent toe om beschermde bestanden (zoals .testcodeignore en .testcode/ configuratiebestanden) aan te maken en te bewerken zonder goedkeuring."
+				"description": "Sta Test Agent toe om beschermde bestanden (zoals .testagentignore en .testagent/ configuratiebestanden) aan te maken en te bewerken zonder goedkeuring."
 			}
 		},
 		"delete": {
@@ -781,8 +781,8 @@
 			"description": "Maximaal aantal bestanden dat wordt opgenomen in details van de huidige werkmap. Hogere waarden geven meer context maar verhogen het tokengebruik."
 		},
 		"rooignore": {
-			"label": ".testcodeignore-bestanden tonen in lijsten en zoekopdrachten",
-			"description": "Indien ingeschakeld, worden bestanden die overeenkomen met patronen in .testcodeignore getoond in lijsten met een slotje. Indien uitgeschakeld, worden deze bestanden volledig verborgen in lijsten en zoekopdrachten."
+			"label": ".testagentignore-bestanden tonen in lijsten en zoekopdrachten",
+			"description": "Indien ingeschakeld, worden bestanden die overeenkomen met patronen in .testagentignore getoond in lijsten met een slotje. Indien uitgeschakeld, worden deze bestanden volledig verborgen in lijsten en zoekopdrachten."
 		},
 		"maxReadFile": {
 			"label": "Automatisch afkappen bij bestandslezen",
@@ -1037,9 +1037,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Aangepaste tools inschakelen",
-			"description": "Indien ingeschakeld kan Kilo aangepaste TypeScript/JavaScript-tools laden en gebruiken uit de map .testcode/tools van je project of ~/.testcode/tools voor globale tools. Opmerking: deze tools worden automatisch goedgekeurd.",
+			"description": "Indien ingeschakeld kan Kilo aangepaste TypeScript/JavaScript-tools laden en gebruiken uit de map .testagent/tools van je project of ~/.testagent/tools voor globale tools. Opmerking: deze tools worden automatisch goedgekeurd.",
 			"toolsHeader": "Beschikbare aangepaste tools",
-			"noTools": "Geen aangepaste tools geladen. Voeg .ts- of .js-bestanden toe aan de map .testcode/tools van je project of ~/.testcode/tools voor globale tools.",
+			"noTools": "Geen aangepaste tools geladen. Voeg .ts- of .js-bestanden toe aan de map .testagent/tools van je project of ~/.testagent/tools voor globale tools.",
 			"refreshButton": "Vernieuwen",
 			"refreshing": "Vernieuwen...",
 			"refreshSuccess": "Tools succesvol vernieuwd",

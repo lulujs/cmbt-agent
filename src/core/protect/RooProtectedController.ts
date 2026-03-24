@@ -13,11 +13,11 @@ export class RooProtectedController {
 
 	// Predefined list of protected Roo configuration patterns
 	private static readonly PROTECTED_PATTERNS = [
-		".testcodeignore",
-		".testcodemodes",
-		".testcoderules",
-		".testcode/**",
-		".testcodeprotected",
+		".testagentignore",
+		".testagentmodes",
+		".testagentrules",
+		".testagent/**",
+		".testagentprotected",
 		".rooignore",
 		".roomodes",
 		".roorules*",

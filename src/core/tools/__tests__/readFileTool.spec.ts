@@ -103,7 +103,7 @@ vi.mock("../../prompts/responses", () => ({
 		),
 		rooIgnoreError: vi.fn(
 			(path: string) =>
-				`Access to ${path} is blocked by the .testcodeignore file settings. You must try to continue in the task without using this file, or ask the user to update the .testcodeignore file.`,
+				`Access to ${path} is blocked by the .testagentignore file settings. You must try to continue in the task without using this file, or ask the user to update the .testagentignore file.`,
 		),
 		toolResult: toolResultMock,
 		imageBlocks: imageBlocksMock,
@@ -1440,7 +1440,7 @@ describe("read_file tool output structure", () => {
 
 			// Verify - native format for error
 			expect(result).toBe(
-				`File: ${testFilePath}\nError: Access to ${testFilePath} is blocked by the .testcodeignore file settings. You must try to continue in the task without using this file, or ask the user to update the .testcodeignore file.`,
+				`File: ${testFilePath}\nError: Access to ${testFilePath} is blocked by the .testagentignore file settings. You must try to continue in the task without using this file, or ask the user to update the .testagentignore file.`,
 			)
 		})
 

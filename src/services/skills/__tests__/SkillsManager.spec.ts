@@ -54,7 +54,7 @@ vi.mock("vscode", () => ({
 }))
 
 // Global roo directory - computed once
-const GLOBAL_ROO_DIR = p(HOME_DIR, ".testcode")
+const GLOBAL_ROO_DIR = p(HOME_DIR, ".testagent")
 
 // Mock roo-config
 vi.mock("../../roo-config", () => ({
@@ -74,7 +74,7 @@ describe("SkillsManager", () => {
 	const globalSkillsDir = p(GLOBAL_ROO_DIR, "skills")
 	const globalSkillsCodeDir = p(GLOBAL_ROO_DIR, "skills-code")
 	const globalSkillsArchitectDir = p(GLOBAL_ROO_DIR, "skills-architect")
-	const projectRooDir = p(PROJECT_DIR, ".testcode")
+	const projectRooDir = p(PROJECT_DIR, ".testagent")
 	const projectSkillsDir = p(projectRooDir, "skills")
 
 	beforeEach(() => {
@@ -459,7 +459,7 @@ description: ${longDescription}
 			const sharedSkillDir = p(SHARED_DIR, "shared-skill")
 			const sharedSkillMd = p(sharedSkillDir, "SKILL.md")
 
-			// Simulate .testcode/skills being a symlink to /shared/skills
+			// Simulate .testagent/skills being a symlink to /shared/skills
 			mockDirectoryExists.mockImplementation(async (dir: string) => {
 				return dir === globalSkillsDir
 			})
@@ -516,7 +516,7 @@ Instructions here...`
 			const myAliasDir = p(globalSkillsDir, "my-alias")
 			const myAliasMd = p(myAliasDir, "SKILL.md")
 
-			// Simulate .testcode/skills/my-alias being a symlink to /external/actual-skill
+			// Simulate .testagent/skills/my-alias being a symlink to /external/actual-skill
 			mockDirectoryExists.mockImplementation(async (dir: string) => {
 				return dir === globalSkillsDir
 			})

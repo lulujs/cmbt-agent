@@ -227,7 +227,7 @@
 			},
 			"protected": {
 				"label": "Include protected files",
-				"description": "Allow Test Agent to create and edit protected files (like .testcodeignore and .testcode/ configuration files) without requiring approval."
+				"description": "Allow Test Agent to create and edit protected files (like .testagentignore and .testagent/ configuration files) without requiring approval."
 			}
 		},
 		"delete": {
@@ -826,8 +826,8 @@
 			"description": "Maximum number of files to include in current working directory details. Higher values provide more context but increase token usage."
 		},
 		"rooignore": {
-			"label": "Show .testcodeignore'd files in lists and searches",
-			"description": "When enabled, files matching patterns in .testcodeignore will be shown in lists with a lock symbol. When disabled, these files will be completely hidden from file lists and searches."
+			"label": "Show .testagentignore'd files in lists and searches",
+			"description": "When enabled, files matching patterns in .testagentignore will be shown in lists with a lock symbol. When disabled, these files will be completely hidden from file lists and searches."
 		},
 		"maxConcurrentFileReads": {
 			"label": "Concurrent file reads limit",
@@ -1077,9 +1077,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Enable custom tools",
-			"description": "When enabled, Kilo can load and use custom TypeScript/JavaScript tools from your project's .testcode/tools directory or ~/.testcode/tools for global tools. Note: these tools will automatically be auto-approved.",
+			"description": "When enabled, Kilo can load and use custom TypeScript/JavaScript tools from your project's .testagent/tools directory or ~/.testagent/tools for global tools. Note: these tools will automatically be auto-approved.",
 			"toolsHeader": "Available Custom Tools",
-			"noTools": "No custom tools loaded. Add .ts or .js files to your project's .testcode/tools directory or ~/.testcode/tools for global tools.",
+			"noTools": "No custom tools loaded. Add .ts or .js files to your project's .testagent/tools directory or ~/.testagent/tools for global tools.",
 			"refreshButton": "Refresh",
 			"refreshing": "Refreshing...",
 			"refreshSuccess": "Tools refreshed successfully",

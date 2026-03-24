@@ -43,7 +43,7 @@ interface MainThreadSecretStateShape : Disposable {
 
 /**
  * Implementation of the secret state management service.
- * Stores secrets in ~/.testcode/secrets.json file.
+ * Stores secrets in ~/.testagent/secrets.json file.
  */
 class MainThreadSecretState : MainThreadSecretStateShape {
     private val logger = Logger.getInstance(MainThreadSecretState::class.java)

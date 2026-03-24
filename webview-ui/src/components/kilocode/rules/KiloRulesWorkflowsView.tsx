@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
+// import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import { useTranslation } from "react-i18next"
 
 import { vscode } from "@/utils/vscode"
@@ -11,20 +11,20 @@ const sortedRules = (data: Record<string, unknown> | undefined) =>
 		.map(([path, enabled]): [string, boolean] => [path, enabled as boolean])
 		.sort(([a], [b]) => a.localeCompare(b))
 
-interface DescriptionWithLinkProps {
-	children: React.ReactNode
-	href: string
-	linkText: string
-}
+// interface DescriptionWithLinkProps {
+// 	children: React.ReactNode
+// 	href: string
+// 	linkText: string
+// }
 
-const DescriptionWithLink: React.FC<DescriptionWithLinkProps> = ({ children, href, linkText }) => (
-	<p>
-		{children}{" "}
-		<VSCodeLink href={href} style={{ display: "inline" }} className="text-xs">
-			{linkText}
-		</VSCodeLink>
-	</p>
-)
+// const DescriptionWithLink: React.FC<DescriptionWithLinkProps> = ({ children, href, linkText }) => (
+// 	<p>
+// 		{children}{" "}
+// 		<VSCodeLink href={href} style={{ display: "inline" }} className="text-xs">
+// 			{linkText}
+// 		</VSCodeLink>
+// 	</p>
+// )
 
 type KiloRulesWorkflowsViewProps = {
 	type: "rule" | "workflow"
@@ -81,19 +81,21 @@ const KiloRulesWorkflowsView = ({ type }: KiloRulesWorkflowsViewProps) => {
 		<div className="px-5">
 			<div className="text-xs text-[var(--vscode-descriptionForeground)] mb-4">
 				{isRules ? (
-					<DescriptionWithLink
-						href="https://kilo.ai/docs/advanced-usage/custom-rules"
-						linkText={t("kilocode:docs")}>
-						{t("kilocode:rules.description.rules")}
-					</DescriptionWithLink>
+					// <DescriptionWithLink
+					// 	href="https://kilo.ai/docs/advanced-usage/custom-rules"
+					// 	linkText={t("kilocode:docs")}>
+					// 	{t("kilocode:rules.description.rules")}
+					// </DescriptionWithLink>
+					<p>{t("kilocode:rules.description.rules")}</p>
 				) : (
-					<DescriptionWithLink
-						href="https://kilo.ai/docs/features/slash-commands/workflows"
-						linkText={t("kilocode:docs")}>
-						{t("kilocode:rules.description.workflows")}{" "}
-						<span className="text-[var(--vscode-foreground)] font-bold">/workflow-name</span>{" "}
-						{t("kilocode:rules.description.workflowsInChat")}
-					</DescriptionWithLink>
+					// <DescriptionWithLink
+					// 	href="https://kilo.ai/docs/features/slash-commands/workflows"
+					// 	linkText={t("kilocode:docs")}>
+					// 	{t("kilocode:rules.description.workflows")}{" "}
+					// 	<span className="text-[var(--vscode-foreground)] font-bold">/workflow-name</span>{" "}
+					// 	{t("kilocode:rules.description.workflowsInChat")}
+					// </DescriptionWithLink>
+					<p>{t("kilocode:rules.description.workflowsInChat")}</p>
 				)}
 			</div>
 

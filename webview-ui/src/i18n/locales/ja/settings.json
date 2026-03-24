@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "保護されたファイルを含める",
-				"description": "Kilo Codeが保護されたファイル（.kilocodeignoreや.testcode/設定ファイルなど）を承認なしで作成・編集することを許可します。"
+				"description": "Kilo Codeが保護されたファイル（.kilocodeignoreや.testagent/設定ファイルなど）を承認なしで作成・編集することを許可します。"
 			}
 		},
 		"browser": {
@@ -1042,9 +1042,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "カスタムツールを有効化",
-			"description": "有効にすると、Kiloはプロジェクトの .testcode/tools ディレクトリまたはグローバルツール用の ~/.testcode/tools からカスタム TypeScript/JavaScript ツールを読み込んで使用できます。注意：これらのツールは自動的に承認されます。",
+			"description": "有効にすると、Kiloはプロジェクトの .testagent/tools ディレクトリまたはグローバルツール用の ~/.testagent/tools からカスタム TypeScript/JavaScript ツールを読み込んで使用できます。注意：これらのツールは自動的に承認されます。",
 			"toolsHeader": "利用可能なカスタムツール",
-			"noTools": "カスタムツールが読み込まれていません。プロジェクトの .testcode/tools ディレクトリまたはグローバルツール用の ~/.testcode/tools に .ts または .js ファイルを追加してください。",
+			"noTools": "カスタムツールが読み込まれていません。プロジェクトの .testagent/tools ディレクトリまたはグローバルツール用の ~/.testagent/tools に .ts または .js ファイルを追加してください。",
 			"refreshButton": "更新",
 			"refreshing": "更新中...",
 			"refreshSuccess": "ツールが正常に更新されました",

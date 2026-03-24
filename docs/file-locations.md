@@ -32,36 +32,36 @@ You can override the storage base path via the `kilo-code.customStoragePath` VS 
 
 ## CLI / Agent Runtime
 
-When running via the Kilo CLI (`@kilocode/agent-runtime`), files are stored under `~/.testcode/cli/` (on Windows: `%USERPROFILE%\.kilocode\cli\`):
+When running via the Kilo CLI (`@kilocode/agent-runtime`), files are stored under `~/.testagent/cli/` (on Windows: `%USERPROFILE%\.kilocode\cli\`):
 
-| Path                                            | Description                          |
-| ----------------------------------------------- | ------------------------------------ |
-| `~/.testcode/cli/global/`                       | Global storage (tasks, settings)     |
-| `~/.testcode/cli/global/tasks/`                 | Task conversation history            |
-| `~/.testcode/cli/workspaces/`                   | Per-workspace state and session data |
-| `~/.testcode/cli/workspaces/workspace-map.json` | Maps workspace paths to folder names |
-| `~/.testcode/cli/logs/`                         | Log files                            |
+| Path                                             | Description                          |
+| ------------------------------------------------ | ------------------------------------ |
+| `~/.testagent/cli/global/`                       | Global storage (tasks, settings)     |
+| `~/.testagent/cli/global/tasks/`                 | Task conversation history            |
+| `~/.testagent/cli/workspaces/`                   | Per-workspace state and session data |
+| `~/.testagent/cli/workspaces/workspace-map.json` | Maps workspace paths to folder names |
+| `~/.testagent/cli/logs/`                         | Log files                            |
 
 ## Per-Project Files
 
 These files live in your project/workspace root:
 
-| Path                      | Description                                              |
-| ------------------------- | -------------------------------------------------------- |
-| `.testcode/rules/`        | Project-specific rule files (instructions for the agent) |
-| `.testcode/rules-<mode>/` | Mode-specific rule files                                 |
-| `.testcode/workflows/`    | Project-specific workflow definitions                    |
-| `.testcode/mcp.json`      | Project-specific MCP server configuration                |
-| `.testcode/skills/`       | Project-specific skill definitions                       |
-| `.testcodemodes`          | Project-specific custom mode definitions (YAML)          |
-| `.testcodeignore`         | Files/directories the agent should not access            |
-| `.testcoderules`          | Legacy rule file (prefer `.testcode/rules/` directory)   |
+| Path                       | Description                                              |
+| -------------------------- | -------------------------------------------------------- |
+| `.testagent/rules/`        | Project-specific rule files (instructions for the agent) |
+| `.testagent/rules-<mode>/` | Mode-specific rule files                                 |
+| `.testagent/workflows/`    | Project-specific workflow definitions                    |
+| `.testagent/mcp.json`      | Project-specific MCP server configuration                |
+| `.testagent/skills/`       | Project-specific skill definitions                       |
+| `.testagentmodes`          | Project-specific custom mode definitions (YAML)          |
+| `.testagentignore`         | Files/directories the agent should not access            |
+| `.testagentrules`          | Legacy rule file (prefer `.testagent/rules/` directory)  |
 
 Global rules and workflows can also be placed in your home directory:
 
-- `~/.testcode/rules/` — Global rule files applied to all projects
-- `~/.testcode/workflows/` — Global workflow definitions
-- `~/.testcode/skills/` — Global skill definitions
+- `~/.testagent/rules/` — Global rule files applied to all projects
+- `~/.testagent/workflows/` — Global workflow definitions
+- `~/.testagent/skills/` — Global skill definitions
 
 ## VS Code User Configuration
 
@@ -76,5 +76,5 @@ Test Agent reads VS Code's `settings.json` for extension settings. The location 
 ## Notes
 
 - The VS Code extension storage path follows VS Code's own conventions, not XDG directly. However, on Linux, VS Code itself respects `$XDG_CONFIG_HOME`.
-- The CLI uses `~/.testcode/` as a fixed base directory regardless of XDG settings.
+- The CLI uses `~/.testagent/` as a fixed base directory regardless of XDG settings.
 - All paths above use default values. Environment variables like `$XDG_CONFIG_HOME` or `$APPDATA` may change the actual locations.

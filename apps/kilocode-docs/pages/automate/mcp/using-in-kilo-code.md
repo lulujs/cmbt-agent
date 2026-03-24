@@ -14,7 +14,7 @@ Model Context Protocol (MCP) extends Test Agent's capabilities by connecting to 
 MCP server configurations can be managed at two levels:
 
 1.  **Global Configuration**: Stored in the `mcp_settings.json` file, accessible via VS Code settings (see below). These settings apply across all your workspaces unless overridden by a project-level configuration.
-2.  **Project-level Configuration**: Defined in a `.testcode/mcp.json` file within your project's root directory. This allows you to set up project-specific servers and share configurations with your team by committing the file to version control. Test Agent automatically detects and loads this file if it exists.
+2.  **Project-level Configuration**: Defined in a `.testagent/mcp.json` file within your project's root directory. This allows you to set up project-specific servers and share configurations with your team by committing the file to version control. Test Agent automatically detects and loads this file if it exists.
 
 **Precedence**: If a server name exists in both global and project configurations, the **project-level configuration takes precedence**.
 
@@ -27,7 +27,7 @@ You can edit both global and project-level MCP configuration files directly from
 3. Select the `MCP Servers` sub-tab
 4. Click the appropriate button:
     - **`Edit Global MCP`**: Opens the global `mcp_settings.json` file.
-    - **`Edit Project MCP`**: Opens the project-specific `.testcode/mcp.json` file. If this file doesn't exist, Test Agent will create it for you.
+    - **`Edit Project MCP`**: Opens the project-specific `.testagent/mcp.json` file. If this file doesn't exist, Test Agent will create it for you.
 
 {% image src="/docs/img/using-mcp-in-kilo-code/mcp-installed-config.png" alt="Edit Global MCP and Edit Project MCP buttons" width="600" caption="Edit Global MCP and Edit Project MCP buttons" /%}
 
@@ -203,7 +203,7 @@ Example: "Analyze the performance of my API" might use an MCP tool that tests AP
 Common issues and solutions:
 
 - **Server Not Responding:** Check if the server process is running and verify network connectivity
-- **Permission Errors:** Ensure proper API keys and credentials are configured in your `mcp_settings.json` (for global settings) or `.testcode/mcp.json` (for project settings).
+- **Permission Errors:** Ensure proper API keys and credentials are configured in your `mcp_settings.json` (for global settings) or `.testagent/mcp.json` (for project settings).
 - **Tool Not Available:** Confirm the server is properly implementing the tool and it's not disabled in settings
 - **Slow Performance:** Try adjusting the network timeout value for the specific MCP server
 

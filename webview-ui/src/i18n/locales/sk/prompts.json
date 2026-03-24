@@ -7,7 +7,7 @@
 		"importMode": "Importovať režim",
 		"editModesConfig": "Upraviť konfiguráciu režimov",
 		"editGlobalModes": "Upraviť Global Modes",
-		"editProjectModes": "Upraviť Project Modes (.testcodemodes)",
+		"editProjectModes": "Upraviť Project Modes (.testagentmodes)",
 		"createModeHelpText": "Režimy sú špecializované persony, ktoré prispôsobujú správanie Test Agent. <0>Zisti viac o Používaní režimov</0> alebo <1>Prispôsobení režimov.</1>",
 		"selectMode": "Hľadať režimy",
 		"noMatchFound": "Žiadne režimy nenájdené"
@@ -55,11 +55,11 @@
 		"title": "Vlastné inštrukcie pre režim (voliteľné)",
 		"resetToDefault": "Obnoviť predvolené",
 		"description": "Pridaj pokyny pre správanie špecifické pre režim {{modeName}}.",
-		"loadFromFile": "Vlastné inštrukcie špecifické pre režim {{mode}} je možné tiež načítať zo zložky <span>.testcode/rules/</span> v tvojom pracovnom priestore (.testcoderules-{{slug}} je zastarané a čoskoro prestane fungovať)."
+		"loadFromFile": "Vlastné inštrukcie špecifické pre režim {{mode}} je možné tiež načítať zo zložky <span>.testagent/rules/</span> v tvojom pracovnom priestore (.testagentrules-{{slug}} je zastarané a čoskoro prestane fungovať)."
 	},
 	"exportMode": {
 		"title": "Exportovať režim",
-		"description": "Exportuj tento režim s pravidlami zo zložky .testcode/rules-{{slug}}/ skombinovanými do zdieľateľného YAML súboru. Pôvodné súbory zostanú nezmenené.",
+		"description": "Exportuj tento režim s pravidlami zo zložky .testagent/rules-{{slug}}/ skombinovanými do zdieľateľného YAML súboru. Pôvodné súbory zostanú nezmenené.",
 		"exporting": "Exportovanie..."
 	},
 	"importMode": {
@@ -68,11 +68,11 @@
 		"importing": "Importovanie...",
 		"global": {
 			"label": "Globálna úroveň",
-			"description": "Dostupné naprieč všetkými projektmi. Ak exportovaný režim obsahoval súbory pravidiel, budú znovu vytvorené v globálnej zložke .testcode/rules-{slug}/."
+			"description": "Dostupné naprieč všetkými projektmi. Ak exportovaný režim obsahoval súbory pravidiel, budú znovu vytvorené v globálnej zložke .testagent/rules-{slug}/."
 		},
 		"project": {
 			"label": "Úroveň projektu",
-			"description": "Dostupné iba v tomto pracovnom priestore. Ak exportovaný režim obsahoval súbory pravidiel, budú znovu vytvorené v zložke .testcode/rules-{slug}/."
+			"description": "Dostupné iba v tomto pracovnom priestore. Ak exportovaný režim obsahoval súbory pravidiel, budú znovu vytvorené v zložke .testagent/rules-{slug}/."
 		}
 	},
 	"advanced": {
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Vlastné inštrukcie pre všetky režimy",
 		"description": "Tieto inštrukcie platia pre všetky režimy. Poskytujú základnú sadu správania, ktorá môže byť rozšírená inštrukciami špecifickými pre režim nižšie. <0>Zistiť viac</0>",
-		"loadFromFile": "Inštrukcie je možné tiež načítať zo zložky <span>.testcode/rules/</span> v tvojom pracovnom priestore (.testcoderules je zastarané a čoskoro prestane fungovať)."
+		"loadFromFile": "Inštrukcie je možné tiež načítať zo zložky <span>.testagent/rules/</span> v tvojom pracovnom priestore (.testagentrules je zastarané a čoskoro prestane fungovať)."
 	},
 	"systemPrompt": {
 		"preview": "Náhľad System Prompt",
@@ -160,7 +160,7 @@
 	},
 	"advancedSystemPrompt": {
 		"title": "Pokročilé: Prepísať System Prompt",
-		"description": "<2>⚠️ Varovanie:</2> Táto pokročilá funkcia obchádza bezpečnostné opatrenia. <1>PREČÍTAJ SI TOTO PRED POUŽITÍM!</1>Prepíš predvolený system prompt vytvorením súboru v <span>.testcode/system-prompt-{{slug}}</span>."
+		"description": "<2>⚠️ Varovanie:</2> Táto pokročilá funkcia obchádza bezpečnostné opatrenia. <1>PREČÍTAJ SI TOTO PRED POUŽITÍM!</1>Prepíš predvolený system prompt vytvorením súboru v <span>.testagent/system-prompt-{{slug}}</span>."
 	},
 	"createModeDialog": {
 		"title": "Vytvoriť nový režim",
@@ -181,7 +181,7 @@
 				"description": "Dostupné vo všetkých pracovných priestoroch"
 			},
 			"project": {
-				"label": "Špecifické pre projekt (.testcodemodes)",
+				"label": "Špecifické pre projekt (.testagentmodes)",
 				"description": "Dostupné iba v tomto pracovnom priestore, má prednosť pred globálnym"
 			}
 		},

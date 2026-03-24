@@ -51,8 +51,8 @@ describe("project-config", () => {
 	})
 
 	describe("getProjectConfig", () => {
-		it("returns config from .testcode/config.json", async () => {
-			const kilocodeDir = path.join(tempDir, ".testcode")
+		it("returns config from .testagent/config.json", async () => {
+			const kilocodeDir = path.join(tempDir, ".testagent")
 			await fs.mkdir(kilocodeDir, { recursive: true })
 			await fs.writeFile(
 				path.join(kilocodeDir, "config.json"),
@@ -79,7 +79,7 @@ describe("project-config", () => {
 		})
 
 		it("returns null when config file is invalid JSON", async () => {
-			const kilocodeDir = path.join(tempDir, ".testcode")
+			const kilocodeDir = path.join(tempDir, ".testagent")
 			await fs.mkdir(kilocodeDir, { recursive: true })
 			await fs.writeFile(path.join(kilocodeDir, "config.json"), "{ invalid json }")
 
@@ -91,7 +91,7 @@ describe("project-config", () => {
 
 	describe("getProjectId", () => {
 		it("returns normalized project ID from config file when available", async () => {
-			const kilocodeDir = path.join(tempDir, ".testcode")
+			const kilocodeDir = path.join(tempDir, ".testagent")
 			await fs.mkdir(kilocodeDir, { recursive: true })
 			await fs.writeFile(
 				path.join(kilocodeDir, "config.json"),
@@ -120,7 +120,7 @@ describe("project-config", () => {
 		})
 
 		it("normalizes git URL when config file has no project.id", async () => {
-			const kilocodeDir = path.join(tempDir, ".testcode")
+			const kilocodeDir = path.join(tempDir, ".testagent")
 			await fs.mkdir(kilocodeDir, { recursive: true })
 			await fs.writeFile(
 				path.join(kilocodeDir, "config.json"),
@@ -141,7 +141,7 @@ describe("project-config", () => {
 		})
 
 		it("prioritizes config file over git URL", async () => {
-			const kilocodeDir = path.join(tempDir, ".testcode")
+			const kilocodeDir = path.join(tempDir, ".testagent")
 			await fs.mkdir(kilocodeDir, { recursive: true })
 			await fs.writeFile(
 				path.join(kilocodeDir, "config.json"),
@@ -158,7 +158,7 @@ describe("project-config", () => {
 		})
 
 		it("normalizes git URL in config file", async () => {
-			const kilocodeDir = path.join(tempDir, ".testcode")
+			const kilocodeDir = path.join(tempDir, ".testagent")
 			await fs.mkdir(kilocodeDir, { recursive: true })
 			await fs.writeFile(
 				path.join(kilocodeDir, "config.json"),

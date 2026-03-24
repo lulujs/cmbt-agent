@@ -1,7 +1,7 @@
 // kilocode_change - new file
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
-import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
+// import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 
 import { vscode } from "@/utils/vscode"
 import {
@@ -77,12 +77,12 @@ const InstalledSkillsView = () => {
 			<div className="text-xs text-[var(--vscode-descriptionForeground)] mb-4">
 				<p>
 					{t("kilocode:skills.description")}{" "}
-					<VSCodeLink
+					{/* <VSCodeLink
 						href="https://kilo.ai/docs/features/skills"
 						style={{ display: "inline" }}
 						className="text-xs">
 						{t("kilocode:docs")}
-					</VSCodeLink>
+					</VSCodeLink> */}
 				</p>
 			</div>
 

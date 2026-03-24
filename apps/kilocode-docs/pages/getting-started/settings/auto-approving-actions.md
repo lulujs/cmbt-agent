@@ -134,7 +134,7 @@ Use with caution and in controlled environments. It allows Test Agent to:
 
 **Setting:** "Allow writing to protected files"
 
-**Description:** When enabled, Test Agent can overwrite or modify files that are normally protected by the [`.testcodeignore`](/docs/customize/custom-rules) file.
+**Description:** When enabled, Test Agent can overwrite or modify files that are normally protected by the [`.testagentignore`](/docs/customize/custom-rules) file.
 
 **Risk level:** Very High
 
@@ -155,7 +155,7 @@ This setting allows Test Agent to permanently remove files without confirmation.
 
 **Safeguards:**
 
-- Test Agent still respects `.testcodeignore` rules
+- Test Agent still respects `.testagentignore` rules
 - Protected files cannot be deleted
 - The delete tool shows what will be removed before execution
 

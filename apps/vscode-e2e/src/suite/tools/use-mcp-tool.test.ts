@@ -33,7 +33,7 @@ suite("Roo Code use_mcp_tool Tool", function () {
 		testFiles = {
 			simple: path.join(workspaceDir, `mcp-test-${Date.now()}.txt`),
 			testData: path.join(workspaceDir, `mcp-data-${Date.now()}.json`),
-			mcpConfig: path.join(workspaceDir, ".testcode", "mcp.json"), // test-agent_change (was .kilocode)
+			mcpConfig: path.join(workspaceDir, ".testagent", "mcp.json"), // test-agent_change (was .kilocode)
 		}
 
 		// Copy MCP configuration from user's global settings to test environment
@@ -89,7 +89,7 @@ suite("Roo Code use_mcp_tool Tool", function () {
 
 		// Clean up .roo directory
 		const workspaceDir = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || tempDir
-		const rooDir = path.join(workspaceDir, ".testcode") // test-agent_change (was .kilocode)
+		const rooDir = path.join(workspaceDir, ".testagent") // test-agent_change (was .kilocode)
 		try {
 			await fs.rm(rooDir, { recursive: true, force: true })
 		} catch {

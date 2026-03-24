@@ -78,7 +78,7 @@
 	},
 	"codeIndex": {
 		"title": "代码库索引",
-		"description": "配置代码库索引设置以启用项目的语义搜索。<0>了解更多</0>",
+		"description": "配置代码库索引设置以启用项目的语义搜索。",
 		"statusTitle": "状态",
 		"enableLabel": "启用代码库索引",
 		"enableDescription": "启用代码索引以改进搜索和上下文理解",
@@ -223,7 +223,7 @@
 			},
 			"protected": {
 				"label": "包含受保护的文件",
-				"description": "允许 TEST Agent 创建和编辑受保护的文件（如 .testcodeignore 和 .testcode/ 配置文件），无需批准。"
+				"description": "允许 TEST Agent 创建和编辑受保护的文件（如 .testagentignore 和 .testagent/ 配置文件），无需批准。"
 			}
 		},
 		"browser": {
@@ -675,7 +675,7 @@
 	"browser": {
 		"enable": {
 			"label": "启用浏览器工具",
-			"description": "启用后，若模型支持计算机功能调用，TEST Agent 可以使用浏览器与网站交互。 <0>了解更多</0>"
+			"description": "启用后，若模型支持计算机功能调用，TEST Agent 可以使用浏览器与网站交互。 "
 		},
 		"viewport": {
 			"label": "视口大小",
@@ -707,7 +707,7 @@
 		},
 		"enable": {
 			"label": "启用自动存档点",
-			"description": "开启后自动创建任务存档点，方便回溯修改。 <0>了解更多</0>"
+			"description": "开启后自动创建任务存档点，方便回溯修改。 "
 		}
 	},
 	"autoPurge": {
@@ -785,12 +785,12 @@
 			"description": "允许纳入上下文的最大文件数（值越大消耗token越多）"
 		},
 		"rooignore": {
-			"label": "在列表和搜索中显示 .testcodeignore 文件",
-			"description": "启用后，与 .testcodeignore 中模式匹配的文件将在列表中显示锁定符号。禁用时，这些文件将从文件列表和搜索中完全隐藏。"
+			"label": "在列表和搜索中显示 .testagentignore 文件",
+			"description": "启用后，与 .testagentignore 中模式匹配的文件将在列表中显示锁定符号。禁用时，这些文件将从文件列表和搜索中完全隐藏。"
 		},
 		"maxReadFile": {
 			"label": "文件读取自动截断阈值",
-			"description": "自动读取文件行数设置：-1=完整读取 0=仅生成行号索引，较小值可节省token，支持后续使用行号进行读取。 <0>了解更多</0>",
+			"description": "自动读取文件行数设置：-1=完整读取 0=仅生成行号索引，较小值可节省token，支持后续使用行号进行读取。 ",
 			"lines": "行",
 			"always_full_read": "始终读取整个文件"
 		},
@@ -862,51 +862,51 @@
 		},
 		"outputLineLimit": {
 			"label": "终端输出限制",
-			"description": "保留首尾行并丢弃中间行以保持在限制内。降低可节省 token；提高可为 Kilo 提供更多中间细节。Kilo 看到内容被跳过的占位符。<0>了解更多</0>"
+			"description": "保留首尾行并丢弃中间行以保持在限制内。降低可节省 token；提高可为Test提供更多中间细节。Kilo 看到内容被跳过的占位符。"
 		},
 		"outputCharacterLimit": {
 			"label": "终端字符限制",
-			"description": "通过强制限制输出大小来覆盖行限制以防止内存问题。如果超出，保留开头和结尾并向 Kilo 显示内容被跳过的占位符。<0>了解更多</0>"
+			"description": "通过强制限制输出大小来覆盖行限制以防止内存问题。如果超出，保留开头和结尾并向Test Agent显示内容被跳过的占位符。"
 		},
 		"shellIntegrationTimeout": {
 			"label": "终端 shell 集成超时",
-			"description": "运行命令前等待 VS Code shell 集成的时间。如果 shell 启动缓慢或看到 'Shell Integration Unavailable' 错误，请提高此值。<0>了解更多</0>"
+			"description": "运行命令前等待 VS Code shell 集成的时间。如果 shell 启动缓慢或看到 'Shell Integration Unavailable' 错误，请提高此值。"
 		},
 		"shellIntegrationDisabled": {
 			"label": "使用内联终端（推荐）",
-			"description": "在内联终端（聊天）中运行命令以绕过 shell 配置文件/集成，实现更快、更可靠的运行。禁用时，Kilo 使用 VS Code 终端及您的 shell 配置文件、提示和插件。<0>了解更多</0>"
+			"description": "在内联终端（聊天）中运行命令以绕过 shell 配置文件/集成，实现更快、更可靠的运行。禁用时，Kilo 使用 VS Code 终端及您的 shell 配置文件、提示和插件。"
 		},
 		"commandDelay": {
 			"label": "终端命令延迟",
-			"description": "在每个命令后添加短暂暂停，以便 VS Code 终端刷新所有输出（bash/zsh: PROMPT_COMMAND sleep; PowerShell: start-sleep）。仅在看到缺少尾部输出时使用；否则保持为 0。<0>了解更多</0>"
+			"description": "在每个命令后添加短暂暂停，以便 VS Code 终端刷新所有输出（bash/zsh: PROMPT_COMMAND sleep; PowerShell: start-sleep）。仅在看到缺少尾部输出时使用；否则保持为 0。"
 		},
 		"compressProgressBar": {
 			"label": "压缩进度条输出",
-			"description": "折叠进度条/旋转器，仅保留最终状态（节省 token）。<0>了解更多</0>"
+			"description": "折叠进度条/旋转器，仅保留最终状态（节省 token）。"
 		},
 		"powershellCounter": {
 			"label": "启用 PowerShell 计数器解决方案",
-			"description": "当 PowerShell 输出丢失或重复时启用此选项；它会为每个命令附加一个小计数器以稳定输出。如果输出已正常，请保持关闭。<0>了解更多</0>"
+			"description": "当 PowerShell 输出丢失或重复时启用此选项；它会为每个命令附加一个小计数器以稳定输出。如果输出已正常，请保持关闭。"
 		},
 		"zshClearEolMark": {
 			"label": "清除 ZSH EOL 标记",
-			"description": "当您在行尾看到零散的 % 或解析看起来错误时启用此选项；它会省略 Zsh 的行尾标记（%）。<0>了解更多</0>"
+			"description": "当您在行尾看到零散的 % 或解析看起来错误时启用此选项；它会省略 Zsh 的行尾标记（%）。"
 		},
 		"zshOhMy": {
 			"label": "启用 Oh My Zsh 集成",
-			"description": "当您的 Oh My Zsh 主题/插件期望 shell 集成时启用此选项；它会设置 ITERM_SHELL_INTEGRATION_INSTALLED=Yes。关闭此选项以避免设置该变量。<0>了解更多</0>"
+			"description": "当您的 Oh My Zsh 主题/插件期望 shell 集成时启用此选项；它会设置 ITERM_SHELL_INTEGRATION_INSTALLED=Yes。关闭此选项以避免设置该变量。"
 		},
 		"zshP10k": {
 			"label": "启用 Powerlevel10k 集成",
-			"description": "使用 Powerlevel10k shell 集成时启用此选项。<0>了解更多</0>"
+			"description": "使用 Powerlevel10k shell 集成时启用此选项。"
 		},
 		"zdotdir": {
 			"label": "启用 ZDOTDIR 处理",
-			"description": "当 zsh shell 集成失败或与您的 dotfiles 冲突时启用此选项。<0>了解更多</0>"
+			"description": "当 zsh shell 集成失败或与您的 dotfiles 冲突时启用此选项。"
 		},
 		"inheritEnv": {
 			"label": "继承环境变量",
-			"description": "启用此选项以从父 VS Code 进程继承环境变量。<0>了解更多</0>"
+			"description": "启用此选项以从父 VS Code 进程继承环境变量。"
 		}
 	},
 	"advancedSettings": {
@@ -1015,7 +1015,7 @@
 		},
 		"MORPH_FAST_APPLY": {
 			"name": "启用 Fast Apply",
-			"description": "启用后 TEST Agent 可使用专门优化的代码修改模型进行 Fast Apply 编辑文件。需要 Kilo Gateway Provider、OpenRouter 或 Morph API 密钥。",
+			"description": "启用后 TEST Agent 可使用专门优化的代码修改模型进行 Fast Apply 编辑文件。需要TestAgentGateway Provider、OpenRouter 或 Morph API 密钥。",
 			"apiProvider": "API 提供商",
 			"apiProviderList": {
 				"current": "当前"
@@ -1045,9 +1045,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "启用自定义工具",
-			"description": "启用后 Kilo 可从项目中的 .testcode/tools 目录或全局工具目录 ~/.testcode/tools 加载并使用自定义 TypeScript/JavaScript 工具。注意：这些工具将自动获批。",
+			"description": "启用后TestAgent可从项目中的 .testagent/tools 目录或全局工具目录 ~/.testagent/tools 加载并使用自定义 TypeScript/JavaScript 工具。注意：这些工具将自动获批。",
 			"toolsHeader": "可用自定义工具",
-			"noTools": "未加载自定义工具。请向项目的 .testcode/tools 目录或全局工具目录 ~/.testcode/tools 添加 .ts 或 .js 文件。",
+			"noTools": "未加载自定义工具。请向项目的 .testagent/tools 目录或全局工具目录 ~/.testagent/tools 添加 .ts 或 .js 文件。",
 			"refreshButton": "刷新",
 			"refreshing": "正在刷新...",
 			"refreshSuccess": "工具刷新成功",

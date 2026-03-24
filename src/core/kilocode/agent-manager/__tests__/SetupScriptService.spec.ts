@@ -43,7 +43,7 @@ describe("SetupScriptService", () => {
 
 	describe("getScriptPath", () => {
 		it("returns correct path to setup-script file", () => {
-			const expectedPath = path.join(testWorkspacePath, ".testcode", "setup-script")
+			const expectedPath = path.join(testWorkspacePath, ".testagent", "setup-script")
 			expect(service.getScriptPath()).toBe(expectedPath)
 		})
 	})
@@ -94,7 +94,7 @@ describe("SetupScriptService", () => {
 	})
 
 	describe("createDefaultScript", () => {
-		it("creates .testcode directory if it does not exist", async () => {
+		it("creates .testagent directory if it does not exist", async () => {
 			vi.mocked(fs.existsSync).mockReturnValue(false)
 			vi.mocked(fs.promises.mkdir).mockResolvedValue(undefined)
 			vi.mocked(fs.promises.writeFile).mockResolvedValue(undefined)
@@ -103,7 +103,7 @@ describe("SetupScriptService", () => {
 			await service.createDefaultScript()
 
 			expect(fs.promises.mkdir).toHaveBeenCalledWith(
-				path.join(testWorkspacePath, ".testcode"),
+				path.join(testWorkspacePath, ".testagent"),
 				expect.objectContaining({ recursive: true }),
 			)
 		})

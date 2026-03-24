@@ -51,11 +51,11 @@ Skills are loaded from multiple locations, allowing both personal skills and pro
 
 Global skills are located in the `.kilocode` directory within your Home directory.
 
-- Mac and Linux: `~/.testcode/skills/`
+- Mac and Linux: `~/.testagent/skills/`
 - Windows: `\Users\<yourUser>\.kilocode\`
 
 ```
-~/.testcode/
+~/.testagent/
 ├── skills/                    # Generic skills (all modes)
 │   ├── my-skill/
 │   │   └── SKILL.md
@@ -71,11 +71,11 @@ Global skills are located in the `.kilocode` directory within your Home director
 
 ### Project Skills (Workspace-Level)
 
-Located in `.testcode/skills/` within your project:
+Located in `.testagent/skills/` within your project:
 
 ```
 your-project/
-└── .testcode/
+└── .testagent/
     ├── skills/               # Generic skills for this project
     │   └── project-conventions/
     │       └── SKILL.md
@@ -90,10 +90,10 @@ To create a skill that only appears in a specific mode:
 
 ```bash
 # For Code mode only
-mkdir -p ~/.testcode/skills-code/typescript-patterns
+mkdir -p ~/.testagent/skills-code/typescript-patterns
 
 # For Architect mode only
-mkdir -p ~/.testcode/skills-architect/microservices
+mkdir -p ~/.testagent/skills-architect/microservices
 ```
 
 The directory naming pattern is `skills-{mode-slug}` where `{mode-slug}` matches the mode's identifier (e.g., `code`, `architect`, `ask`, `debug`).
@@ -216,7 +216,7 @@ These additional files can be referenced from your skill's instructions, allowin
 1. Create the skill directory:
 
     ```bash
-    mkdir -p ~/.testcode/skills/api-design
+    mkdir -p ~/.testagent/skills/api-design
     ```
 
 2. Create `SKILL.md`:

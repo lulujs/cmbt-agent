@@ -235,7 +235,7 @@
 			},
 			"protected": {
 				"label": "Zahrnout chráněné soubory",
-				"description": "Povolit Test Agent vytvářet a upravovat chráněné soubory (jako .testcodeignore a konfigurační soubory .testcode/) bez nutnosti schválení."
+				"description": "Povolit Test Agent vytvářet a upravovat chráněné soubory (jako .testagentignore a konfigurační soubory .testagent/) bez nutnosti schválení."
 			}
 		},
 		"browser": {
@@ -876,8 +876,8 @@
 			"description": "Maximální počet souborových záznamů, které se zahrnou do kontextu Git stavu. Nastavte na 0 pro vypnutí. Informace o větvi se vždy zobrazí, když je > 0."
 		},
 		"rooignore": {
-			"label": "Zobrazit soubory ignorované .testcodeignore v seznamech a vyhledáváních",
-			"description": "Pokud je povoleno, soubory odpovídající vzorům v .testcodeignore se zobrazí v seznamech se symbolem zámku. Pokud je zakázáno, tyto soubory budou zcela skryty ze seznamů souborů a vyhledávání."
+			"label": "Zobrazit soubory ignorované .testagentignore v seznamech a vyhledáváních",
+			"description": "Pokud je povoleno, soubory odpovídající vzorům v .testagentignore se zobrazí v seznamech se symbolem zámku. Pokud je zakázáno, tyto soubory budou zcela skryty ze seznamů souborů a vyhledávání."
 		},
 		"enableSubfolderRules": {
 			"label": "Povolit pravidla podadresářů",
@@ -1131,9 +1131,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Povolit vlastní nástroje",
-			"description": "Pokud je povoleno, Kilo může načítat a používat vlastní nástroje TypeScript/JavaScript z adresáře .testcode/tools vašeho projektu nebo ~/.testcode/tools pro globální nástroje. Poznámka: tyto nástroje budou automaticky schváleny.",
+			"description": "Pokud je povoleno, Kilo může načítat a používat vlastní nástroje TypeScript/JavaScript z adresáře .testagent/tools vašeho projektu nebo ~/.testagent/tools pro globální nástroje. Poznámka: tyto nástroje budou automaticky schváleny.",
 			"toolsHeader": "Dostupné vlastní nástroje",
-			"noTools": "Nejsou načteny žádné vlastní nástroje. Přidejte soubory .ts nebo .js do adresáře .testcode/tools vašeho projektu nebo ~/.testcode/tools pro globální nástroje.",
+			"noTools": "Nejsou načteny žádné vlastní nástroje. Přidejte soubory .ts nebo .js do adresáře .testagent/tools vašeho projektu nebo ~/.testagent/tools pro globální nástroje.",
 			"refreshButton": "Obnovit",
 			"refreshing": "Obnovování...",
 			"refreshSuccess": "Nástroje úspěšně obnoveny",

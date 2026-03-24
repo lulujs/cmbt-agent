@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "Incluir archivos protegidos",
-				"description": "Permitir a Test Agent crear y editar archivos protegidos (como .testcodeignore y archivos de configuración .testcode/) sin requerir aprobación."
+				"description": "Permitir a Test Agent crear y editar archivos protegidos (como .testagentignore y archivos de configuración .testagent/) sin requerir aprobación."
 			}
 		},
 		"delete": {
@@ -781,8 +781,8 @@
 			"description": "Número máximo de archivos a incluir en los detalles del directorio de trabajo actual. Valores más altos proporcionan más contexto pero aumentan el uso de token."
 		},
 		"rooignore": {
-			"label": "Mostrar archivos .testcodeignore en listas y búsquedas",
-			"description": "Cuando está habilitado, los archivos que coinciden con los patrones en .testcodeignore se mostrarán en listas con un símbolo de candado. Cuando está deshabilitado, estos archivos se ocultarán completamente de las listas de archivos y búsquedas."
+			"label": "Mostrar archivos .testagentignore en listas y búsquedas",
+			"description": "Cuando está habilitado, los archivos que coinciden con los patrones en .testagentignore se mostrarán en listas con un símbolo de candado. Cuando está deshabilitado, estos archivos se ocultarán completamente de las listas de archivos y búsquedas."
 		},
 		"maxReadFile": {
 			"label": "Umbral de auto-truncado de lectura de archivos",
@@ -1036,9 +1036,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Habilitar herramientas personalizadas",
-			"description": "Cuando está habilitado, Kilo puede cargar y usar herramientas TypeScript/JavaScript personalizadas desde el directorio .testcode/tools de tu proyecto o ~/.testcode/tools para herramientas globales. Nota: estas herramientas se aprobarán automáticamente.",
+			"description": "Cuando está habilitado, Kilo puede cargar y usar herramientas TypeScript/JavaScript personalizadas desde el directorio .testagent/tools de tu proyecto o ~/.testagent/tools para herramientas globales. Nota: estas herramientas se aprobarán automáticamente.",
 			"toolsHeader": "Herramientas personalizadas disponibles",
-			"noTools": "No hay herramientas personalizadas cargadas. Añade archivos .ts o .js al directorio .testcode/tools de tu proyecto o ~/.testcode/tools para herramientas globales.",
+			"noTools": "No hay herramientas personalizadas cargadas. Añade archivos .ts o .js al directorio .testagent/tools de tu proyecto o ~/.testagent/tools para herramientas globales.",
 			"refreshButton": "Actualizar",
 			"refreshing": "Actualizando...",
 			"refreshSuccess": "Herramientas actualizadas correctamente",

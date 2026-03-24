@@ -9,16 +9,16 @@ The Test Agent CLI supports MCP servers, but uses a **different configuration pa
 
 ## Configuration Location
 
-| Environment | MCP Settings Path                                   |
-| ----------- | --------------------------------------------------- |
-| **CLI**     | `~/.testcode/cli/global/settings/mcp_settings.json` |
-| **VS Code** | VS Code's global storage directory                  |
+| Environment | MCP Settings Path                                    |
+| ----------- | ---------------------------------------------------- |
+| **CLI**     | `~/.testagent/cli/global/settings/mcp_settings.json` |
+| **VS Code** | VS Code's global storage directory                   |
 
 MCP servers configured in VS Code are **not** automatically available in the CLI. You must configure them separately.
 
 ## Configuration Format
 
-Edit `~/.testcode/cli/global/settings/mcp_settings.json`:
+Edit `~/.testagent/cli/global/settings/mcp_settings.json`:
 
 ```json
 {
@@ -70,7 +70,7 @@ Edit `~/.testcode/cli/global/settings/mcp_settings.json`:
 
 ## Project-Level Configuration
 
-You can define MCP servers per-project by creating `.testcode/mcp.json` in your project root. Project-level servers take precedence over global settings.
+You can define MCP servers per-project by creating `.testagent/mcp.json` in your project root. Project-level servers take precedence over global settings.
 
 ## Configuration Options
 

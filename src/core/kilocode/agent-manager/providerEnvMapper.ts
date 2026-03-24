@@ -22,7 +22,7 @@ const getHomeDirFromEnv = (baseEnv: NodeJS.ProcessEnv): string | undefined =>
 
 const getCliConfigPath = (baseEnv: NodeJS.ProcessEnv): string => {
 	const homeDir = getHomeDirFromEnv(baseEnv) || os.homedir()
-	return path.join(homeDir, ".testcode", "cli", "config.json")
+	return path.join(homeDir, ".testagent", "cli", "config.json")
 }
 
 const readCliConfig = (filePath: string): CliConfigShape | undefined => {

@@ -53,10 +53,10 @@ describe("RooIgnore Response Formatting", () => {
 
 			// Verify error message format
 			expect(errorMessage).toContain(
-				"Access to secrets/api-keys.json is blocked by the .testcodeignore file settings",
+				"Access to secrets/api-keys.json is blocked by the .testagentignore file settings",
 			)
 			expect(errorMessage).toContain("continue in the task without using this file")
-			expect(errorMessage).toContain("ask the user to update the .testcodeignore file")
+			expect(errorMessage).toContain("ask the user to update the .testagentignore file")
 		})
 
 		/**
@@ -211,7 +211,7 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests the instructions format
 		 */
-		it("should format .testcodeignore instructions for the LLM", async () => {
+		it("should format .testagentignore instructions for the LLM", async () => {
 			// Create controller
 			const controller = new RooIgnoreController(TEST_CWD)
 			await controller.initialize()
@@ -220,7 +220,7 @@ describe("RooIgnore Response Formatting", () => {
 			const instructions = controller.getInstructions()
 
 			// Verify format and content
-			expect(instructions).toContain("# .testcodeignore")
+			expect(instructions).toContain("# .testagentignore")
 			expect(instructions).toContain(LOCK_TEXT_SYMBOL)
 			expect(instructions).toContain("node_modules")
 			expect(instructions).toContain(".git")
@@ -235,11 +235,11 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests null/undefined case
 		 */
-		it("should return undefined when no .testcodeignore exists", async () => {
-			// Set up no .testcodeignore
+		it("should return undefined when no .testagentignore exists", async () => {
+			// Set up no .testagentignore
 			mockFileExists.mockResolvedValue(false)
 
-			// Create controller without .testcodeignore
+			// Create controller without .testagentignore
 			const controller = new RooIgnoreController(TEST_CWD)
 			await controller.initialize()
 

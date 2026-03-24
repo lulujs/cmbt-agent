@@ -594,7 +594,7 @@ export type ExtensionState = Pick<
 	checkpointTimeout: number // Timeout for checkpoint initialization in seconds (default: 15)
 	maxOpenTabsContext: number // Maximum number of VSCode open tabs to include in context (0-500)
 	maxWorkspaceFiles: number // Maximum number of files to include in current working directory details (0-500)
-	showRooIgnoredFiles: boolean // Whether to show .testcodeignore'd files in listings
+	showRooIgnoredFiles: boolean // Whether to show .testagentignore'd files in listings
 	enableSubfolderRules: boolean // Whether to load rules from subdirectories
 	maxReadFileLine: number // Maximum number of lines to read from a file before truncating
 	showAutoApproveMenu: boolean // kilocode_change: Whether to show the auto-approve menu in the chat view

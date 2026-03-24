@@ -4,6 +4,6 @@ export const GlobalFileNames = {
 	mcpSettings: "mcp_settings.json",
 	customModes: "custom_modes.yaml",
 	taskMetadata: "task_metadata.json",
-	kiloRules: ".testcode/rules", // test-agent_change (was .testcode/rules)
-	workflows: ".testcode/workflows", // test-agent_change (was .testcode/workflows)
+	kiloRules: ".testagent/rules", // test-agent_change (was .testagent/rules)
+	workflows: ".testagent/workflows", // test-agent_change (was .testagent/workflows)
 }

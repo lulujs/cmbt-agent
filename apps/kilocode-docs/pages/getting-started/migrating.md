@@ -40,11 +40,11 @@ Choose your current tool:
 
 | Cursor                                      | Test Agent                                | Key Difference                              |
 | ------------------------------------------- | ----------------------------------------- | ------------------------------------------- |
-| `.cursor/rules/*.mdc` with YAML frontmatter | `.testcode/rules/*.md` plain Markdown     | No YAML metadata required                   |
+| `.cursor/rules/*.mdc` with YAML frontmatter | `.testagent/rules/*.md` plain Markdown    | No YAML metadata required                   |
 | `alwaysApply: true/false` metadata          | File location determines scope            | Scope controlled by directory structure     |
 | `globs: ["*.ts"]` for file patterns         | Mode-specific directories or custom modes | File patterns handled via custom modes      |
 | `description` for AI activation             | Clear file names and organization         | Relies on explicit file organization        |
-| Global rules in UI settings                 | `~/.testcode/rules/*.md` files            | Global rules stored as files in home folder |
+| Global rules in UI settings                 | `~/.testagent/rules/*.md` files           | Global rules stored as files in home folder |
 
 ### Migration Steps
 
@@ -58,7 +58,7 @@ ls -la .cursorrules          # Legacy file (if present)
 **2. Create Test Agent directory:**
 
 ```bash
-mkdir -p .testcode/rules
+mkdir -p .testagent/rules
 ```
 
 **3. Convert `.mdc` files to `.md`:**
@@ -94,7 +94,7 @@ alwaysApply: false
 # Copy all files
 for file in .cursor/rules/*.mdc; do
   basename="${file##*/}"
-  cp "$file" ".testcode/rules/${basename%.mdc}.md"
+  cp "$file" ".testagent/rules/${basename%.mdc}.md"
 done
 
 # Then manually edit each file to remove YAML frontmatter (the --- section at the top)
@@ -104,12 +104,12 @@ done
 
 - Open `Cursor Settings → General → Rules for AI`
 - Copy the text content
-- Save to `~/.testcode/rules/cursor-global.md`
+- Save to `~/.testagent/rules/cursor-global.md`
 
 **6. Handle legacy `.cursorrules`:**
 
 ```bash
-cp .cursorrules .testcode/rules/legacy-rules.md
+cp .cursorrules .testagent/rules/legacy-rules.md
 ```
 
 ### Converting Cursor's `globs` Patterns
@@ -128,14 +128,14 @@ Rules for TypeScript files...
 **Test Agent approach (Option 1 - Mode-specific directory):**
 
 ```bash
-mkdir -p .testcode/rules-code
+mkdir -p .testagent/rules-code
 # Save TypeScript-specific rules here
 ```
 
 **Test Agent approach (Option 2 - Custom mode):**
 
 ```yaml
-# .testcodemodes (at project root)
+# .testagentmodes (at project root)
 - slug: typescript
   name: TypeScript
   roleDefinition: You work on TypeScript files
@@ -145,7 +145,7 @@ mkdir -p .testcode/rules-code
       - ask
 ```
 
-Then place rules in `.testcode/rules-typescript/`
+Then place rules in `.testagent/rules-typescript/`
 
 ### Flattening Nested Cursor Rules
 
@@ -153,7 +153,7 @@ Cursor supports nested `.cursor/rules/` directories. Test Agent uses flat struct
 
 ```bash
 # Cursor: .cursor/rules/backend/server/api-rules.mdc
-# Test Agent: .testcode/rules/backend-server-api-rules.md
+# Test Agent: .testagent/rules/backend-server-api-rules.md
 ```
 
 ## Migrating from Windsurf
@@ -162,12 +162,12 @@ Cursor supports nested `.cursor/rules/` directories. Test Agent uses flat struct
 
 | Windsurf                                                       | Test Agent                     | Key Difference                              |
 | -------------------------------------------------------------- | ------------------------------ | ------------------------------------------- |
-| `.windsurf/rules/*.md`                                         | `.testcode/rules/*.md`         | Same Markdown format                        |
+| `.windsurf/rules/*.md`                                         | `.testagent/rules/*.md`        | Same Markdown format                        |
 | GUI configuration for activation modes                         | File location determines scope | Scope controlled by directory structure     |
-| "Always On" mode (GUI)                                         | Place in `.testcode/rules/`    | Rules stored as files, not GUI settings     |
+| "Always On" mode (GUI)                                         | Place in `.testagent/rules/`   | Rules stored as files, not GUI settings     |
 | "Glob" mode (GUI)                                              | Mode-specific directories      | File patterns handled via mode directories  |
 | 12,000 character limit per rule                                | No hard limit                  | No character limit on rule files            |
-| Global rules in `~/.codeium/windsurf/memories/global_rules.md` | `~/.testcode/rules/*.md`       | Global rules in home folder, multiple files |
+| Global rules in `~/.codeium/windsurf/memories/global_rules.md` | `~/.testagent/rules/*.md`      | Global rules in home folder, multiple files |
 
 ### Migration Steps
 
@@ -181,25 +181,25 @@ ls -la .windsurfrules        # Legacy file (if present)
 **2. Create Test Agent directory:**
 
 ```bash
-mkdir -p .testcode/rules
+mkdir -p .testagent/rules
 ```
 
 **3. Copy files directly** (already Markdown):
 
 ```bash
-cp .windsurf/rules/*.md .testcode/rules/
+cp .windsurf/rules/*.md .testagent/rules/
 ```
 
 **4. Migrate global rules:**
 
 ```bash
-cp ~/.codeium/windsurf/memories/global_rules.md ~/.testcode/rules/global-rules.md
+cp ~/.codeium/windsurf/memories/global_rules.md ~/.testagent/rules/global-rules.md
 ```
 
 **5. Handle legacy `.windsurfrules`:**
 
 ```bash
-cp .windsurfrules .testcode/rules/legacy-rules.md
+cp .windsurfrules .testagent/rules/legacy-rules.md
 ```
 
 **6. Split large rules if needed:**
@@ -211,9 +211,9 @@ If you had rules approaching the 12,000 character limit, split them:
 # .windsurf/rules/all-conventions.md (11,500 chars)
 
 # Split into focused files:
-# .testcode/rules/api-conventions.md
-# .testcode/rules/testing-standards.md
-# .testcode/rules/code-style.md
+# .testagent/rules/api-conventions.md
+# .testagent/rules/testing-standards.md
+# .testagent/rules/code-style.md
 ```
 
 ### Converting Windsurf's Activation Modes
@@ -222,7 +222,7 @@ Windsurf configures activation through the GUI. In Test Agent, file organization
 
 | Windsurf GUI Mode        | Test Agent Equivalent                                       |
 | ------------------------ | ----------------------------------------------------------- |
-| **Always On**            | Place in `.testcode/rules/` (default)                       |
+| **Always On**            | Place in `.testagent/rules/` (default)                      |
 | **Glob** (file patterns) | Mode-specific directory or custom mode                      |
 | **Model Decision**       | Clear file names by concern (e.g., `testing-guidelines.md`) |
 | **Manual**               | Organize with descriptive names                             |
@@ -232,7 +232,7 @@ Windsurf configures activation through the GUI. In Test Agent, file organization
 If you had a rule in Windsurf with Glob mode set to `*.test.ts`, create a custom test mode:
 
 ```yaml
-# .testcodemodes (at project root)
+# .testagentmodes (at project root)
 - slug: test
   name: Testing
   roleDefinition: You write and maintain tests
@@ -242,7 +242,7 @@ If you had a rule in Windsurf with Glob mode set to `*.test.ts`, create a custom
       - ask
 ```
 
-Then place the rule in `.testcode/rules-test/`
+Then place the rule in `.testagent/rules-test/`
 
 ## AGENTS.md Support
 
@@ -266,11 +266,11 @@ This is Test Agent's unique feature that replaces both Cursor's `globs` and Wind
 ### Directory Structure
 
 ```bash
-.testcode/rules/              # Apply to ALL modes
-.testcode/rules-code/         # Only in Code mode
-.testcode/rules-debug/        # Only in Debug mode
-.testcode/rules-ask/          # Only in Ask mode
-.testcode/rules-{custom}/     # Only in your custom mode
+.testagent/rules/              # Apply to ALL modes
+.testagent/rules-code/         # Only in Code mode
+.testagent/rules-debug/        # Only in Debug mode
+.testagent/rules-ask/          # Only in Ask mode
+.testagent/rules-{custom}/     # Only in your custom mode
 ```
 
 ### Real-World Example
@@ -291,17 +291,17 @@ globs: ["**/*.test.ts", "**/*.spec.ts"]
 
 ```bash
 # 1. Create test mode directory
-mkdir -p .testcode/rules-test
+mkdir -p .testagent/rules-test
 
 # 2. Save rule as plain Markdown
-cat > .testcode/rules-test/testing-standards.md << 'EOF'
+cat > .testagent/rules-test/testing-standards.md << 'EOF'
 # Testing Rules
 - Write tests for all features
 - Maintain >80% coverage
 EOF
 
 # 3. Define the mode (optional - creates a custom mode)
-# Add to .testcode/config.yaml:
+# Add to .testagent/config.yaml:
 # modes:
 #   - slug: test
 #     name: Test Mode
@@ -316,8 +316,8 @@ After migration:
 - [ ] **Test rule application:** Ask Test Agent to perform tasks following your rules
 - [ ] **Organize rules:** Split large files, use clear names
 - [ ] **Set up mode-specific rules:** Create directories for specialized workflows
-- [ ] **Update team docs:** Document new `.testcode/rules/` location
-- [ ] **Commit to version control:** `git add .testcode/`
+- [ ] **Update team docs:** Document new `.testagent/rules/` location
+- [ ] **Commit to version control:** `git add .testagent/`
 - [ ] **Remove old directories:** Delete `.cursor/` or `.windsurf/` folders once verified
 - [ ] **Set up autocomplete:** If you used Cursor/Windsurf autocomplete, enable Ghost (Settings → Ghost) for the same Tab-to-accept experience
 
@@ -328,8 +328,8 @@ After migration:
 **Check file location:**
 
 ```bash
-ls -la .testcode/rules/      # Project rules
-ls -la ~/.testcode/rules/    # Global rules
+ls -la .testagent/rules/      # Project rules
+ls -la ~/.testagent/rules/    # Global rules
 ```
 
 **Verify file format:**
@@ -348,7 +348,7 @@ ls -la ~/.testcode/rules/    # Global rules
 Cursor's `globs`, `alwaysApply`, and `description` don't transfer automatically. Solutions:
 
 - **For file patterns:** Use mode-specific directories or custom modes
-- **For always-on rules:** Place in `.testcode/rules/`
+- **For always-on rules:** Place in `.testagent/rules/`
 - **For context-specific rules:** Use clear file names and organization
 
 ### Windsurf Activation Modes Lost
@@ -364,7 +364,7 @@ Cursor's nested directories don't map to Test Agent. Flatten with descriptive na
 
 ```bash
 # Bad: .cursor/rules/backend/api/rules.mdc
-# Good: .testcode/rules/backend-api-rules.md
+# Good: .testagent/rules/backend-api-rules.md
 ```
 
 ### AGENTS.md Not Loading
@@ -407,7 +407,7 @@ There's no "right" workflow—use whatever helps you code faster
 For complex workflows, define custom modes with their own rules and permissions:
 
 ```yaml
-# .testcodemodes (at project root)
+# .testagentmodes (at project root)
 - slug: review
   name: Code Review
   roleDefinition: You review code and suggest improvements
@@ -428,11 +428,11 @@ For complex workflows, define custom modes with their own rules and permissions:
 Then create corresponding rule directories:
 
 ```bash
-mkdir -p .testcode/rules-review
-mkdir -p .testcode/rules-docs
+mkdir -p .testagent/rules-review
+mkdir -p .testagent/rules-docs
 ```
 
-**Note:** `.testcodemodes` can be in YAML (preferred) or JSON format. For global modes, edit the `custom_modes.yaml` file via Settings > Edit Global Modes.
+**Note:** `.testagentmodes` can be in YAML (preferred) or JSON format. For global modes, edit the `custom_modes.yaml` file via Settings > Edit Global Modes.
 
 ## Next Steps
 

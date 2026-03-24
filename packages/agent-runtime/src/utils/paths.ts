@@ -5,10 +5,10 @@ import { logs } from "./logger.js"
 
 /**
  * Centralized path management for Test Agent agent runtime
- * All configuration and logs are stored in ~/.testcode/
+ * All configuration and logs are stored in ~/.testagent/
  */
 export class KiloCodePaths {
-	private static readonly BASE_DIR_NAME = ".testcode"
+	private static readonly BASE_DIR_NAME = ".testagent"
 	private static readonly CLI_SUBDIR = "cli"
 	private static readonly WORKSPACE_MAP_FILE = "workspace-map.json"
 
@@ -20,7 +20,7 @@ export class KiloCodePaths {
 	}
 
 	/**
-	 * Get base .testcode/cli directory in user home
+	 * Get base .testagent/cli directory in user home
 	 */
 	static getKiloCodeDir(): string {
 		return path.join(this.getHomeDir(), this.BASE_DIR_NAME, this.CLI_SUBDIR)

@@ -220,7 +220,7 @@
 			},
 			"protected": {
 				"label": "Inclure les fichiers protégés",
-				"description": "Permettre à Test Agent de créer et modifier des fichiers protégés (comme .testcodeignore et les fichiers de configuration .testcode/) sans nécessiter d'approbation."
+				"description": "Permettre à Test Agent de créer et modifier des fichiers protégés (comme .testagentignore et les fichiers de configuration .testagent/) sans nécessiter d'approbation."
 			}
 		},
 		"browser": {
@@ -781,8 +781,8 @@
 			"description": "Nombre maximum de fichiers à inclure dans les détails du répertoire de travail actuel. Des valeurs plus élevées fournissent plus de contexte mais augmentent l'utilisation de token."
 		},
 		"rooignore": {
-			"label": "Afficher les fichiers .testcodeignore dans les listes et recherches",
-			"description": "Lorsque cette option est activée, les fichiers correspondant aux modèles dans .testcodeignore seront affichés dans les listes avec un symbole de cadenas. Lorsqu'elle est désactivée, ces fichiers seront complètement masqués des listes de fichiers et des recherches."
+			"label": "Afficher les fichiers .testagentignore dans les listes et recherches",
+			"description": "Lorsque cette option est activée, les fichiers correspondant aux modèles dans .testagentignore seront affichés dans les listes avec un symbole de cadenas. Lorsqu'elle est désactivée, ces fichiers seront complètement masqués des listes de fichiers et des recherches."
 		},
 		"maxReadFile": {
 			"label": "Seuil d'auto-troncature de lecture de fichier",
@@ -1036,9 +1036,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Activer les outils personnalisés",
-			"description": "Lorsqu'activé, Kilo peut charger et utiliser des outils TypeScript/JavaScript personnalisés à partir du répertoire .testcode/tools de votre projet ou ~/.testcode/tools pour des outils globaux. Remarque : ces outils seront automatiquement auto-approuvés.",
+			"description": "Lorsqu'activé, Kilo peut charger et utiliser des outils TypeScript/JavaScript personnalisés à partir du répertoire .testagent/tools de votre projet ou ~/.testagent/tools pour des outils globaux. Remarque : ces outils seront automatiquement auto-approuvés.",
 			"toolsHeader": "Outils personnalisés disponibles",
-			"noTools": "Aucun outil personnalisé chargé. Ajoutez des fichiers .ts ou .js au répertoire .testcode/tools de votre projet ou ~/.testcode/tools pour des outils globaux.",
+			"noTools": "Aucun outil personnalisé chargé. Ajoutez des fichiers .ts ou .js au répertoire .testagent/tools de votre projet ou ~/.testagent/tools pour des outils globaux.",
 			"refreshButton": "Actualiser",
 			"refreshing": "Actualisation...",
 			"refreshSuccess": "Outils actualisés avec succès",

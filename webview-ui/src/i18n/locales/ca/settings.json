@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "Incloure fitxers protegits",
-				"description": "Permetre a Test Agent crear i editar fitxers protegits (com .testcodeignore i fitxers de configuració .testcode/) sense requerir aprovació."
+				"description": "Permetre a Test Agent crear i editar fitxers protegits (com .testagentignore i fitxers de configuració .testagent/) sense requerir aprovació."
 			}
 		},
 		"browser": {
@@ -781,8 +781,8 @@
 			"description": "Nombre màxim de fitxers a incloure als detalls del directori de treball actual. Valors més alts proporcionen més context però augmenten l'ús de token."
 		},
 		"rooignore": {
-			"label": "Mostrar fitxers .testcodeignore en llistes i cerques",
-			"description": "Quan està habilitat, els fitxers que coincideixen amb els patrons a .testcodeignore es mostraran en llistes amb un símbol de cadenat. Quan està deshabilitat, aquests fitxers s'ocultaran completament de les llistes de fitxers i cerques."
+			"label": "Mostrar fitxers .testagentignore en llistes i cerques",
+			"description": "Quan està habilitat, els fitxers que coincideixen amb els patrons a .testagentignore es mostraran en llistes amb un símbol de cadenat. Quan està deshabilitat, aquests fitxers s'ocultaran completament de les llistes de fitxers i cerques."
 		},
 		"maxReadFile": {
 			"label": "Llindar d'auto-truncament de lectura de fitxers",
@@ -1036,9 +1036,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Habilitar eines personalitzades",
-			"description": "Quan està habilitat, Kilo pot carregar i utilitzar eines TypeScript/JavaScript personalitzades des del directori .testcode/tools del vostre projecte o ~/.testcode/tools per a eines globals. Nota: aquestes eines s'aprovaran automàticament.",
+			"description": "Quan està habilitat, Kilo pot carregar i utilitzar eines TypeScript/JavaScript personalitzades des del directori .testagent/tools del vostre projecte o ~/.testagent/tools per a eines globals. Nota: aquestes eines s'aprovaran automàticament.",
 			"toolsHeader": "Eines personalitzades disponibles",
-			"noTools": "No s'han carregat eines personalitzades. Afegiu fitxers .ts o .js al directori .testcode/tools del vostre projecte o ~/.testcode/tools per a eines globals.",
+			"noTools": "No s'han carregat eines personalitzades. Afegiu fitxers .ts o .js al directori .testagent/tools del vostre projecte o ~/.testagent/tools per a eines globals.",
 			"refreshButton": "Actualitzar",
 			"refreshing": "Actualitzant...",
 			"refreshSuccess": "Eines actualitzades correctament",

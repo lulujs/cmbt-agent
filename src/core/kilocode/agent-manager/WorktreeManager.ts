@@ -2,7 +2,7 @@
  * WorktreeManager - Manages git worktrees for agent sessions
  *
  * Handles creation, discovery, commit, and cleanup of worktrees
- * stored in {projectRoot}/.testcode/worktrees/
+ * stored in {projectRoot}/.testagent/worktrees/
  */
 
 import * as vscode from "vscode"
@@ -15,7 +15,7 @@ export interface WorktreeInfo {
 	path: string
 	parentBranch: string
 	createdAt: number
-	sessionId?: string // Session ID from .testcode/session-id file, if present
+	sessionId?: string // Session ID from .testagent/session-id file, if present
 }
 
 export interface CreateWorktreeResult {
@@ -57,7 +57,7 @@ export function generateBranchName(prompt: string): string {
 	return `${sanitized || "kilo"}-${timestamp}`
 }
 
-const KILOCODE_DIR = ".testcode" // test-agent_change (was .kilocode)
+const KILOCODE_DIR = ".testagent" // test-agent_change (was .kilocode)
 const SESSION_ID_FILE = "session-id"
 
 export class WorktreeManager {
@@ -224,7 +224,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Discover existing worktrees in .testcode/worktrees/
+	 * Discover existing worktrees in .testagent/worktrees/
 	 */
 	async discoverWorktrees(): Promise<WorktreeInfo[]> {
 		if (!fs.existsSync(this.worktreesDir)) {
@@ -282,7 +282,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Write a session ID to the worktree's .testcode/session-id file.
+	 * Write a session ID to the worktree's .testagent/session-id file.
 	 * This creates a mapping between the worktree and its associated session,
 	 * enabling session recovery after extension restarts.
 	 */
@@ -298,12 +298,12 @@ export class WorktreeManager {
 		await fs.promises.writeFile(sessionIdPath, sessionId, "utf-8")
 		this.log(`Wrote session ID ${sessionId} to ${sessionIdPath}`)
 
-		// Ensure .testcode/ is excluded from git in the worktree
+		// Ensure .testagent/ is excluded from git in the worktree
 		await this.ensureWorktreeGitExclude(worktreePath)
 	}
 
 	/**
-	 * Read the session ID from a worktree's .testcode/session-id file.
+	 * Read the session ID from a worktree's .testagent/session-id file.
 	 * Returns undefined if the file doesn't exist or can't be read.
 	 */
 	async readSessionId(worktreePath: string): Promise<string | undefined> {
@@ -340,7 +340,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Ensure .testcode/ directory is excluded from git within a worktree.
+	 * Ensure .testagent/ directory is excluded from git within a worktree.
 	 * This prevents the session-id file from being committed.
 	 *
 	 * Git worktrees share the main repository's .git/info/exclude file,
@@ -390,7 +390,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Ensure .testcode/worktrees/ directory exists
+	 * Ensure .testagent/worktrees/ directory exists
 	 */
 	private async ensureWorktreesDir(): Promise<void> {
 		if (!fs.existsSync(this.worktreesDir)) {
@@ -400,11 +400,11 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Ensure .testcode/worktrees/ is excluded from git using .git/info/exclude.
+	 * Ensure .testagent/worktrees/ is excluded from git using .git/info/exclude.
 	 * This avoids modifying the user's .gitignore file which would require a commit.
 	 */
 	async ensureGitExclude(): Promise<void> {
-		const entry = ".testcode/worktrees/"
+		const entry = ".testagent/worktrees/"
 
 		const gitDir = await this.resolveGitDir()
 		const excludePath = path.join(gitDir, "info", "exclude")
@@ -425,7 +425,7 @@ export class WorktreeManager {
 		const excludeEntry = `${addition}\n# Test Agent agent worktrees\n${entry}\n`
 
 		await fs.promises.appendFile(excludePath, excludeEntry)
-		this.log("Added .testcode/worktrees/ to .git/info/exclude")
+		this.log("Added .testagent/worktrees/ to .git/info/exclude")
 	}
 
 	/**

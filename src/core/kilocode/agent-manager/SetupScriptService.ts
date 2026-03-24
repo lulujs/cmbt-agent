@@ -1,7 +1,7 @@
 /**
  * SetupScriptService - Manages worktree setup scripts
  *
- * Handles reading, creating, and checking for setup scripts stored in .testcode/setup-script.
+ * Handles reading, creating, and checking for setup scripts stored in .testagent/setup-script.
  * Setup scripts run before an agent starts in a worktree (new sessions only).
  */
 
@@ -10,7 +10,7 @@ import * as fs from "node:fs"
 import * as path from "node:path"
 
 const SETUP_SCRIPT_FILENAME = "setup-script"
-const KILOCODE_DIR = ".testcode" // test-agent_change (was .kilocode)
+const KILOCODE_DIR = ".testagent" // test-agent_change (was .kilocode)
 
 /**
  * Default template for the setup script with helpful comments

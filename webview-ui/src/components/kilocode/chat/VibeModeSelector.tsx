@@ -32,7 +32,7 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 	const specSelected = workflow === "spec"
 
 	return (
-		<div className="w-full max-w-[380px] mx-auto flex flex-col gap-3">
+		<div className="w-full mx-auto flex flex-col gap-3">
 			<div className="flex gap-2">
 				{/* Vibe card */}
 				<button
@@ -107,8 +107,8 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 					) : (
 						<ul className="m-0 pl-4 space-y-0.5 list-disc">
 							<li>为对话准备模板</li>
-							<li>需要前期规划的项目</li>
-							<li>以结构化方式开发功能</li>
+							<li>需要前期规划</li>
+							<li>以结构化方式执行任务</li>
 						</ul>
 					)}
 				</div>

@@ -21,7 +21,7 @@ import { getKiloUrlFromToken } from "@roo-code/types"
 import { X_KILOCODE_ORGANIZATIONID, X_KILOCODE_TESTER } from "../../shared/kilocode/headers"
 // kilocode_change end
 
-const ROOMODES_FILENAME = ".testcodemodes"
+const ROOMODES_FILENAME = ".testagentmodes"
 
 // Type definitions for import/export functionality
 interface RuleFile {
@@ -315,7 +315,7 @@ export class CustomModesManager {
 					return
 				}
 
-				// Get modes from .testcodemodes if it exists (takes precedence)
+				// Get modes from .testagentmodes if it exists (takes precedence)
 				const roomodesPath = await this.getWorkspaceRoomodes()
 				const roomodesModes = roomodesPath ? await this.loadModesFromFile(roomodesPath) : []
 
@@ -367,7 +367,7 @@ export class CustomModesManager {
 					this.clearCache()
 					await this.onUpdate()
 				} catch (error) {
-					console.error(`[CustomModesManager] Error handling .testcodemodes file change:`, error)
+					console.error(`[CustomModesManager] Error handling .testagentmodes file change:`, error)
 				}
 			}
 
@@ -410,7 +410,7 @@ export class CustomModesManager {
 		const settingsPath = await this.getCustomModesFilePath()
 		const settingsModes = await this.loadModesFromFile(settingsPath)
 
-		// Get modes from .testcodemodes if it exists
+		// Get modes from .testagentmodes if it exists
 		const roomodesPath = await this.getWorkspaceRoomodes()
 		const roomodesModes = roomodesPath ? await this.loadModesFromFile(roomodesPath) : []
 

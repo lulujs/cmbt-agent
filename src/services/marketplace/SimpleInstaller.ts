@@ -118,7 +118,7 @@ export class SimpleInstaller {
 				existingData = { customModes: [] }
 			} else if (error.name === "YAMLParseError" || error.message?.includes("YAML")) {
 				// YAML parsing error - don't overwrite the file!
-				const fileName = target === "project" ? ".testcodemodes" : "custom-modes.yaml"
+				const fileName = target === "project" ? ".testagentmodes" : "custom-modes.yaml"
 				throw new Error(
 					`Cannot install mode: The ${fileName} file contains invalid YAML. ` +
 						`Please fix the syntax errors in the file before installing new modes.`,
@@ -255,7 +255,7 @@ export class SimpleInstaller {
 				existingData = { mcpServers: {} }
 			} else if (error instanceof SyntaxError) {
 				// JSON parsing error - don't overwrite the file!
-				const fileName = target === "project" ? ".testcode/mcp.json" : "mcp-settings.json" // test-agent_change (was .kilocode)
+				const fileName = target === "project" ? ".testagent/mcp.json" : "mcp-settings.json" // test-agent_change (was .kilocode)
 				throw new Error(
 					`Cannot install MCP server: The ${fileName} file contains invalid JSON. ` +
 						`Please fix the syntax errors in the file before installing new servers.`,
@@ -387,7 +387,7 @@ export class SimpleInstaller {
 			if (!workspaceFolder) {
 				throw new Error("No workspace folder found")
 			}
-			return path.join(workspaceFolder.uri.fsPath, ".testcodemodes")
+			return path.join(workspaceFolder.uri.fsPath, ".testagentmodes")
 		} else {
 			const globalSettingsPath = await ensureSettingsDirectoryExists(this.context)
 			return path.join(globalSettingsPath, GlobalFileNames.customModes)
@@ -400,7 +400,7 @@ export class SimpleInstaller {
 			if (!workspaceFolder) {
 				throw new Error("No workspace folder found")
 			}
-			return path.join(workspaceFolder.uri.fsPath, ".testcode", "mcp.json") // test-agent_change (was .kilocode)
+			return path.join(workspaceFolder.uri.fsPath, ".testagent", "mcp.json") // test-agent_change (was .kilocode)
 		} else {
 			const globalSettingsPath = await ensureSettingsDirectoryExists(this.context)
 			return path.join(globalSettingsPath, GlobalFileNames.mcpSettings)
@@ -412,8 +412,8 @@ export class SimpleInstaller {
 	 * Install a skill from the marketplace by downloading and extracting its tarball.
 	 *
 	 * Skills are installed to:
-	 * - Global: ~/.testcode/skills/{skill-id}/ // test-agent_change (was .kilocode)
-	 * - Project: .testcode/skills/{skill-id}/ // test-agent_change (was .kilocode)
+	 * - Global: ~/.testagent/skills/{skill-id}/ // test-agent_change (was .kilocode)
+	 * - Project: .testagent/skills/{skill-id}/ // test-agent_change (was .kilocode)
 	 *
 	 * The tarball must contain a SKILL.md at the root level (after stripping the top-level directory).
 	 */
@@ -467,7 +467,7 @@ export class SimpleInstaller {
 			if (!workspaceFolder) {
 				throw new Error("No workspace folder found")
 			}
-			return path.join(workspaceFolder.uri.fsPath, ".testcode", "skills") // test-agent_change (was .kilocode)
+			return path.join(workspaceFolder.uri.fsPath, ".testagent", "skills") // test-agent_change (was .kilocode)
 		} else {
 			const globalDir = getGlobalRooDirectory()
 			return path.join(globalDir, "skills")

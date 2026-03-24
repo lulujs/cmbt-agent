@@ -109,11 +109,11 @@ pnpm check-types      # TypeScript type checking
 
 ## Skills
 
-- **Translation**: `.testcode/skills/translation/SKILL.md` - Translation and localization guidelines
+- **Translation**: `.testagent/skills/translation/SKILL.md` - Translation and localization guidelines
 
 ## Workflows
 
-- **Add Missing Translations**: `.testcode/workflows/add-missing-translations.md` - Run `/add-missing-translations` to find and fix missing translations
+- **Add Missing Translations**: `.testagent/workflows/add-missing-translations.md` - Run `/add-missing-translations` to find and fix missing translations
 
 ## Changesets
 

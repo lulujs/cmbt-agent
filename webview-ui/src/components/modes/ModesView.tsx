@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from "react"
-import { KiloShareModesBanner } from "../kilocode/KiloShareModesBanner" // kilocode_change
+// import { KiloShareModesBanner } from "../kilocode/KiloShareModesBanner" // kilocode_change
 import {
 	VSCodeCheckbox,
 	VSCodeRadioGroup,
@@ -662,7 +662,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 												e.preventDefault() // Prevent blur
 												vscode.postMessage({
 													type: "openFile",
-													text: "./.testcodemodes",
+													text: "./.testagentmodes",
 													values: {
 														create: true,
 														content: JSON.stringify({ customModes: [] }, null, 2),
@@ -710,7 +710,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 
 					<div className="text-sm text-vscode-descriptionForeground mb-6">
 						{/* kilocode_change - add KiloShareModesBanner */}
-						<KiloShareModesBanner />
+						{/* <KiloShareModesBanner /> */}
 
 						<Trans i18nKey="prompts:modes.createModeHelpText">
 							<VSCodeLink
@@ -1299,7 +1299,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 											// Open or create an empty file
 											vscode.postMessage({
 												type: "openFile",
-												text: `./.testcode/rules-${currentMode.slug}/rules.md`, // kilocode_change
+												text: `./.testagent/rules-${currentMode.slug}/rules.md`, // kilocode_change
 												values: {
 													create: true,
 													content: "",
@@ -1392,7 +1392,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 
 															vscode.postMessage({
 																type: "openFile",
-																text: `./.testcode/system-prompt-${currentMode.slug}`, // kilocode_change
+																text: `./.testagent/system-prompt-${currentMode.slug}`, // kilocode_change
 																values: {
 																	create: true,
 																	content: "",
@@ -1424,7 +1424,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 					<h3 className="text-vscode-foreground mb-3">{t("prompts:globalCustomInstructions.title")}</h3>
 
 					<div className="text-sm text-vscode-descriptionForeground mb-2">
-						<Trans i18nKey="prompts:globalCustomInstructions.description">
+						{/* <Trans i18nKey="prompts:globalCustomInstructions.description">
 							<VSCodeLink
 								href={buildDocLink(
 									"features/custom-instructions#setting-up-global-rules",
@@ -1432,7 +1432,8 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 								)}
 								style={{ display: "inline" }}
 								aria-label="Learn more about global custom instructions"></VSCodeLink>
-						</Trans>
+						</Trans> */}
+						{t("prompts:globalCustomInstructions.description")}
 					</div>
 					<VSCodeTextArea
 						resize="vertical"
@@ -1461,7 +1462,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 										onClick={() =>
 											vscode.postMessage({
 												type: "openFile",
-												text: "./.testcode/rules/rules.md",
+												text: "./.testagent/rules/rules.md",
 												values: {
 													create: true,
 													content: "",

@@ -76,7 +76,7 @@ Modes are managed from the Modes area in Test Agent. Depending on your UI layout
 2. Click the Import Mode button (upload icon)
 3. Select the mode's YAML file
 4. Choose the import level:
-    - **Project:** Available only in current workspace (saved to `.testcodemodes` file)
+    - **Project:** Available only in current workspace (saved to `.testagentmodes` file)
     - **Global:** Available in all projects (saved to global settings)
 
 ### Changing Slugs on Import
@@ -122,7 +122,7 @@ The interface provides fields for Name, Slug, Description, Save Location, Role D
 You can directly edit the configuration files to create or modify custom modes. This method offers the most control over all properties. Test Agent now supports both YAML (preferred) and JSON formats.
 
 - **Global Modes:** Edit the `custom_modes.yaml` (preferred) or `custom_modes.json` file. Open the Modes area, click <Codicon name="gear" /> next to Global Modes, then choose "Edit Global Modes"
-- **Project Modes:** Edit the `.testcodemodes` file (which can be YAML or JSON) in your project root. Open the Modes area, click <Codicon name="gear" /> next to Project Modes, then choose "Edit Project Modes"
+- **Project Modes:** Edit the `.testagentmodes` file (which can be YAML or JSON) in your project root. Open the Modes area, click <Codicon name="gear" /> next to Project Modes, then choose "Edit Project Modes"
 
 These files define an array/list of custom modes.
 
@@ -303,10 +303,10 @@ Automatic migration from `custom_modes.json` to `custom_modes.yaml` happens when
 
 The migration process preserves the original JSON file for rollback purposes.
 
-### Project Modes (`.testcodemodes`)
+### Project Modes (`.testagentmodes`)
 
 - No automatic startup migration occurs for project-specific files
-- Test Agent can read `.testcodemodes` files in either YAML or JSON format
+- Test Agent can read `.testagentmodes` files in either YAML or JSON format
 - When editing through the UI, JSON files will be converted to YAML format
 - For manual conversion, you can ask Kilo to help reformat configurations
 
@@ -344,11 +344,11 @@ The directory method takes precedence if it exists and contains files. Files wit
 
 Mode configurations are applied in this order:
 
-1. **Project-level mode configurations** (from `.testcodemodes` - YAML or JSON)
+1. **Project-level mode configurations** (from `.testagentmodes` - YAML or JSON)
 2. **Global mode configurations** (from `custom_modes.yaml`, then `custom_modes.json` if YAML not found)
 3. **Default mode configurations**
 
-**Important:** When modes with the same slug exist in both `.testcodemodes` and global settings, the `.testcodemodes` version completely overrides the global one for ALL properties.
+**Important:** When modes with the same slug exist in both `.testagentmodes` and global settings, the `.testagentmodes` version completely overrides the global one for ALL properties.
 
 ## Overriding Default Modes
 

@@ -59,7 +59,7 @@ async function scanDirectoryForDeletion(absolutePath: string, cline: Task): Prom
 				// Check ignore rules - FAIL FAST
 				if (!cline.rooIgnoreController?.validateAccess(relativePath)) {
 					throw new DirectoryDeletionBlockedError(
-						`Cannot delete directory - contains file blocked by .testcodeignore: ${relativePath}`,
+						`Cannot delete directory - contains file blocked by .testagentignore: ${relativePath}`,
 						relativePath,
 					)
 				}

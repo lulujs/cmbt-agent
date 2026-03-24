@@ -1544,7 +1544,7 @@ export const webviewMessageHandler = async (
 			}
 
 			const workspaceFolder = getCurrentCwd()
-			const rooDir = path.join(workspaceFolder, ".testcode") // test-agent_change (was .kilocode)
+			const rooDir = path.join(workspaceFolder, ".testagent") // test-agent_change (was .kilocode)
 			const mcpPath = path.join(rooDir, "mcp.json")
 
 			try {
@@ -2555,14 +2555,14 @@ export const webviewMessageHandler = async (
 				if (scope === "project") {
 					const workspacePath = getWorkspacePath()
 					if (workspacePath) {
-						rulesFolderPath = path.join(workspacePath, ".testcode", `rules-${message.slug}`) // test-agent_change (was .kilocode)
+						rulesFolderPath = path.join(workspacePath, ".testagent", `rules-${message.slug}`) // test-agent_change (was .kilocode)
 					} else {
-						rulesFolderPath = path.join(".testcode", `rules-${message.slug}`) // test-agent_change (was .kilocode)
+						rulesFolderPath = path.join(".testagent", `rules-${message.slug}`) // test-agent_change (was .kilocode)
 					}
 				} else {
 					// Global scope - use OS home directory
 					const homeDir = os.homedir()
-					rulesFolderPath = path.join(homeDir, ".testcode", `rules-${message.slug}`) // test-agent_change (was .kilocode)
+					rulesFolderPath = path.join(homeDir, ".testagent", `rules-${message.slug}`) // test-agent_change (was .kilocode)
 				}
 
 				// Check if the rules folder exists
@@ -4066,7 +4066,7 @@ export const webviewMessageHandler = async (
 				// Determine the commands directory based on source
 				let commandsDir: string
 				if (source === "global") {
-					const globalConfigDir = path.join(os.homedir(), ".testcode") // test-agent_change (was .kilocode)
+					const globalConfigDir = path.join(os.homedir(), ".testagent") // test-agent_change (was .kilocode)
 					commandsDir = path.join(globalConfigDir, "commands")
 				} else {
 					if (!vscode.workspace.workspaceFolders?.length) {
@@ -4079,7 +4079,7 @@ export const webviewMessageHandler = async (
 						vscode.window.showErrorMessage(t("common:errors.no_workspace_for_project_command"))
 						break
 					}
-					commandsDir = path.join(workspaceRoot, ".testcode", "commands") // test-agent_change (was .kilocode)
+					commandsDir = path.join(workspaceRoot, ".testagent", "commands") // test-agent_change (was .kilocode)
 				}
 
 				// Ensure the commands directory exists

@@ -77,12 +77,12 @@ vi.mock("fs/promises", () => ({
 
 // Mock roo-config
 vi.mock("../../roo-config", () => ({
-	getGlobalRooDirectory: () => "/home/user/.testcode",
+	getGlobalRooDirectory: () => "/home/user/.testagent",
 }))
 
 // Mock globalContext
 vi.mock("../../../utils/globalContext", () => ({
-	ensureSettingsDirectoryExists: vi.fn().mockResolvedValue("/home/user/.testcode"),
+	ensureSettingsDirectoryExists: vi.fn().mockResolvedValue("/home/user/.testagent"),
 }))
 
 // Mock yaml
@@ -104,7 +104,7 @@ describe("MarketplaceManager - Skills", () => {
 			const fs = await import("fs/promises")
 
 			// Use path.join for cross-platform compatibility
-			const projectSkillsPath = path.join("/test/workspace", ".testcode", "skills")
+			const projectSkillsPath = path.join("/test/workspace", ".testagent", "skills")
 			const testSkillPath = path.join(projectSkillsPath, "test-skill", "SKILL.md")
 			const anotherSkillPath = path.join(projectSkillsPath, "another-skill", "SKILL.md")
 
@@ -140,7 +140,7 @@ describe("MarketplaceManager - Skills", () => {
 			const fs = await import("fs/promises")
 
 			// Use path.join for cross-platform compatibility
-			const globalSkillsPath = path.join("/home/user/.testcode", "skills")
+			const globalSkillsPath = path.join("/home/user/.testagent", "skills")
 			const globalSkillFilePath = path.join(globalSkillsPath, "global-skill", "SKILL.md")
 
 			// Mock readdir to return skill directories
@@ -171,7 +171,7 @@ describe("MarketplaceManager - Skills", () => {
 			const fs = await import("fs/promises")
 
 			// Use path.join for cross-platform compatibility
-			const projectSkillsPath = path.join("/test/workspace", ".testcode", "skills")
+			const projectSkillsPath = path.join("/test/workspace", ".testagent", "skills")
 			const validSkillPath = path.join(projectSkillsPath, "valid-skill", "SKILL.md")
 
 			// Mock readdir to return skill directories

@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from "react"
-import { Trans } from "react-i18next"
 import { z } from "zod"
 import {
 	VSCodeButton,
 	VSCodeTextField,
 	VSCodeDropdown,
 	VSCodeOption,
-	VSCodeLink,
 	VSCodeCheckbox,
 } from "@vscode/webview-ui-toolkit/react"
 import * as ProgressPrimitive from "@radix-ui/react-progress"
@@ -17,7 +15,6 @@ import { type IndexingStatus, type EmbedderProvider, CODEBASE_INDEX_DEFAULTS } f
 import { vscode } from "@src/utils/vscode"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
-import { buildDocLink } from "@src/utils/docLinks"
 import { cn } from "@src/lib/utils"
 import {
 	Select,
@@ -767,12 +764,13 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 							<h4 className="m-0 pb-2 flex-1">{t("settings:codeIndex.title")}</h4>
 						</div>
 						<p className="my-0 pr-4 text-sm w-full">
-							<Trans i18nKey="settings:codeIndex.description">
+							{/* <Trans i18nKey="settings:codeIndex.description">
 								<VSCodeLink
 									href={buildDocLink("features/codebase-indexing", "settings")}
 									style={{ display: "inline" }}
 								/>
-							</Trans>
+							</Trans> */}
+							{t("settings:codeIndex.description")}
 						</p>
 					</div>
 

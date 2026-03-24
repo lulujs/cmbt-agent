@@ -92,7 +92,7 @@ describe("AgentManagerProvider CLI spawning", () => {
 			WorktreeManager: vi.fn().mockImplementation(() => ({
 				createWorktree: vi.fn().mockResolvedValue({
 					branch: "test-branch-123",
-					path: "/tmp/workspace/.testcode/worktrees/test-branch-123",
+					path: "/tmp/workspace/.testagent/worktrees/test-branch-123",
 					parentBranch: "main",
 				}),
 				commitChanges: vi.fn().mockResolvedValue({ success: true }),
@@ -1131,7 +1131,7 @@ describe("AgentManagerProvider telemetry", () => {
 				WorktreeManager: vi.fn().mockImplementation(() => ({
 					createWorktree: vi.fn().mockResolvedValue({
 						branch: "test-branch-123",
-						path: "/tmp/workspace/.testcode/worktrees/test-branch-123",
+						path: "/tmp/workspace/.testagent/worktrees/test-branch-123",
 						parentBranch: "main",
 					}),
 					commitChanges: vi.fn().mockResolvedValue({ success: true }),
@@ -1269,7 +1269,7 @@ describe("AgentManagerProvider telemetry", () => {
 				WorktreeManager: vi.fn().mockImplementation(() => ({
 					createWorktree: vi.fn().mockResolvedValue({
 						branch: "test-branch-123",
-						path: "/tmp/workspace/.testcode/worktrees/test-branch-123",
+						path: "/tmp/workspace/.testagent/worktrees/test-branch-123",
 						parentBranch: "main",
 					}),
 					commitChanges: vi.fn().mockResolvedValue({ success: true }),
@@ -1403,7 +1403,7 @@ describe("AgentManagerProvider telemetry", () => {
 				WorktreeManager: vi.fn().mockImplementation(() => ({
 					createWorktree: vi.fn().mockResolvedValue({
 						branch: "test-branch-123",
-						path: "/tmp/workspace/.testcode/worktrees/test-branch-123",
+						path: "/tmp/workspace/.testagent/worktrees/test-branch-123",
 						parentBranch: "main",
 					}),
 					commitChanges: vi.fn().mockResolvedValue({ success: true }),

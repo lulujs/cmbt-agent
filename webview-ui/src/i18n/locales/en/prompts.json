@@ -7,7 +7,7 @@
 		"importMode": "Import Mode",
 		"editModesConfig": "Edit modes configuration",
 		"editGlobalModes": "Edit Global Modes",
-		"editProjectModes": "Edit Project Modes (.testcodemodes)",
+		"editProjectModes": "Edit Project Modes (.testagentmodes)",
 		"createModeHelpText": "Modes are specialized personas that tailor Test Agent's behavior. <0>Learn about Using Modes</0> or <1>Customizing Modes.</1>",
 		"selectMode": "Search modes",
 		"noMatchFound": "No modes found"
@@ -55,11 +55,11 @@
 		"title": "Mode-specific Custom Instructions (optional)",
 		"resetToDefault": "Reset to default",
 		"description": "Add behavioral guidelines specific to {{modeName}} mode.",
-		"loadFromFile": "Custom instructions specific to {{mode}} mode can also be loaded from the <span>.testcode/rules-{{slug}}/</span> folder in your workspace or from the global <0>.testcode/rules-{{slug}}/</0> (.testcoderules-{{slug}} and .clinerules-{{slug}} are deprecated and will stop working soon)."
+		"loadFromFile": "Custom instructions specific to {{mode}} mode can also be loaded from the <span>.testagent/rules-{{slug}}/</span> folder in your workspace or from the global <0>.testagent/rules-{{slug}}/</0> (.testagentrules-{{slug}} and .clinerules-{{slug}} are deprecated and will stop working soon)."
 	},
 	"exportMode": {
 		"title": "Export Mode",
-		"description": "Export this mode with rules from the .testcode/rules-{{slug}}/ folder combined into a shareable YAML file. The original files remain unchanged.",
+		"description": "Export this mode with rules from the .testagent/rules-{{slug}}/ folder combined into a shareable YAML file. The original files remain unchanged.",
 		"exporting": "Exporting..."
 	},
 	"importMode": {
@@ -68,11 +68,11 @@
 		"importing": "Importing...",
 		"global": {
 			"label": "Global Level",
-			"description": "Available across all projects. If the exported mode contained rules files, they will be recreated in the global .testcode/rules-{slug}/ folder."
+			"description": "Available across all projects. If the exported mode contained rules files, they will be recreated in the global .testagent/rules-{slug}/ folder."
 		},
 		"project": {
 			"label": "Project Level",
-			"description": "Only available in this workspace. If the exported mode contained rules files, they will be recreated in .testcode/rules-{slug}/ folder."
+			"description": "Only available in this workspace. If the exported mode contained rules files, they will be recreated in .testagent/rules-{slug}/ folder."
 		}
 	},
 	"advanced": {
@@ -81,7 +81,7 @@
 	"globalCustomInstructions": {
 		"title": "Custom Instructions for All Modes",
 		"description": "These instructions apply to all modes. They provide a base set of behaviors that can be enhanced by mode-specific instructions below. <0>Learn more</0>",
-		"loadFromFile": "Instructions can also be loaded from the <span>.testcode/rules/</span> folder in your workspace or from the global <0>.testcode/rules/</0> (.testcoderules and .clinerules are deprecated and will stop working soon)."
+		"loadFromFile": "Instructions can also be loaded from the <span>.testagent/rules/</span> folder in your workspace or from the global <0>.testagent/rules/</0> (.testagentrules and .clinerules are deprecated and will stop working soon)."
 	},
 	"systemPrompt": {
 		"preview": "Preview System Prompt",
@@ -160,7 +160,7 @@
 	},
 	"advancedSystemPrompt": {
 		"title": "Advanced: Override System Prompt",
-		"description": "<2>⚠️ Warning:</2> This advanced feature bypasses safeguards. <1>READ THIS BEFORE USING!</1>Override the default system prompt by creating a file at <span>.testcode/system-prompt-{{slug}}</span>."
+		"description": "<2>⚠️ Warning:</2> This advanced feature bypasses safeguards. <1>READ THIS BEFORE USING!</1>Override the default system prompt by creating a file at <span>.testagent/system-prompt-{{slug}}</span>."
 	},
 	"createModeDialog": {
 		"title": "Create New Mode",
@@ -181,7 +181,7 @@
 				"description": "Available in all workspaces"
 			},
 			"project": {
-				"label": "Project-specific (.testcodemodes)",
+				"label": "Project-specific (.testagentmodes)",
 				"description": "Only available in this workspace, takes precedence over global"
 			}
 		},

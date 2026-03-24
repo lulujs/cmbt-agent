@@ -49,10 +49,10 @@ This tool allows Test Agent to access specialized functionality provided by exte
 MCP servers can be configured globally or at the project level:
 
 - **Global Configuration**: Managed through the Test Agent extension settings in VS Code. These apply across all projects unless overridden.
-- **Project-level Configuration**: Defined in a `.testcode/mcp.json` file within your project's root directory.
+- **Project-level Configuration**: Defined in a `.testagent/mcp.json` file within your project's root directory.
 - This allows project-specific server setups.
 - Project-level servers take precedence over global servers if they share the same name.
-- Since `.testcode/mcp.json` can be committed to version control, it simplifies sharing configurations with your team.
+- Since `.testagent/mcp.json` can be committed to version control, it simplifies sharing configurations with your team.
 
 ## How It Works
 

@@ -26,7 +26,7 @@ import fsSync from "fs" // kilocode_change
  */
 export function getGlobalRooDirectory(): string {
 	const homeDir = os.homedir()
-	const kiloDir = path.join(homeDir, ".testcode") // test-agent_change (was .kilocode)
+	const kiloDir = path.join(homeDir, ".testagent") // test-agent_change (was .kilocode)
 	const rooDir = path.join(homeDir, ".roo") // kilocode_change
 
 	// kilocode_change start: Prefer .kilocode; fallback to legacy .roo for backwards compatibility.
@@ -72,7 +72,7 @@ export function getGlobalRooDirectory(): string {
 export function getProjectRooDirectoryForCwd(cwd: string): string {
 	// kilocode_change start
 	// test-agent_change start
-	const kiloDir = path.join(cwd, ".testcode") // test-agent_change (was .kilocode)
+	const kiloDir = path.join(cwd, ".testagent") // test-agent_change (was .kilocode)
 	const rooDir = path.join(cwd, ".roo")
 	if (fsSync.existsSync(rooDir) && !fsSync.existsSync(kiloDir)) {
 		return rooDir
@@ -187,14 +187,14 @@ export async function discoverSubfolderRooDirectories(cwd: string): Promise<stri
 		// available in the webview context
 		const { executeRipgrep } = await import("../search/file-search")
 
-		// Use ripgrep to find any file inside any .testcode or legacy .roo directory.
+		// Use ripgrep to find any file inside any .testagent or legacy .roo directory.
 		// This efficiently discovers all config folders regardless of their content.
 		const args = [
 			"--files",
 			"--hidden",
 			"--follow",
 			"-g",
-			"**/.testcode/**", // test-agent_change (was .kilocode)
+			"**/.testagent/**", // test-agent_change (was .kilocode)
 			"-g",
 			"**/.roo/**", // kilocode_change (legacy)
 			"-g",
@@ -207,22 +207,22 @@ export async function discoverSubfolderRooDirectories(cwd: string): Promise<stri
 		const results = await executeRipgrep({ args, workspacePath: cwd })
 
 		// Extract unique config directory paths.
-		// Prefer .testcode when both .testcode and .roo exist for the same parent folder.
+		// Prefer .testagent when both .testagent and .roo exist for the same parent folder.
 		const configDirsByParent = new Map<string, string>() // parentDir -> configDir
-		const rootKiloDir = path.join(cwd, ".testcode") // test-agent_change (was .kilocode)
+		const rootKiloDir = path.join(cwd, ".testagent") // test-agent_change (was .kilocode)
 		const rootRooDir = path.join(cwd, ".roo")
 
 		for (const result of results) {
 			// Match paths like:
-			// - "subfolder/.testcode/anything" (preferred)
+			// - "subfolder/.testagent/anything" (preferred)
 			// - "subfolder/.roo/anything" (legacy)
 			// Handle both forward slashes (Unix) and backslashes (Windows)
 			// test-agent_change start
-			const match = result.path.match(/^(.+?)[/\\]\.(testcode|roo)[/\\]/)
+			const match = result.path.match(/^(.+?)[/\\]\.(testagent|roo)[/\\]/)
 			if (!match?.[1] || !match?.[2]) continue
 
 			const parentRel = match[1]
-			const dirName = match[2] as "testcode" | "roo"
+			const dirName = match[2] as "testagent" | "roo"
 			const configDir = path.join(cwd, parentRel, `.${dirName}`)
 			// test-agent_change end
 
@@ -237,9 +237,9 @@ export async function discoverSubfolderRooDirectories(cwd: string): Promise<stri
 				continue
 			}
 
-			// Prefer .testcode over legacy .roo for the same parent folder
+			// Prefer .testagent over legacy .roo for the same parent folder
 			// test-agent_change start
-			if (existing.endsWith(`${path.sep}.roo`) && dirName === "testcode") {
+			if (existing.endsWith(`${path.sep}.roo`) && dirName === "testagent") {
 				configDirsByParent.set(parentRel, configDir)
 			}
 			// test-agent_change end

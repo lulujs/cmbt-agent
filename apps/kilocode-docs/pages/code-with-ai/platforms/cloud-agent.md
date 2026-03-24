@@ -89,10 +89,10 @@ You can customize each Cloud Agent session by also defining env vars and startup
 
 ## Skills
 
-Cloud Agents support project-level [skills](/docs/code-with-ai/platforms/cli#skills) stored in your repository. When your repo is cloned, any skills in `.testcode/skills/` are automatically available.
+Cloud Agents support project-level [skills](/docs/code-with-ai/platforms/cli#skills) stored in your repository. When your repo is cloned, any skills in `.testagent/skills/` are automatically available.
 
 {% callout type="note" %}
-Global skills (`~/.testcode/skills/`) are not available in Cloud Agents since there is no persistent user home directory.
+Global skills (`~/.testagent/skills/`) are not available in Cloud Agents since there is no persistent user home directory.
 {% /callout %}
 
 ## Perfect For

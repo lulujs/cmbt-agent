@@ -224,8 +224,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "YAML inválido en archivo .testcodemodes en línea {{line}}. Verifica:\n• Indentación correcta (usa espacios, no tabs)\n• Comillas y corchetes coincidentes\n• Sintaxis YAML válida",
-			"schemaValidationError": "Formato inválido de modos personalizados en .testcodemodes:\n{{issues}}",
+			"yamlParseError": "YAML inválido en archivo .testagentmodes en línea {{line}}. Verifica:\n• Indentación correcta (usa espacios, no tabs)\n• Comillas y corchetes coincidentes\n• Sintaxis YAML válida",
+			"schemaValidationError": "Formato inválido de modos personalizados en .testagentmodes:\n{{issues}}",
 			"invalidFormat": "Formato inválido de modos personalizados. Asegúrate de que tu configuración siga el formato YAML correcto.",
 			"updateFailed": "Error al actualizar modo personalizado: {{error}}",
 			"deleteFailed": "Error al eliminar modo personalizado: {{error}}",

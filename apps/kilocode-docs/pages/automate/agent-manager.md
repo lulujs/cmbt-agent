@@ -54,14 +54,14 @@ Parallel Mode runs the agent in an isolated Git worktree branch, keeping your ma
 
 ### Worktree Location
 
-Worktrees are created in `.testcode/worktrees/` within your project directory. This folder is automatically excluded from git via `.git/info/exclude` (a local-only ignore file that doesn't require a commit).
+Worktrees are created in `.testagent/worktrees/` within your project directory. This folder is automatically excluded from git via `.git/info/exclude` (a local-only ignore file that doesn't require a commit).
 
 ```
 your-project/
 ├── .git/
 │   └── info/
-│       └── exclude   # local ignore rules (includes .testcode/worktrees/)
-├── .testcode/
+│       └── exclude   # local ignore rules (includes .testagent/worktrees/)
+├── .testagent/
 │   └── worktrees/
 │       └── feature-branch-1234567890/   # isolated working directory
 └── ...

@@ -253,15 +253,15 @@ export async function loadRuleFiles(cwd: string, enableSubfolderRules: boolean =
 	}
 
 	// Fall back to existing behavior for legacy .roorules/.clinerules files
-	const ruleFiles = [".testcoderules", ".roorules", ".clinerules"]
+	const ruleFiles = [".testagentrules", ".roorules", ".clinerules"]
 
 	for (const file of ruleFiles) {
 		const content = await safeReadFile(path.join(cwd, file))
 		if (content) {
-			if (file !== ".testcoderules" && vscodeAPI && !hasShownNonKilocodeRulesMessage) {
-				// kilocode_change: show message to move to .testcode/rules/
+			if (file !== ".testagentrules" && vscodeAPI && !hasShownNonKilocodeRulesMessage) {
+				// kilocode_change: show message to move to .testagent/rules/
 				vscodeAPI.window.showWarningMessage(
-					`Loading non-Kilocode rules from ${file}, consider moving to .testcode/rules/`,
+					`Loading non-Kilocode rules from ${file}, consider moving to .testagent/rules/`,
 				)
 				hasShownNonKilocodeRulesMessage = true
 			} // kilocode_change end
@@ -429,7 +429,7 @@ export async function addCustomInstructions(
 			usedRuleFile = `rules-${mode} directories`
 		} else {
 			// Fall back to existing behavior for legacy files
-			const rooModeRuleFile = `.testcoderules-${mode}`
+			const rooModeRuleFile = `.testagentrules-${mode}`
 			modeRuleContent = await safeReadFile(path.join(cwd, rooModeRuleFile))
 			if (modeRuleContent) {
 				usedRuleFile = rooModeRuleFile
@@ -460,7 +460,7 @@ export async function addCustomInstructions(
 
 	// Add mode-specific rules first if they exist
 	if (modeRuleContent && modeRuleContent.trim()) {
-		if (usedRuleFile.includes(path.join(".testcode", `rules-${mode}`))) {
+		if (usedRuleFile.includes(path.join(".testagent", `rules-${mode}`))) {
 			// test-agent_change (was .kilocode)
 			rules.push(modeRuleContent.trim())
 		} else {
