@@ -193,12 +193,12 @@ Test Agent uses a compatible rules system that supports Cursor and Windsurf patt
 
 **Quick Overview:**
 
-- **Project rules**: `.cursor/rules/*.mdc` → `.kilocode/rules/*.md` (remove YAML frontmatter, keep Markdown content)
-- **Legacy rules**: `.cursorrules` → `.kilocode/rules/legacy-rules.md`
+- **Project rules**: `.cursor/rules/*.mdc` → `.testcode/rules/*.md` (remove YAML frontmatter, keep Markdown content)
+- **Legacy rules**: `.cursorrules` → `.testcode/rules/legacy-rules.md`
 - **AGENTS.md**: Works identically in Test Agent (no conversion needed)
-- **Global rules**: Recreate in `~/.kilocode/rules/*.md` directory
+- **Global rules**: Recreate in `~/.testcode/rules/*.md` directory
 
-Test Agent also supports mode-specific rules (`.kilocode/rules-{mode}/`), which Cursor and Windsurf don't have. This allows different rules for different workflows (e.g., Code mode vs Debug mode).
+Test Agent also supports mode-specific rules (`.testcode/rules-{mode}/`), which Cursor and Windsurf don't have. This allows different rules for different workflows (e.g., Code mode vs Debug mode).
 
 **👉 For detailed step-by-step instructions, format conversion examples, troubleshooting, and advanced migration scenarios, see our [Technical Migration Guide](/docs/getting-started/migrating).**
 

@@ -19,7 +19,7 @@ vi.mock("vscode", () => ({
 
 describe("SetupScriptRunner", () => {
 	const testEnv: SetupScriptEnvironment = {
-		worktreePath: "/test/project/.kilocode/worktrees/feature-branch",
+		worktreePath: "/test/project/.testcode/worktrees/feature-branch",
 		repoPath: "/test/project",
 	}
 
@@ -36,7 +36,7 @@ describe("SetupScriptRunner", () => {
 		}
 		mockSetupScriptService = {
 			hasScript: vi.fn(),
-			getScriptPath: vi.fn().mockReturnValue("/test/project/.kilocode/setup-script"),
+			getScriptPath: vi.fn().mockReturnValue("/test/project/.testcode/setup-script"),
 		}
 		runner = new SetupScriptRunner(
 			mockOutputChannel as unknown as vscode.OutputChannel,

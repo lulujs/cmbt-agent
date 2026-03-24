@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "Incloure fitxers protegits",
-				"description": "Permetre a Test Agent crear i editar fitxers protegits (com .testcodeignore i fitxers de configuració .kilocode/) sense requerir aprovació."
+				"description": "Permetre a Test Agent crear i editar fitxers protegits (com .testcodeignore i fitxers de configuració .testcode/) sense requerir aprovació."
 			}
 		},
 		"browser": {
@@ -1036,9 +1036,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Habilitar eines personalitzades",
-			"description": "Quan està habilitat, Kilo pot carregar i utilitzar eines TypeScript/JavaScript personalitzades des del directori .kilocode/tools del vostre projecte o ~/.kilocode/tools per a eines globals. Nota: aquestes eines s'aprovaran automàticament.",
+			"description": "Quan està habilitat, Kilo pot carregar i utilitzar eines TypeScript/JavaScript personalitzades des del directori .testcode/tools del vostre projecte o ~/.testcode/tools per a eines globals. Nota: aquestes eines s'aprovaran automàticament.",
 			"toolsHeader": "Eines personalitzades disponibles",
-			"noTools": "No s'han carregat eines personalitzades. Afegiu fitxers .ts o .js al directori .kilocode/tools del vostre projecte o ~/.kilocode/tools per a eines globals.",
+			"noTools": "No s'han carregat eines personalitzades. Afegiu fitxers .ts o .js al directori .testcode/tools del vostre projecte o ~/.testcode/tools per a eines globals.",
 			"refreshButton": "Actualitzar",
 			"refreshing": "Actualitzant...",
 			"refreshSuccess": "Eines actualitzades correctament",

@@ -109,11 +109,11 @@ pnpm check-types      # TypeScript type checking
 
 ## Skills
 
-- **Translation**: `.kilocode/skills/translation/SKILL.md` - Translation and localization guidelines
+- **Translation**: `.testcode/skills/translation/SKILL.md` - Translation and localization guidelines
 
 ## Workflows
 
-- **Add Missing Translations**: `.kilocode/workflows/add-missing-translations.md` - Run `/add-missing-translations` to find and fix missing translations
+- **Add Missing Translations**: `.testcode/workflows/add-missing-translations.md` - Run `/add-missing-translations` to find and fix missing translations
 
 ## Changesets
 

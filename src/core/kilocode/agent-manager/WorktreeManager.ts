@@ -2,7 +2,7 @@
  * WorktreeManager - Manages git worktrees for agent sessions
  *
  * Handles creation, discovery, commit, and cleanup of worktrees
- * stored in {projectRoot}/.kilocode/worktrees/
+ * stored in {projectRoot}/.testcode/worktrees/
  */
 
 import * as vscode from "vscode"
@@ -15,7 +15,7 @@ export interface WorktreeInfo {
 	path: string
 	parentBranch: string
 	createdAt: number
-	sessionId?: string // Session ID from .kilocode/session-id file, if present
+	sessionId?: string // Session ID from .testcode/session-id file, if present
 }
 
 export interface CreateWorktreeResult {
@@ -224,7 +224,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Discover existing worktrees in .kilocode/worktrees/
+	 * Discover existing worktrees in .testcode/worktrees/
 	 */
 	async discoverWorktrees(): Promise<WorktreeInfo[]> {
 		if (!fs.existsSync(this.worktreesDir)) {
@@ -282,7 +282,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Write a session ID to the worktree's .kilocode/session-id file.
+	 * Write a session ID to the worktree's .testcode/session-id file.
 	 * This creates a mapping between the worktree and its associated session,
 	 * enabling session recovery after extension restarts.
 	 */
@@ -298,12 +298,12 @@ export class WorktreeManager {
 		await fs.promises.writeFile(sessionIdPath, sessionId, "utf-8")
 		this.log(`Wrote session ID ${sessionId} to ${sessionIdPath}`)
 
-		// Ensure .kilocode/ is excluded from git in the worktree
+		// Ensure .testcode/ is excluded from git in the worktree
 		await this.ensureWorktreeGitExclude(worktreePath)
 	}
 
 	/**
-	 * Read the session ID from a worktree's .kilocode/session-id file.
+	 * Read the session ID from a worktree's .testcode/session-id file.
 	 * Returns undefined if the file doesn't exist or can't be read.
 	 */
 	async readSessionId(worktreePath: string): Promise<string | undefined> {
@@ -340,7 +340,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Ensure .kilocode/ directory is excluded from git within a worktree.
+	 * Ensure .testcode/ directory is excluded from git within a worktree.
 	 * This prevents the session-id file from being committed.
 	 *
 	 * Git worktrees share the main repository's .git/info/exclude file,
@@ -390,7 +390,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Ensure .kilocode/worktrees/ directory exists
+	 * Ensure .testcode/worktrees/ directory exists
 	 */
 	private async ensureWorktreesDir(): Promise<void> {
 		if (!fs.existsSync(this.worktreesDir)) {
@@ -400,7 +400,7 @@ export class WorktreeManager {
 	}
 
 	/**
-	 * Ensure .kilocode/worktrees/ is excluded from git using .git/info/exclude.
+	 * Ensure .testcode/worktrees/ is excluded from git using .git/info/exclude.
 	 * This avoids modifying the user's .gitignore file which would require a commit.
 	 */
 	async ensureGitExclude(): Promise<void> {
@@ -425,7 +425,7 @@ export class WorktreeManager {
 		const excludeEntry = `${addition}\n# Test Agent agent worktrees\n${entry}\n`
 
 		await fs.promises.appendFile(excludePath, excludeEntry)
-		this.log("Added .kilocode/worktrees/ to .git/info/exclude")
+		this.log("Added .testcode/worktrees/ to .git/info/exclude")
 	}
 
 	/**

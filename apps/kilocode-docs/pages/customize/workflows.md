@@ -11,10 +11,10 @@ Workflows automate repetitive tasks by defining step-by-step instructions for Te
 
 ## Creating Workflows
 
-Workflows are markdown files stored in `.kilocode/workflows/`:
+Workflows are markdown files stored in `.testcode/workflows/`:
 
-- **Global workflows**: `~/.kilocode/workflows/` (available in all projects)
-- **Project workflows**: `[project]/.kilocode/workflows/` (project-specific)
+- **Global workflows**: `~/.testcode/workflows/` (available in all projects)
+- **Project workflows**: `[project]/.testcode/workflows/` (project-specific)
 
 ### Basic Setup
 
@@ -66,7 +66,7 @@ Workflows can leverage:
 
 Let's walk through creating a workflow for submitting a pull request. This workflow handles the entire process from code review to deployment notification.
 
-Create a file called `submit-pr.md` in your `.kilocode/workflows` directory:
+Create a file called `submit-pr.md` in your `.testcode/workflows` directory:
 
 ```markdown
 # Submit PR Workflow

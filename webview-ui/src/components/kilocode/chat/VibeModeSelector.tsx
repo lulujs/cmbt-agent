@@ -106,7 +106,7 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 						</ul>
 					) : (
 						<ul className="m-0 pl-4 space-y-0.5 list-disc">
-							<li>对功能进行深度思考与梳理</li>
+							<li>为对话准备模板</li>
 							<li>需要前期规划的项目</li>
 							<li>以结构化方式开发功能</li>
 						</ul>

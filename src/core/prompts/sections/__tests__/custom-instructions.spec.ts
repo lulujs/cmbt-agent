@@ -88,7 +88,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should read and trim file content", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockResolvedValue("  content with spaces  ")
 		const result = await loadRuleFiles("/fake/path")
@@ -97,7 +97,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should handle ENOENT error", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
 		const result = await loadRuleFiles("/fake/path")
@@ -105,7 +105,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should handle EISDIR error", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockRejectedValue({ code: "EISDIR" })
 		const result = await loadRuleFiles("/fake/path")
@@ -113,7 +113,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should throw on unexpected errors", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		const error = new Error("Permission denied") as NodeJS.ErrnoException
 		error.code = "EPERM"
@@ -125,7 +125,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should not combine content from multiple rule files when they exist", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockImplementation((filePath: PathLike) => {
 			if (filePath.toString().endsWith(".testcoderules")) {
@@ -142,7 +142,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should handle when no rule files exist", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
 
@@ -151,7 +151,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should skip directories with same name as rule files", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 		readFileMock.mockImplementation((filePath: PathLike) => {
 			if (filePath.toString().endsWith(".testcoderules")) {
@@ -167,8 +167,8 @@ describe("loadRuleFiles", () => {
 		expect(result).toBe("")
 	})
 
-	it("should use .kilocode/rules/ directory when it exists and has files", async () => {
-		// Simulate .kilocode/rules directory exists
+	it("should use .testcode/rules/ directory when it exists and has files", async () => {
+		// Simulate .testcode/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: vi.fn().mockReturnValue(true),
 		} as any)
@@ -179,13 +179,13 @@ describe("loadRuleFiles", () => {
 				name: "file1.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.testcode/rules",
 			},
 			{
 				name: "file2.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.testcode/rules",
 			},
 		] as any)
 
@@ -193,8 +193,8 @@ describe("loadRuleFiles", () => {
 			// Handle both Unix and Windows path separators
 			const normalizedPath = path.toString().replace(/\\/g, "/")
 			if (
-				normalizedPath.includes("/fake/path/.kilocode/rules/file1.txt") ||
-				normalizedPath.includes("/fake/path/.kilocode/rules/file2.txt")
+				normalizedPath.includes("/fake/path/.testcode/rules/file1.txt") ||
+				normalizedPath.includes("/fake/path/.testcode/rules/file2.txt")
 			) {
 				return Promise.resolve({
 					isFile: vi.fn().mockReturnValue(true),
@@ -209,10 +209,10 @@ describe("loadRuleFiles", () => {
 			const pathStr = filePath.toString()
 			// Handle both Unix and Windows path separators
 			const normalizedPath = pathStr.replace(/\\/g, "/")
-			if (normalizedPath === "/fake/path/.kilocode/rules/file1.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/file1.txt") {
 				return Promise.resolve("content of file1")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/rules/file2.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/file2.txt") {
 				return Promise.resolve("content of file2")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -221,9 +221,9 @@ describe("loadRuleFiles", () => {
 		const result = await loadRuleFiles("/fake/path")
 		// Paths in output should be relative to cwd
 		const expectedRelativePath1 =
-			process.platform === "win32" ? ".kilocode\\rules\\file1.txt" : ".kilocode/rules/file1.txt"
+			process.platform === "win32" ? ".kilocode\\rules\\file1.txt" : ".testcode/rules/file1.txt"
 		const expectedRelativePath2 =
-			process.platform === "win32" ? ".kilocode\\rules\\file2.txt" : ".kilocode/rules/file2.txt"
+			process.platform === "win32" ? ".kilocode\\rules\\file2.txt" : ".testcode/rules/file2.txt"
 		expect(result).toContain(`# Rules from ${expectedRelativePath1}:`)
 		expect(result).toContain("content of file1")
 		expect(result).toContain(`# Rules from ${expectedRelativePath2}:`)
@@ -232,15 +232,15 @@ describe("loadRuleFiles", () => {
 		// We expect both checks because our new implementation checks the files again for validation
 		// These are the absolute paths used internally
 		const expectedRulesDir =
-			process.platform === "win32" ? "\\fake\\path\\.kilocode\\rules" : "/fake/path/.kilocode/rules"
+			process.platform === "win32" ? "\\fake\\path\\.kilocode\\rules" : "/fake/path/.testcode/rules"
 		const expectedFile1Path =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules\\file1.txt"
-				: "/fake/path/.kilocode/rules/file1.txt"
+				: "/fake/path/.testcode/rules/file1.txt"
 		const expectedFile2Path =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules\\file2.txt"
-				: "/fake/path/.kilocode/rules/file2.txt"
+				: "/fake/path/.testcode/rules/file2.txt"
 
 		expect(statMock).toHaveBeenCalledWith(expectedRulesDir)
 		expect(statMock).toHaveBeenCalledWith(expectedFile1Path)
@@ -449,8 +449,8 @@ describe("loadRuleFiles", () => {
 		}
 	})
 
-	it("should fall back to .testcoderules when .kilocode/rules/ is empty", async () => {
-		// Simulate .kilocode/rules directory exists
+	it("should fall back to .testcoderules when .testcode/rules/ is empty", async () => {
+		// Simulate .testcode/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: vi.fn().mockReturnValue(true),
 		} as any)
@@ -471,7 +471,7 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should handle errors when reading directory", async () => {
-		// Simulate .kilocode/rules directory exists
+		// Simulate .testcode/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: vi.fn().mockReturnValue(true),
 		} as any)
@@ -491,8 +491,8 @@ describe("loadRuleFiles", () => {
 		expect(result).toBe("\n# Rules from .testcoderules:\nroo rules content\n")
 	})
 
-	it("should read files from nested subdirectories in .kilocode/rules/", async () => {
-		// Simulate .kilocode/rules directory exists
+	it("should read files from nested subdirectories in .testcode/rules/", async () => {
+		// Simulate .testcode/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: vi.fn().mockReturnValue(true),
 		} as any)
@@ -504,28 +504,28 @@ describe("loadRuleFiles", () => {
 				isFile: () => false,
 				isSymbolicLink: () => false,
 				isDirectory: () => true,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.testcode/rules",
 			},
 			{
 				name: "root.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
 				isDirectory: () => false,
-				parentPath: "/fake/path/.kilocode/rules",
+				parentPath: "/fake/path/.testcode/rules",
 			},
 			{
 				name: "nested1.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
 				isDirectory: () => false,
-				parentPath: "/fake/path/.kilocode/rules/subdir",
+				parentPath: "/fake/path/.testcode/rules/subdir",
 			},
 			{
 				name: "nested2.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
 				isDirectory: () => false,
-				parentPath: "/fake/path/.kilocode/rules/subdir/subdir2",
+				parentPath: "/fake/path/.testcode/rules/subdir/subdir2",
 			},
 		] as any)
 
@@ -548,13 +548,13 @@ describe("loadRuleFiles", () => {
 			const pathStr = filePath.toString()
 			// Handle both Unix and Windows path separators
 			const normalizedPath = pathStr.replace(/\\/g, "/")
-			if (normalizedPath === "/fake/path/.kilocode/rules/root.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/root.txt") {
 				return Promise.resolve("root file content")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/rules/subdir/nested1.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/subdir/nested1.txt") {
 				return Promise.resolve("nested file 1 content")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/rules/subdir/subdir2/nested2.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/subdir/subdir2/nested2.txt") {
 				return Promise.resolve("nested file 2 content")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -564,15 +564,15 @@ describe("loadRuleFiles", () => {
 
 		// Check root file content - paths in output should be relative
 		const expectedRelativeRootPath =
-			process.platform === "win32" ? ".kilocode\\rules\\root.txt" : ".kilocode/rules/root.txt"
+			process.platform === "win32" ? ".kilocode\\rules\\root.txt" : ".testcode/rules/root.txt"
 		const expectedRelativeNested1Path =
 			process.platform === "win32"
 				? ".kilocode\\rules\\subdir\\nested1.txt"
-				: ".kilocode/rules/subdir/nested1.txt"
+				: ".testcode/rules/subdir/nested1.txt"
 		const expectedRelativeNested2Path =
 			process.platform === "win32"
 				? ".kilocode\\rules\\subdir\\subdir2\\nested2.txt"
-				: ".kilocode/rules/subdir/subdir2/nested2.txt"
+				: ".testcode/rules/subdir/subdir2/nested2.txt"
 
 		expect(result).toContain(`# Rules from ${expectedRelativeRootPath}:`)
 		expect(result).toContain("root file content")
@@ -587,15 +587,15 @@ describe("loadRuleFiles", () => {
 		const expectedRootPath2 =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules\\root.txt"
-				: "/fake/path/.kilocode/rules/root.txt"
+				: "/fake/path/.testcode/rules/root.txt"
 		const expectedNested1Path2 =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules\\subdir\\nested1.txt"
-				: "/fake/path/.kilocode/rules/subdir/nested1.txt"
+				: "/fake/path/.testcode/rules/subdir/nested1.txt"
 		const expectedNested2Path2 =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules\\subdir\\subdir2\\nested2.txt"
-				: "/fake/path/.kilocode/rules/subdir/subdir2/nested2.txt"
+				: "/fake/path/.testcode/rules/subdir/subdir2/nested2.txt"
 
 		expect(statMock).toHaveBeenCalledWith(expectedRootPath2)
 		expect(statMock).toHaveBeenCalledWith(expectedNested1Path2)
@@ -614,7 +614,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should combine all instruction types when provided", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .testcode/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockResolvedValue("mode specific rules")
@@ -1040,7 +1040,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should return empty string when no instructions provided", async () => {
-		// Simulate no .kilocode/rules directory
+		// Simulate no .testcode/rules directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
@@ -1050,7 +1050,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should handle missing mode-specific rules file", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .testcode/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
@@ -1068,7 +1068,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should handle unknown language codes properly", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .testcode/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockRejectedValue({ code: "ENOENT" })
@@ -1087,7 +1087,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should throw on unexpected errors", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .testcode/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		const error = new Error("Permission denied") as NodeJS.ErrnoException
@@ -1100,7 +1100,7 @@ describe("addCustomInstructions", () => {
 	})
 
 	it("should skip mode-specific rule files that are directories", async () => {
-		// Simulate no .kilocode/rules-test-mode directory
+		// Simulate no .testcode/rules-test-mode directory
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		readFileMock.mockImplementation((filePath: PathLike) => {
@@ -1122,8 +1122,8 @@ describe("addCustomInstructions", () => {
 		expect(result).not.toContain("Rules from .clinerules-test-mode")
 	})
 
-	it("should use .kilocode/rules-test-mode/ directory when it exists and has files", async () => {
-		// Simulate .kilocode/rules-test-mode directory exists
+	it("should use .testcode/rules-test-mode/ directory when it exists and has files", async () => {
+		// Simulate .testcode/rules-test-mode directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: vi.fn().mockReturnValue(true),
 		} as any)
@@ -1134,13 +1134,13 @@ describe("addCustomInstructions", () => {
 				name: "rule1.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules-test-mode",
+				parentPath: "/fake/path/.testcode/rules-test-mode",
 			},
 			{
 				name: "rule2.txt",
 				isFile: () => true,
 				isSymbolicLink: () => false,
-				parentPath: "/fake/path/.kilocode/rules-test-mode",
+				parentPath: "/fake/path/.testcode/rules-test-mode",
 			},
 		] as any)
 
@@ -1148,8 +1148,8 @@ describe("addCustomInstructions", () => {
 			// Handle both Unix and Windows path separators
 			const normalizedPath = path.toString().replace(/\\/g, "/")
 			if (
-				normalizedPath.includes("/fake/path/.kilocode/rules-test-mode/rule1.txt") ||
-				normalizedPath.includes("/fake/path/.kilocode/rules-test-mode/rule2.txt")
+				normalizedPath.includes("/fake/path/.testcode/rules-test-mode/rule1.txt") ||
+				normalizedPath.includes("/fake/path/.testcode/rules-test-mode/rule2.txt")
 			) {
 				return Promise.resolve({
 					isFile: vi.fn().mockReturnValue(true),
@@ -1164,10 +1164,10 @@ describe("addCustomInstructions", () => {
 			const pathStr = filePath.toString()
 			// Handle both Unix and Windows path separators
 			const normalizedPath = pathStr.replace(/\\/g, "/")
-			if (normalizedPath === "/fake/path/.kilocode/rules-test-mode/rule1.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules-test-mode/rule1.txt") {
 				return Promise.resolve("mode specific rule 1")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/rules-test-mode/rule2.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules-test-mode/rule2.txt") {
 				return Promise.resolve("mode specific rule 2")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -1185,11 +1185,11 @@ describe("addCustomInstructions", () => {
 		const expectedRelativeRule1Path =
 			process.platform === "win32"
 				? ".kilocode\\rules-test-mode\\rule1.txt"
-				: ".kilocode/rules-test-mode/rule1.txt"
+				: ".testcode/rules-test-mode/rule1.txt"
 		const expectedRelativeRule2Path =
 			process.platform === "win32"
 				? ".kilocode\\rules-test-mode\\rule2.txt"
-				: ".kilocode/rules-test-mode/rule2.txt"
+				: ".testcode/rules-test-mode/rule2.txt"
 
 		expect(result).toContain(`# Rules from ${expectedRelativeRule1Path}:`)
 		expect(result).toContain("mode specific rule 1")
@@ -1200,15 +1200,15 @@ describe("addCustomInstructions", () => {
 		const expectedAbsTestModeDir =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules-test-mode"
-				: "/fake/path/.kilocode/rules-test-mode"
+				: "/fake/path/.testcode/rules-test-mode"
 		const expectedAbsRule1Path =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules-test-mode\\rule1.txt"
-				: "/fake/path/.kilocode/rules-test-mode/rule1.txt"
+				: "/fake/path/.testcode/rules-test-mode/rule1.txt"
 		const expectedAbsRule2Path =
 			process.platform === "win32"
 				? "\\fake\\path\\.kilocode\\rules-test-mode\\rule2.txt"
-				: "/fake/path/.kilocode/rules-test-mode/rule2.txt"
+				: "/fake/path/.testcode/rules-test-mode/rule2.txt"
 
 		expect(statMock).toHaveBeenCalledWith(expectedAbsTestModeDir)
 		expect(statMock).toHaveBeenCalledWith(expectedAbsRule1Path)
@@ -1217,8 +1217,8 @@ describe("addCustomInstructions", () => {
 		expect(readFileMock).toHaveBeenCalledWith(expectedAbsRule2Path, "utf-8")
 	})
 
-	it("should fall back to .testcoderules-test-mode when .kilocode/rules-test-mode/ does not exist", async () => {
-		// Simulate .kilocode/rules-test-mode directory does not exist
+	it("should fall back to .testcoderules-test-mode when .testcode/rules-test-mode/ does not exist", async () => {
+		// Simulate .testcode/rules-test-mode directory does not exist
 		statMock.mockRejectedValueOnce({ code: "ENOENT" })
 
 		// Simulate .testcoderules-test-mode exists
@@ -1239,12 +1239,12 @@ describe("addCustomInstructions", () => {
 		expect(result).toContain("Rules from .testcoderules-test-mode:\nmode specific rules from file")
 	})
 
-	it("should correctly format content from directories when using .kilocode/rules-test-mode/", async () => {
+	it("should correctly format content from directories when using .testcode/rules-test-mode/", async () => {
 		// Need to reset mockImplementation first to avoid interference from previous tests
 		statMock.mockReset()
 		readFileMock.mockReset()
 
-		// Simulate .kilocode/rules-test-mode directory exists
+		// Simulate .testcode/rules-test-mode directory exists
 		statMock.mockImplementationOnce(() =>
 			Promise.resolve({
 				isDirectory: vi.fn().mockReturnValue(true),
@@ -1253,7 +1253,7 @@ describe("addCustomInstructions", () => {
 
 		// Simulate directory has files
 		readdirMock.mockResolvedValueOnce([
-			{ name: "rule1.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules-test-mode" },
+			{ name: "rule1.txt", isFile: () => true, parentPath: "/fake/path/.testcode/rules-test-mode" },
 		] as any)
 		readFileMock.mockReset()
 
@@ -1263,7 +1263,7 @@ describe("addCustomInstructions", () => {
 			statCallCount++
 			// Handle both Unix and Windows path separators
 			const normalizedPath = filePath.toString().replace(/\\/g, "/")
-			if (normalizedPath === "/fake/path/.kilocode/rules-test-mode/rule1.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules-test-mode/rule1.txt") {
 				return Promise.resolve({
 					isFile: vi.fn().mockReturnValue(true),
 					isDirectory: vi.fn().mockReturnValue(false),
@@ -1279,7 +1279,7 @@ describe("addCustomInstructions", () => {
 			const pathStr = filePath.toString()
 			// Handle both Unix and Windows path separators
 			const normalizedPath = pathStr.replace(/\\/g, "/")
-			if (normalizedPath === "/fake/path/.kilocode/rules-test-mode/rule1.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules-test-mode/rule1.txt") {
 				return Promise.resolve("mode specific rule content")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -1296,7 +1296,7 @@ describe("addCustomInstructions", () => {
 		const expectedRelativeRule1Path =
 			process.platform === "win32"
 				? ".kilocode\\rules-test-mode\\rule1.txt"
-				: ".kilocode/rules-test-mode/rule1.txt"
+				: ".testcode/rules-test-mode/rule1.txt"
 
 		expect(result).toContain(`# Rules from ${expectedRelativeRule1Path}:`)
 		expect(result).toContain("mode specific rule content")
@@ -1327,7 +1327,7 @@ describe("Directory existence checks", () => {
 
 		// Verify stat was called to check directory existence
 		const expectedRulesDir =
-			process.platform === "win32" ? "\\fake\\path\\.kilocode\\rules" : "/fake/path/.kilocode/rules"
+			process.platform === "win32" ? "\\fake\\path\\.kilocode\\rules" : "/fake/path/.testcode/rules"
 		expect(statMock).toHaveBeenCalledWith(expectedRulesDir)
 	})
 
@@ -1360,32 +1360,32 @@ describe("Rules directory reading", () => {
 					name: "regular.txt",
 					isFile: () => true,
 					isSymbolicLink: () => false,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.testcode/rules",
 				},
 				{
 					name: "link.txt",
 					isFile: () => false,
 					isSymbolicLink: () => true,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.testcode/rules",
 				},
 				{
 					name: "link_dir",
 					isFile: () => false,
 					isSymbolicLink: () => true,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.testcode/rules",
 				},
 				{
 					name: "nested_link.txt",
 					isFile: () => false,
 					isSymbolicLink: () => true,
-					parentPath: "/fake/path/.kilocode/rules",
+					parentPath: "/fake/path/.testcode/rules",
 				},
 			] as any)
 			.mockResolvedValueOnce([
 				{
 					name: "subdir_link.txt",
 					isFile: () => true,
-					parentPath: "/fake/path/.kilocode/rules/symlink-target-dir",
+					parentPath: "/fake/path/.testcode/rules/symlink-target-dir",
 				},
 			] as any)
 
@@ -1400,7 +1400,7 @@ describe("Rules directory reading", () => {
 		statMock.mockReset()
 		statMock.mockImplementation((path: string) => {
 			// For directory check
-			if (path === "/fake/path/.kilocode/rules" || path.endsWith("dir")) {
+			if (path === "/fake/path/.testcode/rules" || path.endsWith("dir")) {
 				return Promise.resolve({
 					isDirectory: vi.fn().mockReturnValue(true),
 					isFile: vi.fn().mockReturnValue(false),
@@ -1428,16 +1428,16 @@ describe("Rules directory reading", () => {
 			const pathStr = filePath.toString()
 			// Handle both Unix and Windows path separators
 			const normalizedPath = pathStr.replace(/\\/g, "/")
-			if (normalizedPath === "/fake/path/.kilocode/rules/regular.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/regular.txt") {
 				return Promise.resolve("regular file content")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/symlink-target.txt") {
+			if (normalizedPath === "/fake/path/.testcode/symlink-target.txt") {
 				return Promise.resolve("symlink target content")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/rules/symlink-target-dir/subdir_link.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/symlink-target-dir/subdir_link.txt") {
 				return Promise.resolve("regular file content under symlink target dir")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/nested-symlink-target.txt") {
+			if (normalizedPath === "/fake/path/.testcode/nested-symlink-target.txt") {
 				return Promise.resolve("nested symlink target content")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -1447,17 +1447,17 @@ describe("Rules directory reading", () => {
 
 		// Verify both regular file and symlink target content are included (paths should be relative)
 		const expectedRelativeRegularPath =
-			process.platform === "win32" ? ".kilocode\\rules\\regular.txt" : ".kilocode/rules/regular.txt"
+			process.platform === "win32" ? ".kilocode\\rules\\regular.txt" : ".testcode/rules/regular.txt"
 		const expectedRelativeSymlinkPath =
-			process.platform === "win32" ? ".kilocode\\symlink-target.txt" : ".kilocode/symlink-target.txt"
+			process.platform === "win32" ? ".kilocode\\symlink-target.txt" : ".testcode/symlink-target.txt"
 		const expectedRelativeSubdirPath =
 			process.platform === "win32"
 				? ".kilocode\\rules\\symlink-target-dir\\subdir_link.txt"
-				: ".kilocode/rules/symlink-target-dir/subdir_link.txt"
+				: ".testcode/rules/symlink-target-dir/subdir_link.txt"
 		const expectedRelativeNestedPath =
 			process.platform === "win32"
 				? ".kilocode\\nested-symlink-target.txt"
-				: ".kilocode/nested-symlink-target.txt"
+				: ".testcode/nested-symlink-target.txt"
 
 		expect(result).toContain(`# Rules from ${expectedRelativeRegularPath}:`)
 		expect(result).toContain("regular file content")
@@ -1469,17 +1469,17 @@ describe("Rules directory reading", () => {
 		expect(result).toContain("nested symlink target content")
 
 		// Verify readlink was called with the symlink path
-		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/link.txt")
-		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/link_dir")
+		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.testcode/rules/link.txt")
+		expect(readlinkMock).toHaveBeenCalledWith("/fake/path/.testcode/rules/link_dir")
 
 		// Verify both files were read
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/rules/regular.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/symlink-target.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.testcode/rules/regular.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.testcode/symlink-target.txt", "utf-8")
 		expect(readFileMock).toHaveBeenCalledWith(
-			"/fake/path/.kilocode/rules/symlink-target-dir/subdir_link.txt",
+			"/fake/path/.testcode/rules/symlink-target-dir/subdir_link.txt",
 			"utf-8",
 		)
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.kilocode/nested-symlink-target.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.testcode/nested-symlink-target.txt", "utf-8")
 	})
 	beforeEach(() => {
 		vi.clearAllMocks()
@@ -1493,18 +1493,18 @@ describe("Rules directory reading", () => {
 
 		// Simulate listing files
 		readdirMock.mockResolvedValueOnce([
-			{ name: "file1.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules" },
-			{ name: "file2.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules" },
-			{ name: "file3.txt", isFile: () => true, parentPath: "/fake/path/.kilocode/rules" },
+			{ name: "file1.txt", isFile: () => true, parentPath: "/fake/path/.testcode/rules" },
+			{ name: "file2.txt", isFile: () => true, parentPath: "/fake/path/.testcode/rules" },
+			{ name: "file3.txt", isFile: () => true, parentPath: "/fake/path/.testcode/rules" },
 		] as any)
 
 		statMock.mockImplementation((path) => {
 			// Handle both Unix and Windows path separators
 			const normalizedPath = path.toString().replace(/\\/g, "/")
 			expect([
-				"/fake/path/.kilocode/rules/file1.txt",
-				"/fake/path/.kilocode/rules/file2.txt",
-				"/fake/path/.kilocode/rules/file3.txt",
+				"/fake/path/.testcode/rules/file1.txt",
+				"/fake/path/.testcode/rules/file2.txt",
+				"/fake/path/.testcode/rules/file3.txt",
 			]).toContain(normalizedPath)
 
 			return Promise.resolve({
@@ -1516,13 +1516,13 @@ describe("Rules directory reading", () => {
 			const pathStr = filePath.toString()
 			// Handle both Unix and Windows path separators
 			const normalizedPath = pathStr.replace(/\\/g, "/")
-			if (normalizedPath === "/fake/path/.kilocode/rules/file1.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/file1.txt") {
 				return Promise.resolve("content of file1")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/rules/file2.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/file2.txt") {
 				return Promise.resolve("content of file2")
 			}
-			if (normalizedPath === "/fake/path/.kilocode/rules/file3.txt") {
+			if (normalizedPath === "/fake/path/.testcode/rules/file3.txt") {
 				return Promise.resolve("content of file3")
 			}
 			return Promise.reject({ code: "ENOENT" })
@@ -1532,11 +1532,11 @@ describe("Rules directory reading", () => {
 
 		// Paths in output should be relative
 		const expectedRelativeFile1Path =
-			process.platform === "win32" ? ".kilocode\\rules\\file1.txt" : ".kilocode/rules/file1.txt"
+			process.platform === "win32" ? ".kilocode\\rules\\file1.txt" : ".testcode/rules/file1.txt"
 		const expectedRelativeFile2Path =
-			process.platform === "win32" ? ".kilocode\\rules\\file2.txt" : ".kilocode/rules/file2.txt"
+			process.platform === "win32" ? ".kilocode\\rules\\file2.txt" : ".testcode/rules/file2.txt"
 		const expectedRelativeFile3Path =
-			process.platform === "win32" ? ".kilocode\\rules\\file3.txt" : ".kilocode/rules/file3.txt"
+			process.platform === "win32" ? ".kilocode\\rules\\file3.txt" : ".testcode/rules/file3.txt"
 
 		expect(result).toContain(`# Rules from ${expectedRelativeFile1Path}:`)
 		expect(result).toContain("content of file1")
@@ -1697,7 +1697,7 @@ describe("Rules directory reading", () => {
 	})
 
 	it("should handle empty file list gracefully", async () => {
-		// Simulate .kilocode/rules directory exists
+		// Simulate .testcode/rules directory exists
 		statMock.mockResolvedValueOnce({
 			isDirectory: vi.fn().mockReturnValue(true),
 		} as any)

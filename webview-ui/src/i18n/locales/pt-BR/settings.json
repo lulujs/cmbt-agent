@@ -223,7 +223,7 @@
 			},
 			"protected": {
 				"label": "Incluir arquivos protegidos",
-				"description": "Permitir que o Test Agent crie e edite arquivos protegidos (como .testcodeignore e arquivos de configuração .kilocode/) sem exigir aprovação."
+				"description": "Permitir que o Test Agent crie e edite arquivos protegidos (como .testcodeignore e arquivos de configuração .testcode/) sem exigir aprovação."
 			}
 		},
 		"browser": {
@@ -1037,9 +1037,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Ativar ferramentas personalizadas",
-			"description": "Quando habilitado, o Kilo pode carregar e usar ferramentas TypeScript/JavaScript personalizadas do diretório .kilocode/tools do seu projeto ou ~/.kilocode/tools para ferramentas globais. Nota: estas ferramentas serão aprovadas automaticamente.",
+			"description": "Quando habilitado, o Kilo pode carregar e usar ferramentas TypeScript/JavaScript personalizadas do diretório .testcode/tools do seu projeto ou ~/.testcode/tools para ferramentas globais. Nota: estas ferramentas serão aprovadas automaticamente.",
 			"toolsHeader": "Ferramentas Personalizadas Disponíveis",
-			"noTools": "Nenhuma ferramenta personalizada carregada. Adicione arquivos .ts ou .js ao diretório .kilocode/tools do seu projeto ou ~/.kilocode/tools para ferramentas globais.",
+			"noTools": "Nenhuma ferramenta personalizada carregada. Adicione arquivos .ts ou .js ao diretório .testcode/tools do seu projeto ou ~/.testcode/tools para ferramentas globais.",
 			"refreshButton": "Atualizar",
 			"refreshing": "Atualizando...",
 			"refreshSuccess": "Ferramentas atualizadas com sucesso",

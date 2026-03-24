@@ -51,7 +51,7 @@ export function getSystemPromptFilePath(cwd: string, mode: Mode): string {
 }
 
 /**
- * Loads custom system prompt from a file at .kilocode/system-prompt-[mode slug]
+ * Loads custom system prompt from a file at .testcode/system-prompt-[mode slug]
  * If the file doesn't exist, returns an empty string
  */
 export async function loadSystemPromptFile(cwd: string, mode: Mode, variables: PromptVariables): Promise<string> {

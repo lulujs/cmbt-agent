@@ -16,7 +16,7 @@ Legacy Memory Bank status indicators such as `[Memory Bank: Active]` and `[Memor
 
 If you'd like to migrate your memory bank content to AGENTS.md:
 
-1. Examine the contents in `.kilocode/rules/memory-bank/`
+1. Examine the contents in `.testcode/rules/memory-bank/`
 2. Move that content into your project's `AGENTS.md` file (or ask Kilo to do it for you)
    {% /callout %}
 
@@ -142,10 +142,10 @@ AGENTS.md works alongside Test Agent's other configuration systems:
 
 | Feature                                                        | Scope   | Location                  | Purpose                                   | Priority    |
 | -------------------------------------------------------------- | ------- | ------------------------- | ----------------------------------------- | ----------- |
-| **[Mode-specific Custom Rules](/docs/customize/custom-rules)** | Project | `.kilocode/rules-{mode}/` | Mode-specific rules and constraints       | 1 (Highest) |
-| **[Custom Rules](/docs/customize/custom-rules)**               | Project | `.kilocode/rules/`        | Test Agent-specific rules and constraints | 2           |
+| **[Mode-specific Custom Rules](/docs/customize/custom-rules)** | Project | `.testcode/rules-{mode}/` | Mode-specific rules and constraints       | 1 (Highest) |
+| **[Custom Rules](/docs/customize/custom-rules)**               | Project | `.testcode/rules/`        | Test Agent-specific rules and constraints | 2           |
 | **[AGENTS.md](/docs/customize/agents-md)**                     | Project | `AGENTS.md`               | Universal standard for any AI coding tool | 3           |
-| **[Global Custom Rules](/docs/customize/custom-rules)**        | Global  | `~/.kilocode/rules/`      | Global Test Agent rules                   | 4           |
+| **[Global Custom Rules](/docs/customize/custom-rules)**        | Global  | `~/.testcode/rules/`      | Global Test Agent rules                   | 4           |
 | **[Custom Instructions](/docs/customize/custom-instructions)** | Global  | IDE settings              | Personal preferences across all projects  | 5 (Lowest)  |
 
 ### Enabling/Disabling AGENTS.md

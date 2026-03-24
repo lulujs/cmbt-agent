@@ -120,7 +120,7 @@ The configuration file must be located at:
 
 ```
 your-workspace/
-└── .kilocode/
+└── .testcode/
     └── launchConfig.json
 ```
 
@@ -138,7 +138,7 @@ This file should be at the root of your workspace (the same level as your main p
 
 ### Configuration Not Loading
 
-1. Verify file location: `.kilocode/launchConfig.json` in workspace root
+1. Verify file location: `.testcode/launchConfig.json` in workspace root
 2. Check JSON syntax with a JSON validator
 3. Ensure `prompt` field is present and not empty
 4. Check VS Code Developer Console for error messages

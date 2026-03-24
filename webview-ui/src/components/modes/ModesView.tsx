@@ -1299,7 +1299,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 											// Open or create an empty file
 											vscode.postMessage({
 												type: "openFile",
-												text: `./.kilocode/rules-${currentMode.slug}/rules.md`, // kilocode_change
+												text: `./.testcode/rules-${currentMode.slug}/rules.md`, // kilocode_change
 												values: {
 													create: true,
 													content: "",
@@ -1392,7 +1392,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 
 															vscode.postMessage({
 																type: "openFile",
-																text: `./.kilocode/system-prompt-${currentMode.slug}`, // kilocode_change
+																text: `./.testcode/system-prompt-${currentMode.slug}`, // kilocode_change
 																values: {
 																	create: true,
 																	content: "",
@@ -1461,7 +1461,7 @@ const ModesView = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 										onClick={() =>
 											vscode.postMessage({
 												type: "openFile",
-												text: "./.kilocode/rules/rules.md",
+												text: "./.testcode/rules/rules.md",
 												values: {
 													create: true,
 													content: "",

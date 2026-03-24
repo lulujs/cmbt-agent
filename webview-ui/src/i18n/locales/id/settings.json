@@ -223,7 +223,7 @@
 			},
 			"protected": {
 				"label": "Sertakan file yang dilindungi",
-				"description": "Izinkan Test Agent membuat dan mengedit file yang dilindungi (seperti .testcodeignore dan file konfigurasi .kilocode/) tanpa memerlukan persetujuan."
+				"description": "Izinkan Test Agent membuat dan mengedit file yang dilindungi (seperti .testcodeignore dan file konfigurasi .testcode/) tanpa memerlukan persetujuan."
 			}
 		},
 		"browser": {
@@ -1058,9 +1058,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Aktifkan tool kustom",
-			"description": "Ketika diaktifkan, Kilo dapat memuat dan menggunakan tool kustom TypeScript/JavaScript dari direktori .kilocode/tools proyek kamu atau ~/.kilocode/tools untuk tool global. Catatan: tool ini akan otomatis disetujui.",
+			"description": "Ketika diaktifkan, Kilo dapat memuat dan menggunakan tool kustom TypeScript/JavaScript dari direktori .testcode/tools proyek kamu atau ~/.testcode/tools untuk tool global. Catatan: tool ini akan otomatis disetujui.",
 			"toolsHeader": "Tool Kustom yang Tersedia",
-			"noTools": "Tidak ada tool kustom yang dimuat. Tambahkan file .ts atau .js ke direktori .kilocode/tools proyek kamu atau ~/.kilocode/tools untuk tool global.",
+			"noTools": "Tidak ada tool kustom yang dimuat. Tambahkan file .ts atau .js ke direktori .testcode/tools proyek kamu atau ~/.testcode/tools untuk tool global.",
 			"refreshButton": "Refresh",
 			"refreshing": "Merefresh...",
 			"refreshSuccess": "Tool berhasil direfresh",

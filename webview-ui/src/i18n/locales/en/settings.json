@@ -227,7 +227,7 @@
 			},
 			"protected": {
 				"label": "Include protected files",
-				"description": "Allow Test Agent to create and edit protected files (like .testcodeignore and .kilocode/ configuration files) without requiring approval."
+				"description": "Allow Test Agent to create and edit protected files (like .testcodeignore and .testcode/ configuration files) without requiring approval."
 			}
 		},
 		"delete": {
@@ -1077,9 +1077,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Enable custom tools",
-			"description": "When enabled, Kilo can load and use custom TypeScript/JavaScript tools from your project's .kilocode/tools directory or ~/.kilocode/tools for global tools. Note: these tools will automatically be auto-approved.",
+			"description": "When enabled, Kilo can load and use custom TypeScript/JavaScript tools from your project's .testcode/tools directory or ~/.testcode/tools for global tools. Note: these tools will automatically be auto-approved.",
 			"toolsHeader": "Available Custom Tools",
-			"noTools": "No custom tools loaded. Add .ts or .js files to your project's .kilocode/tools directory or ~/.kilocode/tools for global tools.",
+			"noTools": "No custom tools loaded. Add .ts or .js files to your project's .testcode/tools directory or ~/.testcode/tools for global tools.",
 			"refreshButton": "Refresh",
 			"refreshing": "Refreshing...",
 			"refreshSuccess": "Tools refreshed successfully",

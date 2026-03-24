@@ -227,7 +227,7 @@
 			},
 			"protected": {
 				"label": "包含受保護的檔案",
-				"description": "允許 Test Agent 建立和編輯受保護的檔案（如 .testcodeignore 和 .kilocode/ 設定檔），無需核准。"
+				"description": "允許 Test Agent 建立和編輯受保護的檔案（如 .testcodeignore 和 .testcode/ 設定檔），無需核准。"
 			}
 		},
 		"browser": {
@@ -1047,9 +1047,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "啟用自訂工具",
-			"description": "啟用後，Kilo 可以從專案的 .kilocode/tools 目錄或全域工具目錄 ~/.kilocode/tools 載入並使用自訂 TypeScript/JavaScript 工具。注意：這些工具將自動獲得核准。",
+			"description": "啟用後，Kilo 可以從專案的 .testcode/tools 目錄或全域工具目錄 ~/.testcode/tools 載入並使用自訂 TypeScript/JavaScript 工具。注意：這些工具將自動獲得核准。",
 			"toolsHeader": "可用的自訂工具",
-			"noTools": "未載入自訂工具。請將 .ts 或 .js 檔案新增至專案的 .kilocode/tools 目錄或全域工具目錄 ~/.kilocode/tools。",
+			"noTools": "未載入自訂工具。請將 .ts 或 .js 檔案新增至專案的 .testcode/tools 目錄或全域工具目錄 ~/.testcode/tools。",
 			"refreshButton": "重新整理",
 			"refreshing": "重新整理中...",
 			"refreshSuccess": "工具重新整理成功",

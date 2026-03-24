@@ -243,7 +243,7 @@
 			},
 			"protected": {
 				"label": "Zahrnúť chránené súbory",
-				"description": "Povoliť Test Agent vytvárať a upravovať chránené súbory (ako .testcodeignore a konfiguračné súbory .kilocode/) bez nutnosti schválenia."
+				"description": "Povoliť Test Agent vytvárať a upravovať chránené súbory (ako .testcodeignore a konfiguračné súbory .testcode/) bez nutnosti schválenia."
 			}
 		},
 		"browser": {
@@ -1140,9 +1140,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Povoliť vlastné nástroje",
-			"description": "Ak je povolené, Kilo môže načítavať a používať vlastné nástroje TypeScript/JavaScript z adresára .kilocode/tools vášho projektu alebo ~/.kilocode/tools pre globálne nástroje. Poznámka: tieto nástroje budú automaticky schválené.",
+			"description": "Ak je povolené, Kilo môže načítavať a používať vlastné nástroje TypeScript/JavaScript z adresára .testcode/tools vášho projektu alebo ~/.testcode/tools pre globálne nástroje. Poznámka: tieto nástroje budú automaticky schválené.",
 			"toolsHeader": "Dostupné vlastné nástroje",
-			"noTools": "Nie sú načítané žiadne vlastné nástroje. Pridajte súbory .ts alebo .js do adresára .kilocode/tools vášho projektu alebo ~/.kilocode/tools pre globálne nástroje.",
+			"noTools": "Nie sú načítané žiadne vlastné nástroje. Pridajte súbory .ts alebo .js do adresára .testcode/tools vášho projektu alebo ~/.testcode/tools pre globálne nástroje.",
 			"refreshButton": "Obnoviť",
 			"refreshing": "Obnovovanie...",
 			"refreshSuccess": "Nástroje úspešne obnovené",

@@ -219,7 +219,7 @@
 			},
 			"protected": {
 				"label": "Geschützte Dateien einbeziehen",
-				"description": "Test Agent erlauben, geschützte Dateien (wie .testcodeignore und .kilocode/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
+				"description": "Test Agent erlauben, geschützte Dateien (wie .testcodeignore und .testcode/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
 			}
 		},
 		"browser": {
@@ -1032,9 +1032,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Benutzerdefinierte Tools aktivieren",
-			"description": "Wenn aktiviert, kann Kilo benutzerdefinierte TypeScript/JavaScript Tools aus dem .kilocode/tools-Verzeichnis deines Projekts oder ~/.kilocode/tools für globale Tools laden und verwenden. Hinweis: Diese Tools werden automatisch genehmigt.",
+			"description": "Wenn aktiviert, kann Kilo benutzerdefinierte TypeScript/JavaScript Tools aus dem .testcode/tools-Verzeichnis deines Projekts oder ~/.testcode/tools für globale Tools laden und verwenden. Hinweis: Diese Tools werden automatisch genehmigt.",
 			"toolsHeader": "Verfügbare benutzerdefinierte Tools",
-			"noTools": "Keine benutzerdefinierten Tools geladen. Füge .ts oder .js Dateien zum .kilocode/tools-Verzeichnis deines Projekts oder ~/.kilocode/tools für globale Tools hinzu.",
+			"noTools": "Keine benutzerdefinierten Tools geladen. Füge .ts oder .js Dateien zum .testcode/tools-Verzeichnis deines Projekts oder ~/.testcode/tools für globale Tools hinzu.",
 			"refreshButton": "Aktualisieren",
 			"refreshing": "Wird aktualisiert...",
 			"refreshSuccess": "Tools erfolgreich aktualisiert",
