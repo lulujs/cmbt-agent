@@ -40,7 +40,7 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 					className={cn(
 						"flex-1 flex flex-col gap-2 p-3 rounded-lg border text-left cursor-pointer transition-colors",
 						vibeSelected
-							? "border-[var(--vscode-focusBorder)] bg-[rgba(128,0,255,0.15)]"
+							? "border-[var(--vscode-focusBorder)] bg-[rgba(239, 237, 241, 0.15)]"
 							: "border-[var(--vscode-panel-border)] bg-[var(--vscode-editor-background)] hover:border-[var(--vscode-focusBorder)]",
 					)}>
 					<div className="flex items-center gap-2">
@@ -55,11 +55,11 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 								"font-semibold text-sm",
 								vibeSelected ? "text-[var(--vscode-focusBorder)]" : "text-vscode-foreground",
 							)}>
-							探索
+							Explore（探索模式）
 						</span>
 					</div>
 					<p className="text-xs text-vscode-descriptionForeground m-0 leading-relaxed">
-						先沟通，再构建。在探索需求的过程中探索思路、持续迭代。
+						自由、动态地探索系统行为，发现潜在问题或未知场景。
 					</p>
 				</button>
 
@@ -69,7 +69,7 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 					className={cn(
 						"flex-1 flex flex-col gap-2 p-3 rounded-lg border text-left cursor-pointer transition-colors",
 						specSelected
-							? "border-[var(--vscode-focusBorder)] bg-[rgba(128,0,255,0.15)]"
+							? "border-[var(--vscode-focusBorder)] bg-[rgba(239, 237, 241, 0.15)]"
 							: "border-[var(--vscode-panel-border)] bg-[var(--vscode-editor-background)] hover:border-[var(--vscode-focusBorder)]",
 					)}>
 					<div className="flex items-center gap-2">
@@ -84,11 +84,11 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 								"font-semibold text-sm",
 								specSelected ? "text-[var(--vscode-focusBorder)]" : "text-vscode-foreground",
 							)}>
-							规格
+							Spec（规格模式）
 						</span>
 					</div>
 					<p className="text-xs text-vscode-descriptionForeground m-0 leading-relaxed">
-						定义一系列步骤，引导Test Agent完成重复性任务。
+						基于预设规则和预期结果，严格验证系统是否符合规范。
 					</p>
 				</button>
 			</div>
@@ -97,18 +97,18 @@ export const VibeModeSelector = ({ mode, onModeChange, onWorkflowChange }: VibeM
 			<div className="flex gap-2">
 				<div className="w-0.5 bg-[var(--vscode-focusBorder)] rounded-full shrink-0" />
 				<div className="text-xs text-vscode-descriptionForeground">
-					<p className="m-0 mb-1 font-medium text-vscode-foreground">Great for:</p>
+					<p className="m-0 mb-1 font-medium text-vscode-foreground">适合场景:</p>
 					{vibeSelected ? (
 						<ul className="m-0 pl-4 space-y-0.5 list-disc">
 							<li>快速探索与验证</li>
-							<li>需求不明确时的开发</li>
-							<li>任务落地执行</li>
+							<li>初期测试阶段，需求不明确或频繁变更</li>
+							<li>寻找边界条件、隐藏的交互问题或意外行为</li>
 						</ul>
 					) : (
 						<ul className="m-0 pl-4 space-y-0.5 list-disc">
-							<li>为对话准备模板</li>
-							<li>需要前期规划</li>
-							<li>以结构化方式执行任务</li>
+							<li>需求明确且稳定的正式测试阶段</li>
+							<li>需要生成可重复、可追溯的测试报告</li>
+							<li>验证核心功能、API 接口或业务流程合规性</li>
 						</ul>
 					)}
 				</div>

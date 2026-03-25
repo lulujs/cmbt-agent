@@ -25,5 +25,8 @@
 		"**/*": "/static/img/${documentBaseName}/${documentBaseName}.${fileName/(.*)\\.(.*)/$2/}"
 	},
 	"java.configuration.updateBuildConfiguration": "interactive",
-	"kiroAgent.configureMCP": "Disabled"
+	"kiroAgent.configureMCP": "Disabled",
+	"emmet.triggerExpansionOnTab": true,
+	"editor.fontSize": 15,
+	"window.zoomLevel": 1.8
 }

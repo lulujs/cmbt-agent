@@ -87,7 +87,6 @@ import {
 	Chutes,
 	ClaudeCode,
 	DeepSeek,
-	Dify,
 	Doubao,
 	Gemini,
 	Glama, // kilocode_change

@@ -1,9 +1,9 @@
 {
 	"name": "test-agent",
 	"displayName": "test-agent",
-	"description": "辅助测试设计建模agent",
-	"publisher": "test",
-	"version": "1.0.1",
+	"description": "辅助测试流程agent",
+	"publisher": "test-tech",
+	"version": "1.0.0",
 	"icon": "assets/icons/logo-outline-black.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -17,7 +17,7 @@
 		"workspace"
 	],
 	"author": {
-		"name": "test"
+		"name": "test-auto"
 	},
 	"repository": {
 		"type": "git",
@@ -39,7 +39,7 @@
 		"coding",
 		"agent",
 		"ai",
-		"Test Agent",
+		"TestAgent",
 		"testagent"
 	],
 	"activationEvents": [
