@@ -184,7 +184,7 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 							You can find the MCP Marketplace under Settings &gt; MCP Servers &gt; Marketplace
 						</div>
 						{/* kilocode_change end */}
-						<div
+						{/* <div
 							style={{
 								marginTop: "15px",
 								fontSize: "12px",
@@ -198,7 +198,7 @@ const McpView = ({ onDone, hideHeader = false }: McpViewProps) => {
 								style={{ display: "inline" }}>
 								{t("mcp:learnMoreEditingSettings")}
 							</VSCodeLink>
-						</div>
+						</div> */}
 					</>
 				)}
 			</Section>

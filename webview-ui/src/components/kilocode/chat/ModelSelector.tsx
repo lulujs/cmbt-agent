@@ -93,7 +93,7 @@ export const ModelSelector = ({
 		return result
 	}, [preferredModelIds, restModelIds, providerModels, selectedModelId, t])
 
-	const disabled = isLoading || isError || isAutocomplete
+	// const disabled = isLoading || isError || isAutocomplete
 
 	const onChange = (value: string) => {
 		if (!currentApiConfigName) {
@@ -138,8 +138,7 @@ export const ModelSelector = ({
 	return (
 		<SelectDropdown
 			value={selectedModelId}
-			disabled={disabled}
-			title={t("chat:selectApiConfig")}
+			disabled={true} // test-agent_change: disable click to open dropdown
 			options={options}
 			onChange={onChange}
 			contentClassName="max-h-[400px] overflow-y-auto"

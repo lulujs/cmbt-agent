@@ -32,7 +32,6 @@ import {
 	type ProviderSettings,
 	type ExperimentId,
 	type TelemetrySetting,
-	type ProfileType, // kilocode_change - autocomplete profile type system
 	DEFAULT_CHECKPOINT_TIMEOUT_SECONDS,
 	ImageGenerationProvider,
 } from "@roo-code/types"
@@ -61,7 +60,9 @@ import {
 import { Tab, TabContent, TabHeader, TabList, TabTrigger } from "../common/Tab"
 import { SetCachedStateField, SetExperimentEnabled } from "./types"
 import { SectionHeader } from "./SectionHeader"
-import ApiConfigManager from "./ApiConfigManager"
+// test-agent_change start: ApiConfigManager hidden
+// import ApiConfigManager from "./ApiConfigManager"
+// test-agent_change end
 import ApiOptions from "./ApiOptions"
 import { AutoApproveSettings } from "./AutoApproveSettings"
 import { BrowserSettings } from "./BrowserSettings"
@@ -1028,16 +1029,15 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>((props, ref)
 
 								<Section>
 									{/* kilocode_change start changes to allow for editting a non-active profile */}
-									<ApiConfigManager
+									{/* test-agent_change start: hide ApiConfigManager */}
+									{/* <ApiConfigManager
 										currentApiConfigName={editingApiConfigName}
 										activeApiConfigName={currentApiConfigName}
 										listApiConfigMeta={listApiConfigMeta}
 										onSelectConfig={(configName: string) => {
 											checkUnsaveChanges(() => {
 												setEditingApiConfigName(configName)
-												// Set flag to prevent extensionState sync while loading
 												isLoadingProfileForEditing.current = true
-												// Request the profile's configuration for editing
 												vscode.postMessage({
 													type: "getProfileConfigurationForEditing",
 													text: configName,
@@ -1049,10 +1049,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>((props, ref)
 										}}
 										onDeleteConfig={(configName: string) => {
 											const isEditingProfile = configName === editingApiConfigName
-
 											vscode.postMessage({ type: "deleteApiConfiguration", text: configName })
-
-											// If deleting the editing profile, switch to another for editing
 											if (isEditingProfile && listApiConfigMeta && listApiConfigMeta.length > 1) {
 												const nextProfile = listApiConfigMeta.find((p) => p.name !== configName)
 												if (nextProfile) {
@@ -1069,12 +1066,10 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>((props, ref)
 											if (oldName === editingApiConfigName) {
 												setEditingApiConfigName(newName)
 											}
-											// Update prevApiConfigName if renaming the active profile
 											if (oldName === currentApiConfigName) {
 												prevApiConfigName.current = newName
 											}
 										}}
-										// kilocode_change start - autocomplete profile type system
 										onUpsertConfig={(configName: string, profileType?: ProfileType) => {
 											vscode.postMessage({
 												type: "upsertApiConfiguration",
@@ -1086,7 +1081,8 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>((props, ref)
 											})
 											setEditingApiConfigName(configName)
 										}}
-									/>
+									/> */}
+									{/* test-agent_change end: hide ApiConfigManager */}
 									{/* kilocode_change end changes to allow for editting a non-active profile */}
 
 									{/* kilocode_change start - pass editing profile name */}

@@ -613,6 +613,7 @@ const ApiOptions = ({
 				</div>
 				<SearchableSelect
 					value={selectedProvider}
+					disabled={true}
 					onValueChange={(value) => onProviderChange(value as ProviderName)}
 					options={providerOptions}
 					placeholder={t("settings:common.select")}
@@ -865,11 +866,12 @@ const ApiOptions = ({
 			)}
 
 			{selectedProvider === "dify" && (
-				<Dify
-					apiConfiguration={apiConfiguration}
-					setApiConfigurationField={setApiConfigurationField}
-					simplifySettings={fromWelcomeView}
-				/>
+				<></>
+				// <Dify
+				// 	apiConfiguration={apiConfiguration}
+				// 	setApiConfigurationField={setApiConfigurationField}
+				// 	simplifySettings={fromWelcomeView}
+				// />
 			)}
 
 			{selectedProvider === "doubao" && (
