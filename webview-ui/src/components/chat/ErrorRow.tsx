@@ -242,7 +242,7 @@ export const ErrorRow = memo(
 							<MessageCircleWarning className="w-4 text-vscode-errorForeground" />
 							<span className="font-bold grow cursor-default">{errorTitle}</span>
 							<div className="flex items-center gap-2">
-								{docsURL && (
+								{docsURL && docsURL.startsWith("https://doc.cmb") && (
 									<a
 										href={docsURL}
 										className="text-sm flex items-center gap-1 transition-opacity opacity-0 group-hover:opacity-100"
