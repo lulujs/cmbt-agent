@@ -34,7 +34,7 @@ describe("getModelsByProvider", () => {
 		lmstudio: { "test-model": testModel },
 		"io-intelligence": { "test-model": testModel },
 		deepinfra: { "test-model": testModel },
-		dify: { "test-model": testModel },
+		testhub: { "test-model": testModel },
 		"vercel-ai-gateway": { "test-model": testModel },
 		huggingface: { "test-model": testModel },
 		gemini: { "test-model": testModel },

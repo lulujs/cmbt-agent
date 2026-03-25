@@ -8,7 +8,7 @@ export function checkExistKey(config: ProviderSettings | undefined) {
 	// Special case for human-relay, fake-ai, claude-code, openai-codex, qwen-code, roo, kilocode and dify providers which don't need any configuration or have their own model selection.
 	if (
 		config.apiProvider &&
-		["human-relay", "fake-ai", "claude-code", "openai-codex", "qwen-code", "roo", "kilocode", "dify"].includes(
+		["human-relay", "fake-ai", "claude-code", "openai-codex", "qwen-code", "roo", "kilocode", "testhub"].includes(
 			config.apiProvider,
 		) // kilocode_change: add kilocode for anonymous access, dify for workflow-based models
 	) {

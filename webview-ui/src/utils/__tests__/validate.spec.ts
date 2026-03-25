@@ -75,7 +75,7 @@ describe("Model Validation Functions", () => {
 		ollama: {},
 		lmstudio: {},
 		deepinfra: {},
-		dify: {},
+		testhub: {},
 		"io-intelligence": {},
 		"vercel-ai-gateway": {},
 		huggingface: {},

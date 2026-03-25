@@ -278,7 +278,7 @@ export function buildApiHandler(configuration: ProviderSettings): ApiHandler {
 			return new BasetenHandler(options)
 		case "corethink":
 			return new CorethinkHandler(options)
-		case "dify":
+		case "testhub":
 			return new DifyHandler(options)
 		default:
 			apiProvider satisfies undefined

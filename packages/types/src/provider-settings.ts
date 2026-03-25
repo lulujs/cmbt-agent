@@ -59,7 +59,7 @@ export const dynamicProviders = [
 	"synthetic",
 	"sap-ai-core",
 	"zenmux",
-	"dify",
+	"testhub",
 	// kilocode_change end
 	"deepinfra",
 	"io-intelligence",
@@ -640,7 +640,7 @@ export const providerSettingsSchemaDiscriminated = z.discriminatedUnion("apiProv
 	groqSchema.merge(z.object({ apiProvider: z.literal("groq") })),
 	basetenSchema.merge(z.object({ apiProvider: z.literal("baseten") })),
 	corethinkSchema.merge(z.object({ apiProvider: z.literal("corethink") })),
-	difySchema.merge(z.object({ apiProvider: z.literal("dify") })),
+	difySchema.merge(z.object({ apiProvider: z.literal("testhub") })),
 	huggingFaceSchema.merge(z.object({ apiProvider: z.literal("huggingface") })),
 	chutesSchema.merge(z.object({ apiProvider: z.literal("chutes") })),
 	litellmSchema.merge(z.object({ apiProvider: z.literal("litellm") })),
@@ -790,7 +790,7 @@ export const modelIdKeysByProvider: Record<TypicalProvider, ModelIdKey> = {
 	minimax: "apiModelId",
 	deepseek: "apiModelId",
 	deepinfra: "deepInfraModelId",
-	dify: "apiModelId",
+	testhub: "apiModelId",
 	doubao: "apiModelId",
 	"qwen-code": "apiModelId",
 	unbound: "unboundModelId",
@@ -963,7 +963,7 @@ export const MODELS_BY_PROVIDER: Record<
 	corethink: { id: "corethink", label: "Corethink", models: Object.keys(corethinkModels) },
 
 	// Dynamic providers; models pulled from remote APIs.
-	dify: { id: "dify", label: "Dify", models: [] },
+	testhub: { id: "testhub", label: "Dify", models: [] },
 	glama: { id: "glama", label: "Glama", models: [] }, // kilocode_change
 	"nano-gpt": { id: "nano-gpt", label: "Nano-GPT", models: [] }, // kilocode_change
 	huggingface: { id: "huggingface", label: "Hugging Face", models: [] },

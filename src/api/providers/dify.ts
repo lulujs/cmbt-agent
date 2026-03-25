@@ -255,7 +255,7 @@ export class DifyHandler extends BaseProvider {
 
 	override getModel(): { id: string; info: ModelInfo } {
 		return {
-			id: "dify-workflow",
+			id: "testhub-workflow",
 			info: {
 				maxTokens: 8192,
 				contextWindow: 128000,

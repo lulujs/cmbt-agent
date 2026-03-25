@@ -83,7 +83,7 @@ function getValidatedModelId(
 }
 
 export const useSelectedModel = (apiConfiguration?: ProviderSettings) => {
-	const provider = apiConfiguration?.apiProvider || "dify" // test-agent_change: default to dify
+	const provider = apiConfiguration?.apiProvider || "testhub" // test-agent_change: default to dify
 	// kilocode_change start
 	const { kilocodeDefaultModel, virtualQuotaActiveModel } = useExtensionState()
 	const lmStudioModelId = provider === "lmstudio" ? apiConfiguration?.lmStudioModelId : undefined
@@ -583,10 +583,10 @@ function getSelectedModel({
 			const info = routerModels.zenmux?.[id]
 			return { id, info }
 		}
-		case "dify": {
+		case "testhub": {
 			// Dify doesn't need model selection - models are configured in Dify workflows
 			return {
-				id: "dify-workflow",
+				id: "testhub-workflow",
 				info: {
 					maxTokens: 8192,
 					contextWindow: 128000,

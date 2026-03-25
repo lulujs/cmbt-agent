@@ -69,7 +69,7 @@ describe("ProviderSettingsManager", () => {
 			expect(mockSecrets.store).toHaveBeenCalled()
 			const calls = mockSecrets.store.mock.calls
 			const storedConfig = JSON.parse(calls[calls.length - 1][1])
-			expect(storedConfig.apiConfigs.default.apiProvider).toBe("dify")
+			expect(storedConfig.apiConfigs.default.apiProvider).toBe("testhub")
 			expect(storedConfig.apiConfigs.default.difyBaseUrl).toBe("https://api.dify.ai/v1")
 			expect(storedConfig.apiConfigs.default.difyApiKey).toBe("app-Xv2ojbwMEbD4eFtX0THNHcbU")
 		})

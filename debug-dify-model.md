@@ -2,7 +2,7 @@
 
 ## 问题描述
 
-当选择 Dify 提供商时，界面底部仍然显示 `dify:claude-sonnet-4-5` 而不是 `dify:dify-workflow`。
+当选择 Dify 提供商时，界面底部仍然显示 `dify:claude-sonnet-4-5` 而不是 `testhub:testhub-workflow`。
 
 ## 已完成的修改
 
@@ -13,10 +13,10 @@
 添加了 Dify 专用处理：
 
 ```typescript
-case "dify": {
+case "testhub": {
     // Dify doesn't need model selection - models are configured in Dify workflows
     return {
-        id: "dify-workflow",
+        id: "testhub-workflow",
         info: {
             maxTokens: 8192,
             contextWindow: 128000,
@@ -37,7 +37,7 @@ case "dify": {
 在 `PROVIDER_MODEL_CONFIG` 中添加：
 
 ```typescript
-dify: { field: "apiModelId", default: "dify-workflow" },
+testhub: { field: "apiModelId", default: "testhub-workflow" },
 ```
 
 ## 用户操作步骤
@@ -54,13 +54,13 @@ dify: { field: "apiModelId", default: "dify-workflow" },
 2. 在 API Provider 下拉框中：
     - 先选择其他提供商（如 Anthropic）
     - 再选择回 Dify
-3. 这会触发 `onProviderChange`，自动设置 `apiModelId` 为 `"dify-workflow"`
+3. 这会触发 `onProviderChange`，自动设置 `apiModelId` 为 `"testhub-workflow"`
 
 ### 方法 3：手动清除配置（如果上述方法都不行）
 
 1. 打开 VS Code 设置（JSON）
 2. 搜索 `test-agent` 或 `apiModelId`
-3. 如果看到 `"apiModelId": "claude-sonnet-4-5"`，删除这一行或改为 `"apiModelId": "dify-workflow"`
+3. 如果看到 `"apiModelId": "claude-sonnet-4-5"`，删除这一行或改为 `"apiModelId": "testhub-workflow"`
 4. 保存并重新加载窗口
 
 ## 验证修改是否生效
@@ -69,10 +69,10 @@ dify: { field: "apiModelId", default: "dify-workflow" },
 
 ```bash
 # 在 test-agent 目录下执行
-grep -A 15 'case "dify"' webview-ui/src/components/ui/hooks/useSelectedModel.ts
+grep -A 15 'case "testhub"' webview-ui/src/components/ui/hooks/useSelectedModel.ts
 ```
 
-应该看到返回 `id: "dify-workflow"` 的代码。
+应该看到返回 `id: "testhub-workflow"` 的代码。
 
 ### 检查构建文件
 
@@ -91,7 +91,7 @@ ls -lh src/dist/extension.js
 
 ## 预期结果
 
-- 界面底部应显示：`dify:dify-workflow`
+- 界面底部应显示：`testhub:testhub-workflow`
 - 设置页面不应显示模型选择下拉框（因为 Dify 不在 MODELS_BY_PROVIDER 中）
 - 模型信息应显示："Model configured in Dify workflow"
 

@@ -1666,8 +1666,8 @@ export class AgentManagerProvider implements vscode.Disposable {
 			const state = await this.provider.getState()
 			const { apiConfiguration } = state
 
-			// Determine the provider - default to "dify" if not set
-			const providerName = apiConfiguration.apiProvider || "dify" // test-agent_change: fall back to dify
+			// Determine the provider - default to "testhub" if not set
+			const providerName = apiConfiguration.apiProvider || "testhub" // test-agent_change: fall back to dify
 
 			// Check if this provider supports model fetching via router
 			if (!isRouterName(providerName)) {

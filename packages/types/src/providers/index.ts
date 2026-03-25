@@ -173,8 +173,8 @@ export function getProviderDefaultModelId(
 			return qwenCodeDefaultModelId
 		case "vercel-ai-gateway":
 			return vercelAiGatewayDefaultModelId
-		case "dify": // test-agent_change
-			return "dify-workflow" // test-agent_change
+		case "testhub": // test-agent_change
+			return "testhub-workflow" // test-agent_change
 		case "anthropic":
 		case "human-relay":
 		case "fake-ai":

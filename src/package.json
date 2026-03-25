@@ -299,7 +299,7 @@
 				{
 					"command": "test-agent.agentManagerOpen",
 					"group": "navigation@1",
-					"when": "view == test-agent.SidebarProvider"
+					"when": "false && view == test-agent.SidebarProvider"
 				},
 				{
 					"command": "test-agent.marketplaceButtonClicked",
@@ -351,7 +351,7 @@
 				{
 					"command": "test-agent.helpButtonClicked",
 					"group": "navigation@6",
-					"when": "activeWebviewPanelId == test-agent.TabPanelProvider"
+					"when": "false && activeWebviewPanelId == test-agent.TabPanelProvider"
 				},
 				{
 					"command": "test-agent.open",

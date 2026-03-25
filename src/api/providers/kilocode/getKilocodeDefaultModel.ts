@@ -24,7 +24,7 @@ async function fetchKilocodeDefaultModel(
 ): Promise<Defaults> {
 	// Return Dify as fixed default model without making network request
 	console.info("Using Dify as fixed default model (network request disabled)")
-	return { defaultModel: "dify-workflow", defaultFreeModel: "dify-workflow" }
+	return { defaultModel: "testhub-workflow", defaultFreeModel: "testhub-workflow" }
 }
 // test-agent_change end
 

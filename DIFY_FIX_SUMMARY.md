@@ -4,7 +4,7 @@
 
 当选择 Dify 提供商时：
 
-1. ~~界面底部显示 `dify:claude-sonnet-4-5` 而不是 `dify:dify-workflow`~~ (已修复)
+1. ~~界面底部显示 `dify:claude-sonnet-4-5` 而不是 `testhub:testhub-workflow`~~ (已修复)
 2. ~~UI 上显示了"模型"选择器，但 Dify 不需要在这里选择模型（模型在 Dify 工作流中配置）~~ (已修复)
 
 ## 根本原因
@@ -23,10 +23,10 @@
 **位置**：在 `getSelectedModel` 函数中添加 Dify 的 case
 
 ```typescript
-case "dify": {
+case "testhub": {
     // Dify doesn't need model selection - models are configured in Dify workflows
     return {
-        id: "dify-workflow",
+        id: "testhub-workflow",
         info: {
             maxTokens: 8192,
             contextWindow: 128000,
@@ -40,12 +40,12 @@ case "dify": {
 }
 ```
 
-**同时修改 default case**：从类型断言中移除 `"dify"`
+**同时修改 default case**：从类型断言中移除 `"testhub"`
 
 ```typescript
 default: {
     provider satisfies "anthropic" | "fake-ai" | "human-relay" | "kilocode" | "apertis"
-    // 之前是: ... | "apertis" | "dify"
+    // 之前是: ... | "apertis" | "testhub"
 ```
 
 ### 修改 2：Provider 切换配置
@@ -55,7 +55,7 @@ default: {
 **位置 1**：在 `PROVIDER_MODEL_CONFIG` 中添加 Dify 配置
 
 ```typescript
-dify: { field: "apiModelId", default: "dify-workflow" },
+testhub: { field: "apiModelId", default: "testhub-workflow" },
 ```
 
 **位置 2**：修改 `validateAndResetModel` 函数
@@ -96,10 +96,10 @@ if (!staticModels) {
 {selectedProviderModels.length > 0 &&
     selectedProvider !== "claude-code" &&
     selectedProvider !== "openai-codex" &&
-    selectedProvider !== "dify" && (
+    selectedProvider !== "testhub" && (
 ```
 
-**说明**：添加 `selectedProvider !== "dify"` 条件，确保当选择 Dify 供应商时，不显示模型选择器。因为 Dify 的模型是在 Dify 工作流中配置的，不需要在 test-agent 中选择。
+**说明**：添加 `selectedProvider !== "testhub"` 条件，确保当选择 Dify 供应商时，不显示模型选择器。因为 Dify 的模型是在 Dify 工作流中配置的，不需要在 test-agent 中选择。
 
 ### 修改 4：配置验证修复 ✨ NEW
 
@@ -127,7 +127,7 @@ if (
 // Special case for human-relay, fake-ai, claude-code, openai-codex, qwen-code, roo, kilocode and dify providers which don't need any configuration or have their own model selection.
 if (
 	config.apiProvider &&
-	["human-relay", "fake-ai", "claude-code", "openai-codex", "qwen-code", "roo", "kilocode", "dify"].includes(
+	["human-relay", "fake-ai", "claude-code", "openai-codex", "qwen-code", "roo", "kilocode", "testhub"].includes(
 		config.apiProvider,
 	)
 ) {
@@ -135,7 +135,7 @@ if (
 }
 ```
 
-**说明**：添加 "dify" 到特殊供应商列表中，这些供应商不需要额外的配置验证或有自己的模型选择机制。这是导致模型选择器仍然显示的根本原因。
+**说明**：添加 "testhub" 到特殊供应商列表中，这些供应商不需要额外的配置验证或有自己的模型选择机制。这是导致模型选择器仍然显示的根本原因。
 
 ## 工作原理
 
@@ -144,9 +144,9 @@ if (
 1. 用户选择 Dify 提供商
 2. `onProviderChange` 被调用
 3. `validateAndResetModel` 检测到 Dify 没有静态模型列表
-4. 如果 `apiModelId` 不是 `"dify-workflow"`，则设置为 `"dify-workflow"`
-5. `useSelectedModel` 返回 `id: "dify-workflow"`
-6. 界面显示 `dify:dify-workflow`
+4. 如果 `apiModelId` 不是 `"testhub-workflow"`，则设置为 `"testhub-workflow"`
+5. `useSelectedModel` 返回 `id: "testhub-workflow"`
+6. 界面显示 `testhub:testhub-workflow`
 
 ### 场景 2：从其他提供商切换到 Dify
 
@@ -155,19 +155,19 @@ if (
 3. `onProviderChange` 被调用
 4. `validateAndResetModel` 检测到：
     - Dify 没有静态模型列表
-    - `modelId` (`"claude-sonnet-4-5"`) ≠ `defaultValue` (`"dify-workflow"`)
-5. 调用 `setApiConfigurationField("apiModelId", "dify-workflow", false)`
-6. `useSelectedModel` 返回 `id: "dify-workflow"`
-7. 界面显示 `dify:dify-workflow`
+    - `modelId` (`"claude-sonnet-4-5"`) ≠ `defaultValue` (`"testhub-workflow"`)
+5. 调用 `setApiConfigurationField("apiModelId", "testhub-workflow", false)`
+6. `useSelectedModel` 返回 `id: "testhub-workflow"`
+7. 界面显示 `testhub:testhub-workflow`
 
 ### 场景 3：已经选择 Dify 的用户
 
-1. 用户配置中 `apiProvider: "dify"`, `apiModelId: "claude-sonnet-4-5"`
+1. 用户配置中 `apiProvider: "testhub"`, `apiModelId: "claude-sonnet-4-5"`
 2. 扩展加载时，`useSelectedModel` 被调用
-3. 匹配到 `case "dify"`，直接返回 `id: "dify-workflow"`
-4. `ApiOptions` 的 useEffect 检测到 `selectedModelId` (`"dify-workflow"`) ≠ `apiModelId` (`"claude-sonnet-4-5"`)
-5. 自动调用 `setApiConfigurationField("apiModelId", "dify-workflow", false)`
-6. 界面显示 `dify:dify-workflow`
+3. 匹配到 `case "testhub"`，直接返回 `id: "testhub-workflow"`
+4. `ApiOptions` 的 useEffect 检测到 `selectedModelId` (`"testhub-workflow"`) ≠ `apiModelId` (`"claude-sonnet-4-5"`)
+5. 自动调用 `setApiConfigurationField("apiModelId", "testhub-workflow", false)`
+6. 界面显示 `testhub:testhub-workflow`
 
 ## 用户操作指南
 
@@ -185,7 +185,7 @@ if (
 
 ### 验证修复
 
-界面底部应该显示：`dify:dify-workflow`
+界面底部应该显示：`testhub:testhub-workflow`
 
 ## 技术细节
 

@@ -336,7 +336,7 @@ const ApiOptions = ({
 		const models = MODELS_BY_PROVIDER[selectedProvider]
 
 		// Debug: Log for Dify provider
-		if (selectedProvider === "dify") {
+		if (selectedProvider === "testhub") {
 			console.log("[Dify Debug] selectedProvider:", selectedProvider)
 			console.log("[Dify Debug] models from MODELS_BY_PROVIDER:", models)
 		}
@@ -374,7 +374,7 @@ const ApiOptions = ({
 			: []
 
 		// Debug: Log result for Dify provider
-		if (selectedProvider === "dify") {
+		if (selectedProvider === "testhub") {
 			console.log("[Dify Debug] availableModels:", availableModels)
 			console.log("[Dify Debug] availableModels.length:", availableModels.length)
 		}
@@ -491,7 +491,7 @@ const ApiOptions = ({
 				openai: { field: "openAiModelId" },
 				ollama: { field: "ollamaModelId" },
 				lmstudio: { field: "lmStudioModelId" },
-				dify: { field: "apiModelId", default: "dify-workflow" }, // Dify doesn't need model selection
+				testhub: { field: "apiModelId", default: "testhub-workflow" }, // Dify doesn't need model selection
 				// kilocode_change start
 				apertis: { field: "apertisModelId", default: apertisDefaultModelId },
 				kilocode: { field: "kilocodeModel", default: kilocodeDefaultModel },
@@ -536,7 +536,7 @@ const ApiOptions = ({
 			"zai",
 			"qwen-code",
 			"minimax",
-			"dify",
+			"testhub",
 			"deepseek",
 			"openai",
 		]
@@ -864,7 +864,7 @@ const ApiOptions = ({
 				/>
 			)}
 
-			{selectedProvider === "dify" && (
+			{selectedProvider === "testhub" && (
 				<></>
 				// <Dify
 				// 	apiConfiguration={apiConfiguration}
@@ -1050,7 +1050,7 @@ const ApiOptions = ({
 			{selectedProviderModels.length > 0 &&
 				selectedProvider !== "claude-code" &&
 				selectedProvider !== "openai-codex" &&
-				selectedProvider !== "dify" && (
+				selectedProvider !== "testhub" && (
 					<>
 						<div>
 							<label className="block font-medium mb-1">{t("settings:providers.model")}</label>

@@ -319,7 +319,7 @@ const App = () => {
 	const handleSelectFreeModels = useCallback(() => {
 		// test-agent_change start: Explicitly save Dify configuration
 		const difyConfig = {
-			apiProvider: "dify" as const,
+			apiProvider: "testhub" as const,
 			difyBaseUrl: "http://testhub-ai-runtime-gateway.paasuat.cmbchina.cn/v1",
 			difyApiKey: "app-FWtmuFGTLQ5tGYcQRJJ061aq",
 		}

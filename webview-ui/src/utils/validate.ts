@@ -202,7 +202,7 @@ function validateModelsAndKeysProvided(apiConfiguration: ProviderSettings): stri
 			// }
 			break
 		// test-agent_change start: Add dify validation
-		case "dify":
+		case "testhub":
 			if (!apiConfiguration.difyApiKey) {
 				return i18next.t("settings:validation.apiKey")
 			}

@@ -186,7 +186,7 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 				apiKey: options.apiKey,
 			})
 			break
-		case "dify":
+		case "testhub":
 			// Dify doesn't expose a models endpoint - models are configured in Dify workflows
 			models = {}
 			break

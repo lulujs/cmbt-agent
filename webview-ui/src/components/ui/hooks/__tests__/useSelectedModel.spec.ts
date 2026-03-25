@@ -466,7 +466,7 @@ describe("useSelectedModel", () => {
 					"nano-gpt": {},
 					ollama: {},
 					lmstudio: {},
-					dify: {}, // test-agent_change: add dify to router models
+					testhub: {}, // test-agent_change: add dify to router models
 				},
 				isLoading: false,
 				isError: false,
@@ -532,8 +532,8 @@ describe("useSelectedModel", () => {
 					"nano-gpt": {},
 					ollama: {},
 					lmstudio: {},
-					dify: {
-						"dify-workflow": {
+					testhub: {
+						"testhub-workflow": {
 							maxTokens: 8192,
 							contextWindow: 128000,
 							supportsImages: true,
@@ -558,8 +558,8 @@ describe("useSelectedModel", () => {
 			// test-agent_change: pass empty object to trigger getSelectedModel logic
 			const { result } = renderHook(() => useSelectedModel({}), { wrapper })
 
-			expect(result.current.provider).toBe("dify") // test-agent_change: default to dify
-			expect(result.current.id).toBe("dify-workflow") // test-agent_change: dify default model
+			expect(result.current.provider).toBe("testhub") // test-agent_change: default to dify
+			expect(result.current.id).toBe("testhub-workflow") // test-agent_change: dify default model
 			expect(result.current.info).toEqual({
 				maxTokens: 8192,
 				contextWindow: 128000,
