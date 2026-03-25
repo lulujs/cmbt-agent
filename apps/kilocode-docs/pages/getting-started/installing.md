@@ -107,8 +107,8 @@ If you prefer to download and install the VSIX file directly:
 
 1. **Download the VSIX file:**
 
-    - Find official releases on the [Test Agent GitHub Releases page](https://github.com/Kilo-Org/kilocode/releases)
-    - Download the `.vsix` file from the [latest release](https://github.com/Kilo-Org/kilocode/releases/latest)
+    - Find official releases on the [Test Agent GitHub Releases page](https://github.com/releases)
+    - Download the `.vsix` file from the [latest release](https://github.com/releases/latest)
 
 2. **Install in VS Code:**
     - Open VS Code
@@ -155,5 +155,5 @@ After installation, check out these resources to get started:
 If you encounter issues not covered here:
 
 - Join our [Discord community](https://kilo.ai/discord) for real-time support
-- Submit issues on [GitHub](https://github.com/Kilo-Org/kilocode/issues)
+- Submit issues on [GitHub](https://github.com/issues)
 - Visit our [Reddit community](https://www.reddit.com/r/KiloCode)

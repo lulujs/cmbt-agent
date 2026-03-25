@@ -1110,7 +1110,7 @@
 		"allModels": "Semua model"
 	},
 	"footer": {
-		"feedback": "Jika kamu punya pertanyaan atau feedback, jangan ragu untuk membuka issue di <githubLink>github.com/Kilo-Org/kilocode</githubLink> atau bergabung <redditLink>reddit.com/r/kilocode</redditLink> atau <discordLink>kilo.ai/discord</discordLink>",
+		"feedback": "Jika kamu punya pertanyaan atau feedback, jangan ragu untuk membuka issue di <githubLink>github.com</githubLink> atau bergabung <redditLink>reddit.com/r/kilocode</redditLink> atau <discordLink>kilo.ai/discord</discordLink>",
 		"support": "Untuk pertanyaan keuangan, silakan hubungi Customer Support di <supportLink>https://kilo.ai/support</supportLink>",
 		"telemetry": {
 			"label": "Izinkan pelaporan error dan penggunaan",

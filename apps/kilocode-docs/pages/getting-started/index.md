@@ -39,12 +39,12 @@ Coming from Cursor or Windsurf? See our [migration guide](/docs/getting-started/
 
 Test Agent is open source. You can inspect the code, contribute features, or fork it to meet your needs.
 
-- [GitHub Repository](https://github.com/Kilo-Org/kilocode)
+- [GitHub Repository](https://github.com)
 - [Contributing Guide](/docs/contributing)
 - [Architecture Overview](/docs/contributing/architecture)
 
 ## Get Help
 
 - [**Discord**](https://kilo.ai/discord) — Real-time help and community discussion
-- [**GitHub Issues**](https://github.com/Kilo-Org/kilocode/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen) — Report bugs or request features
+- [**GitHub Issues**](https://github.com/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen) — Report bugs or request features
 - [**YouTube**](https://kilo.ai/youtube) — Tutorials and walkthroughs

@@ -62,7 +62,7 @@
 		"contact": {
 			"label": "需要联系我们？请发送邮件至"
 		},
-		"community": "想要获取使用技巧或与其他 TEST Agent 用户交流？加入 <redditLink>reddit.com/r/kilocode</redditLink> 或 <discordLink>kilo.ai/discord</discordLink>",
+		"community": "想要获取使用技巧或与其他 TEST Agent 用户交流？",
 		"contactAndCommunity": "联系与社区",
 		"manageSettings": "管理设置",
 		"debugMode": {
@@ -625,7 +625,7 @@
 		},
 		"consecutiveMistakeLimit": {
 			"label": "错误和重复限制",
-			"description": "在显示“Kilo遇到问题”对话框前允许的连续错误或重复操作次数。设置为 0 可禁用此安全机制（它将永远不会触发）。",
+			"description": "在显示“Test Agent遇到问题”对话框前允许的连续错误或重复操作次数。设置为 0 可禁用此安全机制（它将永远不会触发）。",
 			"unlimitedDescription": "已启用无限重试（自动继续）。对话框将永远不会出现。",
 			"warning": "⚠️ 设置为 0 允许无限重试，这可能会消耗大量 API 使用量"
 		},
@@ -862,7 +862,7 @@
 		},
 		"outputLineLimit": {
 			"label": "终端输出限制",
-			"description": "保留首尾行并丢弃中间行以保持在限制内。降低可节省 token；提高可为Test提供更多中间细节。Kilo 看到内容被跳过的占位符。"
+			"description": "保留首尾行并丢弃中间行以保持在限制内。降低可节省 token；提高可为Test提供更多中间细节。Test Agent 看到内容被跳过的占位符。"
 		},
 		"outputCharacterLimit": {
 			"label": "终端字符限制",
@@ -874,7 +874,7 @@
 		},
 		"shellIntegrationDisabled": {
 			"label": "使用内联终端（推荐）",
-			"description": "在内联终端（聊天）中运行命令以绕过 shell 配置文件/集成，实现更快、更可靠的运行。禁用时，Kilo 使用 VS Code 终端及您的 shell 配置文件、提示和插件。"
+			"description": "在内联终端（聊天）中运行命令以绕过 shell 配置文件/集成，实现更快、更可靠的运行。禁用时，Test Agent 使用 VS Code 终端及您的 shell 配置文件、提示和插件。"
 		},
 		"commandDelay": {
 			"label": "终端命令延迟",
@@ -1097,8 +1097,8 @@
 		"allModels": "全部模型"
 	},
 	"footer": {
-		"feedback": "如果您有任何问题或反馈，请随时在 <githubLink>github.com/Kilo-Org/kilocode</githubLink> 上提出问题或加入 <redditLink>reddit.com/r/kilocode</redditLink> 或 <discordLink>kilo.ai/discord</discordLink>",
-		"support": "如有财务问题，请联系客户支持 <supportLink>https://kilo.ai/support</supportLink>",
+		"feedback": "如果您有任何问题或反馈，请随时提出问题",
+		"support": "如有财务问题，请联系客户支持",
 		"telemetry": {
 			"label": "允许错误和使用情况报告",
 			"description": "通过发送使用数据和错误报告帮助改进 TEST Agent。绝不会发送代码、提示词或个人信息。详情请查看我们的隐私政策。"

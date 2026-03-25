@@ -356,6 +356,14 @@ const App = () => {
 			vscode.postMessage({ type: "hasCompletedOnboarding", bool: true })
 		}
 	}, [hasCompletedOnboarding, taskHistoryFullLength])
+
+	// test-agent_change start: Auto-select default model on first launch
+	useEffect(() => {
+		if (hasCompletedOnboarding === undefined) {
+			handleSelectFreeModels()
+		}
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+	// test-agent_change end
 	// kilocode_change end
 
 	if (!didHydrateState) {
@@ -363,7 +371,8 @@ const App = () => {
 	}
 
 	// kilocode_change start: Show OnboardingView for new users who haven't completed onboarding
-	const showOnboarding = hasCompletedOnboarding !== true
+	// test-agent_change: Only show when explicitly false, not undefined (undefined = auto-select default)
+	const showOnboarding = hasCompletedOnboarding === false
 
 	// Do not conditionally load ChatView, it's expensive and there's state we
 	// don't want to lose (user input, disableInput, askResponse promise, etc.)

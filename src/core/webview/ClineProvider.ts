@@ -1937,7 +1937,7 @@ export class ClineProvider
 		// commented out deleting the task, because in the previous version we made this task red
 		// instead of deleting, and people were confused because the task was actually working fine
 		// which leads us to believe that this is triggered to often somehow, or that the task will turn up later
-		// via some sync ( context https://github.com/Kilo-Org/kilocode/pull/4880 )
+		// via some sync ( context https://github.com/pull/4880 )
 		// await this.deleteTaskFromState(id)
 		// kilocode_change end
 		throw new Error("Task not found")

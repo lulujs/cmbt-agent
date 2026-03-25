@@ -515,4 +515,4 @@ customModes:
 
 ## Community Gallery
 
-Ready to explore more? Check out the [Show and Tell](https://github.com/Kilo-Org/kilocode/discussions/categories/show-and-tell) to discover and share custom modes created by the community!
+Ready to explore more? Check out the [Show and Tell](https://github.com/discussions/categories/show-and-tell) to discover and share custom modes created by the community!

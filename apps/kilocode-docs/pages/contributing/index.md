@@ -74,7 +74,7 @@ git checkout -b docs/your-change-description
     git push origin your-branch-name
     ```
 
-2. Go to the [Test Agent repository](https://github.com/Kilo-Org/kilocode)
+2. Go to the [Test Agent repository](https://github.com)
 
 3. Click "New Pull Request" and select "compare across forks"
 
@@ -134,14 +134,14 @@ When participating in the Test Agent community:
 - Be respectful and inclusive
 - Provide constructive feedback
 - Help newcomers get started
-- Follow the [Code of Conduct](https://github.com/Kilo-Org/kilocode/blob/main/CODE_OF_CONDUCT.md)
+- Follow the [Code of Conduct](https://github.com/blob/main/CODE_OF_CONDUCT.md)
 
 ## Getting Help
 
 If you need help with your contribution:
 
 - Join our [Discord community](https://kilo.ai/discord) for real-time support
-- Ask questions on [GitHub Discussions](https://github.com/Kilo-Org/kilocode/discussions)
+- Ask questions on [GitHub Discussions](https://github.com/discussions)
 - Visit our [Reddit community](https://www.reddit.com/r/KiloCode)
 
 ## Recognition

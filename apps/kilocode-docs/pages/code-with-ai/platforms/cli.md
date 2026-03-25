@@ -349,7 +349,7 @@ For full details on all configuration options including compaction, file watcher
 
 Kilo gives you the ability to bring your own keys for a number of model providers and AI gateways, like OpenRouter and Vercel AI Gateway. Each provider has unique configuration options and some let you set environment variables.
 
-You can reference the [Provider Configuration Guide](https://github.com/Kilo-Org/kilocode/blob/main/cli/docs/PROVIDER_CONFIGURATION.md) for examples (same config format; for Kilo CLI 1.0 the file is `~/.config/kilo/opencode.json`). You can also run:
+You can reference the [Provider Configuration Guide](https://github.com/blob/main/cli/docs/PROVIDER_CONFIGURATION.md) for examples (same config format; for Kilo CLI 1.0 the file is `~/.config/kilo/opencode.json`). You can also run:
 
 `kilo config`
 

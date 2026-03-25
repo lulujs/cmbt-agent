@@ -74,7 +74,7 @@ export const About = ({
 					<Trans
 						i18nKey="settings:footer.feedback"
 						components={{
-							githubLink: <VSCodeLink href="https://github.com/Kilo-Org/kilocode" />,
+							githubLink: <VSCodeLink href="https://github.com" />,
 							redditLink: <VSCodeLink href="https://reddit.com/r/kilocode" />,
 							discordLink: <VSCodeLink href="https://kilo.ai/discord" />,
 						}}

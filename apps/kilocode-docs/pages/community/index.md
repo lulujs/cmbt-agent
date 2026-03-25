@@ -15,7 +15,7 @@ These resources are maintained by the community unless explicitly noted otherwis
 
 - **[Kilo Marketplace](https://github.com/Kilo-Org/kilo-marketplace)**  
   Share and install community-created Modes, Skills, and MCP servers.
-- **[Test Agent Show and Tell Discussions](https://github.com/Kilo-Org/kilocode/discussions/categories/show-and-tell)**  
+- **[Test Agent Show and Tell Discussions](https://github.com/discussions/categories/show-and-tell)**  
   Real examples from users building workflows with Test Agent.
 - **[MCP Official Resources](https://github.com/modelcontextprotocol)**  
   Reference implementations and docs for MCP servers used with Kilo.
@@ -32,4 +32,4 @@ Before adopting a community project, check:
 ## Share Your Project
 
 Built something useful with Test Agent?  
-Share it in [Show and Tell](https://github.com/Kilo-Org/kilocode/discussions/categories/show-and-tell) or contribute it to the [Kilo Marketplace](https://github.com/Kilo-Org/kilo-marketplace).
+Share it in [Show and Tell](https://github.com/discussions/categories/show-and-tell) or contribute it to the [Kilo Marketplace](https://github.com/Kilo-Org/kilo-marketplace).

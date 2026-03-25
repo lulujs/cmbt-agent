@@ -38,7 +38,7 @@ const contributingItems: DropdownItem[] = [
 	{ label: "Contributing Guide", href: "/contributing", description: "How to contribute to Test Agent" },
 	{
 		label: "Code of Conduct",
-		href: "https://github.com/Kilo-Org/kilocode?tab=coc-ov-file",
+		href: "https://github.com?tab=coc-ov-file",
 		description: "Our community guidelines",
 	},
 	{ label: "GitHub Repository", href: "https://github.com/Kilo-Org/", description: "View source and issues" },
@@ -52,7 +52,7 @@ const helpItems: DropdownItem[] = [
 	{ label: "Support", href: "https://kilo.ai/support", description: "Get help from the team" },
 	{
 		label: "Changelog",
-		href: "https://github.com/Kilo-Org/kilocode/releases",
+		href: "https://github.com/releases",
 		description: "Latest updates and releases",
 	},
 ]

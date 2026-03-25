@@ -1194,7 +1194,7 @@
 		"allModels": "Všetky modely"
 	},
 	"footer": {
-		"feedback": "Ak máte nejaké otázky alebo spätnú väzbu, neváhajte otvoriť problém na <githubLink>github.com/Kilo-Org/kilocode</githubLink> alebo sa pripojte k <redditLink>reddit.com/r/kilocode</redditLink> alebo <discordLink>kilo.ai/discord</discordLink>.",
+		"feedback": "Ak máte nejaké otázky alebo spätnú väzbu, neváhajte otvoriť problém na <githubLink>github.com</githubLink> alebo sa pripojte k <redditLink>reddit.com/r/kilocode</redditLink> alebo <discordLink>kilo.ai/discord</discordLink>.",
 		"support": "Pre finančné otázky kontaktujte prosím zákaznícku podporu na <supportLink>https://kilo.ai/support</supportLink>",
 		"telemetry": {
 			"label": "Povoliť hlásenie chýb a používania",

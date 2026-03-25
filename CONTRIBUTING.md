@@ -29,7 +29,7 @@ If you don't have time to contribute, that's fine. There are other easy ways to 
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](https://github.com/Kilo-Org/kilocode/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior
+This project and everyone participating in it is governed by the [Code of Conduct](https://github.com/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior
 to [hi@kilocode.ai](mailto:hi@kilocode.ai).
 
 ## I Have a Question
@@ -40,7 +40,7 @@ If you need clarification after reading this document, we encourage you to join 
 
 ### Code Contributors
 
-We’re excited that you’re interested in contributing code to Test Agent! Before you start, please take a look at our [Development Guide](https://github.com/Kilo-Org/kilocode/blob/main/DEVELOPMENT.md), it includes setup instructions, build steps, and details on running tests locally.
+We’re excited that you’re interested in contributing code to Test Agent! Before you start, please take a look at our [Development Guide](https://github.com/blob/main/DEVELOPMENT.md), it includes setup instructions, build steps, and details on running tests locally.
 
 #### What to Expect
 
@@ -76,7 +76,7 @@ Custom modes are a powerful way to extend Test Agent's capabilities. To create a
 
 ### Feature Requests
 
-Suggest feature requests in [Discussion](https://github.com/Kilo-Org/kilocode/discussions), only open an [Issue](https://github.com/Kilo-Org/kilocode/issues/new/choose) for reporting a bug or actual contributions. Don't open issues for questions or support, instead join our [Discord workspace](https://kilocode.ai/discord) and ask there.
+Suggest feature requests in [Discussion](https://github.com/discussions), only open an [Issue](https://github.com/issues/new/choose) for reporting a bug or actual contributions. Don't open issues for questions or support, instead join our [Discord workspace](https://kilocode.ai/discord) and ask there.
 
 - Provide as much context as you can about what you're running into.
 
