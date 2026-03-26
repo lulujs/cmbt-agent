@@ -1266,7 +1266,7 @@ export const ChatRowContent = ({
 							} else {
 								// Non-HTTP-status-code error message - store full text as errorDetails
 								body = t("chat:apiRequest.errorMessage.unknown")
-								docsURL = "https://kilo.ai/support"
+								docsURL = "https://doc.cmbchina.com"
 							}
 						}
 

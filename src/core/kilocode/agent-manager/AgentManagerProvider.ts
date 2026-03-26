@@ -2016,7 +2016,7 @@ export class AgentManagerProvider implements vscode.Disposable {
 		const actionLabel = t("kilocode:agentManager.actions.getHelp")
 		vscode.window.showErrorMessage(errorMessage, actionLabel).then((selection) => {
 			if (selection === actionLabel) {
-				void vscode.env.openExternal(vscode.Uri.parse("https://kilo.ai/docs"))
+				void vscode.env.openExternal(vscode.Uri.parse("https://doc.cmbchina.com/docs"))
 			}
 		})
 	}

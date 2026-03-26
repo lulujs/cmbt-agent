@@ -41,15 +41,15 @@ const contributingItems: DropdownItem[] = [
 		href: "https://github.com?tab=coc-ov-file",
 		description: "Our community guidelines",
 	},
-	{ label: "GitHub Repository", href: "https://github.com/Kilo-Org/", description: "View source and issues" },
-	{ label: "Discord Community", href: "https://kilo.ai/discord", description: "Join our community" },
+	{ label: "GitHub Repository", href: "https://github.com", description: "View source and issues" },
+	{ label: "Discord Community", href: "https://doc.cmbchina.com", description: "Join our community" },
 ]
 
 const helpItems: DropdownItem[] = [
 	{ label: "Documentation", href: "/", description: "Browse all documentation" },
 	{ label: "FAQ", href: "/getting-started/faq", description: "Frequently asked questions" },
 	{ label: "Community Projects", href: "/community", description: "Explore community resources" },
-	{ label: "Support", href: "https://kilo.ai/support", description: "Get help from the team" },
+	{ label: "Support", href: "https://doc.cmbchina.com", description: "Get help from the team" },
 	{
 		label: "Changelog",
 		href: "https://github.com/releases",
@@ -298,7 +298,7 @@ export function TopNav({ onMobileMenuToggle, isMobileMenuOpen = false, showMobil
 						<SearchIcon />
 					</button>
 					<ThemeToggle />
-					<Link href="https://kilo.ai/github" className="github-link desktop-nav">
+					<Link href="https://github.com" className="github-link desktop-nav">
 						GitHub
 					</Link>
 					<Link href="https://app.kilo.ai" className="signin-btn desktop-nav">

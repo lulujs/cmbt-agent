@@ -127,7 +127,9 @@ export const AutocompleteServiceSettingsView = ({
 						label={t("kilocode:autocomplete.settings.enableAutoTrigger.label")}
 						className="flex flex-col gap-1">
 						<VSCodeCheckbox checked={enableAutoTrigger || false} onChange={onEnableAutoTriggerChange}>
-							<span className="font-medium">{t("kilocode:autocomplete.settings.enableAutoTrigger.label")}</span>
+							<span className="font-medium">
+								{t("kilocode:autocomplete.settings.enableAutoTrigger.label")}
+							</span>
 						</VSCodeCheckbox>
 						<div className="text-vscode-descriptionForeground text-sm mt-1">
 							{t("kilocode:autocomplete.settings.enableAutoTrigger.description")}
@@ -263,11 +265,15 @@ export const AutocompleteServiceSettingsView = ({
 							{provider && model ? (
 								<>
 									<div className="text-vscode-descriptionForeground">
-										<span className="font-medium">{t("kilocode:autocomplete.settings.provider")}:</span>{" "}
+										<span className="font-medium">
+											{t("kilocode:autocomplete.settings.provider")}:
+										</span>{" "}
 										{provider}
 									</div>
 									<div className="text-vscode-descriptionForeground">
-										<span className="font-medium">{t("kilocode:autocomplete.settings.model")}:</span>{" "}
+										<span className="font-medium">
+											{t("kilocode:autocomplete.settings.model")}:
+										</span>{" "}
 										{model}
 									</div>
 								</>
@@ -281,7 +287,7 @@ export const AutocompleteServiceSettingsView = ({
 									</div>
 									<div className="text-vscode-descriptionForeground">
 										<a
-											href="https://kilo.ai/credits"
+											href="https://doc.cmbchina.com"
 											className="text-vscode-textLink-foreground hover:underline">
 											{t("kilocode:autocomplete.settings.noCredits.buyCredits")}
 										</a>
@@ -302,7 +308,7 @@ export const AutocompleteServiceSettingsView = ({
 									</ul>
 									<div className="text-vscode-descriptionForeground">
 										<a
-											href="https://kilo.ai/docs/basic-usage/autocomplete"
+											href="https://doc.cmbchina.com"
 											className="text-vscode-textLink-foreground hover:underline">
 											{t("kilocode:autocomplete.settings.noModelConfigured.learnMore")}
 										</a>

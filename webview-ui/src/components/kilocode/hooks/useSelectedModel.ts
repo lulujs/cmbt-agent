@@ -87,7 +87,7 @@ export const getSelectedModelId = ({
 		}
 		// test-agent_change start: Add dify special handling
 		case "testhub": {
-			return "测小智"
+			return "测小智网关模型"
 		}
 		// test-agent_change end
 		default: {
