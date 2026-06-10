@@ -33,7 +33,7 @@ export const Dify = ({ apiConfiguration, setApiConfigurationField }: DifyProps) 
 			<VSCodeTextField
 				value={apiConfiguration?.difyBaseUrl || ""}
 				onInput={handleInputChange("difyBaseUrl")}
-				placeholder="http://testhub-ai-runtime-gateway.paasuat.cmbchina.cn/v1"
+				placeholder="http://testhub-ai-runtime-gateway.paasuat.xxxxxx.cn/v1"
 				className="w-full">
 				<label className="block font-medium mb-1">{t("settings:providers.difyBaseUrl")}</label>
 			</VSCodeTextField>

@@ -42,14 +42,14 @@ const contributingItems: DropdownItem[] = [
 		description: "Our community guidelines",
 	},
 	{ label: "GitHub Repository", href: "https://github.com", description: "View source and issues" },
-	{ label: "Discord Community", href: "https://doc.cmbchina.com", description: "Join our community" },
+	{ label: "Discord Community", href: "https://doc.xxxxxx.com", description: "Join our community" },
 ]
 
 const helpItems: DropdownItem[] = [
 	{ label: "Documentation", href: "/", description: "Browse all documentation" },
 	{ label: "FAQ", href: "/getting-started/faq", description: "Frequently asked questions" },
 	{ label: "Community Projects", href: "/community", description: "Explore community resources" },
-	{ label: "Support", href: "https://doc.cmbchina.com", description: "Get help from the team" },
+	{ label: "Support", href: "https://doc.xxxxxx.com", description: "Get help from the team" },
 	{
 		label: "Changelog",
 		href: "https://github.com/releases",

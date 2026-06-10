@@ -64,7 +64,7 @@ export const About = ({
 						<Trans
 							i18nKey="settings:footer.telemetry.description"
 							components={{
-								privacyLink: <VSCodeLink href="https://doc.cmbchina.com" />,
+								privacyLink: <VSCodeLink href="https://doc.xxxxxx.com" />,
 							}}
 						/>
 					</p>
@@ -76,7 +76,7 @@ export const About = ({
 						components={{
 							githubLink: <VSCodeLink href="https://github.com" />,
 							redditLink: <VSCodeLink href="https://reddit.com/r/kilocode" />,
-							discordLink: <VSCodeLink href="https://doc.cmbchina.com" />,
+							discordLink: <VSCodeLink href="https://doc.xxxxxx.com" />,
 						}}
 					/>
 				</div>
@@ -86,7 +86,7 @@ export const About = ({
 					<Trans
 						i18nKey="settings:footer.support"
 						components={{
-							supportLink: <VSCodeLink href="https://doc.cmbchina.com" />,
+							supportLink: <VSCodeLink href="https://doc.xxxxxx.com" />,
 						}}
 					/>
 				</div>

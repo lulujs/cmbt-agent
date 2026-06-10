@@ -74,7 +74,7 @@ export class ProviderSettingsManager {
 			default: {
 				id: this.defaultConfigId,
 				apiProvider: "testhub",
-				difyBaseUrl: "http://testhub-ai-runtime-gateway.paasuat.cmbchina.cn/v1",
+				difyBaseUrl: "http://testhub-ai-runtime-gateway.paasuat.xxxxxx.cn/v1",
 				difyApiKey: "app-FWtmuFGTLQ5tGYcQRJJ061aq",
 			},
 		},

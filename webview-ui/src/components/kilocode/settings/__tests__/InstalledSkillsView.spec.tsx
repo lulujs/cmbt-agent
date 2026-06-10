@@ -288,7 +288,7 @@ describe("InstalledSkillsView", () => {
 		render(<InstalledSkillsView />)
 
 		const link = screen.getByTestId("vscode-link")
-		expect(link).toHaveAttribute("href", "https://doc.cmbchina.com")
+		expect(link).toHaveAttribute("href", "https://doc.xxxxxx.com")
 	})
 
 	it("handles empty skills array in skillsData message", async () => {

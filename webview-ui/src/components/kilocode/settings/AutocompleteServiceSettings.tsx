@@ -287,7 +287,7 @@ export const AutocompleteServiceSettingsView = ({
 									</div>
 									<div className="text-vscode-descriptionForeground">
 										<a
-											href="https://doc.cmbchina.com"
+											href="https://doc.xxxxxx.com"
 											className="text-vscode-textLink-foreground hover:underline">
 											{t("kilocode:autocomplete.settings.noCredits.buyCredits")}
 										</a>
@@ -308,7 +308,7 @@ export const AutocompleteServiceSettingsView = ({
 									</ul>
 									<div className="text-vscode-descriptionForeground">
 										<a
-											href="https://doc.cmbchina.com"
+											href="https://doc.xxxxxx.com"
 											className="text-vscode-textLink-foreground hover:underline">
 											{t("kilocode:autocomplete.settings.noModelConfigured.learnMore")}
 										</a>

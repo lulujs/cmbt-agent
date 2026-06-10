@@ -58,7 +58,7 @@ export const ManagedCodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({ child
 const Content = () => {
 	const state = useExtensionState()
 	const orgId = state.apiConfiguration?.kilocodeOrganizationId
-	const href = `https://doc.cmbchina.com/organizations/${orgId}/code-indexing`
+	const href = `https://doc.xxxxxx.com/organizations/${orgId}/code-indexing`
 	const [workspaceFolders, setWorkspaceFolders] = useState<WorkspaceFolderState[]>([])
 
 	// Request initial state when popover opens
